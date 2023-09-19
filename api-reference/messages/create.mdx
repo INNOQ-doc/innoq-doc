@@ -32,7 +32,7 @@ curl --location --request POST 'https://app.gpt-trainer.com/api/v1/session/{uuid
 --data-raw '{"query": "Your query goes here"}'
 ```
 
-```bash Python
+```py Python
 import requests
 
 url = f"https://app.gpt-trainer.com/api/v1/session/{uuid}/message/stream"
@@ -55,7 +55,7 @@ else:
     print("Error:", response.status_code)
 ```
 
-```bash JavaScript
+```ts JavaScript
 const xhr = new XMLHttpRequest();
 xhr.open("POST", `https://app.gpt-trainer.com/api/v1/session/{uuid}/message/stream`, true);
 

@@ -79,7 +79,7 @@
       ]
     },
     {
-      "group": "Sources",
+      "group": "Data Sources",
       "pages": [
         "api-reference/data-sources/properties-reference",
         "api-reference/data-sources/create-file",

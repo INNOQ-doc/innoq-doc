@@ -1,5 +1,5 @@
 ---
-title: "Fetch Session"
+title: "Fetch a Session"
 api: "GET https://app.gpt-trainer.com/api/v1/session/{uuid}"
 description: "Fetch single chatbot session base on uuid"
 ---
@@ -21,7 +21,7 @@ curl --location --request GET 'https://app.gpt-trainer.com/api/v1/session/{uuid}
 --header 'Authorization: Bearer <token>' \
 ```
 
-```bash Python
+```py Python
 import requests
 
 url = 'https://app.gpt-trainer.com/api/v1/session/{uuid}'
@@ -43,7 +43,7 @@ else:
     print(response.text)
 ```
 
-```bash JavaScript
+```ts JavaScript
 const axios = require('axios');
 
 const url = 'https://app.gpt-trainer.com/api/v1/session/{uuid}';

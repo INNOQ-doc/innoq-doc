@@ -1,5 +1,5 @@
 ---
-title: "Create File Source"
+title: "Upload a File"
 api: "POST https://app.gpt-trainer.com/api/v1/chatbot/{uuid}/data-source/upload"
 description: "Create a File source for a chatbot specified by chatbot uuid"
 ---
@@ -32,7 +32,7 @@ curl -X POST -F "file=@{file_path}" https://app.gpt-trainer.com/api/v1/chatbot/{
 --header 'Authorization: Bearer <token>' \
 ```
 
-```bash Python
+```py Python
 import requests
 import os
 
@@ -53,7 +53,7 @@ else:
 
 ```
 
-```bash JavaScript
+```ts JavaScript
 const fs = require('fs');
 const axios = require('axios');
 

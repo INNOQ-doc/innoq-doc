@@ -1,5 +1,5 @@
 ---
-title: "Delete the list of Messages"
+title: "Delete multiple Messages"
 api: "POST https://app.gpt-trainer.com/api/v1/messages/delete"
 description: "Delete list of messages base on their uuids"
 ---
@@ -26,7 +26,7 @@ curl --location --request POST 'https://app.gpt-trainer.com/api/v1/messages/dele
 }'
 ```
 
-```bash Python
+```py Python
 import requests
 
 url = 'https://app.gpt-trainer.com/api/v1/messages/delete'
@@ -48,7 +48,7 @@ else:
     print(response.text)
 ```
 
-```bash JavaScript
+```ts JavaScript
 const axios = require('axios');
 
 const url = 'https://app.gpt-trainer.com/api/v1/messages/delete';
