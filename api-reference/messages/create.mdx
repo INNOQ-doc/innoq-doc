@@ -1,0 +1,103 @@
+---
+title: "Create Message"
+api: "POST https://app.gpt-trainer.com/api/v1/session/{uuid}/message/stream"
+description: "Create a session message for a chatbot session specified by session uuid"
+---
+
+### Query
+
+<ParamField query="uuid" type="string" required/>
+
+### Body
+
+<ParamField body="query" type="string" required/>
+
+### Response
+
+<ResponseField name="created_at" type="string"/>
+<ResponseField name="modified_at" type="string"/>
+<ResponseField name="uuid" type="string"/>
+<ResponseField name="finish_reason" type="string"/>
+<ResponseField name="cite_data_json" type="string"/>
+<ResponseField name="meta_json" type="string"/>
+<ResponseField name="query" type="string"/>
+<ResponseField name="response" type="string"/>
+
+<RequestExample>
+
+```bash Curl
+curl --location --request POST 'https://app.gpt-trainer.com/api/v1/session/{uuid}/message/stream' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+--data-raw '{"query": "Your query goes here"}'
+```
+
+```bash Python
+import requests
+
+url = f"https://app.gpt-trainer.com/api/v1/session/{uuid}/message/stream"
+headers = {
+    "Authorization": "Bearer YOUR_ACCESS_TOKEN",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "query": "Your query goes here"
+}
+
+response = requests.post(url, headers=headers, json=data, stream=True)
+
+if response.status_code == 200:
+    for line in response.iter_lines(decode_unicode=True):
+        # Process streaming response here
+        print(line)
+else:
+    print("Error:", response.status_code)
+```
+
+```bash JavaScript
+const xhr = new XMLHttpRequest();
+xhr.open("POST", `https://app.gpt-trainer.com/api/v1/session/{uuid}/message/stream`, true);
+
+xhr.setRequestHeader("Authorization", "Bearer YOUR_ACCESS_TOKEN");
+xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+const data = JSON.stringify({"query": "Your query goes here"});
+
+xhr.send(data);
+
+xhr.onprogress = () => {
+    const streamingResponse = xhr.responseText;
+    console.log(streamingResponse);
+};
+
+xhr.onreadystatechange = () => {
+    if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+            console.log("Streaming completed successfully");
+        } else {
+            console.error("Error:", xhr.status);
+        }
+    }
+};
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "created_at": "string",
+  "modified_at": "string",
+  "uuid": "string",
+  "finish_reason": "string",
+  "cite_data_json": "string",
+  "meta_json": "string",
+  "query": "string",
+  "response": "string",
+}
+
+```
+
+</ResponseExample>

@@ -1,0 +1,109 @@
+---
+title: "Fetch Chatbot"
+api: "GET https://app.gpt-trainer.com/api/v1/chatbot/{uuid}"
+description: "Fetch single chatbot base on uuid"
+---
+
+### Query
+
+<ParamField query="uuid" type="string" required/>
+
+### Response
+
+<ResponseField name="created_at" type="string"/>
+
+<ResponseField name="meta" type="object">
+The meta of chatbot
+<Expandable title="Chatbot meta">
+<ResponseField name="model" type="string" />
+<ResponseField name="prompt" type="string" />
+<ResponseField name="rate_limit" type="[number, number]"/>
+<ResponseField name="rate_limit_message" type="string"/>
+<ResponseField name="show_citation" type="boolean"/>
+<ResponseField name="temperature" type="number"/>
+<ResponseField name="visibility" type="string"/>
+</Expandable>
+</ResponseField>
+
+<ResponseField name="modified_at" type="string"/>
+<ResponseField name="name" type="string"/>
+<ResponseField name="uuid" type="string"/>
+
+<RequestExample>
+
+```bash Curl
+curl --location --request GET 'https://app.gpt-trainer.com/api/v1/chatbot/{chatbot-uuid}' \
+--header 'Authorization: Bearer <token>'
+```
+
+```bash Python
+import requests
+
+url = 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}'
+headers = {
+    'Authorization': 'Bearer <token>'
+}
+
+params = {
+    'uuid': '<chatbot-uuid>'
+}
+
+response = requests.get(url, headers=headers, params=params)
+
+if response.status_code == 200:
+    print("Request successful!")
+    print(response.json())
+else:
+    print("Request failed with status code:", response.status_code)
+    print(response.text)
+```
+
+```bash JavaScript
+const axios = require('axios');
+
+const url = 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}';
+const headers = {
+    'Authorization': 'Bearer <token>'
+};
+
+const params = {
+    uuid: '<chatbot-uuid>'
+};
+
+axios.get(url, { headers, params })
+    .then(response => {
+        console.log('Request successful!');
+        console.log(response.data);
+    })
+    .catch(error => {
+        console.error('Request failed:', error);
+    });
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "created_at": "string",
+  "meta": {
+    "model": "gpt-3.5-turbo",
+    "prompt": "string",
+    "rate_limit": [
+      20,
+      240
+    ],
+    "rate_limit_message": "Too many messages",
+    "show_citations": false,
+    "temperature": 0,
+    "visibility": "private"
+  },
+  "modified_at": "string",
+  "name": "string",
+  "uuid": "string"
+}
+
+```
+
+</ResponseExample>

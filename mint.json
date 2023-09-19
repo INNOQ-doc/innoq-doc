@@ -1,33 +1,28 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "GPT-Trainer API",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
-  "favicon": "/favicon.png",
+  "favicon": "/logo/favicon.png",
   "colors": {
-    "primary": "#9563FF",
-    "light": "#AE87FF",
+    "primary": "#404258",
+    "light": "#6B728E",
     "dark": "#0D001D",
     "background": {
       "dark": "#090014"
     },
     "anchors": {
-      "from": "#FF7F57",
-      "to": "#9563FF"
+      "from": "#E29F50",
+      "to": "#EFBF8C"
     }
   },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:hello@gpt-trainer.com"
     }
   ],
-  "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
-  },
   "tabs": [
     {
       "name": "API Reference",
@@ -35,48 +30,73 @@
     }
   ],
   "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
   ],
   "navigation": [
     {
-      "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
+      "group": "Getting Started",
+      "pages": ["introduction"]
     },
     {
-      "group": "Essentials",
-      "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/settings", "essentials/navigation"]
+      "group": "API Key",
+      "pages": ["api-key"]
     },
     {
-      "group": "API Documentation",
-      "pages": ["api-reference/authentication"]
-    },
-    {
-      "group": "Endpoint Examples",
+      "group": "Live Examples",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/update",
-        "api-reference/endpoint/delete"
+        "api-usage-example-chatbot", 
+        "api-usage-example-source",
+        "api-usage-example-chat"
+      ]
+    },
+    {
+      "group": "Chatbots",
+      "pages": [
+        "api-reference/chatbots/properties-reference",
+        "api-reference/chatbots/create",
+        "api-reference/chatbots/update",
+        "api-reference/chatbots/fetch",
+        "api-reference/chatbots/fetch_multi",
+        "api-reference/chatbots/delete"
+      ]
+    },
+    {
+      "group": "Chatbot Sessions",
+      "pages": [
+        "api-reference/sessions/properties-reference",
+        "api-reference/sessions/create",
+        "api-reference/sessions/fetch",
+        "api-reference/sessions/fetch_multi"
+      ]
+    },
+    {
+      "group": "Session Messages",
+      "pages": [
+        "api-reference/messages/properties-reference",
+        "api-reference/messages/create",
+        "api-reference/messages/fetch_multi",
+        "api-reference/messages/delete",
+        "api-reference/messages/delete_multi"
+      ]
+    },
+    {
+      "group": "Sources",
+      "pages": [
+        "api-reference/data-sources/properties-reference",
+        "api-reference/data-sources/create-file",
+        "api-reference/data-sources/create-qa",
+        "api-reference/data-sources/create-url",
+        "api-reference/data-sources/update",
+        "api-reference/data-sources/fetch_multi",
+        "api-reference/data-sources/delete",
+        "api-reference/data-sources/delete_multi"
       ]
     }
   ],
-  "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
-  }
+  "api": {
+    "baseUrl": "https://app.gpt-trainer.com/api",
+    "auth": {
+      "method": "bearer"
+    }
+  },
+  "openapi": "https://app.gpt-trainer.com/api/apidoc/openapi.json"
 }
