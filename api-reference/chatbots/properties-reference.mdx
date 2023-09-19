@@ -1,0 +1,60 @@
+---
+title: "Chatbot Properties"
+description: "Detailed explanation of chatbot's properties"
+---
+
+<ParamField body="uuid" type="string">
+  Unique Id of the chatbot
+</ParamField>
+<ParamField body="name" type="string">
+  This is the name you use to refer to the chatbot in your list of chatbots. It is not visible anywhere on the chatbot.
+</ParamField>
+<ParamField body="prompt" type="string">
+  The prompt helps the AI understand what you want and how to respond. 
+  It guides the conversation and ensures relevant and coherent answers.
+</ParamField>
+<ParamField body="temperature" type="float">
+ A higher temperature value, such as 1, allows for more randomness 
+  and creativity in the responses. This can lead to more diverse and 
+  unexpected answers. On the other hand, a lower temperature value, 
+  closer to 0, produces more focused and deterministic responses, 
+  making them more conservative and predictable.
+  Options are values as a float between <code>0</code> and <code>1</code>
+</ParamField>
+<ParamField body="model" type="select">
+  <p>
+    GPT-3.5 is best for general use. It is a good balance of speed and output quality. 
+    GPT-3.5-turbo-16k is an upgraded version of GPT-3.5 that takes in 
+    4x more context from your documents when generating output.{" "} 
+    GPT-4 has better reasoning ability and is more accurate overall, but is slower and more expensive.
+  </p>
+  <p className="font-medium">GPT-4: 20 message credits per message</p>
+  <p className="font-medium">GPT-3.5-16k: 8 message credits per message</p>
+  <p className="font-medium">GPT-3.5: 1 message credit per message</p>
+  Options are <code>gpt-3.5-turbo</code>, <code>gpt-3.5-turbo-16k</code>, <code>gpt-4</code>
+</ParamField>
+<ParamField body="visibility" type="select">
+ <p><span className="font-medium">Private</span>: No one can access your chatbot except you (your account).</p>
+  <p><span className="font-medium">Public</span>: Anyone with the link can access it on <strong>gpt-trainer.com</strong>, and can be embedded on your website.</p>
+  <p><span className="font-medium">Hybrid</span>: Can be embedded on your website, but no link sharing allowed.</p>
+  Options are <code>private</code>, <code>public</code>, <code>hybrid</code>
+</ParamField>
+<ParamField body="rate_limit" type="[number, number]">
+  Limit the number of messages sent from one device on the iframe and chat bubble (this limit will not be applied to you on gpt-trainer, only on websites for your users to prevent abuse).
+  <p><span className="font-medium">First number</span>: amount of messages.</p> Min <code>1</code> - Max <code>100</code>
+  <p><span className="font-medium">Second number</span>: amount of seconds.</p> Min <code>1</code> - Max <code>360</code>
+</ParamField>
+<ParamField body="rate_limit_message" type="string">
+  Message to show when rate limit is reached
+</ParamField>
+<ParamField body="show_citations" type="boolean">
+  Our AI bot credits sources and includes links to specific information it used from 
+  your trained data, promoting a reliable and informed conversation.
+</ParamField>
+<ParamField body="modified_at" type="string">
+  Indicates chatbot modified time
+</ParamField>
+<ParamField body="created_at" type="string">
+  Indicates chatbot creation time
+</ParamField>
+

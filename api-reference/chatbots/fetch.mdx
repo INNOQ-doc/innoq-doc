@@ -1,23 +1,17 @@
 ---
-title: "Create Chatbot"
-api: "POST https://app.gpt-trainer.com/api/v1/chatbot/create"
-description: "Create a chatbot that belongs to the authenticated user"
+title: "Fetch Chatbot"
+api: "GET https://app.gpt-trainer.com/api/v1/chatbot/{uuid}"
+description: "Fetch single chatbot base on uuid"
 ---
 
-### Body
+### Query
 
-<ParamField body="name" type="string" required/>
-<ParamField body="prompt" type="string"/>
-<ParamField body="temperature" type="float"/>
-<ParamField body="model" type="select"/>
-<ParamField body="visibility" type="string"/>
-<ParamField body="rate_limit" type="[number, number]"/>
-<ParamField body="rate_limit_message" type="string"/>
-<ParamField body="show_citations" type="boolean"/>
+<ParamField query="uuid" type="string" required/>
 
 ### Response
 
 <ResponseField name="created_at" type="string"/>
+
 <ResponseField name="meta" type="object">
 The meta of chatbot
 <Expandable title="Chatbot meta">
@@ -38,45 +32,23 @@ The meta of chatbot
 <RequestExample>
 
 ```bash Curl
-curl --location --request POST 'https://app.gpt-trainer.com/api/v1/chatbot/create' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer <token>' \
---data-raw '{
-  "name": "string"
-  "prompt": "string",
-  "temperature": 0,
-  "model": "gpt-3.5-turbo",
-  "rate_limit": [
-    20,
-    240
-  ],
-  "rate_limit_message": "Too many messages",
-  "show_citations": false,
-  "visibility": "private"
-}'
+curl --location --request GET 'https://app.gpt-trainer.com/api/v1/chatbot?uuid=<chatbot-uuid>' \
+--header 'Authorization: Bearer <token>'
 ```
 
 ```bash Python
 import requests
 
-url = 'https://app.gpt-trainer.com/api/v1/chatbot/create'
+url = 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}'
 headers = {
-    'Content-Type': 'application/json',
     'Authorization': 'Bearer <token>'
 }
 
-data = {
-    "name": "string",
-    "prompt": "string",
-    "temperature": 0,
-    "model": "gpt-3.5-turbo",
-    "rate_limit": [20, 240],
-    "rate_limit_message": "Too many messages",
-    "show_citations": False,
-    "visibility": "private"
+params = {
+    'uuid': '<chatbot-uuid>'
 }
 
-response = requests.post(url, headers=headers, json=data)
+response = requests.get(url, headers=headers, params=params)
 
 if response.status_code == 200:
     print("Request successful!")
@@ -89,24 +61,16 @@ else:
 ```bash JavaScript
 const axios = require('axios');
 
-const url = 'https://app.gpt-trainer.com/api/v1/chatbot/create';
+const url = 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}';
 const headers = {
-    'Content-Type': 'application/json',
     'Authorization': 'Bearer <token>'
 };
 
-const data = {
-    "name": "string",
-    "prompt": "string",
-    "temperature": 0,
-    "model": "gpt-3.5-turbo",
-    "rate_limit": [20, 240],
-    "rate_limit_message": "Too many messages",
-    "show_citations": false,
-    "visibility": "private"
+const params = {
+    uuid: '<chatbot-uuid>'
 };
 
-axios.post(url, data, { headers })
+axios.get(url, { headers, params })
     .then(response => {
         console.log('Request successful!');
         console.log(response.data);
