@@ -23,13 +23,12 @@
       "url": "mailto:hello@gpt-trainer.com"
     }
   ],
-  "tabs": [
+  "anchors": [
     {
-      "name": "API Reference",
+      "name": "API References",
+      "icon": "code",
       "url": "api-reference"
     }
-  ],
-  "anchors": [
   ],
   "navigation": [
     {
