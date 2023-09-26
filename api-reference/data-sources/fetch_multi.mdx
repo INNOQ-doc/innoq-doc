@@ -4,9 +4,9 @@ api: "GET https://app.gpt-trainer.com/api/v1/chatbot/{uuid}/data-sources"
 description: "Fetch the list of sources for a chatbot specified by chatbot uuid"
 ---
 
-### Query
+### Path
 
-<ParamField query="uuid" type="string" required/>
+<ParamField path="uuid" type="string" required/>
 
 ### Response
 
@@ -36,7 +36,7 @@ curl --location --request GET 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}
 ```py Python
 import requests
 
-url = 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}/data-sourcese'
+url = 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}/data-sources'
 headers = {
     'Authorization': 'Bearer <token>'
 }
