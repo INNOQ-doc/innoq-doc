@@ -24,16 +24,13 @@ curl --location --request GET 'https://app.gpt-trainer.com/api/v1/session/{uuid}
 ```py Python
 import requests
 
-url = 'https://app.gpt-trainer.com/api/v1/session/{uuid}'
+uuid = '<session-uuid>'
+url = f'https://app.gpt-trainer.com/api/v1/session/{uuid}'
 headers = {
     'Authorization': 'Bearer <token>'
 }
 
-params = {
-    'uuid': '<session-uuid>'
-}
-
-response = requests.get(url,  headers=headers, params=params)
+response = requests.get(url,  headers=headers)
 
 if response.status_code == 200:
     print("Request successful!")
@@ -46,17 +43,14 @@ else:
 ```ts JavaScript
 const axios = require('axios');
 
-const url = 'https://app.gpt-trainer.com/api/v1/session/{uuid}';
+const uuid = '<session-uuid>'
+const url = `https://app.gpt-trainer.com/api/v1/session/${uuid}`;
 const headers = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer <token>'
 };
 
-const params = {
-    uuid: '<session-uuid>'
-};
-
-axios.post(url, { headers, params })
+axios.post(url, { headers })
     .then(response => {
         console.log('Request successful!');
         console.log(response.data);

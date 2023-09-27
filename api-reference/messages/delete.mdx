@@ -25,16 +25,13 @@ curl --location --request POST 'https://app.gpt-trainer.com/api/v1/message/{uuid
 ```py Python
 import requests
 
-url = 'https://app.gpt-trainer.com/api/v1/message/{uuid}/delete'
+uuid = '<message-uuid>'
+url = f'https://app.gpt-trainer.com/api/v1/message/{uuid}/delete'
 headers = {
     'Authorization': 'Bearer <token>'
 }
 
-params = {
-    'uuid': '<message-uuid>'
-}
-
-response = requests.POST(url, headers=headers, params=params)
+response = requests.POST(url, headers=headers)
 
 if response.status_code == 200:
     print("Request successful! Message deleted.")
@@ -46,16 +43,13 @@ else:
 ```ts JavaScript
 const axios = require('axios');
 
-const url = 'https://app.gpt-trainer.com/api/v1/message/{uuid}/delete';
+const uuid = '<message-uuid>'
+const url = `https://app.gpt-trainer.com/api/v1/message/${uuid}/delete`;
 const headers = {
     'Authorization': 'Bearer <token>'
 };
 
-const params = {
-    uuid: '<message-uuid>'
-};
-
-axios.post(url, { headers, params })
+axios.post(url, { headers })
     .then(response => {
         console.log('Request successful! Message deleted.');
     })

@@ -63,14 +63,11 @@ curl --location --request POST 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid
 ```py Python
 import requests
 
-url = 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}/update'
+uuid = '<chatbot-uuid>'
+url = f'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}/update'
 headers = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer <token>'
-}
-
-params = {
-    'uuid': '<chatbot-uuid>'
 }
 
 data = {
@@ -84,7 +81,7 @@ data = {
     "visibility": "private"
 }
 
-response = requests.post(url, headers=headers, params=params, json=data)
+response = requests.post(url, headers=headers, json=data)
 
 if response.status_code == 200:
     print("Request successful!")
@@ -97,14 +94,11 @@ else:
 ```ts JavaScript
 const axios = require('axios');
 
-const url = 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}/update';
+const uuid = '<chatbot-uuid>'
+const url = `https://app.gpt-trainer.com/api/v1/chatbot/${uuid}/update`;
 const headers = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer <token>'
-};
-
-const params = {
-    uuid: '<chatbot-uuid>'
 };
 
 const data = {
@@ -118,7 +112,7 @@ const data = {
     "visibility": "private"
 };
 
-axios.post(url, data, { headers, params })
+axios.post(url, data, { headers })
     .then(response => {
         console.log('Request successful!');
         console.log(response.data);

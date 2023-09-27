@@ -47,11 +47,7 @@ headers = {
     'Authorization': 'Bearer <token>'
 }
 
-params = {
-    'uuid': '<chatbot-uuid>'
-}
-
-response = requests.get(url, headers=headers, params=params)
+response = requests.get(url, headers=headers)
 
 if response.status_code == 200:
     print("Request successful!")
@@ -69,11 +65,7 @@ const headers = {
     'Authorization': 'Bearer <token>'
 };
 
-const params = {
-    uuid: '<chatbot-uuid>'
-};
-
-axios.get(url, { headers, params })
+axios.get(url, { headers })
     .then(response => {
         console.log('Request successful!');
         console.log(response.data);

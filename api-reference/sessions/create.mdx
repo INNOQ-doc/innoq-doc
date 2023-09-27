@@ -25,14 +25,11 @@ curl --location --request POST 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid
 ```py Python
 import requests
 
-url = 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}/session/create'
+uuid = '<chatbot-uuid>'
+url = f'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}/session/create'
 headers = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer <token>'
-}
-
-params = {
-    'uuid': '<chatbot-uuid>'
 }
 
 response = requests.post(url,  headers=headers, params=params)
@@ -48,17 +45,14 @@ else:
 ```ts JavaScript
 const axios = require('axios');
 
-const url = 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}/session/create';
+const uuid = '<chatbot-uuid>'
+const url = `https://app.gpt-trainer.com/api/v1/chatbot/${uuid}/session/create`;
 const headers = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer <token>'
 };
 
-const params = {
-    uuid: '<chatbot-uuid>'
-};
-
-axios.post(url, { headers, params })
+axios.post(url, { headers  })
     .then(response => {
         console.log('Request successful!');
         console.log(response.data);

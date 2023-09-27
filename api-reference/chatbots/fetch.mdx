@@ -39,16 +39,13 @@ curl --location --request GET 'https://app.gpt-trainer.com/api/v1/chatbot/{chatb
 ```py Python
 import requests
 
-url = 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}'
+uuid = '<chatbot-uuid>'
+url = f'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}'
 headers = {
     'Authorization': 'Bearer <token>'
 }
 
-params = {
-    'uuid': '<chatbot-uuid>'
-}
-
-response = requests.get(url, headers=headers, params=params)
+response = requests.get(url, headers=headers)
 
 if response.status_code == 200:
     print("Request successful!")
@@ -61,16 +58,13 @@ else:
 ```ts JavaScript
 const axios = require('axios');
 
-const url = 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}';
+const uuid = '<chatbot-uuid>'
+const url = `https://app.gpt-trainer.com/api/v1/chatbot/${uuid}`;
 const headers = {
     'Authorization': 'Bearer <token>'
 };
 
-const params = {
-    uuid: '<chatbot-uuid>'
-};
-
-axios.get(url, { headers, params })
+axios.get(url, { headers })
     .then(response => {
         console.log('Request successful!');
         console.log(response.data);
