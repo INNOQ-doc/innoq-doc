@@ -4,6 +4,12 @@ api: "POST https://app.gpt-trainer.com/api/v1/session/{uuid}/message/stream"
 description: "Create a session message for a chatbot session specified by session uuid"
 ---
 
+<Note>
+    This API utilizes streaming technique to transmit data, and as a result, 
+    it returns the data in the form of a string continuously over the connection.
+    Once the connection is over, you can refetch the list of messages to view the actual data.
+</Note>
+
 ### Path
 
 <ParamField path="uuid" type="string" required/>
@@ -14,14 +20,7 @@ description: "Create a session message for a chatbot session specified by sessio
 
 ### Response
 
-<ResponseField name="created_at" type="string"/>
-<ResponseField name="modified_at" type="string"/>
-<ResponseField name="uuid" type="string"/>
-<ResponseField name="finish_reason" type="string"/>
-<ResponseField name="cite_data_json" type="string"/>
-<ResponseField name="meta_json" type="string"/>
-<ResponseField name="query" type="string"/>
-<ResponseField name="response" type="string"/>
+<ResponseField type="string"/>
 
 <RequestExample>
 
@@ -89,16 +88,8 @@ xhr.onreadystatechange = () => {
 <ResponseExample>
 
 ```json Response
-{
-  "created_at": "string",
-  "modified_at": "string",
-  "uuid": "string",
-  "finish_reason": "string",
-  "cite_data_json": "string",
-  "meta_json": "string",
-  "query": "string",
-  "response": "string",
-}
+
+"Chat streaming response"
 
 ```
 
