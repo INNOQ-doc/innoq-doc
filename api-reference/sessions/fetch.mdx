@@ -13,6 +13,17 @@ description: "Fetch single chatbot session base on uuid"
 <ResponseField name="created_at" type="string"/>
 <ResponseField name="modified_at" type="string"/>
 <ResponseField name="uuid" type="string"/>
+<ResponseField name="meta" type="meta Object">
+  Session meta properties
+  <Expandable title="properties">
+    <ResponseField name="user" type="user Object">
+      Exists when lead form was submitted by user
+    </ResponseField>
+    <ResponseField name="auth_data" type="auth_data Object">
+      Exists when user completes "User Identity Verification" and "Save Data on Success" feature is enabled
+    </ResponseField>
+  </Expandable>
+</ResponseField>
 
 <RequestExample>
 

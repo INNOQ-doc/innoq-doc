@@ -48,6 +48,10 @@
       ]
     },
     {
+      "group": "Webhooks",
+      "pages": ["user-identity"]
+    },
+    {
       "group": "Chatbots",
       "pages": [
         "api-reference/chatbots/properties-reference",
