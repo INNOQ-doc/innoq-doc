@@ -36,19 +36,27 @@
       "pages": ["introduction"]
     },
     {
-      "group": "API Key",
-      "pages": ["api-key"]
+      "group": "Chatbot",
+      "pages": [
+        "chatbot-create",
+        "chatbot-dashboard",
+        "chatbot-chats-leads",
+        "chatbot-sources",
+        "chatbot-settings",
+        "chatbot-appearance"
+      ]
     },
     {
-      "group": "Live Examples",
+      "group": "API",
       "pages": [
-        "api-usage-example-chatbot", 
+        "api-key",
+        "api-usage-example-chatbot",
         "api-usage-example-source",
         "api-usage-example-chat"
       ]
     },
     {
-      "group": "Webhooks",
+      "group": "Authentication Webhook",
       "pages": ["user-identity"]
     },
     {

@@ -1,0 +1,290 @@
+---
+title: Settings
+---
+
+The Settings section is a critical component of your chatbot platform, offering a suite of customization options to fine-tune how your chatbot interacts with users.
+This section is designed to provide you with the tools to define and enhance your chatbot's conversational abilities and functionalities.
+
+## Security
+
+<Frame>
+  <img src="/images/settings-1.png" />
+</Frame>
+
+The Security section of your chatbot's settings is designed to enhance the bot's security and control. Here’s a breakdown of the subsections and their functionalities:
+
+1. **Visibility Settings:**
+
+   - **Private:** These are exclusive to your account and are not accessible to anyone else. Ideal for internal use or when you want to restrict access.
+   - **Public:** Accessible to anyone with the link on gpt-trainer.com and can be embedded on your website.
+     This setting is suitable for chatbots intended for wide public interaction.
+   - **Hybrid:** These can be embedded on your website, but link sharing is not allowed.
+     This option offers a balance between public access and controlled distribution.
+
+2. **Domains:**
+
+   - **Domain Restriction:** Here, you can specify the domains where your chatbot is allowed to operate. By listing domains,
+     you ensure that the chatbot is only embedded and active on designated websites.
+   - **Allow All Domains:** By choosing this option, your chatbot can be embedded and used on any website without restrictions.
+     This setting is useful for chatbots meant for broad reach and accessibility.
+
+3. **Rate Limit:**
+
+   - **Limiting Messages:** This functionality allows you to set a cap on the number of messages that can be sent from one device within a specific timeframe.
+     This is particularly important for iframe and chat bubble implementations to prevent abuse.
+   - **Customization Options:** You can customize the limit, such as setting it to '20 messages every 240 seconds'.
+     This ensures users have a fair usage policy while interacting with your chatbot.
+   - **Limit Reached Message:** When a user hits the rate limit, the chatbot will display a predefined message, like "Too many messages in a row."
+     This informs users that they’ve reached the message limit and need to wait before sending more messages.
+
+## Prompt
+
+<Frame>
+  <img src="/images/settings-2.png" />
+</Frame>
+
+The Prompt section is integral for guiding the AI to generate intelligent and contextually relevant responses.
+Here's an overview of the options and functionalities available in this section:
+
+1. **Model Selection:**
+
+   - **GPT-3.5:** This model is an excellent choice for general use, offering a balance between speed and quality of output.
+     It consumes 1 message credit per message, making it cost-effective for most applications.
+   - **GPT-3.5-16k:** For more extensive document context processing, GPT-3.5-turbo-16k is available at 8 credits per message.
+     It can process four times more context than the standard version, leading to improved output generation.
+   - **GPT-4:** Known for its superior reasoning and accuracy, GPT-4 is the most advanced option.
+     It's slower and costs 20 credits per message, but it excels in delivering highly sophisticated responses.
+
+<Note>
+  The choice of model will affect the AI's understanding and response
+  capability. The character limit for prompts might vary depending on the
+  selected model, which is important to consider when designing interactions.
+</Note>
+
+2. **Base Prompt:**
+
+   - **Guiding the AI:** The base prompt acts as initial guidance for the AI. It sets the context and tone for how the chatbot should understand queries and
+     formulate responses. A well-crafted base prompt ensures that the conversation flow remains relevant and coherent.
+   - **Customizing Responses:** By tailoring the base prompt, you can influence the chatbot's style of communication. Whether you want it to be formal,
+     casual, informative, or supportive, the base prompt is where you embed these characteristics.
+   - **Consistency in Conversation:** The base prompt helps maintain consistency in the chatbot's responses, ensuring that each reply aligns with the overall purpose
+     and personality of the chatbot.
+   - **Character Limit Considerations:** It's important to note that the character limit for the base prompt may vary depending on the chosen AI model.
+     This limitation should be kept in mind when designing the base prompt, especially when using more advanced models like GPT-4,
+     which might have different constraints compared to GPT-3.5.
+   - **Strategic Use:** The base prompt should be strategically developed to maximize the effectiveness of the AI. It should be concise yet
+     comprehensive enough to cover the scope of expected interactions.
+
+<Note>
+  **Base Prompt** section is essential for laying the groundwork for your
+  chatbot’s interactions. A well-thought-out base prompt not only enhances the
+  quality of the AI’s responses but also ensures that the chatbot remains
+  on-topic and aligned with your desired objectives. If you need inspiration or
+  guidance, simply click on the 'Prompt Examples' button.
+</Note>
+
+3. **Temperature Setting:**
+
+   - **Control Response Randomness:** The 'Temperature' setting allows you to control the randomness of the chatbot's responses.
+     A lower temperature results in more predictable and consistent responses, while a higher temperature increases randomness and variability in the chatbot's replies.
+   - **Customization:** This feature is crucial for tailoring the chatbot's conversational style to match the desired user experience.
+     For example, a technical support chatbot might benefit from a lower temperature for more straightforward,
+     accurate responses, while a creative chatbot might use a higher temperature for more diverse and imaginative replies.
+
+## Conversations
+
+<Frame>
+  <img src="/images/settings-3.png" />
+</Frame>
+
+The Conversations section is dedicated to customizing the messaging experience, making it more personalized and user-friendly.
+Here's an overview of the settings you can adjust to enhance your chatbot's conversational capabilities:
+
+1. **Chat Session Caching:**
+
+   - **Purpose:** This feature allows for the caching of user chat sessions. With it enabled,
+     users can pick up the conversation where they left off during their next visit to the chatbot.
+   - **User Experience Impact:** If disabled, each new interaction with the chatbot will start a fresh conversation.
+     This setting can be crucial for providing a continuous and seamless user experience, especially for returning users.
+
+2. **History Storage Duration:**
+
+   - **Customization:** Set the duration for how long conversations are stored in the cache. For example, you can choose to store chat histories for 1 week.
+   - **Data Management:** This setting is important for managing data storage efficiently while also considering user convenience and privacy.
+
+3. **In-text Citations:**
+
+   - **Credibility and Transparency:** The AI bot can credit sources and include links to specific information it used from your trained data.
+     This promotes a reliable and informed conversation, adding a layer of trust and reference for users.
+   - **Enhancing Informational Value:** This feature is particularly useful for educational, research, or content-heavy chatbots where sourcing information is crucial.
+
+4. **Source Access:**
+
+   - **Document and URL Access:** When a chatbot response references a source document or website,
+     you can allow users to access and download the referenced document or visit the URL.
+   - **User Engagement:** This feature not only enhances transparency but also encourages user engagement by providing direct access to the source materials.
+
+## Leads form
+
+<Frame>
+  <img src="/images/settings-4.png" />
+</Frame>
+
+The Leads Form section in GPT-Trainer chatbot settings is an invaluable tool for collecting user information during interactions. It's designed to seamlessly integrate into the chat interface,
+enhancing data collection without disrupting the user experience.
+
+1. **Default and Custom Fields:**
+
+   - **Pre-Set Fields:** The form includes default fields like Name, Email, and Phone to collect essential user information.
+   - **Custom Field Creation:** You have the flexibility to add custom fields to the form. These can be in the form of text inputs, option menus, and checkboxes.
+
+<Note>
+  If any field is marked as required, the user must either fill out the form or
+  choose to close it; otherwise, it will reappear after each message.
+</Note>
+
+2. **Q&A Settings Before Form Display:**
+
+   - **Control Form Timing:** Set the number of messages after which the form appears. Setting it to 0 means the form will appear right away,
+     allowing you to gather user information at the beginning of the conversation.
+
+3. **Success Message Post-Form Completion:**
+
+   - **User Feedback:** Customize a success message that will display to users after they complete the form.
+     This provides positive reinforcement and clarity that their information has been successfully submitted.
+
+4. **Disable Chat Before Form Completion:**
+
+   - **Chat Restriction Option:** You can choose to disable further chat functionality until the form is completed. This can be useful in scenarios
+     where collecting user information is a priority before proceeding with the chat.
+
+5. **Handling of Submitted Information:**
+
+   - **Data Integration:** Once a user submits the form, the data is recorded in the Conversation history. This information can be reused based on your
+     requirements, such as for personalized responses or follow-up communications.
+
+<Note>
+  The form is designed to appear only once per session to prevent annoyance.
+  This means if a user has already submitted or ignored the form in a previous
+  conversation, it won’t repeatedly appear in subsequent interactions within the
+  same session. This approach is mindful of user experience, ensuring they are
+  not overwhelmed or frustrated by repetitive form prompts.
+</Note>
+
+## Frustration detection
+
+<Frame>
+  <img src="/images/settings-5.png" />
+</Frame>
+
+The Frustration Detection feature is an innovative tool designed to enhance user experience by identifying and addressing instances where users may have had a less-than-ideal interaction with your chatbot.
+
+1. **Enable Frustration Detection:**
+
+   - **Activation:** Switch on the frustration detection feature to allow the chatbot to recognize when a user is potentially frustrated.
+   - **Purpose:** This functionality is crucial for understanding user dissatisfaction and improving chatbot interactions over time.
+
+2. **Customizing the Feedback Collection Form:**
+
+   - **Form Title:** Set a welcoming and empathetic form title. This encourages users to share their feedback in a supportive environment.
+   - **Identifier Label:** Include a prompt for the user's email with a friendly message.
+     This helps in reaching out to the user for further assistance or clarification.
+   - **Feedback Label:** Clearly label the area where users can leave their feedback. This makes it easy for users to understand where to express their concerns or issues.
+
+3. **Success Message Post-Feedback:**
+
+   - **Confirmation and Acknowledgment:** After the user submits their feedback, display a success message. This message should acknowledge their input and thank them for providing feedback,
+     further enhancing the user experience and showing that their voice is valued.
+
+In addition to collecting feedback through a form, the Frustration Detection feature offers the ability to track points in the conversation where the user
+experienced frustration. This is crucial for a deeper understanding of the chatbot's interaction dynamics.
+
+## Webhooks
+
+<Frame>
+  <img src="/images/settings-6.png" />
+</Frame>
+
+The Webhooks section is a versatile feature for users who wish to integrate their custom APIs with specific actions within their chatbot.
+This allows for enhanced interactivity and personalized automation based on chatbot interactions.
+
+**How it works**
+
+- **Event-Based Activation:** When any of these events are triggered, the relevant information is sent to your connected API.
+- **Event-Based Activation:** This setup provides the flexibility to process the data from these events in any manner you deem fit,
+  whether it’s for data analysis, triggering automated workflows, or enhancing user engagement.
+
+1. **Form Submission Event:**
+
+   - **Trigger:** This event is activated when a user submits a form through the chatbot.
+   - **API Integration:** Connect your API to receive data immediately after a form is submitted, enabling you to process
+     or store this information according to your business needs.
+
+2. **Frustration Detection Feedback Event:**
+
+   - **Trigger:** Activates when a user submits frustration feedback.
+   - **Purpose:** By linking your API to this event, you can collect feedback data in real-time,
+     allowing for prompt analysis or follow-up actions to address user concerns.
+
+3. **User Message Event:**
+
+   - **Trigger:** Occurs every time a user sends a message to the chatbot.
+   - **API Functionality:** By integrating your API with this event, you gain the ability to track user messages.
+     This can be instrumental for analytics purposes, allowing you to understand user behavior,
+     preferences, and the types of queries your chatbot is receiving.
+
+4. **AI Response Event:**
+
+   - **Utilization:** Triggered when the AI sends a response to the user.
+   - **API Functionality:** Connect this event to your API to capture the AI's responses. This can be useful for analytics,
+     improving AI responses, or maintaining a log of interactions for compliance or training purposes.
+
+## User Indetity Verification
+
+The User Identity Verification section of your chatbot is a critical feature that requires a deeper understanding to implement effectively.
+This functionality is essential for ensuring that your chatbot interacts with verified users, enhancing security and personalization.
+
+**Key Points of User Identity Verification:**
+
+- **Purpose:** User Identity Verification is designed to confirm the identity of users interacting with your chatbot. This feature is particularly
+  important for use cases that involve sensitive information or personalized user interactions.
+- **Implementation:** How to implement this feature you can check our guide [here](../user-identity).
+
+## Custom domains
+
+<Frame>
+  <img src="/images/settings-7.png" />
+</Frame>
+
+The Custom Domains section allows you to personalize and integrate your chatbot with your website using a domain of your choice.
+This feature enhances your chatbot's branding and user accessibility.
+
+1. **Adding Your Domain:**
+
+   - **Initial Setup:** Begin by adding the desired domain for your chatbot. For example, if your primary website is 'my-custom-site.com',
+     you might use a subdomain like 'chat.my-custom-site.com'.
+
+2. **Domain Ownership Verification:**
+
+   - **Verification Process:** To verify ownership, you'll need to navigate to your DNS provider and add a TXT record with specific values provided by us.
+   - **Completing Verification:** After adding the TXT record, refresh it to complete the domain verification process. This step is crucial to ensure
+     that the domain you are using is indeed under your control.
+
+3. **Domain Configuration:**
+   - **Setting DNS Record:** Continue by setting another record on your DNS provider, as specified by us. This record is necessary for the proper
+     functioning and integration of your chatbot with your chosen domain.
+   - **Finalizing Configuration:** Refresh the record once set to complete the configuration process.
+     This step is essential to make your custom domain operational with the chatbot.
+
+<Note>
+  Once your custom domain is configured, it's important to know how to access
+  your chatbot using this new domain. The full path for accessing your chatbot
+  on the configured domain will be in the following format: **https://
+  "custom_domain"/widget/"chatbot_uuid"**
+</Note>
+
+Once your custom domain is successfully configured, you have the option to further enhance and personalize your chatbot by adding meta tags.
+This additional step allows for greater differentiation and uniqueness of your chatbot.
+
+- **Purpose of Meta Tags:** Meta tags provide extra information about your chatbot's webpage, such as descriptions, keywords, author of the document, and more.
+  These tags can improve how search engines index your chatbot page and enhance user experience.
