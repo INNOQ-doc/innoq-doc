@@ -1,0 +1,67 @@
+---
+title: Sources
+---
+
+The Sources section is a crucial aspect of the chatbot platform, showcasing all the content your chatbot has been trained on.
+Properly managing and understanding your sources is key to enhancing the knowledge and effectiveness of your chatbot.
+
+<Frame>
+  <img src="/images/sources-1.png" />
+</Frame>
+
+1. **Diverse Source Types:** The platform supports a wide range of source file types, including '.pdf, .docx, .txt, .md, .tex', '.xlsx, .xls, .csv', as well as
+   Google Drive files, custom Q&A, website URLs, and sitemaps. Adding more sources equates to enriching your bot with a broader knowledge base.
+
+2. **Customizable Sources Table:** Tailor the sources table to fit your needs by hiding or showing specific columns.
+   This customization ensures that you see only the information that is most relevant to you.
+
+   <Frame>
+     <img src="/images/sources-2.png" />
+   </Frame>
+
+3. **Auto-Retrain Functionality:** Enable auto-retrain for your URLs, allowing them to be automatically updated and retrained,
+   saving time and effort on manual updates.
+
+   <Frame>
+     <img src="/images/sources-3.png" />
+   </Frame>
+
+4. **Source-Specific Actions:** Each source type comes with its own set of actions to assist in managing your chatbot's training material.
+   For file types, you have the option to download them, which is particularly useful if the original files are lost or deleted from your device.
+   URLs can be retrained as needed, and for table formats, you can edit or completely overhaul the data.
+   Furthermore, you can update custom Q&A sources to keep your bot's responses accurate and relevant.
+
+   <Frame>
+     <img src="/images/sources-4.png" />
+   </Frame>
+
+5. **Source Properties and Citations:** Each source includes properties like **Title** and **Link**. Adding these, especially if you have citations enabled in the settings,
+   allows the chatbot to provide references to its sources in its responses, using the Title (default resource name) and
+   Link (which can point to any URL but defaults to the resource itself). This feature is instrumental in building a chatbot that is not only
+   smart and interactive but also transparent and trustworthy in its information delivery. These can be modified directly via the actions associated with each source.
+
+## Advice and Guidelines for Managing Sources in Your Chatbot
+
+When configuring sources for your chatbot, it's important to be aware of certain limitations and best practices to ensure optimal performance and data extraction. Here are some key points to consider:
+
+1. **Dynamic Content Extraction Limitations:**
+
+   - **JavaScript Rendered Websites:** Currently, our system does not support the dynamic content extraction of URLs.
+     If a website content is rendered using JavaScript, our system might not be able to extract it effectively. We are actively working on implementing a better URL scraper system to address this limitation.
+
+2. **Sitemap Source Limit:**
+
+   - **Maximum URLs:** The limit for sitemap sources is set to 2000 URLs. If your sitemap contains more than this number, our system may not retrieve the data properly.
+     It's crucial to ensure your sitemap stays within this limit for efficient data extraction.
+
+3. **Guidelines for Integrating Tables:**
+
+   - **Proper Formatting:** It's essential that your data is correctly formatted when integrating structured tables
+     with AI systems. This enhances efficiency and ensures accurate data processing.
+   - **Transposing Tables::** If your table uses row headers or a combination of row and column headers, transpose it to a column header
+     format, which is typically processed by
+     AI systems by default. Tools like Microsoft Excel can be used for transposing [Microsoft guide on transposing data](https://support.microsoft.com/en-gb/office/transpose-rotate-data-from-rows-to-columns-or-vice-versa-3419f2e3-beab-4318-aae5-d0f862209744).
+   - **Clarity and Organization:** Ensure that your headers are clear and descriptive.
+     The structure of your table should be logical and organized, focusing on the quality of data over aesthetics.
+   - **Minimizing File Size:** Keep your table files compact to enhance performance. Efficient data representation involves removing redundant information and compressing data without losing essential details.
+     If the data is extensive, consider splitting it into smaller chunks for easier handling and analysis.
