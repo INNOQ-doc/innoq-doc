@@ -1,0 +1,96 @@
+---
+title: Lead Collection
+---
+
+GPT-trainer uses a multiple-agent architecture for its chatbot design. To conduct lead collection
+under this framework, you will either need to create a dedicated Lead Collection Agent or integrate its capabilities inside another, existing one.
+
+To create a simple Lead Collection Agent, head to the “AI Agents” tab. You can find the template for a
+Lead Collection Agent when you click on "Create new Agent".
+
+<Frame>
+  <img src="/images/lead-collection-1.png" />
+</Frame>
+
+After you create the new Agent, go into its edit screen by clicking on it. Scroll down to review the base prompt.
+Depending on what information you would like to capture, configure the base prompt appropriately.
+
+<Frame>
+  <img src="/images/lead-collection-2.png" />
+</Frame>
+
+Click “Save changes”. Next, go to the “Variables / Tags” tab. For each piece of
+information you want to capture, make sure there is a corresponding Variable created to store it.
+
+<Frame>
+  <img src="/images/lead-collection-3.png" />
+</Frame>
+
+When defining the variable, be as explicit and concise as possible. Where you can, try to provide examples
+for what the intended values look like. You can also pre-define the variable’s default state. If left empty, its default value will be “NOT PROVIDED”.
+
+<Frame>
+  <img src="/images/lead-collection-4.png" />
+</Frame>
+
+After you set up the Variables to store user information, you have the additional
+option to make it mandatory for the Variables to have non-empty (non-”NOT PROVIDED”) values.
+If you toggle this option on, the Lead Collection Agent will not switch away until all the
+Variables defined in this Agent have been assigned proper values.
+
+<Frame>
+  <img src="/images/lead-collection-5.png" />
+</Frame>
+
+Next, head over to the “Knowledge” tab. Depending on what information you’d like
+the Agent to have access to when requesting user information, you can link
+the associated training data with this Agent. In general, Lead Collection Agents are
+designed to specialize in collecting personal information from users, so they may not need any
+knowledge base access. To disable all knowledge, simply toggle off “All Sources” and leave “Agent Sources” empty.
+
+<Frame>
+  <img src="/images/lead-collection-6.png" />
+</Frame>
+
+Click “Save changes” and close the Agent edit dialog. Return to the Agent selection view. You can now “Connect” your new Lead Collection Agent.
+On the top right of the Agent card, open the “three dot” dropdown menu, then select “Connect”.
+
+<Frame>
+  <img src="/images/lead-collection-7.png" />
+</Frame>
+
+You should now see a glowing blue dot next to “Lead Collection”, indicating that the
+Agent is being trained. Since you may want your Agent to collect user
+information before performing any service, you can set this as the “Initial Agent” to handle the first incoming user query.
+
+<Frame>
+  <img src="/images/lead-collection-8.png" />
+</Frame>
+
+After the blue dot turns green, your Agent will be good to go. You may need to
+refresh the page to check for status updates.
+
+Go to the “Preview” tab. You can now test your new chatbot, now equipped with conversational Lead Collection capabilities!
+
+<Frame>
+  <img src="/images/lead-collection-9.png" />
+</Frame>
+
+To review the data you collected, open the “Debug mode” while you are still in Preview.
+
+<Frame>
+  <img src="/images/lead-collection-10.png" />
+</Frame>
+
+You can also head to the “Inbox” tab, find the test conversation session, then open “Debug view”.
+
+<Frame>
+  <img src="/images/lead-collection-11.png" />
+</Frame>
+
+You can export the data you collected across all chat sessions by going to the “Inbox” tab, then clicking the
+“Export” button. In the subsequent dropdown, select “Collected Data”.
+
+<Frame>
+  <img src="/images/lead-collection-12.png" />
+</Frame>

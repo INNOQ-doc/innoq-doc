@@ -1,0 +1,141 @@
+---
+title: Multi-Agents Chatbot
+---
+
+GPT-trainer is the first and most powerful LLM-native conversational AI platform that
+implements a multi-agent architecture. Multiple AI Agents work together in a coordinated orchestration
+to enable you to create solutions with unprecedented versatility, speed, and automation.
+
+We present this guide to help you understand how our Agents work together, as well as share
+with you some best practices surrounding multi-agent chatbot design.
+
+GPT-trainer has 2 types of Agents:
+
+    - **User-facing:** Agent directly interacts with users conversationally in a Q&A fashion.
+    Only a single user-facing Agent engages with the user when a new query is input into the chatbot.
+
+    - **Background:** Agent never interacts with users directly and instead monitors the conversation
+    in an ongoing fashion. All background Agents are run whenever the user submits a new query to the chatbot.
+
+<Frame>
+  <img src="/images/multi-agents-chatbot-1.png" />
+</Frame>
+
+All Agents have two states:
+
+    - **Active:** Agent is “Connected”. It is live and running.
+    - **Inactive:** Agent is “Disabled”. It does not do anything.
+
+Since only a single user-facing Agent engages with the user at any given time, our system
+must choose the best user-facing Agent based on their respective specializations. To do this,
+we have our own AI Supervisor working in the background to conduct **intent classification**.
+
+<Note>
+  Agents are completely isolated from one another. This means that you cannot
+  direct the behavior, bias, or selection priority of one Agent from inside
+  another Agent.
+</Note>
+
+Since the only reliable source of information our AI Supervisor has when determining which Agent
+is best suited to perform which tasks is the “Agent Description”, it is **absolutely crucial** that you provide
+an explicit and clear description for **every User Facing Agent**.
+
+<Frame>
+  <img src="/images/multi-agents-chatbot-2.png" />
+</Frame>
+
+Good Agent descriptions should answer the question **“What type of queries should the Agent handle?”**
+More specifically, Agent descriptions should encompass all relevant “user intents” that it is supposed to handle.
+Here are some examples of good Agent descriptions:
+
+<Card title="General Q&A">
+  The General Q&A Agent handles greetings and general user inquiries about
+  GPT-trainer (may be referred to as "it", "tool", "chatbot", "platform", "app",
+  or "solution").
+</Card>
+
+<Card title="Lead Collection">
+  The Lead Collection agent specializes in requesting personal and contact
+  information from users.
+</Card>
+
+<Card title="Returns">
+  Returns agent is used to handle merchandise returns requests and related
+  administrative or logistics inquiries.
+</Card>
+
+<Card title="Fruits Q&A">
+  The Fruits Q&A handles questions specifically about fruits.
+</Card>
+
+<Card title="Unrelated Query Defender">
+  The Unrelated Query Defender Agent handles any user queries not related to
+  GPT-trainer. This includes requests for writing assistance, artistic
+  expressions, homework help, professional advice, project assistance, code
+  creation, or anything that is not directly part of "customer service for
+  GPT-trainer".
+</Card>
+
+Agent descriptions **should not** include details about “how the Agent performs its job”.
+That part should be reserved for the Agent’s base prompt. Text such as “Agent provides informed
+answers based on knowledge from the source library.” is not needed and can be distracting to the AI Supervisor.
+
+If you have specific “user intents” that you’d like an Agent to handle, mention it explicitly inside the Agent description. Intents can look like follows:
+
+    - Seeking clarification on the classification of a specific item
+
+    - Seeking advice or recommendations
+
+    - Requesting creative content
+
+    - Asking about future features or capabilities
+
+    - Seeking information regarding product pricing
+
+    - Seeking information on a technical concept
+
+    - Requesting assistance with academic or educational materials
+
+    - Providing contact information
+
+    - Updating contact information
+
+Depending what you design the Agent to handle, your own custom list of intents may look very different.
+
+So what makes for a good multi-agent chatbot design? How can I ensure that all my intended user intents are handled by the appropriate Agent?
+
+When designing a multi-agent setup, we recommend keeping to a “MECE” approach.
+"MECE" refers to - Mutually Exclusive, Collectively Exhaustive. In other words, no gaps, no overlaps.
+
+Ideally, you want the situation where:
+
+> **User-facing Agent A handles:**
+>
+> - intent class 1
+> - intent class 2
+> - intent class 3
+> - etc.
+
+> **User-facing Agent B handles:**
+>
+> - intent class 10
+> - intent class 11
+> - intent class 12
+> - etc.
+
+and:
+
+There is **minimal** overlap in intents among Agents.
+All your Agents combined should cover all possible intents your users might have.
+
+But since you can't ever account for all intents in the universe, and given the fact that intents are
+presented in natural language which can have multiple permutations to express the same meaning,
+there is no deterministic way to get 100% consistency. This is true for all chatbots
+that rely on “intent classification” workflows, regardless of whether they are
+LLM-powered or take a traditional “flowchart” approach.
+
+In our AI Supervisor routing design, we use an algorithm that balances latency, consistency,
+and comprehensiveness. It will not always give you 100% accuracy,
+but you can get pretty close if you design your chatbots effectively.
+
+**Happy building!**

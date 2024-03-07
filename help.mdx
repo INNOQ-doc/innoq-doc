@@ -1,0 +1,91 @@
+---
+title: Why is my chatbot not giving good answers?
+---
+
+When Google scientists first introduced the concept of the “transformer” (https://arxiv.org/pdf/1706.03762.pdf),
+the idea received attention within the Natural Language Processing (NLP) community. It paved a new direction
+for researchers to develop neural network models with applications towards natural language understanding.
+
+Not long after, OpenAI’s ChatGPT gave rise to Generative Pre-trained Transformers (GPT) and
+pioneered Large Language Models (LLMs). The conversational performance of these models gave people
+the impression that AI is approaching human-level intelligence, and can therefore be trained to perform a variety of human-capable tasks.
+
+However, as human-like as interactions with these LLMs feel, LLMs are far from truly seeing, interpreting,
+and understanding the world the way humans do. These models should be regarded as “probabilistic conversation
+simulators”rather than true analytical engines. The core behind these models is pattern matching and semantic correlations, not true logic and reasoning.
+
+GPT-trainer is powered by OpenAI’s LLMs. It utilizes Retrieval Augmented Generation (RAG) technology
+to tune its responses to the data that you upload as reference context.
+
+## What is Retrieval Augmented Generation (RAG)?
+
+Large Language Models (LLMs) are trained on enormous sets of text data. Based on the nature of this data, the LLM
+will identify patterns and try to replicate them during its own text generation. When generating output, LLMs
+start from a user-provided prompt, then algorithmically assigns probabilities to “tokens” or words that most likely succeed
+(follow after) the prompt based on patterns observed within its original training data.
+
+But patterns (correlation) do not necessarily imply truth, consistency, or logical compliance (causation).
+This is why LLMs often “hallucinate” when producing a response. Retrieval Augmented Generation (RAG) tries to
+remedy this problem by “biasing” the aforementioned probabilities during text generation via additional context injected into the prompt.
+
+So what does this actually look like?
+
+When you ask a question to ChatGPT, your typical query might look something like:
+
+**What is GPT-trainer?**
+
+Now this is query that relies fully on the patterns found
+
+The accuracy and consistency of your chatbot depends on a number of factors:
+
+    - Quality of your training data
+    - Large language model (LLM) selection
+    - Explicitness of base prompt
+
+LLMs, like all statistics-based models, require training data during their construction. As they often say in the AI research community,
+“your model is only as good as your training data”. The best way to dictate and optimize your chatbot’s performance is to clean up
+its training data. In the following section, we will provide some best practices for structuring your training data.
+
+## Best practices for structuring your training data
+
+https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-the-openai-api
+
+Here is an overview of how our technology works:
+
+We use OpenAI's large language models (LLMs), all of which have token limits. The token limit dictates how much "effective content"
+can be used as context. For GPT-trainer's chat, we can fit about 10,000 words using the gpt-3.5-16k model.
+
+The multi-document chat sits on top of many documents that, altogether, usually contain far more than 10,000 words.
+This means that we cannot fit everything into the token limit all the time. Hence, we split long documents into chunks,
+calculate embeddings for each chunk, and store them piecewise into a vector database. Every time you enter an AI query,
+we algorithmically search the database for relevant chunks to use as reference based on embedding distance. Each chunk
+from each document is treated the same way, and the AI does not partake in this "chunk selection" step when deciding what
+information to include in the context. The top chunks get included as context and fed to the LLM as input. This is the basis of
+Retrieval Augmented Generation (RAG).
+
+However, this approach also has limitations.
+
+<Check>The following types of queries generally work well:</Check>
+<Steps>
+  <Step title="Query Type">Information Retrieval</Step>
+  <Step title="Definition">
+    Asking for specific information residing within one or more documents
+  </Step>
+  <Step title="Example">"What is Paladin Max, Inc.'s PTO policy?"</Step>
+</Steps>
+
+<Steps>
+  <Step title="Query Type">Topic-centric Summarization</Step>
+  <Step title="Definition">
+    Aggregating information centered around a theme or topic
+  </Step>
+  <Step title="Example">
+    "Summarize the latest developments in generative AI"
+  </Step>
+</Steps>
+
+<Warning>The following types of queries may not work as well:</Warning>
+
+Our multi-Agent architecture and function-calling support may alleviate some of these issues,
+but they require some advanced configuration on your end. Please refer to our other related articles
+for best practices when deploying multi-agent chatbots with function-calling capabilities.
