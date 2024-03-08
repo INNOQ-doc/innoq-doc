@@ -42,7 +42,9 @@
         "multi-agents-chatbot",
         "background-agents",
         "lead-collection",
-        "frustration-detection"
+        "frustration-detection",
+        "help",
+        "best-practices"
       ]
     },
     {
