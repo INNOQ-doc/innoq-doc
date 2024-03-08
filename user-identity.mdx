@@ -6,10 +6,10 @@ This guide will walk you through implementing a robust authentication system wit
 
 ## Step 1: Enable User Identity
 
-To initiate the User Identity Verification process, you need to first enable this feature within your chatbot settings. 
+To initiate the User Identity Verification process, you need to first enable this feature within your chatbot settings.
 This can be done through the chatbot settings in "User Identity Verification" section.
 
-Once the User Identity Verification is enabled your chatbot becomes equipped to automatically check for user tokens. 
+Once the User Identity Verification is enabled your chatbot becomes equipped to automatically check for user tokens.
 This means each time a user attempts to interact with the chatbot, their identity token will be reviewed for authenticity.
 
 <Frame>
@@ -20,7 +20,7 @@ This means each time a user attempts to interact with the chatbot, their identit
 
 ### Setting Up the API Endpoint
 
-It is essential to set up an API endpoint that will handle the verification of user tokens. This endpoint must be configured to accept POST requests. 
+It is essential to set up an API endpoint that will handle the verification of user tokens. This endpoint must be configured to accept POST requests.
 
 1. **Specify the API Endpoint:** In your chatbot settings, provide the URL of the API endpoint. This is the server address where the token verification requests will be sent.
 
@@ -40,12 +40,12 @@ Here's what happens each time a chat is initiated:
 
 3. **Outcome Handling:**
 
-    - **Successful Verification:** If the token is verified successfully, the chatbot will allow the authenticated user to proceed with the chat.
-    - **Failed Verification:** In case the API returns an error (indicating a failed verification), the authentication will be deemed unsuccessful. Consequently, the user will be redirected to an error screen.
+   - **Successful Verification:** If the token is verified successfully, the chatbot will allow the authenticated user to proceed with the chat.
+   - **Failed Verification:** In case the API returns an error (indicating a failed verification), the authentication will be deemed unsuccessful. Consequently, the user will be redirected to an error screen.
 
 ## Step 3: Save User's Data
 
-To enhance the functionality of the User Identity Verification process and maintain records of user interactions, 
+To enhance the functionality of the User Identity Verification process and maintain records of user interactions,
 you have the option to save the data from successful verification responses.
 
 <Frame>
@@ -57,8 +57,9 @@ Every time a user is successfully authenticated, the response from the verificat
 This data is not stored in isolation but is linked with the specific chat conversations.
 
 <Warning>
-  **Only Valid JSON Data Accepted** - Please ensure that all data provided for storage is in valid JSON format. 
-  Non-JSON or invalid JSON data will be automatically ignored and not stored in the conversation history.
+  **Only Valid JSON Data Accepted** - Please ensure that all data provided for
+  storage is in valid JSON format. Non-JSON or invalid JSON data will be
+  automatically ignored and not stored in the conversation history.
 </Warning>
 
 Example of valid JSON:
@@ -78,79 +79,50 @@ Example of valid JSON:
 }
 ```
 
-## Step 4: Leads Capturing
-
-By enabling this feature, you can further utilize the data collected through the User Identity Verification process. 
-This functionality allows for the conversion of saved user data into actionable leads.
-
-All data saved from successful user verifications is automatically stored as a "Lead" in the system.
-
-These leads can be accessed and managed through the "Leads" table in your platform. 
-
-<Warning>
- **Specific JSON Data Requirements for Leads Capturing** - Please note that for the Leads Capturing feature, 
- only JSON data with specific fields containing string or number values is accepted. JSON data containing 
- boolean values or other data types will be ignored for lead conversion and instead stored as regular conversation data.
-</Warning>
-
-Example of valid Lead:
-
-```json
-{
-  "leadId": "78910",
-  "fullName": "Jane Smith",
-  "email": "janesmith@example.com",
-  "contactNumber": "123-456-7890",
-  "age": 28,
-  "purchaseProbability": 85
-}
-```
-
-## Step 5: Inserting Your Token into GPT-Trainer Chatbot
+## Step 4: Inserting Your Token into GPT-Trainer Chatbot
 
 ### Chat Widget
-  Within the script of your webpage where the chatbot is integrated, locate the **GPTTConfig** object. 
-  Here, you will need to update the **token** property with custom token. Here's an example script:
+
+Within the script of your webpage where the chatbot is integrated, locate the **GPTTConfig** object.
+Here, you will need to update the **token** property with custom token. Here's an example script:
 
 ```html
-  <script>
-      window.GPTTConfig = {
-          uuid: "15b1f07cd591476c94c210779a6c3c19",
-          token: <"Custom token">
-      }
-  </script>
-  <script
-      src="https://app.gpt-trainer.com/widget-asset.min.js"
-      defer>
-  </script>
+<script>
+  window.GPTTConfig = {
+      uuid: "15b1f07cd591476c94c210779a6c3c19",
+      token: <"Custom token">
+  }
+</script>
+<script src="https://app.gpt-trainer.com/widget-asset.min.js" defer></script>
 ```
 
-You can also directly update the **GPTTConfig** object with your token using a **JavaScript** call. 
+You can also directly update the **GPTTConfig** object with your token using a **JavaScript** call.
 This method is particularly useful if you need to dynamically update the token based on user interactions or other triggers within your application. Here's how you can do it:
 
 ```JavaScript
-  window.GPTTConfig.token = "Custom token";  
+  window.GPTTConfig.token = "Custom token";
 ```
 
-When a change in the token property is detected, our system initiates an attempt to authenticate the user based on the new token value. 
+When a change in the token property is detected, our system initiates an attempt to authenticate the user based on the new token value.
 This ensures that the user's identity is verified each time they interact with the chatbot.
 
 ### Iframe
-  You can pass the user token directly within an iframe by including it in the URL property.
-  Append the **token** parameter to the **URL** in the src attribute, replacing **custom_token** with the actual token value. Here's an example:
+
+You can pass the user token directly within an iframe by including it in the URL property.
+Append the **token** parameter to the **URL** in the src attribute, replacing **custom_token** with the actual token value. Here's an example:
 
 ```html
-  <iframe
-      src="https://app.gpt-trainer.com/widget/162223v?token=<custom_token>"
-      width="100%"
-      height="500px"
-      frameborder="0"
-  ></iframe>
+<iframe
+  src="https://app.gpt-trainer.com/widget/162223v?token=<custom_token>"
+  width="100%"
+  height="500px"
+  frameborder="0"
+></iframe>
 ```
 
 If there is a need to change the token, simply update the src attribute of the iframe with the new token value.
 
 Upon updating the token in the URL, the iframe will reload, ensuring that the new token is used for authentication.
 
-Congratulations! You have now successfully completed the setup of the User Identity Verification feature for your GPT-trainer Chatbot. 
+Congratulations! You have now successfully completed the setup of the User Identity Verification feature for your GPT-trainer Chatbot.
 By following the steps outlined in this guide, you have enabled a robust and secure method for authenticating users, ensuring a safe and reliable user experience.

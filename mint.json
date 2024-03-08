@@ -36,14 +36,15 @@
       "pages": ["introduction"]
     },
     {
-      "group": "Chatbot",
+      "group": "Guides",
       "pages": [
-        "chatbot-create",
-        "chatbot-dashboard",
-        "chatbot-chats-leads",
-        "chatbot-sources",
-        "chatbot-settings",
-        "chatbot-appearance"
+        "creating-first-chatbot",
+        "multi-agents-chatbot",
+        "background-agents",
+        "lead-collection",
+        "frustration-detection",
+        "help",
+        "best-practices"
       ]
     },
     {
