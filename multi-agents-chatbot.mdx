@@ -138,4 +138,36 @@ In our AI Supervisor routing design, we use an algorithm that balances latency, 
 and comprehensiveness. It will not always give you 100% accuracy,
 but you can get pretty close if you design your chatbots effectively.
 
+## Debugging the chatbot
+
+If you notice that the chatbot is not responding to your expectations, then there may be two causes. 
+  1. The wrong Agent may have been assigned to handle the incoming user query. 
+  2. The Agent itself may not be optimally configured.
+
+To find out whether your intended Agent has been selected to handle the user’s query, go to “Inbox” and turn on debug mode.
+
+<Frame>
+  <img src="/images/multi-agents-chatbot-3.png" />
+</Frame>
+
+Under “Active Agent”, you will see the Agent that generated the response. Please note that you will only see “Active Agent” metadata 
+if you have more than one active user-facing Agents.
+
+If the Agent that handled the user query was not the correct one, you can return to Agent configuration and update its description. 
+You should also include, as explicitly as possible, the intent associated with the user query within **the description of the Agent that 
+should have handled it**. This will ensure that in the future, queries of this type would be more consistently funned to the correct Agent.
+
+If the correct Agent handled the user query but the response was not what you expected, then the issue resides within the Agent itself. 
+You will then need to update the Agent configuration. The most straightforward way to fix a response is by revising the AI’s answer directly:
+
+<Frame>
+  <img src="/images/multi-agents-chatbot-4.png" />
+</Frame>
+
+This ensures that the chatbot will generate an answer based on what you revised every time it encounters the question in the future, assuming 
+the same Agent was chosen to respond to the query.
+
+If you’d like to make the Agent more robust and consistent in general, you can curate the training data, choose a more powerful LLM, or be more 
+explicit in your base prompt. To learn some best practices for training the chatbot, see [best practices for preparing training data](/best-practices)
+
 **Happy building!**

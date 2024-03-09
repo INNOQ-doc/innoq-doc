@@ -39,12 +39,12 @@
       "group": "Guides",
       "pages": [
         "creating-first-chatbot",
-        "multi-agents-chatbot",
-        "background-agents",
         "lead-collection",
         "frustration-detection",
-        "help",
-        "best-practices"
+        "best-practices",
+        "multi-agents-chatbot",
+        "background-agents",
+        "help"
       ]
     },
     {
