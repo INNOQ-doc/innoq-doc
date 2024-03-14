@@ -48,91 +48,57 @@ Good Agent descriptions should answer the question **“What type of queries sho
 More specifically, Agent descriptions should encompass all relevant “user intents” that it is supposed to handle.
 Here are some examples of good Agent descriptions:
 
-<Card title="General Q&A">
-  The General Q&A Agent handles greetings and general user inquiries about
-  GPT-trainer (may be referred to as "it", "tool", "chatbot", "platform", "app",
-  or "solution").
-</Card>
+<AccordionGroup>
+  <Accordion title="GPT-trainer Assistant">
+    Embody the role of "GPT-Trainer Expert," a specialized guide for GPT-Trainer. Your main objective is to assist users with answering GPT-trainer-related questions related to:
+    - Use cases
+    - Features and capabilities
+    - Data security
+    - Pricing
+    - AI Agents and multi-Agent architecture
+    - User identity verification
+    - Chunk curation
+    - Function calling
+    - Partnership program
+    - Custom domains
+    - Tokens
 
-<Card title="Lead Collection">
-  The Lead Collection agent specializes in requesting personal and contact
-  information from users.
-</Card>
+    All intents handled by this Agent should be related to GPT-trainer.
+  </Accordion>
 
-<Card title="Returns">
-  Returns agent is used to handle merchandise returns requests and related
-  administrative or logistics inquiries.
-</Card>
+  <Accordion title="Lead Collection">
+    The Lead Collection agent specializes in requesting personal and contact
+    information from users.
+  </Accordion>
 
-<Card title="Fruits Q&A">
-  The Fruits Q&A handles questions specifically about fruits.
-</Card>
+  <Accordion title="Returns">
+    Returns agent is used to handle merchandise returns requests and related
+    administrative or logistics inquiries.
+  </Accordion>
 
-<Card title="Unrelated Query Defender">
-  The Unrelated Query Defender Agent handles any user queries not related to
-  GPT-trainer. This includes requests for writing assistance, artistic
-  expressions, homework help, professional advice, project assistance, code
-  creation, or anything that is not directly part of "customer service for
-  GPT-trainer".
-</Card>
+  <Accordion title="Fruits Q&A">
+    The Fruits Q&A handles questions specifically about fruits.
+  </Accordion>
+
+  <Accordion title="Unrelated Query Defender">
+    The Unrelated Query Defender Agent handles any user queries not related to GPT-trainer. This includes requests for:
+    - writing assistance
+    - artistic expressions
+    - homework help
+    - professional advice
+    - making selections
+
+  </Accordion>
+
+</AccordionGroup>
 
 Agent descriptions **should not** include details about “how the Agent performs its job”.
 That part should be reserved for the Agent’s base prompt. Text such as “Agent provides informed
 answers based on knowledge from the source library.” is not needed and can be distracting to the AI Supervisor.
 
-If you have specific “user intents” that you’d like an Agent to handle, mention it explicitly inside the Agent description. Intents can look like follows:
-
-    - Seeking clarification on the classification of a specific item
-
-    - Seeking advice or recommendations
-
-    - Requesting creative content
-
-    - Asking about future features or capabilities
-
-    - Seeking information regarding product pricing
-
-    - Seeking information on a technical concept
-
-    - Requesting assistance with academic or educational materials
-
-    - Providing contact information
-
-    - Updating contact information
-
-Depending what you design the Agent to handle, your own custom list of intents may look very different.
-
 So what makes for a good multi-agent chatbot design? How can I ensure that all my intended user intents are handled by the appropriate Agent?
 
-When designing a multi-agent setup, we recommend keeping to a “MECE” approach.
-"MECE" refers to - Mutually Exclusive, Collectively Exhaustive. In other words, no gaps, no overlaps.
-
-Ideally, you want the situation where:
-
-> **User-facing Agent A handles:**
->
-> - intent class 1
-> - intent class 2
-> - intent class 3
-> - etc.
-
-> **User-facing Agent B handles:**
->
-> - intent class 10
-> - intent class 11
-> - intent class 12
-> - etc.
-
-and:
-
-There is **minimal** overlap in intents among Agents.
-All your Agents combined should cover all possible intents your users might have.
-
-But since you can't ever account for all intents in the universe, and given the fact that intents are
-presented in natural language which can have multiple permutations to express the same meaning,
-there is no deterministic way to get 100% consistency. This is true for all chatbots
-that rely on “intent classification” workflows, regardless of whether they are
-LLM-powered or take a traditional “flowchart” approach.
+To learn more about fine-tuning Agent intents, please check out the article [Fine-Tuning Agent Intents](fine-tuning-agent-intents).
 
 In our AI Supervisor routing design, we use an algorithm that balances latency, consistency,
 and comprehensiveness. It will not always give you 100% accuracy,
@@ -153,9 +119,8 @@ To find out whether your intended Agent has been selected to handle the user’s
 Under “Active Agent”, you will see the Agent that generated the response. Please note that you will only see “Active Agent” metadata 
 if you have more than one active user-facing Agents.
 
-If the Agent that handled the user query was not the correct one, you can return to Agent configuration and update its description. 
-You should also include, as explicitly as possible, the intent associated with the user query within **the description of the Agent that 
-should have handled it**. This will ensure that in the future, queries of this type would be more consistently funned to the correct Agent.
+If the Agent that handled the user query was not the correct one, you can return to Agent configuration and update its name, description, 
+or prompt.
 
 If the correct Agent handled the user query but the response was not what you expected, then the issue resides within the Agent itself. 
 You will then need to update the Agent configuration. The most straightforward way to fix a response is by revising the AI’s answer directly:

@@ -45,6 +45,7 @@
         "working-with-tables",
         "multi-agents-chatbot",
         "background-agents",
+        "fine-tuning-agent-intents",
         "supervisor-overrides",
         "help"
       ]
