@@ -38,18 +38,23 @@ To further illustrate this, we walk you through the following example:
 
 When you ask a question to ChatGPT, a typical query might look something like:
 
-**_What is GPT-trainer?_**
+```
+What is GPT-trainer?
+```
 
 This is a query that relies fully on the semantic patterns within the model’s own foundational training data to generate an answer. There is no guarantee that the answer will be accurate or trustworthy.
 
 But what if the prompt changes to:
 
-**_Answer the question below using the following provided context:_**
-**_GPT-trainer is a powerful no-code/low-code framework that allows you to build
-multi-agent chatbots with function-calling capabilities using your own data. It is designed to be user-friendly
-and versatile, providing customization options and integration with popular platforms._**
+```
+Answer the question below using the following provided context:
 
-**_What is GPT-trainer?_**
+GPT-trainer is a powerful no-code/low-code framework that allows you to build
+multi-agent chatbots with function-calling capabilities using your own data. It is designed to be user-friendly
+and versatile, providing customization options and integration with popular platforms.
+
+What is GPT-trainer?
+```
 
 Now, the model has a lot more to work with. In fact, the semantic patterns identified in the prompt itself can closely guide the model when answering
 the user’s question. This “added context” biases the model to generate new tokens in a semantically similar fashion.
@@ -81,13 +86,17 @@ what information to include in the context.
 Afterwards, the top chunks get included as context and injected into the user’s original query. This is the basis of Retrieval Augmented
 Generation (RAG). Remember our example from earlier? When the user asks:
 
-**_What is GPT-trainer?_**
+```
+What is GPT-trainer?
+```
 
 the most relevant chunk that will likely be pulled from our vector database is:
 
-**_GPT-trainer is a powerful no-code/low-code framework that allows you to build multi-agent chatbots with function-calling
+```
+GPT-trainer is a powerful no-code/low-code framework that allows you to build multi-agent chatbots with function-calling
 capabilities using your own data. It is designed to be user-friendly and versatile, providing customization options and
-integration with popular platforms._**
+integration with popular platforms.
+```
 
 and the chatbot will now “know” the answer.
 
