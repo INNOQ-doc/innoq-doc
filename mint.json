@@ -51,6 +51,12 @@
       ]
     },
     {
+      "group": "Function Calling",
+      "pages": [
+        "rag-from-external-data-provider"
+      ]
+    },
+    {
       "group": "API",
       "pages": [
         "api-key",
