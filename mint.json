@@ -111,6 +111,13 @@
         "api-reference/data-sources/delete",
         "api-reference/data-sources/delete_multi"
       ]
+    },
+    {
+      "group": "Whitelabel Dashboard",
+      "pages": [
+        "whitelabel-intro",
+        "whitelabel-users"
+      ]
     }
   ],
   "api": {
