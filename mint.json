@@ -116,6 +116,7 @@
       "group": "Whitelabel Dashboard",
       "pages": [
         "whitelabel-intro",
+        "whitelabel-plans",
         "whitelabel-users"
       ]
     }
