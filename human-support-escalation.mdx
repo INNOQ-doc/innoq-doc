@@ -1,0 +1,68 @@
+---
+title: Human Support Escalation
+---
+
+As powerful as AI chatbots can be, sometimes human accountability and expertise is still needed. GPT-trainer's
+built-in human support escalation feature allows you or your collaborators to step in during any ongoing chat 
+session and take over the conversation.
+
+Under our multi-Agent framework, the human support Agent operates under the same principle as any other Agent, 
+except that it does not generate responses through an LLM but instead routes the user's query to a human. 
+To activate the human support escalation feature, go to "AI Agents" tab, then click "Create new agent" button.
+Find the "Human Escalation" Agent and click "Choose template". You may need to scroll down to find it.
+
+<Frame>
+  <img src="/images/human-support-escalation-1.png" />
+</Frame>
+
+Then, click on the Human Escalation Agent. You have the ability to configure the conditions under which 
+human support agent should be connected. By default, the chatbot user must explicitly request for human agent 
+assistance. You can also modify the pre-canned messages to display accompanying different scenarios.
+
+<Frame>
+  <img src="/images/human-support-escalation-2.png" />
+</Frame>
+
+Once you are comfortable with the settings, connect the Agent.
+
+<Frame>
+  <img src="/images/human-support-escalation-3.png" />
+</Frame>
+
+To test your human support escalation setup, you'll need to generate a public link to the chatbot and access it 
+using another browser tab. **The built-in "Preview" tab does NOT support human escalation testing.**
+
+Go to "Deploy / Integrations" tab, click "Share". You may need to change your chatbot visibility settings temporarily 
+in order to generate the link.
+
+<Frame>
+  <img src="/images/human-support-escalation-4.png" />
+</Frame>
+
+Once you have the link, open a new browser tab and navigate to it. Do not close the original gpt-trainer tab. 
+You should be taken to the chatbot as a typical user. You can then test it by submitting queries requesting human support.
+
+<Frame>
+  <img src="/images/human-support-escalation-5.png" />
+</Frame>
+
+To take over as a human agent, head over to "Inbox" in your gpt-trainer browser tab. You should see an orange dot 
+next to the session requesting human support. Click it and you will be able to engage directly with the user. Simply start 
+typing a response in the chat input text box at the bottom of the chat log.
+
+<Frame>
+  <img src="/images/human-support-escalation-6.png" />
+</Frame>
+
+As soon as you send the first message, AI Supervisor and all AI Agents will be disabled. You can have a direct conversation with your 
+user for as long as you'd like. Once you are done, you can end the live chat session and put your user back on to the AI chatbot by clicking 
+"End Live Chat".
+
+<Frame>
+  <img src="/images/human-support-escalation-7.png" />
+</Frame>
+
+You may stay and continue to monitor the user's interaction with the chatbot as the AI regains control over response generation.
+
+Depending on your use case, you may wish to fine tune the circumstances when the user should be redirected to a human agent. To do so, please 
+review our documentation on [Fine Tuning Agent Intents](fine-tuning-agent-intents).
