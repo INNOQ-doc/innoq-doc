@@ -23,11 +23,19 @@
       "url": "mailto:hello@gpt-trainer.com"
     }
   ],
+  "primaryTab": {
+    "name": "Documentation"
+  },
   "anchors": [
     {
       "name": "API References",
       "icon": "code",
       "url": "api-reference"
+    },
+    {
+      "name": "Whitelabel",
+      "icon": "browser",
+      "url": "whitelabel"
     }
   ],
   "navigation": [
@@ -53,9 +61,7 @@
     },
     {
       "group": "Function Calling",
-      "pages": [
-        "rag-from-external-data-provider"
-      ]
+      "pages": ["rag-from-external-data-provider"]
     },
     {
       "group": "API",
@@ -116,9 +122,9 @@
     {
       "group": "Whitelabel Dashboard",
       "pages": [
-        "whitelabel-intro",
-        "whitelabel-plans",
-        "whitelabel-users"
+        "whitelabel/whitelabel-intro",
+        "whitelabel/whitelabel-plans",
+        "whitelabel/whitelabel-users"
       ]
     }
   ],
