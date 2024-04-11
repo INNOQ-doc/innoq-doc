@@ -135,7 +135,7 @@ in before running out of space. Keep this in mind as you prioritize the informat
 Now we know what the LLM would see as additional context provided by the function call, we can start linking it to our GPT-trainer Agent.
 
 <Note>
-Note: it is ALWAYS advisable to write your own script and test for the output of the API endpoint first. You want to know exactly what kind information 
+It is ALWAYS advisable to write your own script and test for the output of the API endpoint first. You want to know exactly what kind information 
 is being fed into your AI Agent.
 </Note>
 
@@ -208,6 +208,10 @@ After that, choose the HTTP method. We use “GET” for our example. The specif
 
 ## Fixed parameters 
 
+Static (Fixed) Parameters remain constant across all API requests. They are pre-defined and reflect settings or configurations that do not change with each 
+call. For example, parameters that specify the format of the response or that enable/disable certain features globally across all API interactions fall into 
+this category. The term “static” emphasizes their unchanging nature.
+
 Depending on your particular API endpoint, you may need to append some fixed parameters in the URL. The API we use above from Semantic Scholar does not require 
 fixed parameters. But if you are using a more complex endpoint like this: 
 https://app.outscraper.com/api-docs#tag/Businesses-and-POI/paths/~1maps~1search-v3/get, then your API endpoint may include fixed parameters and look something like:
@@ -218,6 +222,12 @@ https://api.app.outscraper.com/maps/search-v3?async=false&fields=name,full_addre
 
 Notice that at the end of "https://api.app.outscraper.com/maps/search-v3", we get into fixed parameters. This is where you define parameters that will not change 
 when the function is called. Always define fixed parameters this way!
+
+<Note>
+If your API is capable of returning a more concise response by configuring certain parameters (i.e., tell the API to leave out unnecessary metadata in the response), 
+then we highly suggest that you do so. It will reduce token waste and help AI understand the context better. In the above example, we set "fields=name,full_address,phone,site" 
+specifically to limit the response so that it contains only name, full_address, phone, and site information - and nothing else.
+</Note>
 
 ## Headers and Authentication
 
@@ -231,9 +241,12 @@ For our example, the key field is named “x-api-key”:
 
 ## Variable parameters
 
-Finally, we get to variable parameters. This is where you tell the LLM, in a structured fashion, how to provide input to the function you defined. Make sure to follow 
-in the format that we provided. This information is used to guide the LLM. If you don’t set this up right, your function will not work, and you will likely get 
-errors every time your Agent responds to a user query.
+Finally, we get to variable parameters.
+
+Variable (Dynamic) Parameters dynamically change based on user input or conversation context, unlike their static counterparts. In function calling, these parameters 
+adapt to the specifics of each request, being determined at runtime. This ensures that API calls made by the AI are tailored to the immediate needs of the conversation, 
+enabling a more personalized and relevant interaction. The AI extracts these parameters directly from the dialogue, determining when and how to call the function 
+based on the ongoing conversation.
 
 For our function, we define the following variable parameters:
 
@@ -247,7 +260,7 @@ For our function, we define the following variable parameters:
     },
     "fields": {
       "type": "string",
-      "description": "The information to be returned, default as 'title,abstract,paperId,authors,year,url,referenceCount, citationCount'"
+      "description": "The information to be returned, default as 'title,abstract,paperId,authors,year,url,referenceCount,citationCount'"
     },
     "limit": {
       "type": "string",
@@ -264,8 +277,11 @@ For our function, we define the following variable parameters:
 Notice that this is a structured JSON format. Under the key field “type” of the entire parameter-set, we put “object”. You should do the same for yours.
 
 Under properties, you define each parameter along with their type and description. Take “query” for example. It has type String, meaning its data type is free text. 
-Types in general can be “String”, “integer”, “boolean”, “array”, etc. The description is more open-ended, but also extremely important. This is where you must tell 
-the LLM what this parameter represents, and if possible, provide default values and examples of what it should actually look like when the function is called.
+Types can be “String”, “integer”, “boolean”, “array”, etc. The description is more open-ended, but also extremely important. This is where you must tell 
+the LLM what this parameter represents. To the best of your ability, provide default values and examples of actual parameter values when the function is called. 
+
+Try to be as explicit as possible. Remember that if the AI has to guess whether a parameter named 'language' should take 'en' or 'english' as input, chances are 
+it will guess wrong, and you will see errors in your chatbot output. 
 
 Depending on the function you are working with, input parameters can get pretty complex. Below is another example for supplying parameters to a function (NOT related 
 to our Semantic Scholar example) that uses an array:
@@ -297,7 +313,7 @@ to our Semantic Scholar example) that uses an array:
 }
 ```
 
-The function can only be called once the "required" parameters have been collected. If necessary information is missing, the function cannot be executed. You 
+The function can only be called once the "required" parameters have been collected. If necessary information is missing, the function cannot be invoked. You 
 must define which parameters are mandatory in order for the function to be called.
 
 For additional information on the supported JSON schema, please reference this guide: https://json-schema.org/understanding-json-schema/reference/type
