@@ -11,7 +11,7 @@ GPT-trainer has 2 types of Agents:
     in an ongoing fashion. All background Agents are run whenever the user submits a new query to the chatbot.
 
 Unlike user-facing Agents, background Agents are designed to monitor conversations and provide
-assistance in the background by **setting variables, assigning tags, or calling functions** when certain criteria are met.
+assistance in the background by **assigning tags or calling functions** when certain criteria are met.
 
 <Note>
   Agents are completely isolated from one another. This means that you cannot
@@ -40,6 +40,3 @@ conversation tags, see [Frustration Detection](/frustration-detection).
 <Frame caption="Here’s a fun setup that detects any mention of various fruits during the conversation and assigns the appropriate tags.">
   <img src="/images/background-agent-1.png" />
 </Frame>
-
-Like user-facing Agents, background Agents can set Variables. The setup works the same way for both types of Agents.
-For an example of how to set Variables using Agents, see [Lead Collection](/lead-collection)
