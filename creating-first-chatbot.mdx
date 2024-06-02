@@ -2,98 +2,114 @@
 title: Create Your First Chatbot
 ---
 
-To get started, first log in to your account. If this is your first time using GPT-trainer, you should see this:
+To get started, first log in to your account. If this is your first time using GPT-trainer, you will be asked to complete some 
+initial onboarding steps, including a brief survey. Afterwards, you will be presented with this screen:
 
 <Frame>
   <img src="/images/create-chatbot-1.png" />
 </Frame>
 
-Click on **Create new** and enter your desired chatbot name and display name.
+Click on **Create from Template**. 
 
 <Frame>
   <img src="/images/create-chatbot-2.png" />
 </Frame>
 
 The **Chatbot Name** is for your reference within your account, helping you identify which chatbot you're working with.
-The **Display Name**, visible in the chatbot interface, can be set now or added later. This flexibility allows you to focus on building your
-chatbot's core features first and fine-tune its identity as you go.
+The **Display Name**, visible in the chatbot interface, can be set now or added later.
 
-Then, head over to **Sources** in the left sidebar:
+After you are finished, click "Continue". For your first chatbot, let's pick the template "Q&A with Anti-Spam Defense". 
+This chatbot will have 2 AI Agents built-in: one for general Q&A, one for handling spam and malicious input.
 
 <Frame>
   <img src="/images/create-chatbot-3.png" />
 </Frame>
 
-You can upload unstructured text training data in the form of PDFs, Word, or TXT.
-You can also upload simple tables in the form of CSV or Excel. Please note that
-GPT-trainer&apos;s ability to handle tables directly is limited.
-
-If you have a website with static content (not rendered by javascript), then you can
-specify the URL directly and have our scraper attempt to capture information to use
-as training.
-
-After you finish uploading training data, if everything goes well, the **Status**
-should show a green light indicating successful training completion.
+Next, add your company or product name, followed by an alternative way for your users to contact your support team. 
+The chatbot will take on the persona of an AI representative within your organization and redirect any user query it cannot 
+handle to the support channel you indicate here.
 
 <Frame>
   <img src="/images/create-chatbot-4.png" />
 </Frame>
 
-Next, you can configure the general behavior (including the base prompt) of your chatbot by going into the **Agents** tab.
-By default, each chatbot will start with a **General Q&A** Agent. Click it to go into the edit screen:
+Afterwards, you can customize the basic appearance of your chatbot widget. You can review how things look in the preview on 
+the right.
+
+Please note that this is a simplified subset of options. You can customize a lot more elements later in the "Settings / Appearance" 
+tab after your chatbot has been successfully created.
 
 <Frame>
   <img src="/images/create-chatbot-5.png" />
 </Frame>
 
-You may need to scroll down to find the base prompt section. Edit it with explicit instructions
-for your chatbot to follow when talking to users.
+Finally, the chatbot is ready for training. You can start by pasting your website's URL into the "Add Website URL(s)" text box. 
+Our scraper will attempt to identify and capture all the subdirectories associated with your provided link as well. 
+
+Alternatively, you can provide the sitemap of your website for a more comprehensive capture.
+
+You can also upload unstructured text training data in the form of PDFs, Word, or TXT. 
+
+Additional training data types like 
+tables, CSV, Excel, etc. can be uploaded afterwards in the "Sources" tab.
 
 <Frame>
   <img src="/images/create-chatbot-6.png" />
 </Frame>
 
-By default, the **General Q&A** Agent makes use of all your uploaded training sources.
-If you&apos;d like to use only a select subset, you can configure it in the **Knowledge** tab.
+Once you designated your desired training data, head on to the next step. Don't worry if you missed some, because you can always 
+review and update your training data later.
+
 
 <Frame>
   <img src="/images/create-chatbot-7.png" />
 </Frame>
 
-Once you finish configuring the Agent, click **Save changes**. Then, you can head to the **Settings / Appearance**
-tab to edit the appearance and global settings of your chatbot.
+Wait for the training to complete. Then, click "Try it out". GPT-trainer will open a new tab where you can start testing the 
+preliminary chatbot.
+
+In general, the chatbot should be well-configured enough as-is for most common use cases. However, if you would like to fine tune 
+the chatbot behavior further, update the training data or appearance, or even add additional AI Agents to expand the chatbot's 
+capabilities, you can do it in GPT-trainer.
+
+Close the chatbot testing tab. You will return to GPT-trainer's main interface. Go through the onboarding guide to learn more 
+about your options.
 
 <Frame>
   <img src="/images/create-chatbot-8.png" />
 </Frame>
 
-If you are satisfied with the setup, you can start testing your chatbot! Go to the **Preview** tab and start a conversation!
-
 <Frame>
   <img src="/images/create-chatbot-9.png" />
 </Frame>
-
-When you are ready to deploy it, head to the **Deploy / Integrations** tab.
 
 <Frame>
   <img src="/images/create-chatbot-10.png" />
 </Frame>
 
-If you want to share the chatbot as a standalone page, simply click **Share**. You should see a share link automatically generated for you.
-
-If you want to embed the chatbot onto a web page, click **Custom**. Detailed instructions will be displayed on the new right sidebar.
-
 <Frame>
   <img src="/images/create-chatbot-11.png" />
 </Frame>
 
-To add more chatbots, simply go to the left sidebar and open the chatbot select dropdown. Click **Create Chatbot**.
+When you are ready to deploy your chatbot, head to the **Deploy / Integrations** tab.
+
+<Frame>
+  <img src="/images/create-chatbot-12.png" />
+</Frame>
+
+If you want to share the chatbot as a standalone page, simply click **Link**. You should see a share link automatically generated for you.
+
+If you want to embed the chatbot onto a web page, click **Website**. Detailed instructions will be displayed on the new right sidebar.
+
+<Frame>
+  <img src="/images/create-chatbot-13.png" />
+</Frame>
+
+To add more chatbots, simply go to the left sidebar and click the dropdown menu. You will be taken to a dedicated page to manage all of your 
+chatbots.
 
 <Note>
   Please note that depending on your current subscription plan, there is a limit
   to the number of chatbots you can create.
 </Note>
 
-<Frame>
-  <img src="/images/create-chatbot-12.png" />
-</Frame>
