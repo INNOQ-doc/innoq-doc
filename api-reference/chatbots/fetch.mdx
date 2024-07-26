@@ -15,12 +15,9 @@ description: "Fetch single chatbot base on uuid"
 <ResponseField name="meta" type="object">
 The meta of chatbot
 <Expandable title="Chatbot meta">
-<ResponseField name="model" type="string" />
-<ResponseField name="prompt" type="string" />
 <ResponseField name="rate_limit" type="[number, number]"/>
 <ResponseField name="rate_limit_message" type="string"/>
 <ResponseField name="show_citation" type="boolean"/>
-<ResponseField name="temperature" type="number"/>
 <ResponseField name="visibility" type="string"/>
 </Expandable>
 </ResponseField>
@@ -82,15 +79,12 @@ axios.get(url, { headers })
 {
   "created_at": "string",
   "meta": {
-    "model": "gpt-3.5-turbo",
-    "prompt": "string",
     "rate_limit": [
       20,
       240
     ],
     "rate_limit_message": "Too many messages",
     "show_citations": false,
-    "temperature": 0,
     "visibility": "private"
   },
   "modified_at": "string",

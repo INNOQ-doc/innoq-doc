@@ -66,12 +66,12 @@
       "pages": ["rag-from-external-data-provider"]
     },
     {
-      "group": "API",
+      "group": "API Usage Guides",
       "pages": [
-        "api-key",
-        "api-usage-example-chatbot",
-        "api-usage-example-source",
-        "api-usage-example-chat"
+        "api-reference/api-key-setup",
+        "api-reference/guide-00-chatbot-create",
+        "api-reference/guide-01-chat",
+        "api-reference/guide-02-source"
       ]
     },
     {
@@ -87,6 +87,16 @@
         "api-reference/chatbots/fetch",
         "api-reference/chatbots/fetch_multi",
         "api-reference/chatbots/delete"
+      ]
+    },
+    {
+      "group": "Agents",
+      "pages": [
+        "api-reference/agents/properties-reference",
+        "api-reference/agents/create",
+        "api-reference/agents/update",
+        "api-reference/agents/fetch_multi",
+        "api-reference/agents/delete"
       ]
     },
     {

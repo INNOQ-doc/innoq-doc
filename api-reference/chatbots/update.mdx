@@ -11,9 +11,6 @@ description: "Update chatbot meta base on uuid"
 ### Body
 
 <ParamField body="name" type="string"/>
-<ParamField body="prompt" type="string"/>
-<ParamField body="temperature" type="float"/>
-<ParamField body="model" type="select" />
 <ParamField body="visibility" type="string"/>
 <ParamField body="rate_limit" type="[number, number]"/>
 <ParamField body="rate_limit_message" type="string"/>
@@ -25,12 +22,9 @@ description: "Update chatbot meta base on uuid"
 <ResponseField name="meta" type="object">
 The meta of chatbot
 <Expandable title="Chatbot meta">
-<ResponseField name="model" type="string" />
-<ResponseField name="prompt" type="string" />
 <ResponseField name="rate_limit" type="[number, number]"/>
 <ResponseField name="rate_limit_message" type="string"/>
 <ResponseField name="show_citation" type="boolean"/>
-<ResponseField name="temperature" type="number"/>
 <ResponseField name="visibility" type="string"/>
 </Expandable>
 </ResponseField>
@@ -47,9 +41,6 @@ curl --location --request POST 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid
 --header 'Authorization: Bearer <token>' \
 --data-raw '{
   "name": "string"
-  "prompt": "string",
-  "temperature": 0,
-  "model": "gpt-3.5-turbo",
   "rate_limit": [
     20,
     240
@@ -72,9 +63,6 @@ headers = {
 
 data = {
     "name": "string",
-    "prompt": "string",
-    "temperature": 0,
-    "model": "gpt-3.5-turbo",
     "rate_limit": [20, 240],
     "rate_limit_message": "Too many messages",
     "show_citations": False,
@@ -103,9 +91,6 @@ const headers = {
 
 const data = {
     "name": "string",
-    "prompt": "string",
-    "temperature": 0,
-    "model": "gpt-3.5-turbo",
     "rate_limit": [20, 240],
     "rate_limit_message": "Too many messages",
     "show_citations": false,
@@ -130,15 +115,12 @@ axios.post(url, data, { headers })
 {
   "created_at": "string",
   "meta": {
-    "model": "gpt-3.5-turbo",
-    "prompt": "string",
     "rate_limit": [
       20,
       240
     ],
     "rate_limit_message": "Too many messages",
     "show_citations": false,
-    "temperature": 0,
     "visibility": "private"
   },
   "modified_at": "string",
