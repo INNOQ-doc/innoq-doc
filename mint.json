@@ -132,6 +132,15 @@
       ]
     },
     {
+      "group": "Data Source Tags",
+      "pages": [
+        "api-reference/source-tags/create",
+        "api-reference/source-tags/fetch-multi",
+        "api-reference/source-tags/update",
+        "api-reference/source-tags/delete"
+      ]
+    },
+    {
       "group": "Whitelabel Dashboard",
       "pages": [
         "whitelabel/whitelabel-intro",

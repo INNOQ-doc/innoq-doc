@@ -4,51 +4,47 @@ api: "POST https://app.gpt-trainer.com/api/v1/chatbot/<uuid>/agent/create"
 description: "Create an agent for a chatbot specified by chatbot uuid"
 ---
 
+### Path
+
+<ParamField path="uuid" type="string" required />
+
 ### Body
 
 <ParamField body="name" type="string" required />
 <ParamField body="type" type="string" required>
-One of the following values: `user-facing`, `background`, `human-escalation`, `pre-canned`, `spam-defense`
+  One of the following values: `user-facing`, `background`, `human-escalation`,
+  `pre-canned`, `spam-defense`
 </ParamField>
 <ParamField body="description" type="string" />
 <ParamField body="prompt" type="string" />
 <ParamField body="temperature" type="float" />
-<ParamField body="meta" type="meta Object" >
-   <Expandable title="Chatbot meta">
-    <ParamField body="model" type="string" />
-    | Model | Message Credits |
-|-------|-----------------|
-| gpt-3.5-turbo | 1 |
-| gpt-3.5-turbo-16k | 8 |
-| gpt-4-0125-preview-8k | 35 |
-| gpt-4-1106-preview-1k | 5 |
-| gpt-4-1106-preview-2k | 10 |
-| gpt-4-1106-preview-4k | 20 |
-| gpt-4-1106-preview-16k | 60 |
-| gpt-4o-1k | 3 |
-| gpt-4o-2k | 5 |
-| gpt-4o-4k | 10 |
-| gpt-4o-8k | 20 |
-| gpt-4o-16k | 40 |
-| gpt-4o-mini-4k | 1 |
-| gpt-4o-mini-16k | 8 |
-Only for <code>user-facing</code> and <code>background</code> agents.
+<ParamField body="meta" type="meta Object">
+  <Expandable title="Chatbot meta">
+    <ParamField body="model" type="string" />| Model | Message Credits | |-------|-----------------|
+    | gpt-3.5-turbo | 1 | | gpt-3.5-turbo-16k | 8 | | gpt-4-0125-preview-8k | 35
+    | | gpt-4-1106-preview-1k | 5 | | gpt-4-1106-preview-2k | 10 | | gpt-4-1106-preview-4k
+    | 20 | | gpt-4-1106-preview-16k | 60 | | gpt-4o-1k | 3 | | gpt-4o-2k | 5 | |
+    gpt-4o-4k | 10 | | gpt-4o-8k | 20 | | gpt-4o-16k | 40 | | gpt-4o-mini-4k | 1
+    | | gpt-4o-mini-16k | 8 | Only for <code>user-facing</code> and <code>
+      background
+    </code> agents.
   </Expandable>
 </ParamField>
 <ParamField body="temperature" type="float">
-Between <code>0</code> and{" "}
-      <code>1</code><br/>
-      Only for <code>user-facing</code> agents.
-    </ParamField>
+  Between <code>0</code> and <code>1</code>
+  <br />
+  Only for <code>user-facing</code> agents.
+</ParamField>
 
     <ParamField body="bias" type="float">
+
 Between <code>0</code> and <code>1</code>.<br/>
-      Only for <code>user-facing</code>, <code>human-escalation</code>, <code>pre-canned</code> and <code>spam-defense</code> agents.
-    </ParamField>
-    <ParamField body="stickness" type="float">
-Between <code>0</code> and <code>1</code>.<br/> 
-      Only for <code>user-facing</code>, <code>human-escalation</code>, <code>pre-canned</code> and <code>spam-defense</code> agents.
-    </ParamField>
+Only for <code>user-facing</code>, <code>human-escalation</code>, <code>pre-canned</code> and <code>spam-defense</code> agents.
+</ParamField>
+<ParamField body="stickness" type="float">
+Between <code>0</code> and <code>1</code>.<br/>
+Only for <code>user-facing</code>, <code>human-escalation</code>, <code>pre-canned</code> and <code>spam-defense</code> agents.
+</ParamField>
 
     <ParamField body="default_message" type="string">
       Only for <code>pre-canned</code> and <code>spam-defense</code> agents.
@@ -56,7 +52,7 @@ Between <code>0</code> and <code>1</code>.<br/>
     <ParamField body="tags" type="tags Object">
       Only for <code>background</code> agents.
     </ParamField>
-    <ParamField body="use_all_sources" type="boolean"> 
+    <ParamField body="use_all_sources" type="boolean">
       Only for <code>user-facing</code> agents.
     </ParamField>
 
@@ -73,7 +69,10 @@ Between <code>0</code> and <code>1</code>.<br/>
 <Note>By default, a newly created agent is disabled</Note>
 <ResponseField name="meta" type="meta Object" />
 <ResponseField name="data_source_uuids" type="List[string]" />
-<ResponseField name="human_escalation_settings" type="HumanEscalationSettings Object" />
+<ResponseField
+  name="human_escalation_settings"
+  type="HumanEscalationSettings Object"
+/>
 <ResponseField name="tool_functions" type="List[ToolFunction]" />
 <ResponseField name="variables" type="List[AgentVariable]" />
 
@@ -156,20 +155,20 @@ axios
 
 ```json Response
 {
-    "created_at": "2024-07-25T21:19:01Z",
-    "description": "test for creating new agents",
-    "enabled": 0,
-    "meta": {
-        "model": "gpt-4o-mini-4k",
-        "tags": [],
-        "temperature": 0.0
-    },
-    "modified_at": "2024-07-25T21:19:01Z",
-    "name": "TEST create new agent",
-    "prompt": "a test user-facing agent",
-    "type": "user-facing",
-    "uuid": "43474da7ae3b4b7191ee29c2de798257",
-    "variables": []
+  "created_at": "2024-07-25T21:19:01Z",
+  "description": "test for creating new agents",
+  "enabled": 0,
+  "meta": {
+    "model": "gpt-4o-mini-4k",
+    "tags": [],
+    "temperature": 0.0
+  },
+  "modified_at": "2024-07-25T21:19:01Z",
+  "name": "TEST create new agent",
+  "prompt": "a test user-facing agent",
+  "type": "user-facing",
+  "uuid": "43474da7ae3b4b7191ee29c2de798257",
+  "variables": []
 }
 ```
 
