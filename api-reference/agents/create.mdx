@@ -20,14 +20,14 @@ description: "Create an agent for a chatbot specified by chatbot uuid"
 <ParamField body="temperature" type="float" />
 <ParamField body="meta" type="meta Object">
   <Expandable title="Chatbot meta">
-    <ParamField body="model" type="string" />| Model | Message Credits | |-------|-----------------|
-    | gpt-3.5-turbo | 1 | | gpt-3.5-turbo-16k | 8 | | gpt-4-0125-preview-8k | 35
-    | | gpt-4-1106-preview-1k | 5 | | gpt-4-1106-preview-2k | 10 | | gpt-4-1106-preview-4k
-    | 20 | | gpt-4-1106-preview-16k | 60 | | gpt-4o-1k | 3 | | gpt-4o-2k | 5 | |
+    <ParamField body="model" type="string" />| Model | Message Credits |
+    |-------|-----------------| | gpt-3.5-turbo | 1 | | gpt-3.5-turbo-16k | 8 |
+    | gpt-4-0125-preview-8k | 35 | | gpt-4-1106-preview-1k | 5 | |
+    gpt-4-1106-preview-2k | 10 | | gpt-4-1106-preview-4k | 20 | |
+    gpt-4-1106-preview-16k | 60 | | gpt-4o-1k | 3 | | gpt-4o-2k | 5 | |
     gpt-4o-4k | 10 | | gpt-4o-8k | 20 | | gpt-4o-16k | 40 | | gpt-4o-mini-4k | 1
-    | | gpt-4o-mini-16k | 8 | Only for <code>user-facing</code> and <code>
-      background
-    </code> agents.
+    | | gpt-4o-mini-16k | 8 | Only for <code>user-facing</code> and{" "}
+    <code>background</code> agents.
   </Expandable>
 </ParamField>
 <ParamField body="temperature" type="float">
@@ -40,6 +40,7 @@ description: "Create an agent for a chatbot specified by chatbot uuid"
 
 Between <code>0</code> and <code>1</code>.<br/>
 Only for <code>user-facing</code>, <code>human-escalation</code>, <code>pre-canned</code> and <code>spam-defense</code> agents.
+
 </ParamField>
 <ParamField body="stickness" type="float">
 Between <code>0</code> and <code>1</code>.<br/>

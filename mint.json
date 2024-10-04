@@ -127,6 +127,7 @@
         "api-reference/data-sources/create-url",
         "api-reference/data-sources/update",
         "api-reference/data-sources/fetch_multi",
+        "api-reference/data-sources/retrain",
         "api-reference/data-sources/delete",
         "api-reference/data-sources/delete_multi"
       ]
