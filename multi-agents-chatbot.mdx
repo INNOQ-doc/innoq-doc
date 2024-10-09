@@ -50,7 +50,7 @@ Here are some examples of good Agent descriptions:
 
 <AccordionGroup>
   <Accordion title="GPT-trainer Assistant">
-    Embody the role of "GPT-Trainer Expert," a specialized guide for GPT-Trainer. Your main objective is to assist users with answering GPT-trainer-related questions related to:
+    Embody the role of "GPT-trainer Expert," a specialized guide for GPT-trainer. Your main objective is to assist users with answering GPT-trainer-related questions related to:
     - Use cases
     - Features and capabilities
     - Data security
@@ -64,21 +64,25 @@ Here are some examples of good Agent descriptions:
     - Tokens
 
     All intents handled by this Agent should be related to GPT-trainer.
+
   </Accordion>
 
-  <Accordion title="Lead Collection">
-    The Lead Collection agent specializes in requesting personal and contact
-    information from users.
-  </Accordion>
+{" "}
+<Accordion title="Lead Collection">
+  The Lead Collection agent specializes in requesting personal and contact
+  information from users.
+</Accordion>
 
-  <Accordion title="Returns">
-    Returns agent is used to handle merchandise returns requests and related
-    administrative or logistics inquiries.
-  </Accordion>
+{" "}
+<Accordion title="Returns">
+  Returns agent is used to handle merchandise returns requests and related
+  administrative or logistics inquiries.
+</Accordion>
 
-  <Accordion title="Fruits Q&A">
-    The Fruits Q&A handles questions specifically about fruits.
-  </Accordion>
+{" "}
+<Accordion title="Fruits Q&A">
+  The Fruits Q&A handles questions specifically about fruits.
+</Accordion>
 
   <Accordion title="Unrelated Query Defender">
     The Unrelated Query Defender Agent handles any user queries not related to GPT-trainer. This includes requests for:
@@ -106,9 +110,10 @@ but you can get pretty close if you design your chatbots effectively.
 
 ## Debugging the chatbot
 
-If you notice that the chatbot is not responding to your expectations, then there may be two causes. 
-  1. The wrong Agent may have been assigned to handle the incoming user query. 
-  2. The Agent itself may not be optimally configured.
+If you notice that the chatbot is not responding to your expectations, then there may be two causes.
+
+1. The wrong Agent may have been assigned to handle the incoming user query.
+2. The Agent itself may not be optimally configured.
 
 To find out whether your intended Agent has been selected to handle the user’s query, go to “Inbox” and turn on debug mode.
 
@@ -116,23 +121,23 @@ To find out whether your intended Agent has been selected to handle the user’s
   <img src="/images/multi-agents-chatbot-3.png" />
 </Frame>
 
-Under “Active Agent”, you will see the Agent that generated the response. Please note that you will only see “Active Agent” metadata 
+Under “Active Agent”, you will see the Agent that generated the response. Please note that you will only see “Active Agent” metadata
 if you have more than one active user-facing Agents.
 
-If the Agent that handled the user query was not the correct one, you can return to Agent configuration and update its name, description, 
+If the Agent that handled the user query was not the correct one, you can return to Agent configuration and update its name, description,
 or prompt.
 
-If the correct Agent handled the user query but the response was not what you expected, then the issue resides within the Agent itself. 
+If the correct Agent handled the user query but the response was not what you expected, then the issue resides within the Agent itself.
 You will then need to update the Agent configuration. The most straightforward way to fix a response is by revising the AI’s answer directly:
 
 <Frame>
   <img src="/images/multi-agents-chatbot-4.png" />
 </Frame>
 
-This ensures that the chatbot will generate an answer based on what you revised every time it encounters the question in the future, assuming 
+This ensures that the chatbot will generate an answer based on what you revised every time it encounters the question in the future, assuming
 the same Agent was chosen to respond to the query.
 
-If you’d like to make the Agent more robust and consistent in general, you can curate the training data, choose a more powerful LLM, or be more 
+If you’d like to make the Agent more robust and consistent in general, you can curate the training data, choose a more powerful LLM, or be more
 explicit in your base prompt. To learn some best practices for training the chatbot, see [best practices for preparing training data](/best-practices)
 
 **Happy building!**
