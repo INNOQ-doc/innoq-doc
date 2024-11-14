@@ -116,7 +116,9 @@
         "api-reference/sessions/properties-reference",
         "api-reference/sessions/create",
         "api-reference/sessions/fetch",
-        "api-reference/sessions/fetch_multi"
+        "api-reference/sessions/fetch_multi",
+        "api-reference/sessions/delete",
+        "api-reference/sessions/delete_multi"
       ]
     },
     {
@@ -167,6 +169,10 @@
         "whitelabel/whitelabel-plans",
         "whitelabel/whitelabel-users"
       ]
+    },
+    {
+      "group": "Integrations",
+      "pages": ["whitelabel/whitelabel-zapier", "whitelabel/whitelabel-make"]
     }
   ],
   "api": {
