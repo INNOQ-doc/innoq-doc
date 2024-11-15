@@ -165,12 +165,17 @@ You can create new modules from the main app's "Modules" tab. The following are 
 
 This module allows users to call your app's API via Make.com. When creating this module, you will want to select:
 
-- Type: Universal
-- Subtype: REST
-- Connection: Select the one you set up in a previous section of this guide
-- Name: Make an API Call
-- Label: Make an API Call
-- Description: Performs an arbitrary authorized API call
+* Type: Universal
+
+* Subtype: REST
+
+* Connection: Select the one you set up in a previous section of this guide
+
+* Name: Make an API Call
+
+* Label: Make an API Call
+
+* Description: Performs an arbitrary authorized API call
 
 You can customize the name, label, and description if you wish.
 
@@ -315,12 +320,17 @@ Finally, paste the following in "Interface", and save. Your module is done.
 
 This module allows users to create chat messages in their chatbot using Make.com. When creating this module, you will want to select:
 
-- Type: Action
-- Connection: The one you made previously
-- Module action: Create
-- Name: Send a Message
-- Lable: Send a Message
-- Description: Sends messages to a chatbot and receives responses.
+* Type: Action
+
+* Connection: The one you made previously
+
+* Module action: Create
+
+* Name: Send a Message
+
+* Lable: Send a Message
+
+* Description: Sends messages to a chatbot and receives responses.
 
 Then, in the "Communication" tab, you will want to use the following code:
 
@@ -392,11 +402,15 @@ That should be all that's needed for your message-sending module.
 
 This is a module that allows Make.com to capture forms submitted by people who interact with your user's chatbot. You will want to select the following options when creating this module:
 
-- Type: Instant Trigger
-- Webhook: Select the webhook you created earlier in the guide
-- Name: Watch New Submitted Forms
-- Label: Watch New Submitted Forms
-- Description: Triggers when a new user submits a form within the chat.
+* Type: Instant Trigger
+
+* Webhook: Select the webhook you created earlier in the guide
+
+* Name: Watch New Submitted Forms
+
+* Label: Watch New Submitted Forms
+
+* Description: Triggers when a new user submits a form within the chat.
 
 You do not need to do anything in the "Communication" tab, except ensure that the connection is correct and that the module is set to "Visible". In the "Interface" tab, you can use the following code:
 
@@ -425,8 +439,8 @@ And in the "Samples" tab, you can use the following:
 
 ```jsonc
 {
-  "Email": "hello@donnajames.app",
-  "Name": "DONNAJAMES"
+  "Email": "address@your-domain.com",
+  "Name": "Test Data"
 }
 ```
 
