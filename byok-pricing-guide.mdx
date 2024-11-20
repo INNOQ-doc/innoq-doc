@@ -16,9 +16,11 @@ models, potentially incorporating open-source and fine-tuned ones.
 
 ### Provider-specific instructions
 
-- OpenAI (GPT models)- https://platform.openai.com/account/api-keys
-- Anthropic (Claude models) - https://console.anthropic.com/settings/keys
-- Google (Gemini models) - https://ai.google.dev/gemini-api/docs/api-key
+* OpenAI (GPT models)- [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
+
+* Anthropic (Claude models) - [https://console.anthropic.com/settings/keys](https://console.anthropic.com/settings/keys)
+
+* Google (Gemini models) - [https://ai.google.dev/gemini-api/docs/api-key](https://ai.google.dev/gemini-api/docs/api-key)
 
 After you obtain your API key, store it in a **private and secure** location. GPT-trainer recommends that you use a separate API
 key for each of your BYOK applications (including GPT-trainer), and to never share your API key with anyone else.
@@ -56,45 +58,56 @@ associated with running your BYOK account, we provide the following references.
 <Note>
   LLM providers change their pricing from time to time, so the information we
   provide may not always be up-to-date. For latest information on pricing,
-  please visit: - OpenAI (GPT models): https://openai.com/pricing - Anthropic
-  (Claude models): https://www.anthropic.com/pricing#anthropic-api - Google
-  (Gemini models): https://ai.google.dev/pricing#1_5flash
+  please visit: 
+  
+  - OpenAI (GPT models): https://openai.com/pricing 
+  - Anthropic (Claude models): https://www.anthropic.com/pricing#anthropic-api
+  - Google (Gemini models): https://ai.google.dev/pricing#1\_5flash
 </Note>
 
 The simplest estimate you can use is this:
 
-- Each Message Credit costs ~$0.0032 USD
+* Each Message Credit costs \~$0.0032 USD
 
-For example, GPT-4-1106-4k uses 20 MCs per query. To estimate the cost in USD, multiply \$0.0032 \* 20 = \$0.064 USD.
+For example, GPT-4-1106-4k uses 20 MCs per query. To estimate the cost in USD, multiply $0.0032 \* 20 = $0.064 USD.
 
 This is a very rough estimate. Actual spend may be around +/- 20% of the estimated number. This is because LLM usage is measured
 based on "tokens", and input vs. output tokens cost different amounts even for the same LLM. To understand tokens, we
-refer you to this article: https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them.
+refer you to this article: [https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them.](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them.)
 
 There are many parts to a LLM query. At a high level, they can be broken down into:
 
 Input:
 
-- System prompt and metadata
-- User-defined base prompt
-- Variables and definitions
-- Conversation label definitions
-- Function metadata and descriptions
-- Function parameters
-- Function response
-- Static RAG context
-- Conversation memory
+* System prompt and metadata
+
+* User-defined base prompt
+
+* Variables and definitions
+
+* Conversation label definitions
+
+* Function metadata and descriptions
+
+* Function parameters
+
+* Function response
+
+* Static RAG context
+
+* Conversation memory
 
 Output:
 
-- Text response
-- Response metadata
+* Text response
+
+* Response metadata
 
 ### OpenAI pricing breakdown
 
 GPT-trainer supports a variety of OpenAI LLMs, as well as different versions of the same LLM with custom token limit cutoffs.
 To help you budget for your usage, we provide a summary based on our **default** split of reserved input vs. output tokens. Please refer
-to the following table (all \$ are in USD). Please note that this generally represents an upper limit since not all input / output tokens
+to the following table (all $ are in USD). Please note that this generally represents an upper limit since not all input / output tokens
 in the reservation window are used every single LLM query.
 
 | Model           | Reserved for Input | Reserved for Output | Cost / Input Token | Cost / Output Token | Total Cost per Query |
@@ -135,18 +148,21 @@ are listed below.
 
 1. AI Agent intent generation
 
-- Applicable if two or more AI Agents are connected
-- Charged whenever a new user-facing AI Agent goes live or an existing one is edited
+* Applicable if two or more AI Agents are connected
 
-2. Query intent classification
+* Charged whenever a new user-facing AI Agent goes live or an existing one is edited
 
-- Applicable if two or more user-facing Agents are connected
-- Charged on a per query basis
+1. Query intent classification
 
-3. Variable extraction
+* Applicable if two or more user-facing Agents are connected
 
-- Applicable if AI Agent has one or more variables set up
-- Charged on a per query basis
+* Charged on a per query basis
+
+1. Variable extraction
+
+* Applicable if AI Agent has one or more variables set up
+
+* Charged on a per query basis
 
 The estimated costs associated with each workflow is as follows:
 
