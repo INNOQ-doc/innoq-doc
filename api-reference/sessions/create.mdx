@@ -6,13 +6,13 @@ description: "Create a chat session for a chatbot specified by chatbot uuid"
 
 ### Path
 
-<ParamField path="uuid" type="string" required/>
+<ParamField path="uuid" type="string" required />
 
 ### Response
 
-<ResponseField name="created_at" type="string"/>
-<ResponseField name="modified_at" type="string"/>
-<ResponseField name="uuid" type="string"/>
+<ResponseField name="created_at" type="string" />
+<ResponseField name="modified_at" type="string" />
+<ResponseField name="uuid" type="string" />
 
 <RequestExample>
 
@@ -32,7 +32,7 @@ headers = {
     'Authorization': 'Bearer <token>'
 }
 
-response = requests.post(url,  headers=headers, params=params)
+response = requests.post(url,  headers=headers)
 
 if response.status_code == 200:
     print("Request successful!")
@@ -43,23 +43,24 @@ else:
 ```
 
 ```ts JavaScript
-const axios = require('axios');
+const axios = require("axios");
 
-const uuid = '<chatbot-uuid>'
+const uuid = "<chatbot-uuid>";
 const url = `https://app.gpt-trainer.com/api/v1/chatbot/${uuid}/session/create`;
 const headers = {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer <token>'
+  "Content-Type": "application/json",
+  Authorization: "Bearer <token>",
 };
 
-axios.post(url, { headers  })
-    .then(response => {
-        console.log('Request successful!');
-        console.log(response.data);
-    })
-    .catch(error => {
-        console.error('Request failed:', error);
-    });
+axios
+  .post(url, { headers })
+  .then((response) => {
+    console.log("Request successful!");
+    console.log(response.data);
+  })
+  .catch((error) => {
+    console.error("Request failed:", error);
+  });
 ```
 
 </RequestExample>
@@ -72,7 +73,6 @@ axios.post(url, { headers  })
   "modified_at": "string",
   "uuid": "string"
 }
-
 ```
 
 </ResponseExample>
