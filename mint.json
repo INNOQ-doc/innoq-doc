@@ -179,6 +179,5 @@
     "auth": {
       "method": "bearer"
     }
-  },
-  "openapi": "https://app.gpt-trainer.com/api/apidoc/openapi.json"
+  }
 }
