@@ -171,7 +171,11 @@
     },
     {
       "group": "Integrations",
-      "pages": ["whitelabel/whitelabel-zapier", "whitelabel/whitelabel-make"]
+      "pages": [
+        "whitelabel/whitelabel-zapier",
+        "whitelabel/whitelabel-make",
+        "whitelabel/whitelabel-meta"
+      ]
     }
   ],
   "api": {
