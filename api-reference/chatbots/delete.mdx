@@ -1,19 +1,20 @@
 ---
 title: "Delete Chatbot"
 api: "DELETE https://app.gpt-trainer.com/api/v1/chatbot/{uuid}/delete"
-description: "Delete single chatbot base on uuid"
+description: "Delete single chatbot base on chatbot uuid"
 ---
 
 ### Path
 
-<ParamField path="uuid" type="string" required/>
+<ParamField path="uuid" type="string" required>
+  Chatbot uuid
+</ParamField>
 
 ### Response
 
 <ResponseField name="success" type="boolean">
   Indicates if api call was successful
 </ResponseField>
-
 
 <RequestExample>
 
@@ -41,21 +42,22 @@ else:
 ```
 
 ```ts JavaScript
-const axios = require('axios');
+const axios = require("axios");
 
-const uuid = '<chatbot-uuid>'
+const uuid = "<chatbot-uuid>";
 const url = `https://app.gpt-trainer.com/api/v1/chatbot/${uuid}/delete`;
 const headers = {
-    'Authorization': 'Bearer <token>'
+  Authorization: "Bearer <token>",
 };
 
-axios.delete(url, { headers })
-    .then(response => {
-        console.log('Request successful! Chatbot deleted.');
-    })
-    .catch(error => {
-        console.error('Request failed:', error);
-    });
+axios
+  .delete(url, { headers })
+  .then((response) => {
+    console.log("Request successful! Chatbot deleted.");
+  })
+  .catch((error) => {
+    console.error("Request failed:", error);
+  });
 ```
 
 </RequestExample>
@@ -66,7 +68,6 @@ axios.delete(url, { headers })
 {
   "success": true
 }
-
 ```
 
 </ResponseExample>

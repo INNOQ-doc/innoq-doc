@@ -1,12 +1,14 @@
 ---
 title: "Update Chatbot"
 api: "POST https://app.gpt-trainer.com/api/v1/chatbot/{uuid}/update"
-description: "Update chatbot meta base on uuid"
+description: "Update chatbot meta base on chatbot uuid"
 ---
 
 ### Path
 
-<ParamField path="uuid" type="string" required />
+<ParamField path="uuid" type="string" required>
+  Chatbot uuid
+</ParamField>
 
 ### Body
 

@@ -6,28 +6,31 @@ description: "Fetch the list of sessions for a chatbot specified by chatbot uuid
 
 ### Path
 
-<ParamField path="uuid" type="string" required/>
+<ParamField path="uuid" type="string" required>
+  Chatbot uuid
+</ParamField>
 
 ### Response
 
 <ResponseField name="" type="object[]">
-Session list
-<Expandable title="Session properties">
-<ResponseField name="created_at" type="string"/>
-<ResponseField name="modified_at" type="string"/>
-<ResponseField name="uuid" type="string"/>
-<ResponseField name="meta" type="meta Object">
-  Session meta properties
-  <Expandable title="properties">
-    <ResponseField name="user" type="user Object">
-      Exists when lead form was submitted by user
-    </ResponseField>
-    <ResponseField name="auth_data" type="auth_data Object">
-      Exists when user completes "User Identity Verification" and "Save Data on Success" feature is enabled
+  Session list
+  <Expandable title="Session properties">
+    <ResponseField name="created_at" type="string" />
+    <ResponseField name="modified_at" type="string" />
+    <ResponseField name="uuid" type="string" />
+    <ResponseField name="meta" type="meta Object">
+      Session meta properties
+      <Expandable title="properties">
+        <ResponseField name="user" type="user Object">
+          Exists when lead form was submitted by user
+        </ResponseField>
+        <ResponseField name="auth_data" type="auth_data Object">
+          Exists when user completes "User Identity Verification" and "Save Data
+          on Success" feature is enabled
+        </ResponseField>
+      </Expandable>
     </ResponseField>
   </Expandable>
-</ResponseField>
-</Expandable>
 </ResponseField>
 
 <RequestExample>
@@ -57,22 +60,23 @@ else:
 ```
 
 ```ts JavaScript
-const axios = require('axios');
+const axios = require("axios");
 
-const uuid = '<chatbot-uuid>'
+const uuid = "<chatbot-uuid>";
 const url = `https://app.gpt-trainer.com/api/v1/chatbot/${uuid}/sessions`;
 const headers = {
-    'Authorization': 'Bearer <token>'
+  Authorization: "Bearer <token>",
 };
 
-axios.get(url, { headers })
-    .then(response => {
-        console.log('Request successful!');
-        console.log(response.data);
-    })
-    .catch(error => {
-        console.error('Request failed:', error);
-    });
+axios
+  .get(url, { headers })
+  .then((response) => {
+    console.log("Request successful!");
+    console.log(response.data);
+  })
+  .catch((error) => {
+    console.error("Request failed:", error);
+  });
 ```
 
 </RequestExample>
@@ -81,13 +85,12 @@ axios.get(url, { headers })
 
 ```json Response
 [
-    {
-        "created_at": "string",
-        "modified_at": "string",
-        "uuid": "string"
-    }
+  {
+    "created_at": "string",
+    "modified_at": "string",
+    "uuid": "string"
+  }
 ]
-
 ```
 
 </ResponseExample>
