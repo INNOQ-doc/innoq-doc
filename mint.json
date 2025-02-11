@@ -125,6 +125,7 @@
         "api-reference/messages/properties-reference",
         "api-reference/messages/create",
         "api-reference/messages/fetch_multi",
+        "api-reference/messages/fetch-message-history",
         "api-reference/messages/delete",
         "api-reference/messages/delete_multi"
       ]
