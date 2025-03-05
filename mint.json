@@ -28,9 +28,9 @@
   },
   "anchors": [
     {
-      "name": "API References",
-      "icon": "code",
-      "url": "api-reference"
+      "name": "Integrations",
+      "icon": "network-wired",
+      "url": "integrations"
     },
     {
       "name": "Tools",
@@ -160,6 +160,10 @@
     {
       "group": "Tools",
       "pages": ["tools/weekday"]
+    },
+    {
+      "group": "Integrations",
+      "pages": ["integrations/slack"]
     },
     {
       "group": "Whitelabel Dashboard",
