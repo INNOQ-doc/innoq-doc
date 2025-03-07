@@ -28,6 +28,11 @@
   },
   "anchors": [
     {
+      "name": "API References",
+      "icon": "code",
+      "url": "api-reference"
+    },
+    {
       "name": "Integrations",
       "icon": "network-wired",
       "url": "integrations"
