@@ -1,5 +1,5 @@
 ---
-title: Creating plans and pricing considerations
+title: "Creating plans and pricing considerations"
 ---
 
 In the "Subscriptions" tab of your whitelabel dashboard, you can use the "Create new plan" and "Create new addons" buttons to create paid plans and add-ons once you have created or linked your Stripe account to your app.
@@ -7,7 +7,7 @@ In the "Subscriptions" tab of your whitelabel dashboard, you can use the "Create
 If you would like to edit your paid plan or add-on after you have created it, we ask that you do this through Stripe. This is because there are many complications that can arise, especially if there are already users paying for the plan or add-on that you want to change.
 
 <Frame>
-  <img src="/images/whitelabel-dash-8.png" />
+  ![](/images/whitelabel-dash-8.png)
 </Frame>
 
 In your Stripe account, you can edit your Products as needed. As seen in the example above, you can change its name, description, metadata, and feature list(not shown in screenshot). Do not change the Unit label. You can change the integer or boolean value of each metadata row to adjust the limits of your plan. Do not change the names of the rows (e.g. "agents_count"), as the app relies on those keys to interface with Stripe, and changing them would break the app. If you would like further assistance with editing your Stripe Products and Prices, please contact us.
@@ -40,7 +40,7 @@ Below are the metadata fields that are available for you to change:
 | gpt_4_enabled              | bool                | Whether user can use advanced AI models (not only GPT-4, but also 4o, etc.)                                                                                                                        |
 | api_enabled                | bool                | Whether user can use the API                                                                                                                                                                       |
 | webhooks                   | bool                | Whether user can use webhooks                                                                                                                                                                      |
-| library_access             | bool                | Whether the user has the access to the Chatbot Library                                                                                                                                             |
+| library_access             | bool                | Whether the user has the access to the "Chatbot Library"                                                                                                                                           |
 | chatbot_retrain            | bool                | Whether user can automatically retrain datasources                                                                                                                                                 |
 | watermark_removal          | bool                | Whether user can remove the watermark from their bot                                                                                                                                               |
 | chatbot_profile_picture    | bool                | Whether user can set a profile picture for their bot                                                                                                                                               |
@@ -53,6 +53,6 @@ Below are the metadata fields that are available for you to change:
 | allow_chatbot_transfer     | bool                | Whether user can transfer their chatbots to other users                                                                                                                                            |
 | chunk_view_enabled         | bool                | Whether user can view and edit the extracted chunks of their datasources directly                                                                                                                  |
 | source_tracking_enabled    | bool                | Whether user can cite and share datasources directly in their chatbot responses                                                                                                                    |
-| zapier_integration         | bool                | Whether user can connect to your Zapier or Make.com integration. Note: you must publish the integrations first!                                                                                    |
+| zapier_integration         | bool                | Whether user can connect to your Zapier or Make.com integration. Note: you must publish the integrations first\!                                                                                   |
 | meta_integration           | bool                | Whether user can connect to their Facebook Messenger, Instagram, or WhatsApp accounts. Note: you must set up your Meta App according to the guide.                                                 |
 | sms_enabled                | bool                | Whether the user can connect the chatbot to SMS messages on their phone. Note: You must set up the SMS service with Ytel according to their guide                                                  |
