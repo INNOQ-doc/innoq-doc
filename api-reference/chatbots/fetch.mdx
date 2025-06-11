@@ -1,6 +1,6 @@
 ---
 title: "Fetch a Chatbot"
-api: "GET https://app.gpt-trainer.com/api/v1/chatbot/{uuid}"
+api: "GET https://app.innochat.ch/api/v1/chatbot/{uuid}"
 description: "Fetch single chatbot base on chatbot uuid"
 ---
 
@@ -31,7 +31,7 @@ description: "Fetch single chatbot base on chatbot uuid"
 <RequestExample>
 
 ```bash Curl
-curl --location --request GET 'https://app.gpt-trainer.com/api/v1/chatbot/{chatbot-uuid}' \
+curl --location --request GET 'https://app.innochat.ch/api/v1/chatbot/{chatbot-uuid}' \
 --header 'Authorization: Bearer <token>'
 ```
 
@@ -39,7 +39,7 @@ curl --location --request GET 'https://app.gpt-trainer.com/api/v1/chatbot/{chatb
 import requests
 
 uuid = '<chatbot-uuid>'
-url = f'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}'
+url = f'https://app.innochat.ch/api/v1/chatbot/{uuid}'
 headers = {
     'Authorization': 'Bearer <token>'
 }
@@ -58,7 +58,7 @@ else:
 const axios = require("axios");
 
 const uuid = "<chatbot-uuid>";
-const url = `https://app.gpt-trainer.com/api/v1/chatbot/${uuid}`;
+const url = `https://app.innochat.ch/api/v1/chatbot/${uuid}`;
 const headers = {
   Authorization: "Bearer <token>",
 };
