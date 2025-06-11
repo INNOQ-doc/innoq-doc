@@ -1,6 +1,6 @@
 ---
 title: "Create URL Source"
-api: "POST https://app.gpt-trainer.com/api/v1/chatbot/{uuid}/data-source/url"
+api: "POST https://app.innochat.ch/api/v1/chatbot/{uuid}/data-source/url"
 description: "Create a URL source for a chatbot specified by chatbot uuid"
 ---
 
@@ -31,7 +31,7 @@ description: "Create a URL source for a chatbot specified by chatbot uuid"
 <RequestExample>
 
 ```bash Curl
-curl --location --request POST 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}/data-source/url' \
+curl --location --request POST 'https://app.innochat.ch/api/v1/chatbot/{uuid}/data-source/url' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer <token>' \
 --data-raw '{
@@ -43,7 +43,7 @@ curl --location --request POST 'https://app.gpt-trainer.com/api/v1/chatbot/{uuid
 import requests
 
 uuid = '<chatbot-uuid>'
-url = f'https://app.gpt-trainer.com/api/v1/chatbot/{uuid}/data-source/url'
+url = f'https://app.innochat.ch/api/v1/chatbot/{uuid}/data-source/url'
 headers = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer <token>'
@@ -67,7 +67,7 @@ else:
 const axios = require("axios");
 
 const uuid = "<chatbot-uuid>";
-const url = `https://app.gpt-trainer.com/api/v1/chatbot/${uuid}/data-source/url`;
+const url = `https://app.innochat.ch/api/v1/chatbot/${uuid}/data-source/url`;
 const headers = {
   "Content-Type": "application/json",
   Authorization: "Bearer <token>",
