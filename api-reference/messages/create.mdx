@@ -1,6 +1,6 @@
 ---
 title: "Create Message"
-api: "POST https://app.gpt-trainer.com/api/v1/session/{uuid}/message/stream"
+api: "POST https://app.innochat.ch/api/v1/session/{uuid}/message/stream"
 description: "Create a session message for a chatbot session specified by session uuid"
 ---
 
@@ -28,7 +28,7 @@ description: "Create a session message for a chatbot session specified by sessio
 <RequestExample>
 
 ```bash Curl
-curl --location --request POST 'https://app.gpt-trainer.com/api/v1/session/{uuid}/message/stream' \
+curl --location --request POST 'https://app.innochat.ch/api/v1/session/{uuid}/message/stream' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer <token>' \
 --data-raw '{"query": "Your query goes here"}'
@@ -38,7 +38,7 @@ curl --location --request POST 'https://app.gpt-trainer.com/api/v1/session/{uuid
 import requests
 
 uuid = '<session-uuid>'
-url = f"https://app.gpt-trainer.com/api/v1/session/{uuid}/message/stream"
+url = f"https://app.innochat.ch/api/v1/session/{uuid}/message/stream"
 headers = {
     "Authorization": "Bearer <token>",
     "Content-Type": "application/json"
@@ -63,7 +63,7 @@ const xhr = new XMLHttpRequest();
 const uuid = "<session-uuid>";
 xhr.open(
   "POST",
-  `https://app.gpt-trainer.com/api/v1/session/${uuid}/message/stream`,
+  `https://app.innochat.ch/api/v1/session/${uuid}/message/stream`,
   true
 );
 
