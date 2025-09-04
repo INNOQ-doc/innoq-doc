@@ -24,7 +24,7 @@ It is essential to set up an API endpoint that will handle the verification of u
 
 1. **Specify the API Endpoint:** In your chatbot settings, provide the URL of the API endpoint. This is the server address where the token verification requests will be sent.
 
-2. **Configure for POST Requests:** Ensure that your API endpoint is configured to handle POST requests. This is crucial as the innoChat will send token data via POST requests for verification.
+2. **Configure for POST Requests:** Ensure that your API endpoint is configured to handle POST requests. This is crucial as the INNOCHAT will send token data via POST requests for verification.
 
 <Frame>
   <img src="/images/user-identity-2.png" />
@@ -34,7 +34,7 @@ It is essential to set up an API endpoint that will handle the verification of u
 
 Here's what happens each time a chat is initiated:
 
-1. **Token Submission:** Whenever a chat is rendered, innoChat automatically sends a verification request to the provided API endpoint. This request includes the user's token.
+1. **Token Submission:** Whenever a chat is rendered, INNOCHAT automatically sends a verification request to the provided API endpoint. This request includes the user's token.
 
 2. **Processing the Request:** Your API endpoint should process this request, verifying the token's validity.
 
