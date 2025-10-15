@@ -104,7 +104,7 @@ Given inputs like departure and arrival station (name or ID), optional via‑sta
 - capacity: optional capacities for 1st/2nd class  
 
 <Frame>
-  <img src="/images/swiss-transport-agent-function-1.png" />
+  <img src="/images/swiss-transport-agent-function-2.png" />
 </Frame>
 
 **API Endpoint:** http://transport.opendata.ch/v1/connections
@@ -112,7 +112,7 @@ Given inputs like departure and arrival station (name or ID), optional via‑sta
 **Method:** GET
 
 <Frame>
-  <img src="/images/swiss-transport-agent-function-2.png" />
+  <img src="/images/swiss-transport-agent-function-3.png" />
 </Frame>
 
 **Parameters:**
@@ -188,7 +188,7 @@ Given inputs like departure and arrival station (name or ID), optional via‑sta
 
 
 <Frame>
-  <img src="/images/swiss-transport-agent-function-3.png" />
+  <img src="/images/swiss-transport-agent-function-4.png" />
 </Frame>
 
 ### **Example Input**
@@ -203,3 +203,13 @@ Dep Zürich HB 09:02 → Arr Bern 10:00 (0h58, 1 transfer)
   Real-time: on time.
   **If no match found:**
   >“I’m sorry, I couldn’t find matching connections.”
+
+
+### Summary
+| Feature |	Description |
+|----------|--------|
+| Level | Basic |
+| Agents | 1 |
+| Function Calls | 1 (swiss_connection_search) |
+| Goal | Display Swiss public-transport connections |
+| Output | Friendly text summary with times, transfers, and platforms |
