@@ -34,7 +34,7 @@
     },
     {
       "name": "Cookbook",
-      "icon": "open-book",
+      "icon": "book-open",
       "url": "cookbook"
     },
     {
@@ -103,7 +103,7 @@
     {
       "group": "Basic",
       "pages": [
-        "cookbook/basic_use_case_1"
+        "cookbook/swiss-transport-agent"
       ]
     },
     {
