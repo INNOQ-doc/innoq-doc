@@ -33,6 +33,11 @@
       "url": "api-reference"
     },
     {
+      "name": "Cookbook",
+      "icon": "open-book",
+      "url": "cookbook"
+    },
+    {
       "name": "Integrations",
       "icon": "network-wired",
       "url": "integrations"
@@ -87,6 +92,30 @@
         "api-reference/guide-00-chatbot-create",
         "api-reference/guide-01-chat",
         "api-reference/guide-02-source"
+      ]
+    },
+    {
+      "group": "Cookbook",
+      "pages": [
+        "cookbook/overview"
+      ]
+    },
+    {
+      "group": "Basic",
+      "pages": [
+        "cookbook/basic_use_case_1"
+      ]
+    },
+    {
+      "group": "Intermediate",
+      "pages": [
+        "cookbook/intermediate_use_case_1"
+      ]
+    },
+    {
+      "group": "Advanced",
+      "pages": [
+        "cookbook/advanced_use_case_1"
       ]
     },
     {
