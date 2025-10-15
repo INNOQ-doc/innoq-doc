@@ -28,7 +28,7 @@ This recipe demonstrates **one AI agent** connected to **one function call** (`s
 </Frame>
 
 **Prompt:** 
-<PromptField>
+
 ```text
 You are the **Swiss Transport Assistant**, an AI helper for Swiss public transport.
 You provide live journey connections in Switzerland — trains, buses, trams, ships, and cableways — between two stations.
@@ -70,7 +70,7 @@ Notes: Real-time shows no major delays; minor platform or minute changes possibl
 - Never guess schedules — only respond with function output.
 - If user asks unrelated questions, gently redirect: “I’m here to help with Swiss public transport info.”
 ```
-</PromptField>
+
 
 **Temperature:** A parameter that controls the randomness or creativity of a large language model's output by adjusting the probability of selecting the next word.
 
@@ -117,7 +117,7 @@ Given inputs like departure and arrival station (name or ID), optional via‑sta
 
 **Parameters:**
 
-<FunctionCall>
+
 ```json
   
   {
@@ -185,13 +185,12 @@ Given inputs like departure and arrival station (name or ID), optional via‑sta
   "additionalProperties": false
 }  
 ```
-</FunctionCall>
+
 
 <Frame>
   <img src="/images/swiss-transport-agent-function-3.png" />
 </Frame>
 
-### **Step 4: Test the Chatbot**
 ### **Example Input**
 > Next train from Zürich to Bern at 09:00
 
