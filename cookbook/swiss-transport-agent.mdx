@@ -5,7 +5,28 @@ title: 'Swiss Transport Chatbot'
 ## 🧭 Overview
 
 The **Swiss Transport Chatbot** provides live public-transport connections across Switzerland — including **trains, trams, buses, ships, and cableways**.  
-This recipe demonstrates **one AI agent** connected to **one function call** (`swiss_connection_search`).
+This recipe demonstrates **one AI agent** connected to **one function call** 
+(`swiss_connection_search`).
+
+## 🔧 What you’ll build
+- **Agent name:** `Swiss Transport Agent`
+- **Functions (1):**
+  1. `swiss_connection_search` — public-transport connections across Switzerland
+  
+
+## ⚙️ Prerequisites
+- INNOCHAT workspace with Agent builder access.
+
+## 🛠️ Quick architecture
+
+```mermaid
+flowchart TD
+    User[🧑 User] --> Agent[🤖 Swiss Transport Agent]
+    Agent --> API[(OpenData.ch)] 
+    API --> Response[(JSON Response)]
+    Response --> Output[📰 Friendly Transport Summary]
+
+```
 
 ## 🪜 Steps to Build
 
@@ -191,7 +212,7 @@ Given inputs like departure and arrival station (name or ID), optional via‑sta
   <img src="/images/swiss-transport-agent-function-4.png" />
 </Frame>
 
-## **Example**
+## 💡 **Example**
 ### **Example Input**
 > Next train from Zürich to Bern at 09:00
 
@@ -206,7 +227,7 @@ Dep Zürich HB 09:02 → Arr Bern 10:00 (0h58, 1 transfer)
   >“I’m sorry, I couldn’t find matching connections.”
 
 
-## Summary
+## 🧾 Summary
 | **Feature** |	**Description** |
 |-------------|-----------------|
 | Level | Basic |
