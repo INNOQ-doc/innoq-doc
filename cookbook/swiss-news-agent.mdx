@@ -13,10 +13,10 @@ You’ll build **Swiss News**, a chatbot that:
 <Callout> Because we are using **function calls** for live data, **skip the Knowledge section** (no trained sources needed). </Callout>
 
 ## What you’ll build
-- **Agent name:** 'Swiss News'
+- **Agent name:** `Swiss News`
 - **Functions (2):**
-  1. 'getTopHeadlines' — curated/top stories
-  2. 'searchNews' — keyword search with filters 
+  1. `getTopHeadlines` — curated/top stories
+  2. `searchNews` — keyword search with filters 
 
 ## Prerequisites
 - A **GNews.io API key (v4)**.
@@ -100,7 +100,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
   <img src="/images/swiss_news_agent_function.png" />
 </Frame>
 
-#### Function call - 1: 'getTopHeadlines'
+#### Function call - 1: `getTopHeadlines`
 
 **Function Name:** getTopHeadlines
 
@@ -112,7 +112,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 
 **API Endpoint:** https://gnews.io/api/v4/top-headlines?apikey=YOUR_API_KEY
 
-**Method:** 'GET'
+**Method:** `GET`
 
 <Frame>
   <img src="/images/swiss_news_agent_function_1_2.png" />
@@ -193,7 +193,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
   <img src="/images/swiss_news_agent_function_1_3.png" />
 </Frame>
 
-#### Function call - 2: 'searchNews'
+#### Function call - 2: `searchNews`
 
 **Function Name:** searchNews
 
@@ -205,7 +205,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 
 **API Endpoint:** https://gnews.io/api/v4/search?q=example&apikey=YOUR_API_KEY
 
-**Method:** 'GET'
+**Method:** `GET`
 
 <Frame>
   <img src="/images/swiss_news_agent_function_2_2.png" />
@@ -281,20 +281,23 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
   "additionalProperties": false
 }
 ```
+
 <Frame>
   <img src="/images/swiss_news_agent_function_2_3.png" />
 </Frame>
 
 ## **Example**
+
 <Frame>
   <img src="/images/swiss_news_agent_example.png" />
 </Frame>
 
 ## **Summary**
-| **Feature** |	**Description** |
-|-------------|-----------------|
-| Level | Intermediate |
-| Agents | 1 |
-| Function Calls | 2 (getTopHeadlines, searchNews) |
-| Goal | Provide Swiss news headlines and topic-specific articles using GNews |
-| Output | Concise, friendly summaries with headlines and keyword-based results |
+
+| **Feature** | **Description** |
+|--------------|-----------------|
+| **Level** | Intermediate |
+| **Agents** | 1 |
+| **Function Calls** | 2 (`getTopHeadlines`, `searchNews`) |
+| **Goal** | Provide Swiss news headlines and topic-specific articles using GNews |
+| **Output** | Concise, friendly summaries with headlines and keyword-based results |
