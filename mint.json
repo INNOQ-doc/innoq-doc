@@ -17,6 +17,9 @@
       "to": "#F6B7BB"
     }
   },
+  "features": {
+    "mermaid": true
+  },
   "topbarLinks": [
     {
       "name": "Support",

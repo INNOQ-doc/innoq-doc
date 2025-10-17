@@ -12,19 +12,27 @@ You’ll build **Swiss News**, a chatbot that:
 - runs keyword news searches with filters like date range, language, and source fields.
 <Callout> Because we are using **function calls** for live data, **skip the Knowledge section** (no trained sources needed). </Callout>
 
-## What you’ll build
+## 🔧 What you’ll build
 - **Agent name:** `Swiss News`
 - **Functions (2):**
   1. `getTopHeadlines` — curated/top stories
   2. `searchNews` — keyword search with filters 
 
-## Prerequisites
+## ⚙️ Prerequisites
 - A **GNews.io API key (v4)**.
 - INNOCHAT workspace with Agent builder access.
 
-## Quick architecture
-```pgsql
-User → Swiss News Agent (GPT) → getTopHeadlines / searchNews → GNews API → JSON → Agent reply
+## 🛠️ Quick architecture
+```mermaid
+flowchart TD
+    User[🧑 User] --> Agent[🤖 Swiss News Agent]
+    Agent --> Decision{Which function?}
+    Decision --> Headlines[getTopHeadlines 📈]
+    Decision --> Search[searchNews 🔍]
+    Headlines & Search --> API[(GNews API)]
+    API --> Response[(JSON Response)]
+    Response --> Output[📰 Friendly News Summary]
+
 
 ```
 ### Step-1: Create or Edit a Customer Support Agent
@@ -286,13 +294,13 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
   <img src="/images/swiss_news_agent_function_2_3.png" />
 </Frame>
 
-## **Example**
+## 💡 **Example**
 
 <Frame>
   <img src="/images/swiss_news_agent_example.png" />
 </Frame>
 
-## **Summary**
+## 🧾 **Summary**
 
 | **Feature** | **Description** |
 |--------------|-----------------|
