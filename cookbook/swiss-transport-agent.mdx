@@ -11,7 +11,7 @@ This recipe demonstrates **one AI agent** connected to **one function call** (`s
 
 ### Step 1: Create or Edit a Customer Support Agent
 
-**Agent Name:** `Swiss Transport Assistant`
+**Agent Name:** `Swiss Transport Agent`
 
 **Description:** Provides live public-transport connections in Switzerland. Users can ask for upcoming trains, buses, trams, ships, and cableway journeys between two Swiss stations, optionally specifying via-stations, travel modes, date, time, and arrival/departure preference.
 
@@ -80,7 +80,7 @@ Notes: Real-time shows no major delays; minor platform or minute changes possibl
 
 ### Step 2: Knowledge
 
-Since it's basic agent creation with single LLM call, we can skip the Knowledge section and also uncheck the all sources parameter.
+Since it's a basic agent creation with single LLM call, we can skip the Knowledge section and also uncheck the all sources parameter.
 
 <Frame>
   <img src="/images/swiss-transport-agent-knowledge.png" />
@@ -109,7 +109,7 @@ Given inputs like departure and arrival station (name or ID), optional via‑sta
 
 **API Endpoint:** http://transport.opendata.ch/v1/connections
 
-**Method:** GET
+**Method:** 'GET'
 
 <Frame>
   <img src="/images/swiss-transport-agent-function-3.png" />
@@ -191,6 +191,7 @@ Given inputs like departure and arrival station (name or ID), optional via‑sta
   <img src="/images/swiss-transport-agent-function-4.png" />
 </Frame>
 
+## **Example**
 ### **Example Input**
 > Next train from Zürich to Bern at 09:00
 
@@ -206,8 +207,8 @@ Dep Zürich HB 09:02 → Arr Bern 10:00 (0h58, 1 transfer)
 
 
 ### Summary
-| Feature |	Description |
-|----------|--------|
+| **Feature** |	**Description** |
+|-------------|-----------------|
 | Level | Basic |
 | Agents | 1 |
 | Function Calls | 1 (swiss_connection_search) |
