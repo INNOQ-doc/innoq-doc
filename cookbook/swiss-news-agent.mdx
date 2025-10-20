@@ -3,7 +3,7 @@ title: 'Swiss News Chatbot'
 description: 'Build a Swiss News chatbot that fetches headlines and runs keyword searches via GNews (two function calls).'
 ---
 
-## 🧭 Overview
+## Overview
 
 A **cookbook** is a set of short, copy-pasteable guides that show how to achieve common builds with INNOCHAT. This page covers the Intermediate pattern: **one agent with two function calls**.
 
@@ -12,26 +12,26 @@ You’ll build **Swiss News**, a chatbot that:
 - runs keyword news searches with filters like date range, language, and source fields.
 <Callout> Because we are using **function calls** for live data, **skip the Knowledge section** (no trained sources needed). </Callout>
 
-## 🔧 What you’ll build
+## What you’ll build
 - **Agent name:** `Swiss News`
 - **Functions (2):**
   1. `getTopHeadlines` — curated/top stories
   2. `searchNews` — keyword search with filters 
 
-## ⚙️ Prerequisites
+## Prerequisites
 - A **GNews.io API key (v4)**.
 - INNOCHAT workspace with Agent builder access.
 
-## 🛠️ Quick architecture
+## Quick architecture
 ```mermaid
 flowchart TD
-    User[🧑 User] --> Agent[🤖 Swiss News Agent]
+    User[User] --> Agent[Swiss News Agent]
     Agent --> Decision{Which function?}
-    Decision --> Headlines[getTopHeadlines 📈]
-    Decision --> Search[searchNews 🔍]
+    Decision --> Headlines[getTopHeadlines ]
+    Decision --> Search[searchNews ]
     Headlines & Search --> API[(GNews API)]
     API --> Response[(JSON Response)]
-    Response --> Output[📰 Friendly News Summary]
+    Response --> Output[ Friendly News Summary]
 
 
 ```
@@ -294,13 +294,13 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
   <img src="/images/swiss_news_agent_function_2_3.png" />
 </Frame>
 
-## 💡 **Example**
+## **Example**
 
 <Frame>
   <img src="/images/swiss_news_agent_example.png" />
 </Frame>
 
-## 🧾 **Summary**
+## **Summary**
 
 | **Feature** | **Description** |
 |--------------|-----------------|
