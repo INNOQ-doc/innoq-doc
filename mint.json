@@ -107,8 +107,7 @@
       "group": "Examples",
       "pages": [
         "cookbook/swiss-transport-agent",
-        "cookbook/swiss-news-agent",
-        "cookbook/swiss-tourism-agent"
+        "cookbook/swiss-news-agent"
       ]
     },
     {
