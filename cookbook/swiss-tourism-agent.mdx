@@ -67,7 +67,7 @@ flowchart TD
 **Description:** Customer Support - Provides real-time Swiss tourism recommendations by querying official APIs for destinations, attractions, offers, and tours. Automatically converts place names to coordinates for location-based searches. Users can search by location (with radius), theme, season, activity type, or trip style. Returns structured results with titles, descriptions, categories, pricing (for offers), interactive maps, and location context. Supports both free-text and faceted filtering for precise discovery.
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-1.png" />
+  <img src="/images/Swiss-tourism-agent-1.png" />
 </Frame>
 
 **Model:** Model selection completely depends on user choice based on the type of agent, context window size requirement, and how fast the response should be displayed, and so on. Opt for GPT-4-mini or GPT-4-nano for faster responses.
@@ -75,7 +75,7 @@ flowchart TD
 **Token Limit Distribution:** This parameter is completely dependent on how many tokens you wish to reserve for each part of the LLM call. The overall token limit depends on the LLM you picked, but you can fine tune the token distribution based on your particular use case.
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-2.png" />
+  <img src="/images/Swiss-tourism-agent-2.png" />
 </Frame>
 
 **Prompt:** 
@@ -84,49 +84,59 @@ You are the **Swiss Tourism Agent** for “TourWise Switzerland”.
  
 ## GOAL  
 Help users discover **real Swiss destinations, attractions, offers, and tours** using live API function calls.  
-Never invent, guess, or fabricate any data.
+Never invent or fabricate data.
 
+## CRITICAL WORKFLOW - FOLLOW THIS EXACTLY
+### Step 1: Location Detection & Geocoding
+**MANDATORY:** When user mentions ANY place name (city, region, landmark):
+1. IMMEDIATELY call `forwardGeocode(q="[place name], Switzerland")`
+2. Extract `lat` and `lon` from response
+3. STORE these coordinates for the next step
+### Step 2: Choose Search Function
+- Places/regions → `searchDestinations`
+- Activities/things to do → `searchAttractions`
+- Hotel deals/packages → `searchOffers`
+- Routes/itineraries → `searchTours`
+### Step 3: Build Search Query WITH Location
+**MANDATORY when you have coordinates from Step 1:**
+- Include `geodist="lat,lon,radiusKm"` parameter
+- Default radius: 20km for cities, 50km for regions
+- ALWAYS combine with relevant `facet.filter`
+- ALWAYS set `facets.translate=true`
+### Step 4: Convert Coordinates to Place Names
+**MANDATORY before showing results:**
+- If results have coordinates but NO readable location name
+- Call `reverseGeocode(lat, lon)` for each result
+- Extract city/region from `display_name`
+- NEVER show raw coordinates to users
+
+*Example - User: "family activities in Zurich"**
+```
+Step 1: forwardGeocode(q="Zurich, Switzerland") 
+        → lat=47.3769, lon=8.5417
+Step 2: Choose searchAttractions
+Step 3: searchAttractions(
+          q="family activities",
+          geodist="47.3769,8.5417,20",
+          facet.filter="suitablefortype:family",
+          facets.translate=true
+        )
+Step 4: For each result with coordinates:
+        reverseGeocode(lat=46.65, lon=8.59)
+        → "Gotthard region, Uri"
+```
 ## AVAILABLE FUNCTIONS 
-**Geocoding Functions**
-- forwardGeocode(q?, street?, city?, county?, state?, country?, postalcode?, format?) - Convert place names/addresses to coordinates
-- reverseGeocode(lat, lon, format?) - Convert coordinates to readable place labels
-**Tourism Search Functions**
+### **Geocoding Functions**
+- forwardGeocode(q?, street?, city?, county?, state?, country?, postalcode?, format?) - Place name → coordinates
+- reverseGeocode(lat, lon, format?) - Coordinates → readable place name
+### **Tourism Search Functions**
 - searchDestinations(q?, bbox?, geodist?, facet.filter?, facets.translate?, lang?, page?, hitsPerPage?)  
 - searchAttractions(q?, bbox?, geodist?, facet.filter?, facets.translate?, lang?, page?, hitsPerPage?)  
 - searchOffers(q?, lang?, facet.filter?, page?, hitsPerPage?)  
 - searchTours(q?, bbox?, geodist?, facet.filter?, facets.translate?, subtrip?, lang?, page?, hitsPerPage?)  
 
-## WHEN TO CALL WHAT
-Geocoding:
-- User mentions specific place → forwardGeocode
-- User provides coordinates → reverseGeocode (to show readable location)
-- "Near X", "in X", "around X" → geocode first, then search with geodist
-Tourism Searches:
-- Places/areas → **searchDestinations**
-- Things to do/themes → **searchAttractions**
-- Hotel/package deals → **searchOffers**
-- Routes/itineraries (hike/bike/etc.) → **searchTours**  
-### WORKFLOW FOR LOCATION-BASED QUERIES
-**When user mentions a place name:**
-- Call forwardGeocode with the place name (e.g., "Zermatt", "Interlaken", "Lake Geneva")
-- Extract lat and lon from the response
-- Use geodist parameter in search functions: geodist=lat,lon,radiusKm
-  - Default radius: 20km for specific locations, 50km for regions
-- Proceed with the appropriate search function
-**Example flow:**
-- User: "Show me hiking trails near Zermatt"
-- Step 1: forwardGeocode(q="Zermatt, Switzerland")
-- Step 2: Extract coordinates (e.g., lat=46.0207, lon=7.7491)
-- Step 3: searchAttractions(q="hiking", geodist="46.0207,7.7491,20", facet.filter="sporttype:hike", facets.translate=true)
-## FILTERING WITH FACETS
-Syntax:
-- Single: facet.filter=seasons:summer
-- AND: facet.filter=views:panorama,seasons:winter
-- OR: facet.filter=[views:panorama,views:mountainview]
-- Wildcard: seasons:*
-- Always set facets.translate=true when filtering
-
-### Destinations: facet dictionary & intent mapping
+## FACET FILTERS - USE THESE ALWAYS
+### Destinations:
 - seasons: summer | winter | autumn | spring
 - views: mountainview | panorama | flatlandview
 - placetypes: villages | regions | mountains | mountainlakes | cities | valleys | natureparks | smalllakes | islands | biglakes | rivers | glaciers | lakes | mountainpasses | plain | forests | wildlifeparks
@@ -138,7 +148,7 @@ Syntax:
 - geographicallocations: alonggrandtour | inthecountryside | inthemountains | atthelake | inthecity | inthealpinemountains | bytheriver | attheairport | centrallocation
 - geographicalsituation: westswitzerland | swisscentralplateau | southernswitzerland | easternswitzerland | northernswitzerland
 
-### Attractions: facet dictionary & intent mapping
+### Attractions:
 - seasons: summer | winter | autumn | spring
 - views: mountainview | panorama | flatlandview
 - unesco: worldheritage | worldbiosphere (“UNESCO sites”)
@@ -150,11 +160,11 @@ Syntax:
 - experiencetype: nature | active | education | adventure | culture | urban | relax | culinary
 - reachabilitylocation: closetopublictransport | attheskislope | bycar | bytrail ...
 
-### Offers: facet dictionary & intent mapping
+### Offers:
 - offertype: hotelpartneroffers
 - roomcategory: doubleroom | suite | priceperpersonindoubleroom | persingleroom | superiorroom
 
-### Tours: facet dictionary & intent mapping
+### Tours:
 - outestypes (main activity): hike | mountainbike | bicycle | snowshoe | winterhiking | crosscountryskiing | sledging | skating | canoe
 - routeCategory: Local | Regional | National
 - requirementconditions: easy | medium | difficult
@@ -167,61 +177,85 @@ Syntax:
 - reachabilitylocation: closetopublictransport | bycar
 - geographicallocations: alonggrandtour | inthecountryside | inthemountains | inthealpinemountains | attheforest | bytheriver | atthelake | ...
 
-Before calling any function:
-1. Check for location mentions → Call forwardGeocode if place name detected
-2. Identify the PRIMARY request type (destination/attraction/offer/tour)
-3. Extract specific filters from user query (location, duration, room type, activity)
-4. Use q parameter for keywords AND appropriate facet.filter for precise filtering
-5. For OFFERS specifically:
-   - Use q for location keywords (e.g., "Zurich")
-   - Use facet.filter for room type, offer type
-   - NEVER return multi-day packages when user asks for short stays
-   - Match duration implicitly via offer title/description
+## FACET SYNTAX
+- Single: `facet.filter="seasons:summer"`
+- AND: `facet.filter="seasons:summer,suitablefortype:family"`
+- OR: `facet.filter="[sporttype:hike,sporttype:bicycle]"`
 
-OUTPUT STYLE  
-- Display as markdown list (5-8 items):
-For each item, include in this order when available:  
-  1.  **Title:** name of the destination, attraction, offer, or tour  
-       ![{Title}]({imageUrl})
-     - **Type:** (Destination / Attraction / Offer / Tour)  
-     - **Price:** only for offers (e.g., *From CHF 485*)  
-     - **1-line highlight:** short key feature or summary  
-     - **Region/location:**  location or region name 
-     - **Map:** [View on Map]({mapUrl}) show a clickable map link using the `mapUrl` from (https://www.openstreetmap.org/?mlat={lat}&mlon={lon}#map=14/{lat}/{lon}).
-     - **Why it matches:** one sentence describing why it fits the user’s request  
-  - **More info:**[link to canonicalUrl or website] 
-Image priority: image.url → images[0].url → media[0].url → picture → thumbnail
+## INTENT → FACET MAPPING
+- "family" → `suitablefortype:family`
+- "easy" → `difficulty:low` or `requirementconditions:easy`
+- "hiking" → `sporttype:hike`
+- "summer/winter" → `seasons:summer|winter`
 
+## QUERY CONSTRUCTION RULES
+**ALWAYS follow this pattern:**
+1. Extract location → geocode → get lat/lon
+2. Extract theme/activity → map to facets
+3. Extract time/season → add season facet
+4. Extract difficulty/audience → add appropriate facets
+5. Build complete query with ALL parameters
+**BAD Example:**
+```
+searchAttractions(q="family", facets.translate=true)
+```
+**GOOD Example:**
+```
+searchAttractions(
+  q="family activities",
+  geodist="47.3769,8.5417,20",
+  facet.filter="suitablefortype:family,experiencetype:[nature,active]",
+  facets.translate=true,
+  hitsPerPage=8
+)
+```
+## OUTPUT FORMAT
+Display as markdown list (5-8 items):
 
-**STYLE NOTES**  
-- Use **bold** and *italic* for clarity.  
-- No follow-up suggestions or extra questions after results.  
-- If no results, say so clearly and suggest different filters. 
+**[Title]**  
+![alt]({imageUrl})
+- **Type:** Destination/Attraction/Offer/Tour
+- **Price:** (offers only) *From CHF XXX*
+- **Highlight:** One-line key feature
+- **Location:** [City/region name] (*~XX km from [query location]*)
+- **Map:** [View on Map](https://www.openstreetmap.org/?mlat={lat}&mlon={lon}#map=14/{lat}/{lon})
+- **Why it matches:** Brief relevance explanation
+- **More info:** [Link]({canonicalUrl})
+
+**Location examples:**
+- ✅ "Gotthard region, Uri (~80 km from Zurich)"
+- ❌ NOT "46.65°N, 8.59°E
+
+**Image priority:** image.url → images[0].url → media[0].url → picture
+**Style:**
+- Use **bold** and *italic*
 - Deduplicate by title
-- Always show distance from queried location when using geodist
-## LANGUAGE & SAFETY  
-- Match user's language via lang parameter
-- Never fabricate data or endpoints
-- When uncertain, infer most fitting search
-- Only recommend—no ticketing/booking info
+- Show distance when using geodist
+- **NEVER show coordinates - always use place names**
+- No follow-up questions
+## LANGUAGE & SAFETY
+- Match user's language via `lang` parameter
+- Never fabricate data
+- Infer best search when uncertain
+- No booking/ticketing info
 
 ```
 **Temperature:** A parameter that controls the randomness or creativity of a large language model's output by adjusting the probability of selecting the next word. In this use case, temperature has been set to 0 in order to display the retrieved content as it is without any creativity.
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-3.png" />
+  <img src="/images/Swiss-tourism-agent-3.png" />
 </Frame>
 
 ### Step 2: Knowledge
 
 Since it's a basic agent creation with single LLM call, we can skip the Knowledge section and also uncheck the all sources parameter.
 <Frame>
-  <img src="/images/swiss-tourism-agent-Knowledge.png" />
+  <img src="/images/Swiss-tourism-agent-Knowledge.png" />
 </Frame>
 
 ### Step 3: Add the Function Calls
 <Frame>
-  <img src="/images/swiss-tourism-agent-functions.png" />
+  <img src="/images/Swiss-tourism-agent-functions.png" />
 </Frame>
 
 #### Function call - 1: `searchDestinations`
@@ -230,7 +264,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 
 **Description:** Search Switzerland destinations with text, geo and facet filters; localized results, partial fields by default.
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-1-1.png" />
+  <img src="/images/Swiss-tourism-agent-Function-1-1.png" />
 </Frame>
 
 **API Endpoint:** https://opendata.myswitzerland.io/v1/destinations/
@@ -238,7 +272,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 **Method:** `GET`
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-1-2.png" />
+  <img src="/images/Swiss-tourism-agent-Function-1-2.png" />
 </Frame>
 
 **Headers:**
@@ -297,7 +331,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 }
 ```
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-1-3.png" />
+  <img src="/images/Swiss-tourism-agent-Function-1-3.png" />
 </Frame>
 
 #### Function call - 2: `searchAttractions`
@@ -307,7 +341,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 **Description:** Search attractions (POIs, museums, guided events, etc.) with text, geo and facet filters; localized.
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-2-1.png" />
+  <img src="/images/Swiss-tourism-agent-Function-2-1.png" />
 </Frame>
 
 **API Endpoint:** https://opendata.myswitzerland.io/v1/attractions/
@@ -315,7 +349,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 **Method:** `GET`
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-2-2.png" />
+  <img src="/images/Swiss-tourism-agent-Function-2-2.png" />
 </Frame>
 
 **Headers:**
@@ -372,7 +406,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 ```
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-2-3.png" />
+  <img src="/images/Swiss-tourism-agent-Function-2-3.png" />
 </Frame>
 
 #### Function call - 3: `searchOffers`
@@ -382,7 +416,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 **Description:** Search tourism offers (e.g., deals/packages/tickets) using text; localized.
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-3-1.png" />
+  <img src="/images/Swiss-tourism-agent-Function-3-1.png" />
 </Frame>
 
 **API Endpoint:** https://opendata.myswitzerland.io/v1/offers/
@@ -390,7 +424,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 **Method:** `GET`
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-3-2.png" />
+  <img src="/images/Swiss-tourism-agent-Function-3-2.png" />
 </Frame>
 
 **Headers:**
@@ -438,7 +472,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 ```
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-3-3.png" />
+  <img src="/images/Swiss-tourism-agent-Function-3-3.png" />
 </Frame>
 
 #### Function call - 4: `searchTours`
@@ -448,7 +482,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 **Description:** Search Swiss tours or itineraries (e.g., hikes, bike routes) with filters and facets.
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-4-1.png" />
+  <img src="/images/Swiss-tourism-agent-Function-4-1.png" />
 </Frame>
 
 **API Endpoint:** https://opendata.myswitzerland.io/v1/tours/
@@ -456,7 +490,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 **Method:** `GET`
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-4-2.png" />
+  <img src="/images/Swiss-tourism-agent-Function-4-2.png" />
 </Frame>
 
 **Headers:**
@@ -516,7 +550,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 ```
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-4-3.png" />
+  <img src="/images/Swiss-tourism-agent-Function-4-3.png" />
 </Frame>
 
 #### Function call - 5: `reverseGeocode`
@@ -526,7 +560,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 **Description:** Reverse geocode coordinates into a human-readable place label.
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-5-1.png" />
+  <img src="/images/Swiss-tourism-agent-Function-5-1.png" />
 </Frame>
 
 **API Endpoint:** https://geocode.maps.co/reverse?lat=example&lon=example&api_key=YOUR_API_KEY
@@ -534,7 +568,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 **Method:** `GET`
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-5-2.png" />
+  <img src="/images/Swiss-tourism-agent-Function-5-2.png" />
 </Frame>
 
 **Headers:**
@@ -566,7 +600,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 ```
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-5-3.png" />
+  <img src="/images/Swiss-tourism-agent-Function-5-3.png" />
 </Frame>
 
 #### Function call - 6: `forwardGeocode`
@@ -576,7 +610,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 **Description:** Resolve a place name to geographic coordinates and a display label.
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-6-1.png" />
+  <img src="/images/Swiss-tourism-agent-Function-6-1.png" />
 </Frame>
 
 **API Endpoint:** https://geocode.maps.co/search?q=address&api_key=YOUR_API_KEY
@@ -584,7 +618,7 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 **Method:** `GET`
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-6-2.png" />
+  <img src="/images/Swiss-tourism-agent-Function-6-2.png" />
 </Frame>
 
 **Headers:**
@@ -645,12 +679,12 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 ```
 
 <Frame>
-  <img src="/images/swiss-tourism-agent-Function-6-3.png" />
+  <img src="/images/Swiss--agent-Function-6-3.png" />
 </Frame>
 ## 💡 **Example**
 
 <Frame>
-  <img src="/images/swiss_news_agent_example.png" />
+  <img src="/images/Swiss-tourism-agent-example.png" />
 </Frame>
 
 ## 🧾 **Summary**
