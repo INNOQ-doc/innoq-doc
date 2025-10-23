@@ -1,11 +1,11 @@
 ---
 title: 'Tourwise Switzerland'
-description: 'Build a Swiss Tourism chatbot that fetches destinations, attractions, offers, and tours via OpenData.ch (4 function calls).'
+description: 'Build a Swiss Tourism chatbot that fetches destinations, attractions, offers, and tours via OpenData.ch (6 function calls).'
 ---
 
 ## 🧭 Overview
 
-A **cookbook** is a set of short, copy-pasteable guides that show how to achieve common builds with INNOCHAT. Create an INNOCHAT chatbot that answers with real Swiss tourism data via four list endpoints: `searchDestinations`, `searchAttractions`, `searchOffers`, and `searchTours`. The agent chooses the right call based on the user’s intent and never fabricates results.
+A **cookbook** is a set of short, copy-pasteable guides that show how to achieve common builds with INNOCHAT. Create an INNOCHAT chatbot that answers with real Swiss tourism data via six list endpoints: `searchDestinations`, `searchAttractions`, `searchOffers`, `searchTours`, `forwardGeocode`, and `backwardGeocode`. The agent chooses the right call based on the user’s intent and never fabricates results.
 
 <Callout> Because we are using **function calls** for live data, **skip the Knowledge section** (no trained sources needed). </Callout>
 
@@ -22,6 +22,8 @@ A **cookbook** is a set of short, copy-pasteable guides that show how to achieve
   - `searchAttractions`
   - `searchOffers`
   - `searchTours`
+  - `forwardGeocode`
+  - `backwardGeocode`
 - Basic familiarity with request parameters (text query, region filters, pagination, language)
 
 ## 🛠️ Quick architecture
@@ -40,24 +42,26 @@ flowchart TD
   R -->|Deals & packages| OF[searchOffers]
   R -->|Routes & itineraries| T[searchTours]
   
-  D -->|Apply geodist if location| C[Has coordinates<br/>but no place name?]
-  AT -->|Apply geodist if location| C
-  OF -->|Location-based filtering| C
-  T -->|Apply geodist if location| C
+  D -->|Apply geodist if location| RES[Receive Results]
+  AT -->|Apply geodist if location| RES
+  OF -->|Location-based filtering| RES
+  T -->|Apply geodist if location| RES
+
+  RES --> C{Has coordinates<br/>but no place name?}
 
   C -->|Yes| RG[reverseGeocode<br/>Get readable location]
-  C -->|No| P
+  C -->|No| P[Deduplicate & Format]
   
-  RG -->|Deduplicate & enrich| P[Format results]
+  RG --> P
   P -->|Markdown with maps & links| U
   
   style FG fill:#e1f5ff
   style RG fill:#e1f5ff
   style L fill:#fff4e6
   style R fill:#fff4e6
+  style RES fill:#e8f5e9
+  style C fill:#fff4e6
   style P fill:#f0f9ff
-  style C fill:#f0f9ff
-
 
 
 ```
@@ -197,11 +201,11 @@ Step 4: For each result with coordinates:
 4. Extract difficulty/audience → add appropriate facets
 5. Build complete query with ALL parameters
 **BAD Example:**
-```
+
 searchAttractions(q="family", facets.translate=true)
-```
+
 **GOOD Example:**
-```
+
 searchAttractions(
   q="family activities",
   geodist="47.3769,8.5417,20",
@@ -209,7 +213,7 @@ searchAttractions(
   facets.translate=true,
   hitsPerPage=8
 )
-```
+
 ## OUTPUT FORMAT
 Display as markdown list (5-8 items):
 
