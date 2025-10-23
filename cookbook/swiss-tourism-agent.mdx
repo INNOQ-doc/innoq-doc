@@ -3,21 +3,21 @@ title: 'Tourwise Switzerland'
 description: 'Build a Swiss Tourism chatbot that fetches destinations, attractions, offers, and tours via OpenData.ch (6 function calls).'
 ---
 
-## 🧭 Overview
+## Overview
 
 A **cookbook** is a set of short, copy-pasteable guides that show how to achieve common builds with INNOCHAT. Create an INNOCHAT chatbot that answers with real Swiss tourism data via six list endpoints: `searchDestinations`, `searchAttractions`, `searchOffers`, `searchTours`, `forwardGeocode`, and `backwardGeocode`. The agent chooses the right call based on the user’s intent and never fabricates results.
 
 <Callout> Because we are using **function calls** for live data, **skip the Knowledge section** (no trained sources needed). </Callout>
 
-## 🔧 What you’ll build
+## What you’ll build
 - **Agent name:** `Swiss Tourism Agent`
 - Maps user requests to one of four API functions.
 -  Applies optional filters (query, bbox/region, geo distance, facets, pagination, language).
 -  Responds in friendly human text (no raw JSON in replies)
 
-## ⚙️ Prerequisites
-- NNOCHAT workspace with permission to create chatbots & agents
-- The four list endpoints exposed as callable functions (or connectors)
+## Prerequisites
+- INNOCHAT workspace with permission to create chatbots & agents
+- The six list endpoints exposed as callable functions (or connectors)
   - `searchDestinations`
   - `searchAttractions`
   - `searchOffers`
@@ -25,8 +25,9 @@ A **cookbook** is a set of short, copy-pasteable guides that show how to achieve
   - `forwardGeocode`
   - `backwardGeocode`
 - Basic familiarity with request parameters (text query, region filters, pagination, language)
+- Geocoding API key 
 
-## 🛠️ Quick architecture
+## Quick architecture
 ```mermaid
 flowchart TD
   U[User] -->|asks question| A[Swiss Tourism Agent]
@@ -116,7 +117,7 @@ Never invent or fabricate data.
 - NEVER show raw coordinates to users
 
 *Example - User: "family activities in Zurich"**
-```
+
 Step 1: forwardGeocode(q="Zurich, Switzerland") 
         → lat=47.3769, lon=8.5417
 Step 2: Choose searchAttractions
@@ -129,7 +130,7 @@ Step 3: searchAttractions(
 Step 4: For each result with coordinates:
         reverseGeocode(lat=46.65, lon=8.59)
         → "Gotthard region, Uri"
-```
+
 ## AVAILABLE FUNCTIONS 
 ### **Geocoding Functions**
 - forwardGeocode(q?, street?, city?, county?, state?, country?, postalcode?, format?) - Place name → coordinates
@@ -686,13 +687,13 @@ Since it's a basic agent creation with single LLM call, we can skip the Knowledg
 <Frame>
   <img src="/images/Swiss--agent-Function-6-3.png" />
 </Frame>
-## 💡 **Example**
+## **Example**
 
 <Frame>
   <img src="/images/Swiss-tourism-agent-example.png" />
 </Frame>
 
-## 🧾 **Summary**
+## **Summary**
 
 | **Feature** | **Description** |
 |--------------|-----------------|
