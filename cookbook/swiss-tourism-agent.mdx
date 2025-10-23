@@ -31,31 +31,32 @@ flowchart TD
   A -->|Analyze query| L{Location mentioned?}
   
   L -->|Yes, place name| FG[forwardGeocode]
-  L -->|Yes, coordinates| RG[reverseGeocode]
   L -->|No location| R
   
   FG -->|Extract lat/lon| R{Choose search function}
-  RG -->|Get place label| R
   
   R -->|Places/regions| D[searchDestinations]
   R -->|Things to do| AT[searchAttractions]
   R -->|Deals & packages| OF[searchOffers]
   R -->|Routes & itineraries| T[searchTours]
   
-  D -->|Apply geodist if location| P[Post-process & format]
-  AT -->|Apply geodist if location| P
-  OF -->|Location-based filtering| P
-  T -->|Apply geodist if location| P
+  D -->|Apply geodist if location| C[Has coordinates<br/>but no place name?]
+  AT -->|Apply geodist if location| C
+  OF -->|Location-based filtering| C
+  T -->|Apply geodist if location| C
+
+  C -->|Yes| RG[reverseGeocode<br/>Get readable location]
+  C -->|No| P
   
-  P -->|Deduplicate & enrich| F[Format results]
-  F -->|Markdown with maps & links| U
+  RG -->|Deduplicate & enrich| P[Format results]
+  P -->|Markdown with maps & links| U
   
   style FG fill:#e1f5ff
   style RG fill:#e1f5ff
   style L fill:#fff4e6
   style R fill:#fff4e6
   style P fill:#f0f9ff
-  style F fill:#f0f9ff
+  style C fill:#f0f9ff
 
 
 
