@@ -22,6 +22,14 @@
   },
   "topbarLinks": [
     {
+      "name": "🇬🇧 EN",
+      "url": "/"
+    },
+    {
+      "name": "🇩🇪 DE",
+      "url": "/de"
+    },
+    {
       "name": "Support",
       "url": "mailto:hello@innochat.ch"
     }
@@ -216,13 +224,6 @@
     "baseUrl": "https://app.innochat.ch/api",
     "auth": {
       "method": "bearer"
-    }
-  },
-  "i18n": {
-    "default": "en",
-    "locales": ["en", "de"],
-    "translations": {
-      "de": "/i18n/de.json"
     }
   }
 }
