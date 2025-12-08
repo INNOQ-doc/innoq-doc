@@ -20,6 +20,10 @@
   },
   "topbarLinks": [
     {
+      "name": "🌐 Languages",
+      "url": "/languages"
+    },
+    {
       "name": "Support",
       "url": "mailto:hello@innochat.ch"
     }
@@ -27,40 +31,40 @@
   "primaryTab": {
     "name": "Documentation"
   },
-  "anchors": [
-    {
-      "name": "API References",
-      "icon": "code",
-      "url": "api-reference"
-    },
-    {
-      "name": "Cookbook",
-      "icon": "book-open",
-      "url": "cookbook"
-    },
-    {
-      "name": "Integrations",
-      "icon": "network-wired",
-      "url": "integrations"
-    },
-    {
-      "name": "Tools",
-      "icon": "gear",
-      "api": {
-        "baseUrl": "https://tools.innochat.ch/",
-        "auth": {
-          "method": "bearer"
-        }
-      },
-      "url": "tools"
-    },
-    {
-      "name": "Whitelabel",
-      "icon": "browser",
-      "url": "whitelabel"
-    }
-  ],
   "navigation": {
+    "anchors": [
+      {
+        "name": "API References",
+        "icon": "code",
+        "url": "api-reference"
+      },
+      {
+        "name": "Cookbook",
+        "icon": "book-open",
+        "url": "cookbook"
+      },
+      {
+        "name": "Integrations",
+        "icon": "network-wired",
+        "url": "integrations"
+      },
+      {
+        "name": "Tools",
+        "icon": "gear",
+        "api": {
+          "baseUrl": "https://tools.innochat.ch/",
+          "auth": {
+            "method": "bearer"
+          }
+        },
+        "url": "tools"
+      },
+      {
+        "name": "Whitelabel",
+        "icon": "browser",
+        "url": "whitelabel"
+      }
+    ],
     "languages": [
       {
         "language": "en",
