@@ -1,5 +1,72 @@
 {
   "name": "innoChat API",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/logo/favicon.png",
+  "colors": {
+    "primary": "#2E3F51",
+    "light": "#516F90",
+    "dark": "#0D001D",
+    "background": {
+      "dark": "#111827"
+    },
+    "anchors": {
+      "from": "#ED727B",
+      "to": "#F6B7BB"
+    }
+  },
+  "features": {
+    "mermaid": true
+  },
+  "topbarLinks": [
+    {
+      "name": "🇬🇧 EN",
+      "url": "/"
+    },
+    {
+      "name": "🇩🇪 DE",
+      "url": "/de/introduction"
+    },
+    {
+      "name": "Support",
+      "url": "mailto:hello@innochat.ch"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "API-Referenzen",
+      "icon": "code",
+      "url": "de/api-reference"
+    },
+    {
+      "name": "Kochbuch",
+      "icon": "book-open",
+      "url": "de/cookbook"
+    },
+    {
+      "name": "Integrationen",
+      "icon": "network-wired",
+      "url": "de/integrations"
+    },
+    {
+      "name": "Werkzeuge",
+      "icon": "gear",
+      "api": {
+        "baseUrl": "https://tools.innochat.ch/",
+        "auth": {
+          "method": "bearer"
+        }
+      },
+      "url": "de/tools"
+    },
+    {
+      "name": "White-Label",
+      "icon": "browser",
+      "url": "de/whitelabel"
+    }
+  ],
   "navigation": [
     {
       "group": "Erste Schritte",
@@ -144,5 +211,14 @@
         "de/whitelabel/whitelabel-meta"
       ]
     }
-  ]
+  ],
+  "footerSocials": {
+    "website": "https://innochat.ch"
+  },
+  "api": {
+    "baseUrl": "https://app.innochat.ch/api",
+    "auth": {
+      "method": "bearer"
+    }
+  }
 }
