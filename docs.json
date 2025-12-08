@@ -29,34 +29,42 @@
     "name": "Dashboard",
     "url": "https://app.innochat.ch"
   },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    },
-    {
-      "name": "Cookbook",
-      "url": "cookbook"
-    },
-    {
-      "name": "Integrations",
-      "url": "integrations"
-    },
-    {
-      "name": "Tools",
-      "url": "tools"
-    },
-    {
-      "name": "Whitelabel",
-      "url": "whitelabel"
-    }
-  ],
+  "primaryTab": {
+    "name": "Documentation"
+  },
   "navigation": {
     "languages": [
       {
         "language": "en",
         "href": "/",
         "default": true,
+        "anchors": [
+          {
+            "name": "API References",
+            "icon": "code",
+            "url": "api-reference"
+          },
+          {
+            "name": "Cookbook",
+            "icon": "book-open",
+            "url": "cookbook"
+          },
+          {
+            "name": "Integrations",
+            "icon": "network-wired",
+            "url": "integrations"
+          },
+          {
+            "name": "Tools",
+            "icon": "gear",
+            "url": "tools"
+          },
+          {
+            "name": "Whitelabel",
+            "icon": "browser",
+            "url": "whitelabel"
+          }
+        ],
         "groups": [
           {
             "group": "Getting Started",
@@ -89,7 +97,7 @@
           },
           {
             "group": "API Usage Guides",
-            "tab": "API Reference",
+            "anchor": "API References",
             "pages": [
               "api-reference/api-key-setup",
               "api-reference/guide-00-chatbot-create",
@@ -99,7 +107,7 @@
           },
           {
             "group": "Chatbots",
-            "tab": "API Reference",
+            "anchor": "API References",
             "pages": [
               "api-reference/chatbots/properties-reference",
               "api-reference/chatbots/create",
@@ -111,7 +119,7 @@
           },
           {
             "group": "Agents",
-            "tab": "API Reference",
+            "anchor": "API References",
             "pages": [
               "api-reference/agents/properties-reference",
               "api-reference/agents/create",
@@ -122,7 +130,7 @@
           },
           {
             "group": "Chatbot Sessions",
-            "tab": "API Reference",
+            "anchor": "API References",
             "pages": [
               "api-reference/sessions/properties-reference",
               "api-reference/sessions/create",
@@ -133,7 +141,7 @@
           },
           {
             "group": "Session Messages",
-            "tab": "API Reference",
+            "anchor": "API References",
             "pages": [
               "api-reference/messages/properties-reference",
               "api-reference/messages/create",
@@ -145,7 +153,7 @@
           },
           {
             "group": "Data Sources",
-            "tab": "API Reference",
+            "anchor": "API References",
             "pages": [
               "api-reference/data-sources/properties-reference",
               "api-reference/data-sources/create-file",
@@ -160,7 +168,7 @@
           },
           {
             "group": "Data Source Tags",
-            "tab": "API Reference",
+            "anchor": "API References",
             "pages": [
               "api-reference/source-tags/create",
               "api-reference/source-tags/fetch-multi",
@@ -170,12 +178,12 @@
           },
           {
             "group": "Cookbook",
-            "tab": "Cookbook",
+            "anchor": "Cookbook",
             "pages": ["cookbook/overview"]
           },
           {
             "group": "Examples",
-            "tab": "Cookbook",
+            "anchor": "Cookbook",
             "pages": [
               "cookbook/swiss-transport-agent",
               "cookbook/swiss-news-agent",
@@ -184,22 +192,22 @@
           },
           {
             "group": "Integrations",
-            "tab": "Integrations",
+            "anchor": "Integrations",
             "pages": ["integrations/slack"]
           },
           {
             "group": "Tool Guides",
-            "tab": "Tools",
+            "anchor": "Tools",
             "pages": ["tools/tools-intro"]
           },
           {
             "group": "Tools",
-            "tab": "Tools",
+            "anchor": "Tools",
             "pages": ["tools/weekday"]
           },
           {
             "group": "Whitelabel Dashboard",
-            "tab": "Whitelabel",
+            "anchor": "Whitelabel",
             "pages": [
               "whitelabel/whitelabel-intro",
               "whitelabel/whitelabel-plans",
@@ -208,7 +216,7 @@
           },
           {
             "group": "Integrations",
-            "tab": "Whitelabel",
+            "anchor": "Whitelabel",
             "pages": [
               "whitelabel/whitelabel-zapier",
               "whitelabel/whitelabel-make",
@@ -220,6 +228,33 @@
       {
         "language": "de",
         "href": "/de",
+        "anchors": [
+          {
+            "name": "API-Referenzen",
+            "icon": "code",
+            "url": "api-reference"
+          },
+          {
+            "name": "Cookbook",
+            "icon": "book-open",
+            "url": "cookbook"
+          },
+          {
+            "name": "Integrationen",
+            "icon": "network-wired",
+            "url": "integrations"
+          },
+          {
+            "name": "Tools",
+            "icon": "gear",
+            "url": "tools"
+          },
+          {
+            "name": "Whitelabel",
+            "icon": "browser",
+            "url": "whitelabel"
+          }
+        ],
         "groups": [
           {
             "group": "Erste Schritte",
@@ -252,7 +287,7 @@
           },
           {
             "group": "API-Nutzung",
-            "tab": "API Reference",
+            "anchor": "API-Referenzen",
             "pages": [
               "de/api-reference/api-key-setup",
               "de/api-reference/guide-00-chatbot-create",
@@ -262,7 +297,7 @@
           },
           {
             "group": "Chatbots",
-            "tab": "API Reference",
+            "anchor": "API-Referenzen",
             "pages": [
               "de/api-reference/chatbots/properties-reference",
               "de/api-reference/chatbots/create",
@@ -274,7 +309,7 @@
           },
           {
             "group": "Agenten",
-            "tab": "API Reference",
+            "anchor": "API-Referenzen",
             "pages": [
               "de/api-reference/agents/properties-reference",
               "de/api-reference/agents/create",
@@ -285,7 +320,7 @@
           },
           {
             "group": "Chatbot-Sitzungen",
-            "tab": "API Reference",
+            "anchor": "API-Referenzen",
             "pages": [
               "de/api-reference/sessions/properties-reference",
               "de/api-reference/sessions/create",
@@ -296,7 +331,7 @@
           },
           {
             "group": "Sitzungsnachrichten",
-            "tab": "API Reference",
+            "anchor": "API-Referenzen",
             "pages": [
               "de/api-reference/messages/properties-reference",
               "de/api-reference/messages/create",
@@ -308,7 +343,7 @@
           },
           {
             "group": "Datenquellen",
-            "tab": "API Reference",
+            "anchor": "API-Referenzen",
             "pages": [
               "de/api-reference/data-sources/properties-reference",
               "de/api-reference/data-sources/create-file",
@@ -323,7 +358,7 @@
           },
           {
             "group": "Datenquellen-Tags",
-            "tab": "API Reference",
+            "anchor": "API-Referenzen",
             "pages": [
               "de/api-reference/source-tags/create",
               "de/api-reference/source-tags/fetch-multi",
@@ -333,12 +368,12 @@
           },
           {
             "group": "Cookbook",
-            "tab": "Cookbook",
+            "anchor": "Cookbook",
             "pages": ["de/cookbook/overview"]
           },
           {
             "group": "Beispiele",
-            "tab": "Cookbook",
+            "anchor": "Cookbook",
             "pages": [
               "de/cookbook/swiss-transport-agent",
               "de/cookbook/swiss-news-agent",
@@ -347,22 +382,22 @@
           },
           {
             "group": "Integrationen",
-            "tab": "Integrations",
+            "anchor": "Integrationen",
             "pages": ["de/integrations/slack"]
           },
           {
             "group": "Tool-Anleitungen",
-            "tab": "Tools",
+            "anchor": "Tools",
             "pages": ["de/tools/tools-intro"]
           },
           {
             "group": "Tools",
-            "tab": "Tools",
+            "anchor": "Tools",
             "pages": ["de/tools/weekday"]
           },
           {
             "group": "Whitelabel-Dashboard",
-            "tab": "Whitelabel",
+            "anchor": "Whitelabel",
             "pages": [
               "de/whitelabel/whitelabel-intro",
               "de/whitelabel/whitelabel-plans",
@@ -371,7 +406,7 @@
           },
           {
             "group": "Integrationen",
-            "tab": "Whitelabel",
+            "anchor": "Whitelabel",
             "pages": [
               "de/whitelabel/whitelabel-zapier",
               "de/whitelabel/whitelabel-make",
