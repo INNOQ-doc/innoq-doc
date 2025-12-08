@@ -20,10 +20,6 @@
   },
   "topbarLinks": [
     {
-      "name": "🌐 Languages",
-      "url": "/languages"
-    },
-    {
       "name": "Support",
       "url": "mailto:hello@innochat.ch"
     }
@@ -32,44 +28,44 @@
     "name": "Documentation"
   },
   "navigation": {
-    "anchors": [
-      {
-        "name": "API References",
-        "icon": "code",
-        "url": "api-reference"
-      },
-      {
-        "name": "Cookbook",
-        "icon": "book-open",
-        "url": "cookbook"
-      },
-      {
-        "name": "Integrations",
-        "icon": "network-wired",
-        "url": "integrations"
-      },
-      {
-        "name": "Tools",
-        "icon": "gear",
-        "api": {
-          "baseUrl": "https://tools.innochat.ch/",
-          "auth": {
-            "method": "bearer"
-          }
-        },
-        "url": "tools"
-      },
-      {
-        "name": "Whitelabel",
-        "icon": "browser",
-        "url": "whitelabel"
-      }
-    ],
     "languages": [
       {
         "language": "en",
         "href": "/",
         "default": true,
+        "anchors": [
+          {
+            "name": "API References",
+            "icon": "code",
+            "url": "api-reference"
+          },
+          {
+            "name": "Cookbook",
+            "icon": "book-open",
+            "url": "cookbook"
+          },
+          {
+            "name": "Integrations",
+            "icon": "network-wired",
+            "url": "integrations"
+          },
+          {
+            "name": "Tools",
+            "icon": "gear",
+            "api": {
+              "baseUrl": "https://tools.innochat.ch/",
+              "auth": {
+                "method": "bearer"
+              }
+            },
+            "url": "tools"
+          },
+          {
+            "name": "Whitelabel",
+            "icon": "browser",
+            "url": "whitelabel"
+          }
+        ],
         "groups": [
           {
             "group": "Getting Started",
@@ -219,6 +215,39 @@
       {
         "language": "de",
         "href": "/de",
+        "anchors": [
+          {
+            "name": "API-Referenzen",
+            "icon": "code",
+            "url": "api-reference"
+          },
+          {
+            "name": "Cookbook",
+            "icon": "book-open",
+            "url": "cookbook"
+          },
+          {
+            "name": "Integrationen",
+            "icon": "network-wired",
+            "url": "integrations"
+          },
+          {
+            "name": "Tools",
+            "icon": "gear",
+            "api": {
+              "baseUrl": "https://tools.innochat.ch/",
+              "auth": {
+                "method": "bearer"
+              }
+            },
+            "url": "tools"
+          },
+          {
+            "name": "Whitelabel",
+            "icon": "browser",
+            "url": "whitelabel"
+          }
+        ],
         "groups": [
           {
             "group": "Erste Schritte",
