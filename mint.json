@@ -22,6 +22,14 @@
   },
   "topbarLinks": [
     {
+    "name": "🇬🇧 English",
+    "url": "/introduction"
+  },
+  {
+    "name": "🇩🇪 Deutsch",
+    "url": "/de/introduction"
+  },
+    {
       "name": "Support",
       "url": "mailto:hello@innochat.ch"
     }
