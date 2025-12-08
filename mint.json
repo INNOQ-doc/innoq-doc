@@ -21,7 +21,17 @@
     "mermaid": true
   },
 
-  
+  "languages": [
+    {
+      "locale": "en",
+      "name": "English",
+      "default": true
+    },
+    {
+      "locale": "de",
+      "name": "Deutsch"
+    }
+  ],
 
   "topbarLinks": [
     {
@@ -214,7 +224,151 @@
     }
   ],
 
-  
+  "navigation.de": [
+    {
+      "group": "Erste Schritte",
+      "pages": ["de/introduction"]
+    },
+    {
+      "group": "Anleitungen",
+      "pages": [
+        "de/creating-first-chatbot",
+        "de/lead-collection",
+        "de/human-support-escalation",
+        "de/inbox-notifications",
+        "de/conversation-labeling",
+        "de/multi-agents-chatbot",
+        "de/fine-tuning-agent-intents",
+        "de/supervisor-overrides",
+        "de/byok-pricing-guide",
+        "de/working-with-tables",
+        "de/best-practices",
+        "de/help"
+      ]
+    },
+    {
+      "group": "Funktionsaufrufe",
+      "pages": ["de/rag-from-external-data-provider"]
+    },
+    {
+      "group": "API-Nutzung",
+      "pages": [
+        "de/api-reference/api-key-setup",
+        "de/api-reference/guide-00-chatbot-create",
+        "de/api-reference/guide-01-chat",
+        "de/api-reference/guide-02-source"
+      ]
+    },
+    {
+      "group": "Cookbook",
+      "pages": ["de/cookbook/overview"]
+    },
+    {
+      "group": "Beispiele",
+      "pages": [
+        "de/cookbook/swiss-transport-agent",
+        "de/cookbook/swiss-news-agent",
+        "de/cookbook/swiss-tourism-agent"
+      ]
+    },
+    {
+      "group": "Authentifizierungs-Webhook",
+      "pages": ["de/user-identity"]
+    },
+    {
+      "group": "Chatbots",
+      "pages": [
+        "de/api-reference/chatbots/properties-reference",
+        "de/api-reference/chatbots/create",
+        "de/api-reference/chatbots/update",
+        "de/api-reference/chatbots/fetch",
+        "de/api-reference/chatbots/fetch_multi",
+        "de/api-reference/chatbots/delete"
+      ]
+    },
+    {
+      "group": "Agenten",
+      "pages": [
+        "de/api-reference/agents/properties-reference",
+        "de/api-reference/agents/create",
+        "de/api-reference/agents/update",
+        "de/api-reference/agents/fetch_multi",
+        "de/api-reference/agents/delete"
+      ]
+    },
+    {
+      "group": "Chatbot-Sitzungen",
+      "pages": [
+        "de/api-reference/sessions/properties-reference",
+        "de/api-reference/sessions/create",
+        "de/api-reference/sessions/fetch",
+        "de/api-reference/sessions/fetch_multi",
+        "de/api-reference/sessions/delete"
+      ]
+    },
+    {
+      "group": "Sitzungsnachrichten",
+      "pages": [
+        "de/api-reference/messages/properties-reference",
+        "de/api-reference/messages/create",
+        "de/api-reference/messages/fetch_multi",
+        "de/api-reference/messages/fetch-message-history",
+        "de/api-reference/messages/delete",
+        "de/api-reference/messages/delete_multi"
+      ]
+    },
+    {
+      "group": "Datenquellen",
+      "pages": [
+        "de/api-reference/data-sources/properties-reference",
+        "de/api-reference/data-sources/create-file",
+        "de/api-reference/data-sources/create-qa",
+        "de/api-reference/data-sources/create-url",
+        "de/api-reference/data-sources/update",
+        "de/api-reference/data-sources/fetch_multi",
+        "de/api-reference/data-sources/retrain",
+        "de/api-reference/data-sources/delete",
+        "de/api-reference/data-sources/delete_multi"
+      ]
+    },
+    {
+      "group": "Datenquellen-Tags",
+      "pages": [
+        "de/api-reference/source-tags/create",
+        "de/api-reference/source-tags/fetch-multi",
+        "de/api-reference/source-tags/update",
+        "de/api-reference/source-tags/delete"
+      ]
+    },
+    {
+      "group": "Tool-Anleitungen",
+      "pages": ["de/tools/tools-intro"]
+    },
+    {
+      "group": "Tools",
+      "pages": ["de/tools/weekday"]
+    },
+    {
+      "group": "Integrationen",
+      "pages": ["de/integrations/slack"]
+    },
+    {
+      "group": "Whitelabel-Dashboard",
+      "pages": [
+        "de/whitelabel/whitelabel-intro",
+        "de/whitelabel/whitelabel-plans",
+        "de/whitelabel/whitelabel-users"
+      ]
+    },
+    {
+      "group": "Integrationen",
+      "pages": [
+        "de/whitelabel/whitelabel-zapier",
+        "de/whitelabel/whitelabel-make",
+        "de/whitelabel/whitelabel-meta"
+      ]
+    }
+  ],
 
   "api": {
     "baseUrl": "https://app.innochat.ch/api",
