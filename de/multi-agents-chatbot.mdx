@@ -3,7 +3,7 @@ Titel: Multi-Agenten-Chatbot
 Beschreibung: Erfahren Sie, wie INNOCHAT eine Multi-Agenten-Architektur für leistungsstarke Automatisierungen nutzt.
 ---
 
-INNOCHAT ist das erste und leistungsstärkste No-Code-KI-Chat-Framework mit Multi-Agenten-Architektur.  
+INNOCHAT ist das erste und leistungsstärkste No-Code-AI-Chat-Framework, das eine Multi-Agenten-Architektur implementiert.  
 Mehrere KI-Agenten arbeiten gemeinsam in einer koordinierten Orchestrierung, um fortgeschrittene Workflow-Automatisierungen zu ermöglichen.
 
 <Frame>
@@ -14,26 +14,26 @@ Dieses Handbuch soll Ihnen helfen, zu verstehen, wie unsere Agenten zusammenarbe
 
 Alle Agenten haben zwei Zustände:
 
-- Aktiv: Der Agent ist „Connected“. Er ist live und aktiv.
-- Inaktiv: Der Agent ist „Disabled“. Er führt keine Aktionen aus.
+- **Aktiv:** Der Agent ist „Connected“. Er ist live und aktiv.
+- **Inaktiv:** Der Agent ist „Disabled“. Er führt keine Aktionen aus.
 
-Zu jedem Zeitpunkt interagiert nur ein einzelner Agent direkt mit dem Benutzer.  
-Im Hintergrund arbeitet unser KI Supervisor in Echtzeit und entscheidet, welcher Agent die Anfrage des Nutzers bearbeiten soll.
+Zu jedem Zeitpunkt interagiert **nur ein einzelner Agent** direkt mit dem Benutzer.  
+Unser **KI Supervisor** arbeitet im Hintergrund in Echtzeit und entscheidet, welcher Agent die Anfrage des Nutzers bearbeiten soll.
 
 <Note>
   Agenten sind völlig voneinander isoliert.  
   Das bedeutet:
   - Sie können Agent B nicht aus Agent A heraus anweisen.  
-  - Sie können dem KI Supervisor nicht sagen, er solle „den Staffelstab weitergeben“.  
-  - Der KI Supervisor kann nicht per natürlicher Sprache instruiert werden.
-Note:
+  - Sie können dem KI-Supervisor nicht sagen, er solle „den Staffelstab weitergeben“.  
+  - Der KI-Supervisor kann nicht per natürlicher Sprache instruiert werden.
+</Note>
 
-Der AI-Supervisor verteilt Benutzeranfragen auf Agenten, basierend auf deren Agentenbeschreibung.  
+Der KI-Supervisor verteilt Benutzeranfragen auf Agenten basierend auf deren **Agentenbeschreibung**.  
 Wenn Sie nur einen Agenten haben, ist die Beschreibung weniger wichtig.  
-Arbeiten Sie jedoch mit mehreren Agenten, sollte die Beschreibung so eindeutig und präzise wie möglich sein.
+Arbeiten Sie jedoch mit mehreren Agenten, sollte die Beschreibung **so eindeutig und präzise wie möglich** sein.
 
-- „Agent Description” – Welche Aufgaben soll der Agent übernehmen?  
-- Agent Prompt: Wie soll der Agent diese Aufgaben ausführen?
+- **Agent Description** – Welche Aufgaben soll der Agent übernehmen?  
+- **Agent Prompt** – Wie soll der Agent diese Aufgaben ausführen?
 
 <Frame>
   <img src="/images/multi-agents-chatbot-5.png" />
@@ -41,102 +41,102 @@ Arbeiten Sie jedoch mit mehreren Agenten, sollte die Beschreibung so eindeutig u
 
 <Note>
   Die Agentenbeschreibung unterscheidet sich vom Prompt.  
-  Sie erklärt dem AI-Supervisor auf hoher Ebene, welche Arten von Benutzeranfragen der Agent behandeln soll.  
+  Die Beschreibung erklärt dem KI-Supervisor auf hoher Ebene, welche Arten von Benutzeranfragen der Agent behandeln soll.  
   Der Prompt enthält hingegen detaillierte Anweisungen zur Verhaltensweise des Agenten.
 </Note>
 
 Gute Agentenbeschreibungen beantworten die Frage:  
-„Welche Arten von Anfragen soll der Agent bearbeiten?”
+**„Welche Arten von Anfragen soll der Agent bearbeiten?“**
 
-Sie sollten alle relevanten User Intents enthalten, die der Agent abdecken soll.
+Sie sollten alle relevanten **User Intents** enthalten, die der Agent abdecken soll.
 
-Agentenbeschreibungen sollten nicht erklären, wie der Agent seine Aufgaben erledigt – das gehört in den Prompt.
+Agentenbeschreibungen **sollten nicht** erklären, *wie* der Agent seine Aufgaben erledigt – das gehört in den Prompt.
 
 Hier einige Beispiele guter Agentenbeschreibungen:
 
-AccordionGroup>
-  INNOCHAT Support:
-    Embody the role of „INNOCHAT Expert”, a specialized guide for INNOCHAT. Your main objective is to assist users with INNOCHAT-related questions.
-    - Use Cases
-    - Features und Möglichkeiten
-    - Datenverschlüsselung
+<AccordionGroup>
+  <Accordion title="INNOCHAT Support">
+    Embody the role of "INNOCHAT Expert," a specialized guide for INNOCHAT. Your main objective is to assist users with answering INNOCHAT-related questions related to:
+    - Use cases
+    - Features and capabilities
+    - Data security
     - Pricing
-    - AI Agents und Multi-Agent-Architektur
-    - User Identity Verification
-    - Chunk Curation
-    - Funktionsaufruf
-    - Partnerschaftsprogramm
-    - Custom Domains
+    - AI Agents and multi-Agent architecture
+    - User identity verification
+    - Chunk curation
+    - Function calling
+    - Partnership program
+    - Custom domains
     - Tokens
 
-    Alle Absichten, die von diesem Agenten bearbeitet werden, sollten sich auf INNOCHAT beziehen.
-  Accordion Close
+    All intents handled by this Agent should be related to INNOCHAT.
+  </Accordion>
 
-{“ “}
+{" "}
 
   <Accordion title="Product Expert">
-    Der Product Expert bearbeitet alle Nutzeranfragen zu den Produkten der Beispielfirma.  
-    Dies umfasst Fragen zu:
-    - Produktverfügbarkeit  
-    - Produktspezifikationen  
-    - Preis  
-    - Versandort  
-    - Garantie  
-    - Return Policy  
-    - Disclaimers, legal notices and warning labels  
+    The Product Expert handles any user queries related to Example Company's products.  
+    This includes questions regarding:
+    - Product availability  
+    - Product specifications  
+    - Price  
+    - Shipping location  
+    - Warranty  
+    - Return policy  
+    - Disclaimers, legal notices, and warning labels  
   </Accordion>
 
-{ " "}
+{" "}
 
-  Order Status Assistant:
-    Der Order Status Assistant beantwortet alle Nutzeranfragen zum Status einer Bestellung. Dies umfasst:
-    - Tracking of the product package  
+  <Accordion title="Order Status Assistant">
+    The Order Status Assistant handles any user queries related to an order's status. This includes:
+    - Product package tracking  
     - Current package location  
-    - Schätzung der Lieferzeit  
-    - Entschädigung bei verspäteter Lieferung  
+    - Estimated delivery time  
+    - Late delivery compensation  
   </Accordion>
-Was macht ein gutes Multi-Agenten-Chatbot-Design aus?
+</AccordionGroup>
 
-Was zeichnet ein gutes Multi-Agenten-Chatbot-Design aus?  
+Was macht ein gutes Multi-Agenten-Chatbot-Design aus?  
 Wie stelle ich sicher, dass alle Benutzerintentionen vom richtigen Agenten bearbeitet werden?
 
-Grundsätzlich eignet sich eine Multi-Agenten-Architektur hervorragend, um spezialisierte KI-Agenten als Team zusammenarbeiten zu lassen.  
+Grundsaetzlich eignet sich eine Multi-Agenten-Architektur hervorragend, um spezialisierte AI-Agenten als Team zusammenarbeiten zu lassen.  
 Jeder Agent kann:
 
 - auf unterschiedliche Trainingsdaten zugreifen,  
-- von einem anderen LLM betrieben werden und  
-- einen eigenen Prompt besitzen und  
+- von einem anderen LLM betrieben werden,  
+- einen eigenen Prompt besitzen,  
 - eigene Tools (Functions) erhalten.
 
 Dies ist deutlich effektiver, als alles in einen einzigen Agenten zu packen.
 
-Aus Sicht des Nutzers ist jedoch nicht erkennbar, dass mehrere Agenten beteiligt sind, da die Orchestrierung vollkommen nahtlos im Hintergrund erfolgt.  
-Bei richtiger Konfiguration fühlt sich der Chat wie ein Gespräch mit einem Menschen an.  
+Aus Sicht des Nutzers ist jedoch nicht erkennbar, dass mehrere Agenten beteiligt sind – die Orchestrierung erfolgt vollkommen nahtlos im Hintergrund.  
+Bei richtiger Konfiguration fühlt sich der Chat an wie ein Gespräch mit einem Menschen.  
 Ein Multi-Agenten-Chatbot kann deutlich leistungsstärker sein als Einzel-Agent-Systeme wie ChatGPT.
 
-Unser AI-Supervisor-Routing nutzt einen Algorithmus, der Latenz und Genauigkeit ausbalanciert.  
-Er wird nicht immer zu 100 % korrekt entscheiden, aber mit gutem Design kommen Sie diesem Ergebnis sehr nahe.
+Unser KI-Supervisor-Routing nutzt einen Algorithmus, der **Latenz und Genauigkeit** ausbalanciert.  
+Er wird nicht immer zu 100 % korrekt entscheiden, aber mit gutem Design kommen Sie sehr nahe heran.
 
-Debugging des Chatbots
+## Debugging des Chatbots
 
 Wenn der Chatbot nicht wie erwartet reagiert, gibt es zwei mögliche Ursachen:
 
 1. Der falsche Agent wurde zur Verarbeitung der Anfrage ausgewählt.  
 2. Der richtige Agent wurde ausgewählt, ist aber nicht optimal konfiguriert.
 
-Um zu prüfen, ob der richtige Agent ausgewählt wurde, gehen Sie zu „Inbox” und aktivieren Sie den Debug-Modus.
+Um zu prüfen, ob der richtige Agent ausgewählt wurde, gehen Sie zu **Inbox** und aktivieren Sie den Debug-Modus:
 
 <Frame>
   <img src="/images/multi-agents-chatbot-6.png" />
 </Frame>
 
-Unter Active Agent sehen Sie, welcher Agent die Antwort generiert hat.  
+Unter **Active Agent** sehen Sie, welcher Agent die Antwort generiert hat.  
 Diese Information wird nur angezeigt, wenn mehrere Agenten verbunden sind.
 
-Wenn der falsche Agent reagiert hat, bearbeiten Sie bitte seine Konfiguration (Name, Beschreibung oder Prompt).
+Wenn der falsche Agent reagiert hat, bearbeiten Sie seine Konfiguration – Name, Beschreibung oder Prompt.
 
-Wenn der richtige Agent reagiert hat, die Antwort aber nicht passt, liegt das Problem beim Agenten selbst.  
-Der einfachste Weg zur Verbesserung besteht darin, die Antwort direkt zu überarbeiten.
+Wenn der richtige Agent reagiert, die Antwort aber nicht passt, liegt das Problem beim Agenten selbst.  
+Der einfachste Weg zur Verbesserung besteht darin, die Antwort direkt zu überarbeiten:
 
 <Frame>
   <img src="/images/multi-agents-chatbot-4.png" />
@@ -152,5 +152,5 @@ Um den Agenten grundsätzlich robuster zu machen, können Sie:
 
 Weitere Informationen:
 
-- Best Practices für Trainingsdaten: [Best Practices für Trainingsdaten] (/best-practices)  
-- Agentenintentionen verfeinern: Fine-Tuning Agent Intents: [Fine-Tuning Agent Intents]  
+- Best Practices für Trainingsdaten: **[best practices for preparing training data](/best-practices)**  
+- Agentenintentionen verfeinern: **[Fine-Tuning Agent Intents](fine-tuning-agent-intents)**  
