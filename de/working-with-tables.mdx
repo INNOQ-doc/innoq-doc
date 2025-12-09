@@ -1,0 +1,113 @@
+---
+title: Arbeiten mit Tabellen und CSV
+description: Erfahren Sie, wie Sie CSV-Dateien und tabellarische strukturierte Daten in INNOCHAT hochladen und verwenden koennen.
+---
+
+INNOCHAT ermoeglicht Ihnen das Hochladen von Trainingsdaten in Form **einfacher** CSV- oder Excel-Tabellen.  
+„Einfache Tabellen“ beziehen sich auf tabellarische Daten ohne zusammengefasste Zellen, mit einer **einzigen Primaerschluessel-Spalte** mit eindeutigen Elementen, eindeutigen und aussagekraeftigen Spalten- oder Zeilentiteln und einer klaren **Spalten- oder Zeilen-Spalten-Struktur**.
+
+Beispiel für eine reine Spaltentabelle:
+
+<Frame>
+  <img src="/images/working-with-tables-1.png" />
+</Frame>
+
+_Alle Daten pro Zeile beziehen sich auf den Produktschluessel in der ersten Spalte._
+
+Beispiel für eine Zeilen/Spalten-Tabelle:
+
+<Frame>
+  <img src="/images/working-with-tables-2.png" />
+</Frame>
+
+_Jede Kombination aus Zeile und Spalte verweist auf einen spezifischen Zellwert._
+
+Es gibt keine maximale Anzahl an Spalten, jedoch gibt es ein Limit für die **Gesamtanzahl der Tokens pro Zeile**.  
+Wenn diese überschritten wird, laeuft das Training in einen Fehler.
+
+Stand **Maerz 2024** betraegt das Maximum **ca. 8000 Tokens pro Zeile** (inklusive des JSON-Codes, der zum Darstellen der Tabellenstruktur erforderlich ist).  
+Das bedeutet, dass der tatsaechliche Anteil für Werte geringer ausfaellt und von der Laenge von Spalten- und Zeilennamen abhaengt.
+
+Wenn Ihre Daten dem oben beschriebenen Format entsprechen, koennen Sie Ihre Tabelle als Trainingsquelle hochladen.  
+Dazu gehen Sie zu:
+
+**Sources → Add Sources → Tables**
+
+<Frame>
+  <img src="/images/working-with-tables-3.png" />
+</Frame>
+
+Bei Zeilen/Spalten-Tabellen muessen Sie nach dem Hochladen Folgendes tun:
+
+- Waehlen Sie die Tabelle aus  
+- Oeffnen Sie das Drei-Punkte-Menue rechts  
+- Klicken Sie auf **Edit Table Data**  
+
+<Frame>
+  <img src="/images/working-with-tables-4.png" />
+</Frame>
+
+Im Tabellen-Editor waehlen Sie nun **Row-Column Header** und klicken auf **Save Changes**.  
+Dies stellt sicher, dass die Daten korrekt für LLM-Verarbeitung vorverarbeitet werden.
+
+<Frame>
+  <img src="/images/working-with-tables-5.png" />
+</Frame>
+
+Danach koennen Sie die Tabellen als Referenzdaten beim Zuweisen der Wissensbasis für Ihre Agenten verwenden.
+
+Bitte beachten:  
+**GPT-4-Modelle übertreffen GPT-3.5-Modelle deutlich** hinsichtlich Praezision und Konsistenz beim Arbeiten mit Tabellen.
+
+<Frame>
+  <img src="/images/working-with-tables-6.png" />
+</Frame>
+
+_Beispiel für LLM-Retrieval basierend auf den oben gezeigten Beispieltabellen._
+
+## Mein Agent oder Chatbot versteht meine Tabelle nicht korrekt!
+
+LLMs wie GPT-4 sind hervorragend im Umgang mit **unstrukturiertem Text**.  
+Mit multimodaler Faehigkeit (z. B. GPT-Vision) koennen sie sogar Bilder interpretieren.  
+Tabellen sind jedoch etwas voellig anderes.
+
+Es gibt **keine universelle Syntax** zur Darstellung strukturierter Informationen.  
+Da LLMs probabilistisch arbeiten, sind sie nicht natürlich gut darin, tabellarische Daten direkt zu interpretieren.
+
+Ein Artikel der **Microsoft Research** analysiert die Leistungsfaehigkeit von GPT-4 bei strukturierten Daten:
+
+https://www.microsoft.com/en-us/research/blog/improving-llm-understanding-of-structured-data-and-exploring-advanced-prompting-methods/
+
+<Frame>
+  <img src="/images/working-with-tables-7.png" />
+</Frame>
+
+_Vergleich der Leistung zwischen GPT-3.5 und GPT-4 bei Tabellenoperationen und strukturierten Daten._  
+_Quelle: Microsoft Research_
+
+INNOCHAT verwendet derzeit eine **JSON-basierte Struktur**, um Tabellen abzubilden.  
+Das ist nicht perfekt, unterstuetzt aber eine begrenzte Anzahl von Anwendungsfaellen, in denen Tabellen als Trainingsquelle verwendet werden.
+
+Wir wissen, dass viele Anwendungsfaelle **groessere, komplexere und dynamische Datensaetze** beinhalten.  
+Die statische Tabellenfunktion ist dafuer nicht optimal geeignet.
+
+Dafür empfehlen wir statt dessen **Function Calling**.
+
+Der **robusteste und professionellste Ansatz** für Retrieval-Augmented Generation (RAG) mit strukturierten Daten ist:
+
+### → Function Calling mit SQL-basierten Custom Functions
+
+Das heisst:
+
+1. Sie entwerfen eigene Funktionen  
+2. Die Funktionen beinhalten **template-basierte SQL-Abfragen**  
+3. Daten werden dynamisch abgerufen  
+4. Der Chatbot erhaelt die Ergebnisse als RAG-Kontext in Echtzeit  
+
+Dies erfordert jedoch:
+
+- etwas Programmiererfahrung  
+- Hosting Ihrer eigenen Serverfunktionen  
+
+Wir arbeiten derzeit an detaillierten Beispielen für dieses Setup, und wir danken Ihnen für Ihre Geduld, waehrend wir die Dokumentation erweitern.
+
