@@ -1,0 +1,135 @@
+---
+title: Einführung und Ersteinrichtung
+description: "Erfahre, wie du das INNOCHAT Whitelabel-Dashboard einrichtest, deine App konfigurierst, deine Domain verbindest, E-Mail-Absender einrichtest, API-Schlüssel hinzufügst und Stripe für Abo-Pläne aktivierst. Dieser Leitfaden führt Partner Schritt für Schritt durch die vollständige Ersteinrichtung."
+---
+
+Das [Whitelabel-Dashboard](https://partners.innochat.ch) ist die Oberfläche, über die INNOCHAT-Partner ihre eigenen Bereitstellungen der App anpassen können. Über das Dashboard können Partner den Namen, das Branding und die Farben der App anpassen. Außerdem können sie ihre Benutzer verwalten, ihre LLM-API-Schlüssel hinterlegen und vieles mehr.
+
+Bevor du mit dem Dashboard arbeiten kannst, musst du dich mit deiner E-Mail-Adresse an das INNOCHAT-Team wenden. Wir stellen dir ein temporäres Passwort zur Verfügung, mit dem du dich im Dashboard anmelden kannst. Nach der Anmeldung solltest du dein Passwort über das Menü oben rechts ändern:
+
+<Frame>
+  <img src="/images/whitelabel-dash-1.png" />
+</Frame>
+
+Im Dashboard musst du folgende Schritte durchführen, um loszulegen:
+
+1. Informationen zu deiner App hinzufügen.
+2. Deine Domain einrichten.
+3. Informationen zum E-Mail-Absender einrichten.
+4. Deine LLM-API-Schlüssel hinzufügen.
+5. Deinen Stripe-Account einrichten.
+6. Einen Free-Tier-Plan für deine Nutzer erstellen.
+
+Diese Schritte werden in den folgenden Abschnitten erläutert.
+
+## Informationen zu deiner App aktualisieren
+
+Unter dem Tab **„Site Configurations“** im linken Menü kannst du die benutzerseitigen Informationen deiner App ändern, darunter:
+
+- Der Name deiner App  
+- Eine Beschreibung deiner App  
+- Die E-Mail-Adresse für Kundenkommunikation  
+- Die URL deiner Website (vorzugsweise getrennt von der Adresse deiner App. Beispiel: Die INNOCHAT-Webseite ist [https://innochat.ch](https://innochat.ch), während die App unter [https://app.innochat.ch](https://app.innochat.ch) gehostet wird). Bitte **unbedingt** das `https://` einschließen.  
+- Dein Logo (am besten `.png` oder `.jpg`, **keine `.svg`-Dateien** hochladen) sowie das Favicon  
+- Die Farben deiner App  
+
+<Frame>
+  <img src="/images/whitelabel-dash-2.png" />
+</Frame>
+
+Du kannst diese Informationen jederzeit aktualisieren. Die Änderungen werden nach einer Weile bei deinen Nutzern sichtbar, jedoch nicht sofort. Da wir Browser-Caching verwenden, müssen Nutzer die App in einem neuen Tab oder Fenster öffnen, damit Änderungen sichtbar werden.
+
+## Die Domain deiner App einrichten
+
+Für diesen Schritt musst du bei deinem Domain-Provider einen DNS-A-Record hinzufügen, der auf die im Tab **„Domain“** bereitgestellte IP-Adresse zeigt. Du kannst entweder die Root-Domain oder eine Subdomain verwenden.  
+Beispiel: Soll deine App unter `app.chatbot-trainer.com` erreichbar sein, sieht der hinzuzufügende Record so aus:
+
+<Frame>
+  <img src="/images/whitelabel-dash-3.png" />
+</Frame>
+
+- Verwendest du die Root-Domain, sollte das Feld „Name“ den Wert `@` enthalten.  
+- Für eine Subdomain trägst du deren Namen ein, z. B. `app`.  
+
+Bei GoDaddy könnte die entsprechende Seite so aussehen:
+
+<Frame>
+  <img src="/images/whitelabel-dash-4.png" />
+</Frame>
+
+Fülle die Felder wie angegeben aus und klicke auf **„Save“**.  
+Wenn du einen anderen Anbieter nutzt, folge bitte dessen Anleitung zum Hinzufügen von DNS-Records.
+
+Es kann einige Minuten dauern, bis sich die DNS-Änderung verbreitet hat. Warte daher etwas, bevor du die Domain im Partner-Dashboard hinzufügst. Du **musst** den DNS-Eintrag zuerst anlegen, bevor du ihn im Dashboard verwenden kannst.
+
+**Wichtig:** Es darf **nur einen einzigen** A-Record für deine Domain geben. Falls mehrere Records auf unterschiedliche IP-Adressen zeigen, funktioniert die Einrichtung nicht.  
+Mit einem Tool wie [Nslookup.io](https://www.nslookup.io/website-to-ip-lookup/) kannst du prüfen, ob mehrere Einträge existieren. Entferne ggf. überflüssige Einträge.
+
+Die im Beispiel gezeigte IP-Adresse dient nur zu Testzwecken. In deinem Dashboard findest du die korrekte IP für den Produktivbetrieb deiner App.
+
+## Absenderinformationen für E-Mails einrichten
+
+<Frame>
+  <img src="/images/whitelabel-dash-5.png" />
+</Frame>
+
+Die E-Mail-Adresse, die du im Tab **„Email Templates“** einträgst, kann sich von der unter „Site Configurations“ unterscheiden. Diese Adresse und der dazugehörige Name werden für automatisierte Systemmails verwendet, z. B.:
+
+- Versand von Verifizierungscodes  
+- Bestätigung von Käufen  
+- Etc.  
+
+Bitte verwende eine E-Mail-Adresse von deiner eigenen Domain (z. B. `hello@chatbot-trainer.com`).  
+**Keine Gmail-, Yahoo- oder anderen externen Provider.**  
+Der automatische E-Mail-Dienst muss die Domain verifizieren können, um im Namen dieser Domain senden zu dürfen.
+
+**Sobald du weißt, welche E-Mail-Adresse du verwenden willst, kontaktiere uns bitte direkt. Wir unterstützen dich bei der Domain-Verifizierung.**
+
+<Warning>
+  Deine App funktioniert nicht, wenn die automatisierten E-Mails nicht eingerichtet sind. Bitte kontaktiere uns, sobald du bereit bist.
+</Warning>
+
+Für diese Domain/E-Mail ist kein Posteingang erforderlich – sie wird nur für ausgehende Systemnachrichten verwendet.
+
+## Deine LLM-API-Schlüssel hinzufügen
+
+Um deine Whitelabel-App zu betreiben, benötigst du deinen eigenen [OpenAI API-Key](https://platform.openai.com/account/api-keys).  
+Füge ihn einfach im Tab **„API Key“** ein, klicke auf **„Add“**, und schon ist alles bereit.
+
+- Du kannst diesen Schlüssel jederzeit ändern.  
+- Du kannst ihn **nicht löschen**, nur ersetzen.  
+  Hintergrund: Ohne Schlüssel funktionieren die KI-Funktionen für deine Nutzer nicht.  
+- Stelle sicher, dass der Schlüssel funktional ist, bevor du ihn einträgst.  
+
+Optional kannst du API-Keys für **Anthropic Claude** und/oder **Google Gemini** hinzufügen.  
+Deine App läuft auch ohne diese, aber Nutzer können dann zusätzliche Modelle verwenden.
+
+## Stripe und den Free-Tier-Plan einrichten
+
+<Frame>
+  <img src="/images/whitelabel-dash-6.png" />
+</Frame>
+
+Um Abos/Pläne in deiner App nutzen zu können, musst du einen Stripe-Account erstellen oder verknüpfen.  
+Klicke im Tab **„Subscriptions“** auf **„Create Account“**.  
+Anschließend erscheint ein weiterer Button, über den du zu Stripe weitergeleitet wirst.  
+Dort führst du das Onboarding durch und gibst u. a. folgende Daten an:
+
+- Persönliche Daten  
+- Unternehmensdaten  
+- Bankinformationen  
+
+<Frame>
+  <img src="/images/whitelabel-dash-7.png" />
+</Frame>
+
+Nach erfolgreicher Stripe-Einrichtung kannst du:
+
+- Entscheiden, ob du einen kostenlosen Free-Tier-Plan und/oder Testzeitraum anbieten möchtest  
+- Die Vorteile/Limitierungen des Free-Tier-Plans anpassen  
+- Bezahlte Pläne erstellen  
+- Bezahlte Add-ons erstellen  
+
+Änderst du die Limits deines Free-Plans, werden diese automatisch auf alle bestehenden Free-Tier-Nutzer übertragen.
+
+Weitere Details zur Erstellung bezahlter Pläne findest du unter **[Creating plans](whitelabel-plans)**.
