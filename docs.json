@@ -18,16 +18,18 @@
   "features": {
     "mermaid": true
   },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:hello@innochat.ch"
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:hello@innochat.ch"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://app.innochat.ch"
     }
-  ],
-  "topbarCtaButton": {
-    "type": "link",
-    "name": "Dashboard",
-    "url": "https://app.innochat.ch"
   },
   "navigation": {
     "languages": [
