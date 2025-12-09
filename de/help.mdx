@@ -1,0 +1,134 @@
+---
+title: Warum beantwortet mein Chatbot Fragen nicht korrekt?
+description: Erfahren Sie, warum LLM-basierte Chatbots manchmal falsch antworten und wie Retrieval Augmented Generation (RAG) funktioniert.
+---
+
+Als Google-Wissenschaftler erstmals das Konzept des **Transformers** vorstellten (https://arxiv.org/pdf/1706.03762.pdf), erhielt es viel Aufmerksamkeit in der NLP-Community.  
+Es bildete die Grundlage fuer neuartige neuronale Netzwerke zur Verarbeitung und zum Verstaendnis natuersslicher Sprache.
+
+Kurz darauf popularisierte OpenAI die **GPT-Modelle** und leitete mit ChatGPT die Aera der **Large Language Models (LLMs)** ein.  
+Die dialogfaehige Leistung dieser Modelle hat viele Menschen glauben lassen, dass KI kurz davor sei, menschliche Intelligenz zu erreichen.
+
+Doch trotz ihres „menschlichen“ Verhaltens sehen, interpretieren und verstehen LLMs die Welt **nicht** wie Menschen.  
+Sie sind keine logischen Denkmaschinen, sondern eher **probabilistische Konversationssimulatoren**.  
+Ihr Verhalten basiert auf **Mustererkennung** und **semantischen Korrelationen**, nicht auf Logik oder Verstehen.
+
+INNOCHAT wird von OpenAI-LLMs betrieben und nutzt **Retrieval Augmented Generation (RAG)**, um Antworten anhand Ihrer hochgeladenen Daten anzupassen.
+
+## Was ist Retrieval Augmented Generation (RAG)?
+
+LLMs werden mit riesigen Textmengen trainiert.  
+Sie erkennen Muster und generieren neue Texte basierend auf der Wahrscheinlichkeit, dass bestimmte „Tokens“ (Worte oder Wortteile) aufeinander folgen.
+
+Daher nennt OpenAI viele Endpunkte **Chat Completions** – das Modell „vollendet“ den Prompt.
+
+<Note>
+  Eine ausfuehrliche Erklaerung zu Tokens finden Sie in der offiziellen OpenAI-Dokumentation:
+  https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them
+</Note>
+
+Aber: **Muster bedeuten nicht Wahrheit.**  
+LLMs koennen sehr leicht **halluzinieren**, wenn keine relevanten Daten vorliegen.
+
+RAG versucht dieses Problem zu loesen, indem es dem Prompt zusaetzlichen Kontext hinzufuegt, der die Wahrscheinlichkeiten beeinflusst.
+
+### Beispiel
+
+Prompt ohne Kontext:
+```
+Was ist INNOCHAT?
+```
+Dies ist eine Abfrage, die sich vollständig auf die semantischen Muster innerhalb der grundlegenden Trainingsdaten des Modells stützt, um eine Antwort zu generieren. Es gibt keine Garantie dafür, dass die Antwort korrekt oder vertrauenswürdig ist. Was aber, wenn sich die Eingabeaufforderung wie folgt ändert:
+```
+Beantworten Sie die folgende Frage unter Verwendung des folgenden Kontexts:
+
+INNOCHAT ist ein leistungsstarkes No-Code-/Low-Code-Framework, mit dem Sie
+Multi-Agent-Chatbots mit Funktionsaufruf-Fähigkeiten unter Verwendung Ihrer eigenen Daten erstellen können. Es ist benutzerfreundlich
+und vielseitig gestaltet und bietet Anpassungsoptionen und die Integration mit gängigen Plattformen.
+
+Was ist INNOCHAT?
+```
+
+Nun wird das Modell stark in Richtung der bereitgestellten Informationen gelenkt.  
+Der Kontext beeinflusst die Token-Generierung und fuehrt zu einer praeziseren Antwort.
+
+Das ist **RAG**: Der Prompt wird mit relevanten Wissensquellen angereichert, ohne das Modell selbst zu veraendern.
+
+### Warum füttern wir nicht einfach *alle* Daten auf einmal?
+
+Weil **Tokenlimits** existieren.
+
+Ein OpenAI-Modell wie gpt-3.5-16k kann etwa **10.000 Woerter** als Kontext aufnehmen.  
+Ihre Wissensbasis besteht oft aus Hunderten Seiten oder Tausenden Dokumenten – also weit mehr als in ein einziges LLM-Fenster passt.
+
+Deshalb:
+
+1. Dokumente werden in **Chunks** geteilt  
+2. Jeder Chunk wird „eingebettet“ (Embedding)  
+3. Embeddings werden in einer **Vektordatenbank** gespeichert  
+4. Bei jeder Nutzeranfrage werden die **relevantesten Chunks** gesucht  
+5. Diese werden in den Prompt eingefuegt  
+6. Das LLM antwortet auf Basis dieses kontextualisierten Prompts  
+
+Ein Embedding ist eine **mathematische Darstellung der Bedeutung** eines Textausschnitts.  
+Aehnliche Saetze liegen im Vektorraum „naeher beieinander“.
+
+Eine gute Einfuehrung in Embeddings:  
+https://stackoverflow.blog/2023/11/09/an-intuitive-introduction-to-text-embeddings/
+
+### Beispiel: Anfrage „What is innoChat?“
+
+Der relevanteste Chunk ist:
+
+
+```
+Was ist INNOCHAT?
+```
+Der relevanteste Teil, der wahrscheinlich aus unserer Vektordatenbank abgerufen wird, ist:
+
+```
+innoChat ist ein leistungsstarkes No-Code-/Low-Code-Framework, mit dem Sie Multi-Agent-Chatbots mit Funktionsaufruf-Fähigkeiten
+unter Verwendung Ihrer eigenen Daten erstellen können. Es ist benutzerfreundlich und vielseitig gestaltet und bietet Anpassungsoptionen und
+die Integration mit gängigen Plattformen.
+```
+
+Mit diesem Kontext kann das LLM eine korrekte Antwort erzeugen.
+
+AWS bietet eine gute visuelle Uebersicht des RAG-Prozesses:
+
+<Frame caption="https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-foundation-models-customize-rag.html">
+  <img src="/images/help-1.png" />
+</Frame>
+
+## Welche Typen von Anfragen funktionieren gut?
+
+| Anfrage-Typ                | Beschreibung                                                         | Beispiel                                              |
+|--------------------------- |----------------------------------------------------------------------|------------------------------------------------------|
+| Information Retrieval      | Zielt auf konkrete Infos aus Dokumenten                              | “What is Paladin Max, Inc.'s PTO policy?”            |
+| Topic-centric Summaries    | Zusammenfassung eines thematischen Bereichs                          | “Summarize the latest developments in generative AI” |
+
+## Welche Typen von Anfragen funktionieren schlecht?
+
+| Anfrage-Typ                       | Beschreibung                                                                 | Beispiel                                                                     |
+|---------------------------------- |------------------------------------------------------------------------------|----------------------------------------------------------------------------- |
+| Dokumentvergleich                 | Vergleich ohne klare Kriterien                                               | “Find inconsistencies across all arguments in my documents.”                |
+| Zaehlen oder Mathematik           | Quantitative Analyse anhand der Trainingsdaten                               | “How many times is John mentioned across the contracts?”                    |
+| Meta-Level Instructions           | Verweis auf Dokumentstruktur / Seitenzahlen                                  | “Summarize section 3 (pages 33–37) of this report.”                         |
+| Library-wide Metadata Queries     | Fragen, die mehrere Dokumente statistisch betreffen                           | “How many documents mention topic X and list them in a table.”              |
+| Longform Text Generation          | Sehr lange Texte auf Grundlage bereitgestellter Dokumente                     | “Write a 5000 word literature review.”                                      |
+
+Wenn Ihr Anwendungsfall diese komplexeren Aufgaben verlangt, koennen Sie:
+
+- Multi-Agent-Architektur  
+- Function Calling  
+
+verwenden – dies erfordert jedoch fortgeschrittene Konfiguration.
+
+---
+
+Moeglicherweise koennen Sie die Leistung Ihres Chatbots verbessern, indem Sie Ihre Trainingsdaten optimieren.  
+Lesen Sie hierzu:
+
+👉 **[Best practices for preparing training data](/best-practices)**
+
+
