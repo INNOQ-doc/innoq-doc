@@ -1,0 +1,42 @@
+---
+title: Einführung
+description: Diese Einführung erklärt, wie du INNOCHAT-Toolfunktionen mit Function Calling nutzt, eigene API-Schlüssel erstellst und häufig verwendete Tools wie den Weekday-Service integrierst. Erfahre, wie du APIs einbindest, Authentifizierungen korrekt setzt und deine Chatbot-Funktionen effizient erweiterst. 
+---
+
+Wenn du [Function Calling](/rag-from-external-data-provider) verwendest, benötigst du in der Regel öffentlich verfügbare APIs – oder du erstellst deine eigenen. Wir hosten jedoch auch eine Reihe häufig genutzter Tool-Funktionen auf unserer eigenen Seite, tools.innochat.ch. Es werden täglich mehr hinzugefügt, also bleib dran!
+
+Wenn du eine Funktion vorschlagen möchtest, die wir hinzufügen sollen, lass es uns bitte wissen! Du kannst uns per E-Mail unter [hello@innochat.ch](mailto:hello@innochat.ch) erreichen.
+
+Um diese Tool-Funktionen zu verwenden, musst du zuerst deinen eigenen INNOCHAT-API-Schlüssel erstellen. Weitere Details findest du unter [Einen INNOCHAT-API-Key erhalten](/api-reference/api-key-setup).
+
+Unsere aktuellen Tool-Funktionen sind:
+
+<CardGroup cols={2}>
+  <Card title="weekday" icon="calendar" href="/tools/weekday">
+    Hole den Wochentag für ein bestimmtes Datum
+  </Card>
+  <Card title="Coming soon" icon="question">
+    Im Aufbau!
+  </Card>
+</CardGroup>
+
+## Verwendung
+
+Auf jeder individuellen Seite einer Tool-Funktion findest du die Beschreibung und die Parameter des Tools. Diese können direkt verwendet werden, wenn du in deinem Agenten eine Funktion erstellst. Die Einstellungen im untenstehenden Bild stammen beispielsweise direkt von der Seite [Weekday](/tools/weekday).
+
+<Frame>
+  <img src="/images/tools-intro-1.png" />
+  <img src="/images/tools-intro-2.png" />
+</Frame>
+
+Für den Abschnitt „Headers“ im Formular musst du den zuvor erstellten INNOCHAT-API-Schlüssel eingeben, etwa so:
+
+```json
+{
+  "Authorization": "Bearer Your-INNOCHAT-API-key-here"
+}
+```
+
+<Warning> Du musst *Your-INNOCHAT-API-key-here* durch deinen eigenen API-Schlüssel ersetzen. Andernfalls funktioniert die Tool-Funktion nicht. </Warning>
+
+Und dann klick einfach auf „Save“, und alles sollte bereit sein!

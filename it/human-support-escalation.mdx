@@ -1,0 +1,246 @@
+---
+title: 'Menschliche Support-Eskalation'
+description: 'Erfahren Sie, wie INNOCHAT es ermoeglicht, dass menschliche Support-Agenten bei Bedarf eine laufende Chat-Sitzung uebernehmen.'
+---
+
+So leistungsstark AI-Chatbots auch sein koennen, manchmal sind menschliche Verantwortlichkeit und Fachwissen weiterhin notwendig.  
+Die in INNOCHAT integrierte Funktion zur menschlichen Support-Eskalation ermoeglicht Ihnen oder Ihren Mitarbeitenden, jederzeit in eine laufende Chat-Sitzung einzusteigen und die Unterhaltung zu uebernehmen.
+
+## Einrichtung der menschlichen Eskalation
+
+Gehen Sie zum Tab **Customizations**. Unter dem Abschnitt **Settings** klicken Sie auf **Human Support Handover**.
+
+<Frame>
+  <img src="/images/human-support-escalation-25.png" />
+</Frame>
+
+Aktivieren Sie den Schalter **Enable Human Escalation**. Danach erscheinen mehrere Konfigurationsoptionen.
+
+<Frame>
+  <img src="/images/human-support-escalation-26.png" />
+</Frame>
+
+Sie koennen festlegen, was der AI-Agent sagen soll, wenn eine menschliche Eskalationsanfrage erkannt wird, sowie welche Nachrichten angezeigt werden sollen, wenn ein menschlicher Agent den Chat uebernimmt oder wieder verlaesst.  
+Fuer fortgeschrittene Anwendungsfaelle koennen Sie sogar benutzerdefinierte Phrasen oder Intentionen definieren, auf die der AI-Agent achten soll. Wenn der AI-Agent mit dieser Phrase antwortet, erhalten Ihre menschlichen Agenten sofort eine Benachrichtigung.
+
+Um Ihre Eskalationseinstellungen zu testen, muessen Sie einen oeffentlichen Link fuer den Chatbot erzeugen und ihn in einem zweiten Browser-Tab oeffnen.  
+**Der eingebaute "Preview"-Tab unterstuetzt keine Tests der menschlichen Eskalation.**
+
+Gehen Sie zum Tab **Go Live** und klicken Sie auf **Share**. Ggf. muessen Sie die Sichtbarkeitseinstellungen Ihres Chatbots temporaer anpassen, um den Link zu generieren.
+
+<Frame>
+  <img src="/images/human-support-escalation-27.png" />
+</Frame>
+
+Nachdem Sie den Link erstellt haben, oeffnen Sie ihn in einem neuen Browser-Tab.  
+Schliessen Sie den urspruenglichen INNOCHAT-Tab nicht.  
+Im neuen Tab sehen Sie den Chatbot aus Sicht eines normalen Nutzers. Nun koennen Sie testen, indem Sie Anfragen stellen, die menschliche Hilfe erbitten.
+
+<Frame>
+  <img src="/images/human-support-escalation-5.png" />
+</Frame>
+
+Um als menschlicher Agent einzugreifen, wechseln Sie im urspruenglichen INNOCHAT-Tab zur **Inbox** in der linken Navigation.  
+Dort sehen Sie einen orangefarbenen Punkt neben der Sitzung, die menschlichen Support anfragt.  
+Klicken Sie sie an, und Sie koennen direkt mit dem Nutzer interagieren.  
+Tippen Sie einfach Ihre Nachricht unten im Chat-Eingabefeld ein.
+
+<Frame>
+  <img src="/images/human-support-escalation-28.png" />
+</Frame>
+
+Sobald Sie die erste Nachricht senden, werden der AI Supervisor und alle AI-Agenten deaktiviert.  
+Sie koennen so lange direkt mit dem Nutzer sprechen, wie Sie moechten.  
+Wenn Sie fertig sind, beenden Sie die Live-Chat-Sitzung, indem Sie **End Live Chat** anklicken. Dadurch uebernimmt der AI-Chatbot wieder die Kontrolle.
+
+<Frame>
+  <img src="/images/human-support-escalation-29.png" />
+</Frame>
+
+Sie koennen weiterhin anwesend bleiben und beobachten, wie der Chatbot die Unterhaltung wieder uebernimmt.
+
+Abhaengig von Ihrem Anwendungsfall moechten Sie vielleicht feinjustieren, unter welchen Umstaenden Nutzer an einen menschlichen Agenten weitergeleitet werden sollen.  
+Bitte lesen Sie hierzu unsere Dokumentation: **[Fine Tuning Agent Intents](fine-tuning-agent-intents)**.
+
+## Aktualisierung Ihres menschlichen Agenten-Avatars
+
+Jedes Benutzerkonto kann genau einen Avatar fuer den menschlichen Agenten besitzen.  
+Dieser Avatar erscheint, wenn der jeweilige Mensch die Chat-Sitzung uebernimmt.  
+Da INNOCHAT mehrere Mitarbeitende unterstuetzt, koennen viele menschliche Agenten den gleichen Chatbot beobachten und jeweils ihren eigenen Avatar verwenden.
+
+Um Ihren Avatar zu setzen, klicken Sie oben rechts auf das Profil-Symbol. Sie sehen ein Dropdown-Menue:
+
+<Frame>
+  <img src="/images/human-support-escalation-30.png" />
+</Frame>
+
+Klicken Sie dann auf **Account**, gefolgt vom Stiftsymbol neben dem Avatarbild.  
+Nun koennen Sie ein Foto von Ihrem Computer auswaehlen.
+
+<Frame>
+  <img src="/images/human-support-escalation-31.png" />
+</Frame>
+
+## Aktivieren von Benachrichtigungen fuer menschlichen Support
+
+Um Benachrichtigungen ueber Support-Anfragen zu erhalten, folgen Sie den folgenden Schritten.
+
+### Alarm-Modi aktivieren
+
+1. Gehen Sie zum Tab **Customizations** auf der linken Navigationsleiste.  
+2. Aktivieren Sie **Human Escalation Notifications** – dadurch werden Benachrichtigungen ueber menschliche Support-Anfragen aktiviert.  
+3. Aktivieren Sie **Notification Sound**, wenn Sie einen akustischen Hinweis erhalten moechten.
+
+<Frame>
+  <img src="/images/human-support-escalation-32.png" />
+</Frame>
+
+### Browser-Berechtigungen
+
+Jeder Browser verwaltet Berechtigungen fuer Benachrichtigungen und Sound separat pro Website.  
+Damit Sie Benachrichtigungen korrekt erhalten, muessen Sie diese Berechtigungen im Browser aktivieren.
+
+1. Oeffnen Sie den Browser, in dem Sie die [INNOCHAT Plattform](https://app.innochat.ch) nutzen.  
+2. Aktivieren Sie die folgenden Berechtigungen:
+
+<AccordionGroup>
+  <Accordion icon="chrome" title="Google Chrome" iconType="duotone">
+    <Steps>
+      <Step title="Einstellungen">
+        Klicken Sie oben links neben der URL auf das Symbol und dann auf **Site settings**.
+        <Frame>
+          <img src="/images/human-support-escalation-9.png" />
+        </Frame>
+      </Step>
+      <Step title="Berechtigungen aktivieren">
+        Stellen Sie sicher, dass **Notifications** und **Sound** auf **Allow** gesetzt sind.
+        <Frame>
+          <img src="/images/human-support-escalation-10.png" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Accordion>
+
+{" "}
+
+<Accordion icon="firefox-browser" title="Firefox" iconType="duotone">
+  <Steps>
+    <Step title="Einstellungen">
+      Klicken Sie oben links neben der URL und waehlen Sie **Protection settings**.
+      <Frame>
+        <img src="/images/human-support-escalation-11.png" />
+      </Frame>
+    </Step>
+    <Step title="innoChat entsperren">
+      Gehen Sie zu **Permissions** und passen Sie die Einstellungen fuer **Speaker Selection** und **Notifications** an.  
+      Stellen Sie sicher, dass die INNOCHAT Plattform fuer beide Optionen nicht blockiert ist.
+      <Frame>
+        <img src="/images/human-support-escalation-12.png" />
+      </Frame>
+    </Step>
+  </Steps>
+</Accordion>
+
+{" "}
+
+<Accordion icon="edge" title="Microsoft Edge" iconType="duotone">
+  <Steps>
+    <Step title="Einstellungen">
+      Klicken Sie oben links neben der URL auf das Symbol und waehlen Sie **Permissions for this site**.
+      <Frame>
+        <img src="/images/human-support-escalation-13.png" />
+      </Frame>
+    </Step>
+    <Step title="Berechtigungen aktivieren">
+      Stellen Sie sicher, dass **Notifications** auf **Allow** gesetzt sind.
+      <Frame>
+        <img src="/images/human-support-escalation-14.png" />
+      </Frame>
+    </Step>
+  </Steps>
+</Accordion>
+
+  <Accordion icon="safari" title="Safari" iconType="duotone">
+    <Steps>
+      <Step title="innoChat Einstellungen">
+        Klicken Sie oben links auf **Safari** und waehlen Sie **Settings for app.innoChat.com**.
+        <Frame>
+          <img src="/images/human-support-escalation-15.png" />
+        </Frame>
+      </Step>
+      <Step title="Pop-ups erlauben">
+        Stellen Sie sicher, dass **Pop-up Windows** auf **Allow** gesetzt sind.
+        <Frame>
+          <img src="/images/human-support-escalation-16.png" />
+        </Frame>
+      </Step>
+      <Step title="Einstellungen">
+        Klicken Sie erneut auf **Safari** und waehlen Sie **Settings**.
+        <Frame>
+          <img src="/images/human-support-escalation-17.png" />
+        </Frame>
+      </Step>
+      <Step title="Benachrichtigungen erlauben">
+        Gehen Sie zum Tab **Websites**, waehlen Sie **Notifications**, und stellen Sie sicher, dass **app.innoChat.com** auf **Allow** gesetzt ist.
+        <Frame>
+          <img src="/images/human-support-escalation-18.png" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+### Betriebssystem-Berechtigungen
+
+Auch Betriebssysteme besitzen eigene Benachrichtigungsberechtigungen, die Browser betreffen koennen.  
+Um Benachrichtigungen korrekt zu erhalten, waehlen Sie Ihr Betriebssystem aus:
+
+<Note>Wenn Sie **Safari** verwenden, muessen Sie diese Schritte nicht ausfuehren.</Note>
+
+<AccordionGroup>
+  <Accordion icon="apple" title="Apple" iconType="duotone">
+    <Steps>
+      <Step title="Einstellungen">
+        Klicken Sie oben links auf das Apple-Symbol und waehlen Sie **System Settings**.
+        <Frame>
+          <img src="/images/human-support-escalation-19.png" />
+        </Frame>
+      </Step>
+      <Step title="Browser-Benachrichtigungen">
+        Waehlen Sie **Notifications** und dann den Browser, den Sie verwenden moechten.
+        <Frame>
+          <img src="/images/human-support-escalation-20.png" />
+        </Frame>
+      </Step>
+      <Step title="Benachrichtigungen aktivieren">
+        Stellen Sie sicher, dass **Allow notifications** aktiviert ist.
+        <Frame>
+          <img src="/images/human-support-escalation-21.png" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion icon="Windows" title="Windows" iconType="duotone">
+    <Steps>
+      <Step title="Einstellungen">
+        Geben Sie im Suchfeld **notifications** ein und waehlen Sie **Turn app notifications on or off** aus den Ergebnissen.
+        <Frame>
+          <img src="/images/human-support-escalation-22.png" />
+        </Frame>
+      </Step>
+      <Step title="System-Benachrichtigungen">
+        Aktivieren Sie die Systembenachrichtigungen *(optional)* und waehlen Sie Ihren bevorzugten Browser aus der Liste.
+        <Frame>
+          <img src="/images/human-support-escalation-23.png" />
+        </Frame>
+      </Step>
+      <Step title="Browser-Benachrichtigungen">
+        Stellen Sie sicher, dass **Notifications** fuer Ihren Browser aktiviert sind.
+        <Frame>
+          <img src="/images/human-support-escalation-24.png" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>

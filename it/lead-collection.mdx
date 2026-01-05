@@ -1,0 +1,135 @@
+---
+title: Lead-Erfassung
+description: Erfahren Sie, wie INNOCHAT Benutzerdaten entweder durch Formulare oder durch natuerssliche Konversation erfasst.
+---
+
+Es gibt zwei Moeglichkeiten, Daten von Benutzern zu sammeln, wenn sie mit Ihrem AI-Chat interagieren:
+
+1. Ueber ein Formular  
+2. Konversationell im Dialog
+
+Beide Ansaetze haben Vor- und Nachteile. Formulare sind einfacher einzurichten und funktionieren programmatisch, aber die konversationelle Datenerfassung ist natuerlicher und fuesselnder, auch wenn sie komplexer ist.  
+Alle gesammelten Daten koennen ueber einen Webhook an ein CRM gesendet werden, sobald der Benutzer sie uebermittelt.
+
+## Datenerfassung ueber ein Formular
+
+Um Ihrem AI-Chat ein Formular hinzuzufuegen, gehen Sie zum Tab **Customizations** im linken Navigationsmenue und scrollen Sie nach unten zum Abschnitt **Form**:
+
+<Frame>
+  <img src="/images/lead-collection-13.png" />
+</Frame>
+
+Sie koennen eines der Standardfelder auswaehlen, das im Formular enthalten sein soll. Alternativ koennen Sie auch eigene benutzerdefinierte Felder erstellen.
+
+<Frame>
+  <img src="/images/lead-collection-14.png" />
+</Frame>
+
+Bei benutzerdefinierten Feldern koennen Sie den Feldtyp festlegen (Text, Dropdown, Checkbox).  
+Sie koennen bestimmte Felder verpflichtend machen. Wenn mindestens ein Feld verpflichtend ist, erhalten Sie zudem die Moeglichkeit, das gesamte Formular verpflichtend zu machen, bevor der Benutzer weiter chatten darf.  
+Wenn das Formular verpflichtend ist, verschwindet die **x**-Schaltflaeche oben rechts, sodass Benutzer das Formular nicht schliessen koennen, bevor es ausgefuellt wurde.
+
+<Frame>
+  <img src="/images/lead-collection-15.png" />
+</Frame>
+
+## Datenerfassung im Dialog
+
+Wenn Sie einen natuerlichen Gespraechsfluss beibehalten und Daten direkt durch Konversation sammeln moechten, muessen Sie den Prompt Ihres AI-Agenten konfigurieren und Variablen einrichten, um die Daten zu speichern.
+
+### Prompt bearbeiten
+
+Das Verhalten Ihres AI-Chats wird durch den Prompt Ihres AI-Agenten gesteuert.  
+Um diesen zu bearbeiten, gehen Sie in der linken Navigation zum Tab **AI Agents** und klicken Sie auf den entsprechenden Agenten.
+
+<Note>
+  Wenn Sie Ihren AI-Chat anhand einer Vorlage erstellt haben, verwenden Sie moeglicherweise einen Standard-Prompt, den wir fuer Sie generiert haben.  
+  Wenn Sie zum ersten Mal einen AI-Agent-Prompt konfigurieren, empfehlen wir Ihnen unseren Leitfaden zur Prompt-Engineering-Best-Practices.
+</Note>
+
+<Frame>
+  <img src="/images/lead-collection-16.png" />
+</Frame>
+
+<Frame>
+  <img src="/images/lead-collection-17.png" />
+</Frame>
+
+Konfigurieren Sie Ihren Prompt so, dass detaillierte Anweisungen enthalten sind, wann, was und wie Daten vom Benutzer abgefragt werden sollen.  
+Hier ein Beispielausschnitt:
+### Anweisungen
+- Wenn Sie zum ersten Mal mit dem Benutzer in Kontakt treten, fragen Sie ihn höflich nach seinem Vornamen.
+- Sobald der Benutzer seinen Vornamen angegeben hat, fahren Sie mit den folgenden Schritten fort, um seine Kontaktdaten zu erfassen.
+- Fragen Sie den Benutzer nach seiner Handynummer, nachdem Sie seinen Vornamen erfasst haben.
+- Nachdem Sie die Handynummer erfasst haben, fragen Sie nach seiner E-Mail-Adresse.
+- Wenn der Benutzer bestimmte Informationen nicht preisgeben möchte, drängen Sie ihn nicht dazu. Respektieren Sie seine Entscheidung.
+
+
+Dies weist den AI-Agenten jedoch nur an, Daten abzufragen. Wir benoetigen ausserdem einen Mechanismus, um die Daten zu speichern.  
+Im naechsten Abschnitt erklaeren wir Ihnen, wie Variablen eingerichtet werden.
+
+### Einrichten von Variablen
+
+Gehen Sie zum Tab **Customizations** in der rechten Seitenleiste und scrollen Sie nach unten zu **User Data Collection**.  
+Klicken Sie darauf, um den Bereich zu erweitern.
+
+<Frame>
+  <img src="/images/lead-collection-18.png" />
+</Frame>
+
+Hier können Sie Variablen erstellen, in denen während der Konversation gesammelte Daten gespeichert werden.  
+Sie können mehrere Variablen anlegen, jede für ein bestimmtes Datenelement.  
+Geben Sie bei der Einrichtung einer Variablen unbedingt einen Variablennamen, eine Beschreibung und Beispielwerte an.  
+Je präziser und detailreicher, desto besser.
+
+<Frame>
+  <img src="/images/lead-collection-19.png" />
+</Frame>
+
+_Desto mehr Beispiele Sie angeben, desto besser versteht der AI-Agent das gewuenschte Format._
+
+Stellen Sie sicher, dass Sie ausreichend Variablen definieren, um alle Daten zu speichern, die Sie vom Benutzer abfragen.  
+Im Beispiel oben wären dies Name, Telefonnummer und E-Mail-Adresse.
+
+Nachdem alles eingerichtet wurde, koennen Sie den AI-Chat im Vorschau-Modus testen.  
+Wenn alles korrekt funktioniert, sehen Sie die gesammelten Daten in Ihrem Posteingang, sobald ein Benutzer bedeutungsvoll mit Ihrem AI-Chat interagiert.
+
+<Note>
+  Variablenwerte koennen sich aendern, wenn der Benutzer eine Korrektur oder Aktualisierung nennt.  
+  Der AI-Agent erkennt in der Regel gut, welcher Wert korrekt ist.
+</Note>
+
+<Frame>
+  <img src="/images/lead-collection-20.png" />
+</Frame>
+
+## Daten an Ihr CRM senden
+
+Unabhaengig davon, ob Sie Daten per Formular oder konversationell sammeln, moechten Sie diese moeglicherweise an ein CRM-System weiterleiten.  
+INNOCHAT unterstuetzt Webhooks mit intelligenten Triggern, die Sie automatisch ueber neue Leads informieren.
+
+Gehen Sie im linken Navigationsmenue zum Tab **Customizations** und scrollen Sie dann zum Abschnitt **Webhook**.  
+Klicken Sie darauf, um ihn zu erweitern.
+
+<Frame>
+  <img src="/images/lead-collection-21.png" />
+</Frame>
+
+Wenn Sie ein Formular verwenden, koennen Sie das Event **Form Submission** auswaehlen und den API-Endpunkt angeben, an den die Daten gesendet werden sollen (POST-Request).
+
+Wenn Sie Variablen zur Datenspeicherung verwenden, waehlen Sie das Event **Data Collection** und geben an, welche Variablen uebertragen werden sollen.  
+**Wichtig:** Der Webhook wird nur ausgeloest, wenn alle ausgewaehlten Variablen gefuellt sind (darf nicht leer sein).
+
+Wenn bestimmte Variablen optional sein sollen, koennen Sie ihnen waehrend der Einrichtung einen Standardwert geben.  
+So ist die Variable immer befuellt und niemals leer.
+
+## Daten per E-Mail senden
+
+Um Daten per E-Mail zu senden, gehen Sie im linken Navigationsmenue erneut zum Tab **Customizations** und scrollen Sie zum Abschnitt **Email Notifications**.  
+Klicken Sie darauf, um den Bereich zu erweitern.
+
+<Frame>
+  <img src="/images/lead-collection-22.png" />
+</Frame>
+
+Geben Sie einfach Ihre E-Mail-Adresse ein und aktivieren Sie die geeigneten Trigger, um neue Lead-Benachrichtigungen zu erhalten.

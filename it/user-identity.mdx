@@ -1,0 +1,135 @@
+---
+title: 'Überprüfung der Benutzeridentität'
+description: Eine Anleitung zur Einrichtung und Implementierung der User Identity Verification in Ihrem innoChat-Chatbot, einschliesslich Token-Validierung, API-Endpoint-Konfiguration, Datenspeicherung und Integrationsmethoden.
+---
+
+Diese Anleitung führt Sie durch die Implementierung eines robusten Authentifizierungssystems innerhalb Ihres Chatbots.
+
+## Schritt 1: User Identity aktivieren
+
+Um den Prozess der User Identity Verification zu starten, muessen Sie diese Funktion zuerst in den Einstellungen Ihres Chatbots aktivieren.  
+Dies kann im Bereich **"User Identity Verification"** in den Chatbot-Einstellungen vorgenommen werden.
+
+Sobald die User Identity Verification aktiviert ist, ist Ihr Chatbot in der Lage, automatisch nach User-Tokens zu prüfen.  
+Das bedeutet, dass bei jedem Versuch eines Nutzers, mit dem Chatbot zu interagieren, dessen Identitaetstoken auf seine Gueltigkeit hin ueberprueft wird.
+
+<Frame>
+  <img src="/images/user-identity-1.png" />
+</Frame>
+
+## Schritt 2: API Endpoint
+
+### Einrichten des API Endpoints
+
+Es ist notwendig, einen API Endpoint einzurichten, der die Verifikation der User-Tokens uebernimmt.  
+Dieser Endpoint muss so konfiguriert sein, dass er **POST-Requests** akzeptiert.
+
+1. **API Endpoint angeben:**  
+   Geben Sie in den Einstellungen Ihres Chatbots die URL des API Endpoints an. Dies ist die Serveradresse, an die die Anfragen zur Token-Verifikation gesendet werden.
+
+2. **Fuer POST-Requests konfigurieren:**  
+   Stellen Sie sicher, dass Ihr API Endpoint fuer die Verarbeitung von POST-Requests konfiguriert ist.  
+   Dies ist entscheidend, da INNOCHAT Tokendaten per POST-Request zur Verifikation sendet.
+
+<Frame>
+  <img src="/images/user-identity-2.png" />
+</Frame>
+
+### Ablauf des Verifikationsprozesses
+
+Folgendes passiert, wenn ein Chat gestartet wird:
+
+1. **Token-Uebermittlung:**  
+   Jedes Mal, wenn ein Chat gerendert wird, sendet INNOCHAT automatisch eine Verifikationsanfrage an den angegebenen API Endpoint.  
+   Diese Anfrage enthaelt das Token des Nutzers.
+
+2. **Verarbeitung der Anfrage:**  
+   Ihr API Endpoint sollte diese Anfrage verarbeiten und die Gueltigkeit des Tokens ueberpruefen.
+
+3. **Ergebnisbehandlung:**
+
+   - **Erfolgreiche Verifikation:**  
+     Wird das Token erfolgreich verifiziert, kann der authentifizierte Nutzer mit dem Chat fortfahren.
+   - **Fehlgeschlagene Verifikation:**  
+     Wenn die API einen Fehler zurückgibt (was auf eine fehlgeschlagene Verifikation hindeutet), gilt die Authentifizierung als nicht erfolgreich.  
+     In diesem Fall wird der Nutzer auf einen Fehlerbildschirm weitergeleitet.
+
+## Schritt 3: Speichern der Nutzerdaten
+
+Um die User Identity Verification zu erweitern und Aufzeichnungen über Nutzerinteraktionen zu fuehren,  
+haben Sie die Möglichkeit, die Daten erfolgreicher Verifikationsantworten zu speichern.
+
+<Frame>
+  <img src="/images/user-identity-3.png" />
+</Frame>
+
+Jedes Mal, wenn ein Nutzer erfolgreich authentifiziert wird, wird die Antwort des Verifikationsprozesses (typischerweise mit Nutzeridentifikationsdaten) gespeichert.
+
+Diese Daten werden nicht isoliert gespeichert, sondern mit den jeweiligen Chat-Konversationen verknüpft.
+
+<Warning>
+  **Nur gültige JSON-Daten werden akzeptiert** – Bitte stellen Sie sicher, dass alle zur Speicherung vorgesehenen Daten im gültigen JSON-Format vorliegen.  
+  Nicht-JSON- oder ungültige JSON-Daten werden automatisch ignoriert und nicht im Konversationsverlauf gespeichert.
+</Warning>
+
+Beispiel fuer gültiges JSON:
+
+```json
+{
+  "userId": "12345",
+  "userName": "JohnDoe",
+  "email": "johndoe@example.com",
+  "verified": true,
+  "roles": ["user", "admin"],
+  "profile": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "age": 30
+  }
+}
+```
+
+## Schritt 4: Einfügen Ihres Tokens in den INNOCHAT Chatbot
+### Chat-Widget
+
+Im Skript Ihrer Webseite, auf der der Chatbot eingebunden ist, finden Sie das Objekt GPTTConfig.
+Dort müssen Sie die Eigenschaft token mit Ihrem benutzerdefinierten Token belegen. Hier ein Beispielskript:
+
+```html
+<script>
+  window.GPTTConfig = {
+      uuid: "15b1f07cd591476c94c210779a6c3c19",
+      token: <"Custom token">
+  }
+</script>
+<script src="https://app.innochat.ch/widget-asset.min.js" defer></script>
+
+```
+Sie können das GPTTConfig-Objekt auch direkt per JavaScript-Aufruf mit Ihrem Token aktualisieren.
+Diese Methode ist besonders nützlich, wenn Sie das Token dynamisch basierend auf Nutzerinteraktionen oder anderen Ereignissen in Ihrer Anwendung setzen müssen. Zum Beispiel:
+```javascript
+  window.GPTTConfig.token = "Custom token";
+
+```
+Sobald eine Änderung an der token-Eigenschaft erkannt wird, versucht unser System, den Nutzer anhand des neuen Token-Werts zu authentifizieren.
+So wird sichergestellt, dass die Identität des Nutzers jedes Mal überprüft wird, wenn er mit dem Chatbot interagiert.
+
+#### Iframe
+
+Sie können das User-Token direkt innerhalb eines iframes übergeben, indem Sie es in der URL als Parameter einfügen.
+Haengen Sie dazu den Parameter token an die URL im src-Attribut an und ersetzen Sie custom_token durch den tatsächlichen Token-Wert. Beispiel:
+
+```html
+<iframe
+  src="https://app.innochat.ch/widget/162223v?token=<custom_token>"
+  width="100%"
+  height="500px"
+  frameborder="0"
+></iframe>
+```
+Wenn das Token geändert werden muss, aktualisieren Sie einfach das src-Attribut des iframes mit dem neuen Token-Wert.
+
+Nach der Aktualisierung des Tokens in der URL wird das iframe neu geladen, sodass das neue Token für die Authentifizierung verwendet wird.
+
+Herzlichen Glückwunsch! Sie haben die Einrichtung der User Identity Verification fuer Ihren INNOCHAT Chatbot erfolgreich abgeschlossen.
+Durch das Befolgen dieser Schritte haben Sie eine robuste und sichere Methode zur Nutzer-Authentifizierung implementiert und sorgen so für eine geschützte und verlässliche User Experience.

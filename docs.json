@@ -670,9 +670,211 @@
             ]
           }
         ]
+      },
+      {
+        "language": "it",
+        "tabs": [
+          {
+            "tab": "Documentazione",
+            "groups": [
+              {
+                "group": "Per iniziare",
+                "pages": ["it/introduction"]
+              },
+              {
+                "group": "Guide",
+                "pages": [
+                  "it/creating-first-chatbot",
+                  "it/lead-collection",
+                  "it/human-support-escalation",
+                  "it/inbox-notifications",
+                  "it/conversation-labeling",
+                  "it/multi-agents-chatbot",
+                  "it/fine-tuning-agent-intents",
+                  "it/supervisor-overrides",
+                  "it/byok-pricing-guide",
+                  "it/working-with-tables",
+                  "it/best-practices",
+                  "it/help"
+                ]
+              },
+              {
+                "group": "Chiamata di funzioni",
+                "pages": ["it/rag-from-external-data-provider"]
+              },
+              {
+                "group": "Webhook di autenticazione",
+                "pages": ["it/user-identity"]
+              }
+            ]
+          },
+          {
+            "tab": "Riferimento API",
+            "anchors": [
+              {
+                "anchor": "Guide all’uso dell’API",
+                "icon": "book",
+                "pages": [
+                  "it/api-reference/api-key-setup",
+                  "it/api-reference/guide-00-chatbot-create",
+                  "it/api-reference/guide-01-chat",
+                  "it/api-reference/guide-02-source"
+                ]
+              },
+              {
+                "anchor": "Chatbot",
+                "icon": "comments",
+                "groups": [
+                  {
+                    "group": "Chatbot",
+                    "pages": [
+                      "it/api-reference/chatbots/properties-reference",
+                      "it/api-reference/chatbots/create",
+                      "it/api-reference/chatbots/update",
+                      "it/api-reference/chatbots/fetch",
+                      "it/api-reference/chatbots/fetch_multi",
+                      "it/api-reference/chatbots/delete"
+                    ]
+                  }
+                ]
+              },
+              {
+                "anchor": "Agenti",
+                "icon": "robot",
+                "groups": [
+                  {
+                    "group": "Agenti",
+                    "pages": [
+                      "it/api-reference/agents/properties-reference",
+                      "it/api-reference/agents/create",
+                      "it/api-reference/agents/update",
+                      "it/api-reference/agents/fetch_multi",
+                      "it/api-reference/agents/delete"
+                    ]
+                  }
+                ]
+              },
+              {
+                "anchor": "Sessioni e Messaggi",
+                "icon": "message",
+                "groups": [
+                  {
+                    "group": "Sessioni chatbot",
+                    "pages": [
+                      "it/api-reference/sessions/properties-reference",
+                      "it/api-reference/sessions/create",
+                      "it/api-reference/sessions/fetch",
+                      "it/api-reference/sessions/fetch_multi",
+                      "it/api-reference/sessions/delete"
+                    ]
+                  },
+                  {
+                    "group": "Messaggi di sessione",
+                    "pages": [
+                      "it/api-reference/messages/properties-reference",
+                      "it/api-reference/messages/create",
+                      "it/api-reference/messages/fetch_multi",
+                      "it/api-reference/messages/fetch-message-history",
+                      "it/api-reference/messages/delete",
+                      "it/api-reference/messages/delete_multi"
+                    ]
+                  }
+                ]
+              },
+              {
+                "anchor": "Origini dati",
+                "icon": "database",
+                "groups": [
+                  {
+                    "group": "Origini dati",
+                    "pages": [
+                      "it/api-reference/data-sources/properties-reference",
+                      "it/api-reference/data-sources/create-file",
+                      "it/api-reference/data-sources/create-qa",
+                      "it/api-reference/data-sources/create-url",
+                      "it/api-reference/data-sources/update",
+                      "it/api-reference/data-sources/fetch_multi",
+                      "it/api-reference/data-sources/retrain",
+                      "it/api-reference/data-sources/delete",
+                      "it/api-reference/data-sources/delete_multi"
+                    ]
+                  },
+                  {
+                    "group": "Tag delle origini",
+                    "pages": [
+                      "it/api-reference/source-tags/create",
+                      "it/api-reference/source-tags/fetch-multi",
+                      "it/api-reference/source-tags/update",
+                      "it/api-reference/source-tags/delete"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Cookbook",
+            "groups": [
+              {
+                "group": "Cookbook",
+                "pages": ["it/cookbook/overview"]
+              },
+              {
+                "group": "Esempi",
+                "pages": [
+                  "it/cookbook/swiss-transport-agent",
+                  "it/cookbook/swiss-news-agent",
+                  "it/cookbook/swiss-tourism-agent"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Integrazioni",
+            "groups": [
+              {
+                "group": "Integrazioni",
+                "pages": ["it/integrations/slack"]
+              }
+            ]
+          },
+          {
+            "tab": "Strumenti",
+            "groups": [
+              {
+                "group": "Guide strumenti",
+                "pages": ["it/tools/tools-intro"]
+              },
+              {
+                "group": "Strumenti",
+                "pages": ["it/tools/weekday"]
+              }
+            ]
+          },
+          {
+            "tab": "White label",
+            "groups": [
+              {
+                "group": "Dashboard White label",
+                "pages": [
+                  "it/whitelabel/whitelabel-intro",
+                  "it/whitelabel/whitelabel-plans",
+                  "it/whitelabel/whitelabel-users"
+                ]
+              },
+              {
+                "group": "Integrazioni",
+                "pages": [
+                  "it/whitelabel/whitelabel-zapier",
+                  "it/whitelabel/whitelabel-make",
+                  "it/whitelabel/whitelabel-meta"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
-      
   },
   "api": {
     "baseUrl": "https://app.innochat.ch/api",

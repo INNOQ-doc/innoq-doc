@@ -1,0 +1,122 @@
+---
+title: KI-Supervisor-Overrides
+description: Erfahren Sie, wie Sie das Routing des AI Supervisors ueberschreiben koennen, um eine deterministische Agentenauswahl zu erzwingen.
+---
+
+Wenn Ihr Chatbot ein Multi-Agenten-Setup verwendet, bestimmt der **KI Supervisor** automatisch, welcher user-facing Agent am besten geeignet ist, die juengste Nutzeranfrage zu bearbeiten.  
+Es kann jedoch Situationen geben, in denen Sie mehr **deterministische Kontrolle** darueber haben moechten, welcher Agent die Aufgabe uebernimmt.
+
+In diesem Artikel zeigen wir Ihnen, wie Sie **AI Supervisor Overrides** verwenden koennen, um Logikregeln zu definieren, die – sobald sie erfuellt sind – direkt zu einem bestimmten Agenten wechseln.
+
+Im Tab **AI Agents** finden Sie einen Button, der die **AI Supervisor Settings** ausklappt:
+
+<Frame>
+  <img src="/images/supervisor-overrides-1.png" />
+</Frame>
+
+Nachdem Sie die Einstellungen geoefnet haben, koennen Sie im Tab **Rules** logische Bedingungen definieren, die jedes Mal ausgewertet werden, wenn der Nutzer eine Anfrage stellt.  
+Wenn eine solche Bedingung erfuellt ist, wird das Urteil des AI Supervisors umgangen, und der definierte Agent uebernimmt sofort die Verarbeitung.
+
+Um eine neue Regel hinzuzufuegen, klicken Sie auf **Create new rule**.  
+Um Regeln zu bearbeiten, oeffnen Sie im Drei-Punkte-Menue oben rechts die Option **Edit**.
+
+<Note>
+  Bitte beachten Sie, dass Sie im Dropdown unter Umstaenden nach unten scrollen muessen, um weitere Optionen zu sehen, waehrend Sie Ihre Regel erstellen.
+</Note>
+
+Wenn Ihre Regeln fertig sind, stellen Sie sicher, dass Sie sie **Connect** – nur dann werden sie aktiv.  
+Regeln werden in einer Auswertungsreihenfolge geprueft. Sobald eine Regel **TRUE** ergibt, werden alle folgenden Regeln uebersprungen und diese Regel sofort ausgefuehrt.
+
+<Frame>
+  <img src="/images/supervisor-overrides-2.png" />
+</Frame>
+
+Ein gutes Beispiel fuer den Einsatz von AI Supervisor Overrides ist das **verzoegerte Lead Collection Setup**.  
+Nehmen wir den Anwendungsfall an, in dem Ihr Chatbot allgemeine FAQ-Anfragen beantworten soll – aber erst nach 2–3 Fragen damit beginnen soll, Nutzerdaten zu sammeln.  
+Wenn der Nutzer sich weigert, die Daten anzugeben, soll der Chatbot ihn dennoch anonym weiter bedienen.
+
+Zuerst benoetigen Sie ein regulaeres Lead Collection Setup, wie im Artikel [Lead Collection](/lead-collection) beschrieben.  
+Wenn Sie dies erledigt haben, fahren Sie hier fort.
+
+An diesem Punkt sollten Sie zwei user-facing Agenten eingerichtet haben:
+
+<Frame>
+  <img src="/images/supervisor-overrides-3.png" />
+</Frame>
+
+Oeffnen Sie nun die AI Supervisor Settings und klicken Sie auf **Create new rule**.  
+Oeffnen Sie im Drei-Punkte-Menue rechts oben **Edit**, um die Regel zu konfigurieren.  
+Fuer unseren Anwendungsfall setzen wir folgende Bedingung:
+
+<Frame>
+  <img src="/images/supervisor-overrides-5.png" />
+</Frame>
+
+Dies bedeutet:  
+Sobald die **Gesamtzahl der Nutzeranfragen** exakt **3** betraegt, setzt der AI Supervisor den aktiven Agenten auf **Lead Collection**.  
+Klicken Sie auf **Save**.
+
+Als naechstes erstellen Sie eine zweite Regel.  
+Diese Regel lautet:
+
+1. Wenn der aktuelle Agent **Lead Collection** ist,  
+2. UND wenn die Anzahl der Anfragen, die dieser Agent in Folge bearbeitet hat, **weniger als 4** ist,  
+3. UND wenn eine der folgenden Nutzerinformationen **nicht angegeben** wurde: Name, E-Mail oder Telefonnummer,  
+4. DANN bleibe beim Lead Collection Agent.
+
+Das bedeutet:  
+Der Lead Collection Agent bleibt aktiv, bis entweder:
+
+- mindestens 4 Interaktionen stattgefunden haben, **oder**
+- alle angeforderten Informationen gesammelt wurden.
+
+Waehlen Sie im Edit-Modus **Add Rule**, um neue Bedingungen hinzuzufuegen.  
+Nach Schritt 2 sieht Ihre Regel so aus:
+
+<Frame>
+  <img src="/images/supervisor-overrides-6.png" />
+</Frame>
+
+Schritt 3 benoetigt eine **Gruppenbedingung**, deren Logik lautet:
+
+- Wenn Variable **user_name** nicht angegeben ist  
+- ODER Variable **user_email** nicht angegeben ist  
+- ODER Variable **user_phone** nicht angegeben ist  
+- DANN ergibt die Gruppe TRUE
+
+Wir richten daher folgende Gruppe ein:
+
+<Frame>
+  <img src="/images/supervisor-overrides-7.png" />
+</Frame>
+
+In dieser Gruppe klicken Sie dann auf **Add Rule** und definieren die jeweiligen Bedingungen:
+
+<Frame>
+  <img src="/images/supervisor-overrides-8.png" />
+</Frame>
+
+Zum Schluss stellen Sie sicher, dass – wie in Schritt 4 beschrieben – der Agent **Lead Collection** zugewiesen wird, wenn die Regel ausgefuehrt wird:
+
+<Frame>
+  <img src="/images/supervisor-overrides-9.png" />
+</Frame>
+
+Verbinden Sie Ihre Regeln ueber das Drei-Punkte-Menue mit der Option **Connect**.  
+Wenn dies erfolgreich war, erscheint bei jeder Regel ein gruener **Active**-Status:
+
+<Frame>
+  <img src="/images/supervisor-overrides-10.png" />
+</Frame>
+
+Nun koennen Sie im Tab **Preview** den Chatbot unter diesen neuen Overrides testen.  
+Sie sollten feststellen, dass das Verhalten wie erwartet funktioniert.  
+Im Debug-Modus erscheint ein **override**-Tag neben **Active Agent**, wenn eine Override-Regel aktiv ist.
+
+<Frame>
+  <img src="/images/supervisor-overrides-11.png" />
+</Frame>
+
+Sie koennen mit AI Supervisor Overrides sehr komplexe Workflows erstellen.  
+Da diese Funktion jedoch direkt steuert, wie der AI Supervisor arbeitet, empfehlen wir dringend, Ihre Konfiguration gruendlich zu testen, bevor Sie sie live einsetzen.
+
