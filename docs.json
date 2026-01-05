@@ -35,7 +35,6 @@
     "languages": [
       {
         "language": "en",
-        "href": "/",
         "default": true,
         "tabs": [
           {
@@ -43,7 +42,9 @@
             "groups": [
               {
                 "group": "Getting Started",
-                "pages": ["introduction"]
+                "pages": [
+                  "introduction"
+                ]
               },
               {
                 "group": "Guides",
@@ -64,11 +65,15 @@
               },
               {
                 "group": "Function Calling",
-                "pages": ["rag-from-external-data-provider"]
+                "pages": [
+                  "rag-from-external-data-provider"
+                ]
               },
               {
                 "group": "Authentication Webhook",
-                "pages": ["user-identity"]
+                "pages": [
+                  "user-identity"
+                ]
               }
             ]
           },
@@ -181,7 +186,9 @@
             "groups": [
               {
                 "group": "Cookbook",
-                "pages": ["cookbook/overview"]
+                "pages": [
+                  "cookbook/overview"
+                ]
               },
               {
                 "group": "Examples",
@@ -198,7 +205,9 @@
             "groups": [
               {
                 "group": "Integrations",
-                "pages": ["integrations/slack"]
+                "pages": [
+                  "integrations/slack"
+                ]
               }
             ]
           },
@@ -207,11 +216,15 @@
             "groups": [
               {
                 "group": "Tool Guides",
-                "pages": ["tools/tools-intro"]
+                "pages": [
+                  "tools/tools-intro"
+                ]
               },
               {
                 "group": "Tools",
-                "pages": ["tools/weekday"]
+                "pages": [
+                  "tools/weekday"
+                ]
               }
             ]
           },
@@ -240,14 +253,15 @@
       },
       {
         "language": "de",
-        "href": "/de",
         "tabs": [
           {
             "tab": "Dokumentation",
             "groups": [
               {
                 "group": "Erste Schritte",
-                "pages": ["de/introduction"]
+                "pages": [
+                  "de/introduction"
+                ]
               },
               {
                 "group": "Anleitungen",
@@ -268,11 +282,15 @@
               },
               {
                 "group": "Funktionsaufrufe",
-                "pages": ["de/rag-from-external-data-provider"]
+                "pages": [
+                  "de/rag-from-external-data-provider"
+                ]
               },
               {
                 "group": "Authentifizierungs-Webhook",
-                "pages": ["de/user-identity"]
+                "pages": [
+                  "de/user-identity"
+                ]
               }
             ]
           },
@@ -385,7 +403,9 @@
             "groups": [
               {
                 "group": "Cookbook",
-                "pages": ["de/cookbook/overview"]
+                "pages": [
+                  "de/cookbook/overview"
+                ]
               },
               {
                 "group": "Beispiele",
@@ -402,7 +422,9 @@
             "groups": [
               {
                 "group": "Integrationen",
-                "pages": ["de/integrations/slack"]
+                "pages": [
+                  "de/integrations/slack"
+                ]
               }
             ]
           },
@@ -411,11 +433,15 @@
             "groups": [
               {
                 "group": "Tool-Anleitungen",
-                "pages": ["de/tools/tools-intro"]
+                "pages": [
+                  "de/tools/tools-intro"
+                ]
               },
               {
                 "group": "Tools",
-                "pages": ["de/tools/weekday"]
+                "pages": [
+                  "de/tools/weekday"
+                ]
               }
             ]
           },
@@ -441,8 +467,212 @@
             ]
           }
         ]
+      },
+      {
+        "language": "fr",
+        "tabs": [
+          {
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Bien démarrer",
+                "pages": ["fr/introduction"]
+              },
+              {
+                "group": "Guides",
+                "pages": [
+                  "fr/creating-first-chatbot",
+                  "fr/lead-collection",
+                  "fr/human-support-escalation",
+                  "fr/inbox-notifications",
+                  "fr/conversation-labeling",
+                  "fr/multi-agents-chatbot",
+                  "fr/fine-tuning-agent-intents",
+                  "fr/supervisor-overrides",
+                  "fr/byok-pricing-guide",
+                  "fr/working-with-tables",
+                  "fr/best-practices",
+                  "fr/help"
+                ]
+              },
+              {
+                "group": "Appels de fonctions",
+                "pages": ["fr/rag-from-external-data-provider"]
+              },
+              {
+                "group": "Webhook d’authentification",
+                "pages": ["fr/user-identity"]
+              }
+            ]
+          },
+          {
+            "tab": "Référence API",
+            "anchors": [
+              {
+                "anchor": "Guides d’utilisation de l’API",
+                "icon": "book",
+                "pages": [
+                  "fr/api-reference/api-key-setup",
+                  "fr/api-reference/guide-00-chatbot-create",
+                  "fr/api-reference/guide-01-chat",
+                  "fr/api-reference/guide-02-source"
+                ]
+              },
+              {
+                "anchor": "Chatbots",
+                "icon": "comments",
+                "groups": [
+                  {
+                    "group": "Chatbots",
+                    "pages": [
+                      "fr/api-reference/chatbots/properties-reference",
+                      "fr/api-reference/chatbots/create",
+                      "fr/api-reference/chatbots/update",
+                      "fr/api-reference/chatbots/fetch",
+                      "fr/api-reference/chatbots/fetch_multi",
+                      "fr/api-reference/chatbots/delete"
+                    ]
+                  }
+                ]
+              },
+              {
+                "anchor": "Agents",
+                "icon": "robot",
+                "groups": [
+                  {
+                    "group": "Agents",
+                    "pages": [
+                      "fr/api-reference/agents/properties-reference",
+                      "fr/api-reference/agents/create",
+                      "fr/api-reference/agents/update",
+                      "fr/api-reference/agents/fetch_multi",
+                      "fr/api-reference/agents/delete"
+                    ]
+                  }
+                ]
+              },
+              {
+                "anchor": "Sessions & Messages",
+                "icon": "message",
+                "groups": [
+                  {
+                    "group": "Sessions chatbot",
+                    "pages": [
+                      "fr/api-reference/sessions/properties-reference",
+                      "fr/api-reference/sessions/create",
+                      "fr/api-reference/sessions/fetch",
+                      "fr/api-reference/sessions/fetch_multi",
+                      "fr/api-reference/sessions/delete"
+                    ]
+                  },
+                  {
+                    "group": "Messages de session",
+                    "pages": [
+                      "fr/api-reference/messages/properties-reference",
+                      "fr/api-reference/messages/create",
+                      "fr/api-reference/messages/fetch_multi",
+                      "fr/api-reference/messages/fetch-message-history",
+                      "fr/api-reference/messages/delete",
+                      "fr/api-reference/messages/delete_multi"
+                    ]
+                  }
+                ]
+              },
+              {
+                "anchor": "Sources de données",
+                "icon": "database",
+                "groups": [
+                  {
+                    "group": "Sources de données",
+                    "pages": [
+                      "fr/api-reference/data-sources/properties-reference",
+                      "fr/api-reference/data-sources/create-file",
+                      "fr/api-reference/data-sources/create-qa",
+                      "fr/api-reference/data-sources/create-url",
+                      "fr/api-reference/data-sources/update",
+                      "fr/api-reference/data-sources/fetch_multi",
+                      "fr/api-reference/data-sources/retrain",
+                      "fr/api-reference/data-sources/delete",
+                      "fr/api-reference/data-sources/delete_multi"
+                    ]
+                  },
+                  {
+                    "group": "Tags des sources",
+                    "pages": [
+                      "fr/api-reference/source-tags/create",
+                      "fr/api-reference/source-tags/fetch-multi",
+                      "fr/api-reference/source-tags/update",
+                      "fr/api-reference/source-tags/delete"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Cookbook",
+            "groups": [
+              {
+                "group": "Cookbook",
+                "pages": ["fr/cookbook/overview"]
+              },
+              {
+                "group": "Exemples",
+                "pages": [
+                  "fr/cookbook/swiss-transport-agent",
+                  "fr/cookbook/swiss-news-agent",
+                  "fr/cookbook/swiss-tourism-agent"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Intégrations",
+            "groups": [
+              {
+                "group": "Intégrations",
+                "pages": ["fr/integrations/slack"]
+              }
+            ]
+          },
+          {
+            "tab": "Outils",
+            "groups": [
+              {
+                "group": "Guides des outils",
+                "pages": ["fr/tools/tools-intro"]
+              },
+              {
+                "group": "Outils",
+                "pages": ["fr/tools/weekday"]
+              }
+            ]
+          },
+          {
+            "tab": "Marque blanche",
+            "groups": [
+              {
+                "group": "Tableau de bord marque blanche",
+                "pages": [
+                  "fr/whitelabel/whitelabel-intro",
+                  "fr/whitelabel/whitelabel-plans",
+                  "fr/whitelabel/whitelabel-users"
+                ]
+              },
+              {
+                "group": "Intégrations",
+                "pages": [
+                  "fr/whitelabel/whitelabel-zapier",
+                  "fr/whitelabel/whitelabel-make",
+                  "fr/whitelabel/whitelabel-meta"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
+      
   },
   "api": {
     "baseUrl": "https://app.innochat.ch/api",
