@@ -1,143 +1,141 @@
 ---
-title: Best Practices zur Vorbereitung von Trainingsdaten
-description: Erfahren Sie, wie Sie saubere und konsistente Trainingsdaten vorbereiten, um die Leistung Ihres Chatbots zu optimieren.
+title: Best Practices per la preparazione dei dati di addestramento
+description: Scopri come preparare dati di addestramento puliti e coerenti per ottimizzare le prestazioni del tuo chatbot.
 ---
 
-Die Genauigkeit und Konsistenz Ihres Chatbots haengt von mehreren Faktoren ab:
+L’accuratezza e la coerenza del tuo chatbot dipendono da diversi fattori:
 
-- Qualitaet Ihrer Trainingsdaten  
-- Auswahl des Large Language Models (LLM)  
-- Klarheit und Ausdruecklichkeit des Base Prompts  
+- Qualità dei tuoi dati di addestramento  
+- Scelta del Large Language Model (LLM)  
+- Chiarezza ed esplicitezza del prompt di base  
 
-LLMs sind statistische Modelle, die grosse Mengen an Trainingsdaten benoetigen.  
-Wie in der AI-Forschung oft gesagt wird: **„Ein Modell ist nur so gut wie seine Trainingsdaten.“**
+Gli LLM sono modelli statistici che richiedono grandi quantità di dati di addestramento.  
+Come si dice spesso nella ricerca sull’IA: **«Un modello è buono quanto i suoi dati di addestramento.»**
 
-Die beste Moeglichkeit, die Leistung Ihres Chatbots zu optimieren, besteht darin, **seine Trainingsdaten aufzuraeumen**.  
-Im Folgenden geben wir wichtige Best Practices zur Strukturierung Ihrer Trainingsdaten.
+Il modo migliore per ottimizzare le prestazioni del tuo chatbot consiste nel **ripulire i suoi dati di addestramento**.  
+Di seguito trovi le best practices più importanti per strutturare i tuoi dati di addestramento.
 
-LLMs „denken“ nicht wie Menschen. Sie interpretieren Informationen anders.  
-Um zu verstehen, wie Daten verarbeitet werden, konzentrieren wir uns hier auf das Konzept der **Chunks**.
+Gli LLM non «pensano» come gli esseri umani. Interpretano le informazioni in modo diverso.  
+Per capire come vengono elaborate le informazioni, ci concentriamo qui sul concetto di **chunk**.
 
-## Chunk Splitting
+## Suddivisione in chunk (Chunk Splitting)
 
-Beim Retrieval-Augmented Generation (RAG) werden Chunks aus Ihrem Trainingsmaterial gewaehlt und gemeinsam mit dem Base Prompt in die Nutzeranfrage eingefuegt.  
-Diese Chunks stammen direkt aus Ihren hochgeladenen Daten: PDFs, Webseiten, Word-Dokumente, TXT-Dateien usw.
+Nel Retrieval-Augmented Generation (RAG), vengono selezionati dei chunk dal tuo materiale di addestramento e inseriti insieme al prompt di base nella richiesta dell’utente.  
+Questi chunk provengono direttamente dai tuoi dati caricati: PDF, pagine web, documenti Word, file TXT, ecc.
 
-Da LLMs Tokenlimits haben, muessen wir die Groesse eines Chunks begrenzen.
+Dato che gli LLM hanno limiti di token, dobbiamo limitare la dimensione di un chunk.
 
-Das bedeutet:
+Ciò significa:
 
-- Selbst wenn ein Kapitel Ihres Dokuments ein einziges Thema behandelt,  
-  **muss es in mehrere Chunks aufgeteilt** und separat in unserer Vektordatenbank gespeichert werden.
+- Anche se un capitolo del tuo documento tratta un unico argomento,  
+  **deve essere suddiviso in più chunk** e memorizzato separatamente nel nostro database vettoriale.
 
-Wie teilt man ein Dokument so auf, dass die Bedeutung moeglichst erhalten bleibt?
+Come suddividere un documento mantenendo il più possibile il significato?
 
-Leider gibt es **keine universelle perfekte Methode**.  
-INNOCHAT nutzt eine Kombination aus regelbasierten und statistischen Algorithmen zur Chunk-Erstellung, doch wir koennen nicht garantieren, dass jeder Chunk:
+Purtroppo **non esiste un metodo universalmente perfetto**.  
+INNOCHAT utilizza una combinazione di algoritmi basati su regole e statistici per creare i chunk, ma non possiamo garantire che ogni chunk sia:
 
-- vollstaendig,  
-- sauber,  
-- grammatikalisch korrekt  
-- oder semantisch konsistent ist.
+- completo,  
+- pulito,  
+- grammaticalmente corretto,  
+- o semanticamente coerente.
 
-Zum Glueck sind LLMs sehr tolerant gegenueber unstrukturiertem oder unsauberem Text.
+Fortunatamente, gli LLM sono molto tolleranti nei confronti di testo non strutturato o imperfetto.
 
-## Chunk-Qualitaet
+## Qualità dei chunk
 
-Eine weitere Fehlerquelle ist der **Inhalt des Chunks** selbst.
+Un’altra fonte di errore è il **contenuto del chunk** stesso.
 
-Optimalerweise ist jeder Chunk:
+Idealmente, ogni chunk dovrebbe essere:
 
-- selbstaendig interpretierbar  
-- semantisch konsistent  
-- grammatikalisch richtig  
-- mit optionaler Metadatenangabe (Position im Dokument)
+- interpretabile in modo autonomo  
+- semanticamente coerente  
+- grammaticalmente corretto  
+- con eventuale indicazione di metadati (posizione nel documento)
 
-Beim Extrahieren aus realen Dokumenten ist dies jedoch selten perfekt.
+Quando si estrae da documenti reali, questo è raramente perfetto.
 
-Das Problem ist besonders gross bei **Webseiten**:
+Il problema è particolarmente grave con le **pagine web**:
 
-- Browser rendern Webseiten anders als Web-Scraper sie sehen  
-- Layout, Bilder, Illustrationen oder eingebettete Inhalte gehen oft verloren  
-- Tabellen koennen verzerrt dargestellt werden  
+- I browser visualizzano le pagine in modo diverso rispetto a un web-scraper  
+- Layout, immagini, illustrazioni o contenuti incorporati spesso vanno persi  
+- Le tabelle possono risultare distorte  
 
 <Frame>
   <img src="/images/best-practices-1.png" />
 </Frame>
 
-_INNOCHAT Pricing-Tabelle im Browser (Chrome)._
+_Tabella dei prezzi INNOCHAT nel browser (Chrome)._
 
 <Frame>
   <img src="/images/best-practices-2.png" />
 </Frame>
 
-_Dieselben Inhalte nach Scraping und Chunking._
+_Contenuto identico dopo scraping e suddivisione in chunk._
 
 ## No gaps, no overlaps
 
-RAG funktioniert, indem es eine Teilmenge relevanter Chunks aus Ihren Trainingsdaten waehlt.  
-Dazu wird:
+Il RAG funziona selezionando un sottoinsieme di chunk rilevanti dai tuoi dati di addestramento.  
+Per farlo:
 
-1. Die Nutzeranfrage eingebettet  
-2. Jeder Chunk ebenfalls eingebettet  
-3. Die Aehnlichkeit berechnet (cosine distance)  
-4. Die Top-n-Chunks ausgewaehlt (abhängig vom Tokenlimit des gewaehlten Modells)
+1. La richiesta dell’utente viene incorporata (embedded)  
+2. Ogni chunk viene incorporato  
+3. Viene calcolata la similarità (distanza coseno)  
+4. Vengono selezionati i Top-n chunk (in base al limite di token del modello scelto)
 
-Da das System versucht, alle **semantisch relevanten** Chunks einzubeziehen, kann es passieren:
+Poiché il sistema cerca di includere tutti i chunk **semanticamente rilevanti**, può succedere che:
 
-- dass mehrere Chunks das gleiche Thema betreffen  
-- aber **faktisch unterschiedliche oder widerspruechliche Informationen** enthalten
+- più chunk riguardino lo stesso argomento  
+- ma contengano informazioni **fattualmente diverse o contraddittorie**
 
-Beispiel:
+Esempio:
 
-**_What is the price of iPhone SE?_**
+**_Qual è il prezzo dell’iPhone SE?_**
 
-Moegliche Chunks:
-> [Chunk 1] iPhone SE’s current price is $250.
+Possibili chunk:
+> [Chunk 1] Il prezzo attuale dell’iPhone SE è di $250.  
 > 
-> [Chunk 2] Original iPhone SE is $199.
+> [Chunk 2] L’iPhone SE originale costa $199.  
 > 
-> [Chunk 3] iPhone 5’s price is $600.
+> [Chunk 3] Il prezzo dell’iPhone 5 è di $600.
 
+Tutti i chunk sono semanticamente rilevanti – contengono il termine «iPhone SE».  
+Ma i fatti sono incoerenti.  
+Ciò porta a **risposte incoerenti del chatbot**, anche per domande identiche.
 
-Alle Chunks sind semantisch relevant – sie enthaelt den Begriff „iPhone SE“.  
-Aber die Fakten sind uneinheitlich.  
-Dies fuehrt zu **inkonsistenten Chatbot-Antworten**, selbst bei identischen Fragen.
-
-### Empfehlung: MECE-Prinzip
+### Raccomandazione: Principio MECE
 
 **Mutually Exclusive, Collectively Exhaustive**  
-= keine Ueberschneidungen, keine Luecken.
+= nessuna sovrapposizione, nessuna lacuna.
 
-Strukturieren Sie Ihre Trainingsdaten so, dass:
+Struttura i tuoi dati di addestramento in modo che:
 
-- Informationen klar abgegrenzt sind  
-- keine widerspruechlichen Aussagen existieren  
+- le informazioni siano chiaramente delimitate  
+- non esistano affermazioni contraddittorie  
 
-Dies reduziert die Chance, dass der LLM-Kontext widerspruchsvolle Daten enthaelt.
+Questo riduce drasticamente la probabilità che il contesto fornito all’LLM contenga dati contraddittori.
 
-## Entfernen Sie unnötige Trainingsdaten
+## Rimuovi i dati di addestramento non necessari
 
-RAG ist ein **semantischer Matching-Prozess**.  
-Da LLMs Tokenlimits haben, kann nur ein kleiner Teil des Wissensspeichers pro Anfrage verwendet werden.
+Il RAG è un **processo di corrispondenza semantica**.  
+Dato il limite di token degli LLM, solo una piccola parte della base di conoscenza può essere utilizzata per richiesta.
 
-Beispiel:
+Esempio:
 
-- 20 Chunks insgesamt  
-- 10 Chunks pro Anfrage verfuegbar  
-→ Jede Anfrage deckt **50 %** der Wissensbasis ab
+- 20 chunk totali  
+- 10 chunk disponibili per richiesta  
+→ Ogni richiesta copre il **50 %** della base di conoscenza
 
-Aber:
+Ma:
 
-- 2000 Chunks insgesamt  
-- 10 Chunks pro Anfrage verfuegbar  
-→ Jede Anfrage nutzt nur **0.5 %** der Wissensbasis
+- 2000 chunk totali  
+- 10 chunk disponibili per richiesta  
+→ Ogni richiesta utilizza solo lo **0,5 %** della base di conoscenza
 
-Je groesser der Wissensspeicher, desto kleiner die Chance, dass relevante Informationen ausgewaehlt werden.
+Più grande è la base di conoscenza, minore è la probabilità che vengano selezionate le informazioni rilevanti.
 
-Daher gilt:
+Quindi vale la regola:
 
-### Weniger, aber gezielt = deutlich bessere Chatbot-Leistung
+### Meno, ma mirato = prestazioni del chatbot nettamente migliori
 
-Fokussierte, saubere Daten schlagen grosse, unsortierte Datensaetze jedes Mal.
-
+Dati mirati e puliti superano sempre grandi insiemi di dati disordinati.

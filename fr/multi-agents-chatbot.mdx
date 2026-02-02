@@ -1,62 +1,62 @@
 ---
-Titel: Multi-Agenten-Chatbot
-Beschreibung: Erfahren Sie, wie INNOCHAT eine Multi-Agenten-Architektur für leistungsstarke Automatisierungen nutzt.
+title: Chatbot multi-agents
+description: Découvrez comment INNOCHAT utilise une architecture multi-agents pour des automatisations performantes.
 ---
 
-INNOCHAT ist das erste und leistungsstärkste No-Code-AI-Chat-Framework, das eine Multi-Agenten-Architektur implementiert.  
-Mehrere KI-Agenten arbeiten gemeinsam in einer koordinierten Orchestrierung, um fortgeschrittene Workflow-Automatisierungen zu ermöglichen.
+INNOCHAT est le premier et le plus puissant framework No-Code d’IA conversationnelle à implémenter une architecture multi-agents.  
+Plusieurs agents IA travaillent ensemble dans une orchestration coordonnée afin de permettre des automatisations de workflow avancées.
 
 <Frame>
   <img src="/images/multi-agents-chatbot-7.png" />
 </Frame>
 
-Dieses Handbuch soll Ihnen helfen, zu verstehen, wie unsere Agenten zusammenarbeiten, und Ihnen gleichzeitig einige Best Practices für das Design eines Multi-Agenten-Chatbots vermitteln.
+Ce guide a pour objectif de vous aider à comprendre comment nos agents collaborent, tout en vous transmettant les meilleures pratiques pour concevoir un chatbot multi-agents.
 
-Alle Agenten haben zwei Zustände:
+Tous les agents possèdent deux états :
 
-- **Aktiv:** Der Agent ist „Connected“. Er ist live und aktiv.
-- **Inaktiv:** Der Agent ist „Disabled“. Er führt keine Aktionen aus.
+- **Actif :** L’agent est « Connected ». Il est en ligne et actif.  
+- **Inactif :** L’agent est « Disabled ». Il n’exécute aucune action.
 
-Zu jedem Zeitpunkt interagiert **nur ein einzelner Agent** direkt mit dem Benutzer.  
-Unser **KI Supervisor** arbeitet im Hintergrund in Echtzeit und entscheidet, welcher Agent die Anfrage des Nutzers bearbeiten soll.
+À tout moment, **un seul agent** interagit directement avec l’utilisateur.  
+Notre **superviseur IA** travaille en arrière-plan en temps réel et décide quel agent doit traiter la demande de l’utilisateur.
 
 <Note>
-  Agenten sind völlig voneinander isoliert.  
-  Das bedeutet:
-  - Sie können Agent B nicht aus Agent A heraus anweisen.  
-  - Sie können dem KI-Supervisor nicht sagen, er solle „den Staffelstab weitergeben“.  
-  - Der KI-Supervisor kann nicht per natürlicher Sprache instruiert werden.
+  Les agents sont totalement isolés les uns des autres.  
+  Cela signifie :
+  - Vous ne pouvez pas donner d’instructions à l’agent B depuis l’agent A.  
+  - Vous ne pouvez pas demander au superviseur IA de « passer le relais ».  
+  - Le superviseur IA ne peut pas être instruit par langage naturel.
 </Note>
 
-Der KI-Supervisor verteilt Benutzeranfragen auf Agenten basierend auf deren **Agentenbeschreibung**.  
-Wenn Sie nur einen Agenten haben, ist die Beschreibung weniger wichtig.  
-Arbeiten Sie jedoch mit mehreren Agenten, sollte die Beschreibung **so eindeutig und präzise wie möglich** sein.
+Le superviseur IA répartit les requêtes des utilisateurs entre les agents en fonction de leur **description d’agent**.  
+Si vous n’avez qu’un seul agent, la description est moins importante.  
+En revanche, avec plusieurs agents, elle doit être **aussi claire et précise que possible**.
 
-- **Agent Description** – Welche Aufgaben soll der Agent übernehmen?  
-- **Agent Prompt** – Wie soll der Agent diese Aufgaben ausführen?
+- **Agent Description** – Quelles tâches l’agent doit-il accomplir ?  
+- **Agent Prompt** – Comment l’agent doit-il exécuter ces tâches ?
 
 <Frame>
   <img src="/images/multi-agents-chatbot-5.png" />
 </Frame>
 
 <Note>
-  Die Agentenbeschreibung unterscheidet sich vom Prompt.  
-  Die Beschreibung erklärt dem KI-Supervisor auf hoher Ebene, welche Arten von Benutzeranfragen der Agent behandeln soll.  
-  Der Prompt enthält hingegen detaillierte Anweisungen zur Verhaltensweise des Agenten.
+  La description de l’agent est différente du prompt.  
+  La description explique au superviseur IA, à un niveau élevé, quels types de requêtes l’agent doit traiter.  
+  Le prompt contient, quant à lui, des instructions détaillées sur le comportement de l’agent.
 </Note>
 
-Gute Agentenbeschreibungen beantworten die Frage:  
-**„Welche Arten von Anfragen soll der Agent bearbeiten?“**
+De bonnes descriptions d’agents répondent à la question :  
+**« Quels types de requêtes l’agent doit-il traiter ? »**
 
-Sie sollten alle relevanten **User Intents** enthalten, die der Agent abdecken soll.
+Elles doivent inclure toutes les **intentions utilisateur** pertinentes que l’agent doit couvrir.
 
-Agentenbeschreibungen **sollten nicht** erklären, *wie* der Agent seine Aufgaben erledigt – das gehört in den Prompt.
+Les descriptions d’agents ne doivent **pas** expliquer *comment* l’agent accomplit ses tâches — cela relève du prompt.
 
-Hier einige Beispiele guter Agentenbeschreibungen:
+Voici quelques exemples de bonnes descriptions d’agents :
 
 <AccordionGroup>
   <Accordion title="INNOCHAT Support">
-    Embody the role of "INNOCHAT Expert," a specialized guide for INNOCHAT. Your main objective is to assist users with answering INNOCHAT-related questions related to:
+    Incarnate the role of "INNOCHAT Expert," a specialized guide for INNOCHAT. Your main objective is to assist users with answering INNOCHAT-related questions related to:
     - Use cases
     - Features and capabilities
     - Data security
@@ -97,60 +97,60 @@ Hier einige Beispiele guter Agentenbeschreibungen:
   </Accordion>
 </AccordionGroup>
 
-Was macht ein gutes Multi-Agenten-Chatbot-Design aus?  
-Wie stelle ich sicher, dass alle Benutzerintentionen vom richtigen Agenten bearbeitet werden?
+Qu’est-ce qui caractérise une bonne conception de chatbot multi-agents ?  
+Comment s’assurer que toutes les intentions utilisateur sont traitées par le bon agent ?
 
-Grundsaetzlich eignet sich eine Multi-Agenten-Architektur hervorragend, um spezialisierte AI-Agenten als Team zusammenarbeiten zu lassen.  
-Jeder Agent kann:
+En principe, une architecture multi-agents est idéale pour faire collaborer des agents IA spécialisés en équipe.  
+Chaque agent peut :
 
-- auf unterschiedliche Trainingsdaten zugreifen,  
-- von einem anderen LLM betrieben werden,  
-- einen eigenen Prompt besitzen,  
-- eigene Tools (Functions) erhalten.
+- accéder à des données d’entraînement différentes,  
+- être alimenté par un LLM différent,  
+- disposer de son propre prompt,  
+- avoir ses propres outils (Functions).
 
-Dies ist deutlich effektiver, als alles in einen einzigen Agenten zu packen.
+C’est bien plus efficace que de tout regrouper dans un seul agent.
 
-Aus Sicht des Nutzers ist jedoch nicht erkennbar, dass mehrere Agenten beteiligt sind – die Orchestrierung erfolgt vollkommen nahtlos im Hintergrund.  
-Bei richtiger Konfiguration fühlt sich der Chat an wie ein Gespräch mit einem Menschen.  
-Ein Multi-Agenten-Chatbot kann deutlich leistungsstärker sein als Einzel-Agent-Systeme wie ChatGPT.
+Du point de vue de l’utilisateur, la présence de plusieurs agents n’est pas perceptible — l’orchestration est totalement transparente en arrière-plan.  
+Avec une configuration correcte, le chat donne l’impression d’une conversation humaine.  
+Un chatbot multi-agents peut être nettement plus performant que les systèmes à agent unique comme ChatGPT.
 
-Unser KI-Supervisor-Routing nutzt einen Algorithmus, der **Latenz und Genauigkeit** ausbalanciert.  
-Er wird nicht immer zu 100 % korrekt entscheiden, aber mit gutem Design kommen Sie sehr nahe heran.
+Notre routage du superviseur IA utilise un algorithme qui équilibre **latence et précision**.  
+Il ne sera pas toujours correct à 100 %, mais avec une bonne conception, vous pouvez vous en approcher de très près.
 
-## Debugging des Chatbots
+## Débogage du chatbot
 
-Wenn der Chatbot nicht wie erwartet reagiert, gibt es zwei mögliche Ursachen:
+Si le chatbot ne réagit pas comme prévu, deux causes sont possibles :
 
-1. Der falsche Agent wurde zur Verarbeitung der Anfrage ausgewählt.  
-2. Der richtige Agent wurde ausgewählt, ist aber nicht optimal konfiguriert.
+1. Le mauvais agent a été sélectionné pour traiter la requête.  
+2. Le bon agent a été sélectionné, mais il n’est pas configuré de manière optimale.
 
-Um zu prüfen, ob der richtige Agent ausgewählt wurde, gehen Sie zu **Inbox** und aktivieren Sie den Debug-Modus:
+Pour vérifier si le bon agent a été sélectionné, allez dans **Inbox** et activez le mode débogage :
 
 <Frame>
   <img src="/images/multi-agents-chatbot-6.png" />
 </Frame>
 
-Unter **Active Agent** sehen Sie, welcher Agent die Antwort generiert hat.  
-Diese Information wird nur angezeigt, wenn mehrere Agenten verbunden sind.
+Sous **Active Agent**, vous pouvez voir quel agent a généré la réponse.  
+Cette information n’est affichée que lorsque plusieurs agents sont connectés.
 
-Wenn der falsche Agent reagiert hat, bearbeiten Sie seine Konfiguration – Name, Beschreibung oder Prompt.
+Si le mauvais agent a répondu, modifiez sa configuration — nom, description ou prompt.
 
-Wenn der richtige Agent reagiert, die Antwort aber nicht passt, liegt das Problem beim Agenten selbst.  
-Der einfachste Weg zur Verbesserung besteht darin, die Antwort direkt zu überarbeiten:
+Si le bon agent a répondu mais que la réponse ne convient pas, le problème vient de l’agent lui-même.  
+Le moyen le plus simple d’améliorer cela consiste à corriger directement la réponse :
 
 <Frame>
   <img src="/images/multi-agents-chatbot-4.png" />
 </Frame>
 
-Damit wird sichergestellt, dass der Chatbot künftig bei der gleichen Frage anhand Ihrer Korrektur antwortet – sofern derselbe Agent ausgewählt wird.
+Cela garantit que le chatbot répondra à l’avenir à la même question en se basant sur votre correction — à condition que le même agent soit sélectionné.
 
-Um den Agenten grundsätzlich robuster zu machen, können Sie:
+Pour rendre l’agent plus robuste de manière générale, vous pouvez :
 
-- Trainingsdaten kuratieren,  
-- ein leistungsstärkeres LLM verwenden,  
-- den Basis-Prompt präziser gestalten.
+- organiser et affiner les données d’entraînement,  
+- utiliser un LLM plus performant,  
+- rendre le prompt de base plus précis.
 
-Weitere Informationen:
+Informations complémentaires :
 
-- Best Practices für Trainingsdaten: **[best practices for preparing training data](/best-practices)**  
-- Agentenintentionen verfeinern: **[Fine-Tuning Agent Intents](fine-tuning-agent-intents)**  
+- Bonnes pratiques pour les données d’entraînement : **[best practices for preparing training data](/best-practices)**  
+- Affiner les intentions des agents : **[Fine-Tuning Agent Intents](fine-tuning-agent-intents)**  

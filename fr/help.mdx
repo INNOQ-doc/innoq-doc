@@ -1,134 +1,133 @@
 ---
-title: Warum beantwortet mein Chatbot Fragen nicht korrekt?
-description: Erfahren Sie, warum LLM-basierte Chatbots manchmal falsch antworten und wie Retrieval Augmented Generation (RAG) funktioniert.
+title: Pourquoi mon chatbot ne répond-il pas correctement aux questions ?
+description: Découvrez pourquoi les chatbots basés sur LLM répondent parfois de manière incorrecte et comment fonctionne la Retrieval Augmented Generation (RAG).
 ---
 
-Als Google-Wissenschaftler erstmals das Konzept des **Transformers** vorstellten (https://arxiv.org/pdf/1706.03762.pdf), erhielt es viel Aufmerksamkeit in der NLP-Community.  
-Es bildete die Grundlage fuer neuartige neuronale Netzwerke zur Verarbeitung und zum Verstaendnis natuersslicher Sprache.
+Lorsque les chercheurs de Google ont présenté pour la première fois le concept de **Transformer**[](https://arxiv.org/pdf/1706.03762.pdf), il a suscité beaucoup d’attention dans la communauté NLP.  
+Il a constitué la base de nouveaux réseaux neuronaux pour le traitement et la compréhension du langage naturel.
 
-Kurz darauf popularisierte OpenAI die **GPT-Modelle** und leitete mit ChatGPT die Aera der **Large Language Models (LLMs)** ein.  
-Die dialogfaehige Leistung dieser Modelle hat viele Menschen glauben lassen, dass KI kurz davor sei, menschliche Intelligenz zu erreichen.
+Peu après, OpenAI a popularisé les **modèles GPT** et, avec ChatGPT, a lancé l’ère des **Large Language Models (LLM)**.  
+Les performances conversationnelles de ces modèles ont conduit beaucoup de gens à croire que l’IA était sur le point d’atteindre l’intelligence humaine.
 
-Doch trotz ihres „menschlichen“ Verhaltens sehen, interpretieren und verstehen LLMs die Welt **nicht** wie Menschen.  
-Sie sind keine logischen Denkmaschinen, sondern eher **probabilistische Konversationssimulatoren**.  
-Ihr Verhalten basiert auf **Mustererkennung** und **semantischen Korrelationen**, nicht auf Logik oder Verstehen.
+Pourtant, malgré leur comportement « humain », les LLM ne voient, n’interprètent et ne comprennent **pas** le monde comme les humains.  
+Ce ne sont pas des machines à raisonner logiquement, mais plutôt des **simulateurs conversationnels probabilistes**.  
+Leur comportement repose sur la **reconnaissance de motifs** et les **corrélations sémantiques**, et non sur la logique ou la compréhension.
 
-INNOCHAT wird von OpenAI-LLMs betrieben und nutzt **Retrieval Augmented Generation (RAG)**, um Antworten anhand Ihrer hochgeladenen Daten anzupassen.
+INNOCHAT est propulsé par les LLM d’OpenAI et utilise la **Retrieval Augmented Generation (RAG)** pour adapter les réponses en fonction de vos données téléchargées.
 
-## Was ist Retrieval Augmented Generation (RAG)?
+## Qu’est-ce que la Retrieval Augmented Generation (RAG) ?
 
-LLMs werden mit riesigen Textmengen trainiert.  
-Sie erkennen Muster und generieren neue Texte basierend auf der Wahrscheinlichkeit, dass bestimmte „Tokens“ (Worte oder Wortteile) aufeinander folgen.
+Les LLM sont entraînés sur d’énormes quantités de texte.  
+Ils reconnaissent des motifs et génèrent de nouveaux textes en se basant sur la probabilité que certains « tokens » (mots ou parties de mots) se suivent.
 
-Daher nennt OpenAI viele Endpunkte **Chat Completions** – das Modell „vollendet“ den Prompt.
+C’est pourquoi OpenAI nomme beaucoup de ses endpoints **Chat Completions** — le modèle « complète » le prompt.
 
 <Note>
-  Eine ausfuehrliche Erklaerung zu Tokens finden Sie in der offiziellen OpenAI-Dokumentation:
+  Une explication détaillée des tokens est disponible dans la documentation officielle OpenAI :  
   https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them
 </Note>
 
-Aber: **Muster bedeuten nicht Wahrheit.**  
-LLMs koennen sehr leicht **halluzinieren**, wenn keine relevanten Daten vorliegen.
+Mais : **les motifs ne signifient pas la vérité.**  
+Les LLM peuvent très facilement **halluciner** lorsqu’aucune donnée pertinente n’est disponible.
 
-RAG versucht dieses Problem zu loesen, indem es dem Prompt zusaetzlichen Kontext hinzufuegt, der die Wahrscheinlichkeiten beeinflusst.
+La RAG tente de résoudre ce problème en ajoutant au prompt un contexte supplémentaire qui influence les probabilités.
 
-### Beispiel
+### Exemple
 
-Prompt ohne Kontext:
+Prompt sans contexte :
 ```
 Was ist INNOCHAT?
 ```
-Dies ist eine Abfrage, die sich vollständig auf die semantischen Muster innerhalb der grundlegenden Trainingsdaten des Modells stützt, um eine Antwort zu generieren. Es gibt keine Garantie dafür, dass die Antwort korrekt oder vertrauenswürdig ist. Was aber, wenn sich die Eingabeaufforderung wie folgt ändert:
+Cette requête repose entièrement sur les motifs sémantiques présents dans les données d’entraînement de base du modèle. Il n’y a aucune garantie que la réponse soit correcte ou fiable.  
+Mais que se passe-t-il si le prompt devient :
+
 ```
-Beantworten Sie die folgende Frage unter Verwendung des folgenden Kontexts:
-
-INNOCHAT ist ein leistungsstarkes No-Code-/Low-Code-Framework, mit dem Sie
-Multi-Agent-Chatbots mit Funktionsaufruf-Fähigkeiten unter Verwendung Ihrer eigenen Daten erstellen können. Es ist benutzerfreundlich
-und vielseitig gestaltet und bietet Anpassungsoptionen und die Integration mit gängigen Plattformen.
-
-Was ist INNOCHAT?
+Répondez à la question suivante en utilisant le contexte ci-dessous :
+INNOCHAT est un puissant framework No-Code / Low-Code qui vous permet de créer des chatbots multi-agents dotés de capacités d’appel de fonctions, en utilisant vos propres données. Il est conçu pour être convivial et polyvalent, avec de nombreuses options de personnalisation et une intégration avec les plateformes courantes.
+Qu’est-ce qu’INNOCHAT ?
 ```
 
-Nun wird das Modell stark in Richtung der bereitgestellten Informationen gelenkt.  
-Der Kontext beeinflusst die Token-Generierung und fuehrt zu einer praeziseren Antwort.
 
-Das ist **RAG**: Der Prompt wird mit relevanten Wissensquellen angereichert, ohne das Modell selbst zu veraendern.
+Le modèle est alors fortement orienté vers les informations fournies.  
+Le contexte influence la génération des tokens et conduit à une réponse beaucoup plus précise.
 
-### Warum füttern wir nicht einfach *alle* Daten auf einmal?
+C’est cela la **RAG** : enrichir le prompt avec des sources de connaissance pertinentes, sans modifier le modèle lui-même.
 
-Weil **Tokenlimits** existieren.
+### Pourquoi ne pas simplement envoyer *toutes* les données en même temps ?
 
-Ein OpenAI-Modell wie gpt-3.5-16k kann etwa **10.000 Woerter** als Kontext aufnehmen.  
-Ihre Wissensbasis besteht oft aus Hunderten Seiten oder Tausenden Dokumenten – also weit mehr als in ein einziges LLM-Fenster passt.
+Parce qu’il existe des **limites de tokens**.
 
-Deshalb:
+Un modèle OpenAI comme gpt-3.5-16k peut gérer environ **10 000 mots** de contexte.  
+Votre base de connaissances comporte souvent des centaines de pages ou des milliers de documents — bien plus que ce qui rentre dans une seule fenêtre LLM.
 
-1. Dokumente werden in **Chunks** geteilt  
-2. Jeder Chunk wird „eingebettet“ (Embedding)  
-3. Embeddings werden in einer **Vektordatenbank** gespeichert  
-4. Bei jeder Nutzeranfrage werden die **relevantesten Chunks** gesucht  
-5. Diese werden in den Prompt eingefuegt  
-6. Das LLM antwortet auf Basis dieses kontextualisierten Prompts  
+C’est pourquoi :
 
-Ein Embedding ist eine **mathematische Darstellung der Bedeutung** eines Textausschnitts.  
-Aehnliche Saetze liegen im Vektorraum „naeher beieinander“.
+1. Les documents sont découpés en **chunks**  
+2. Chaque chunk est « encodé » (embedding)  
+3. Les embeddings sont stockés dans une **base de données vectorielle**  
+4. À chaque requête utilisateur, on recherche les **chunks les plus pertinents**  
+5. Ces chunks sont insérés dans le prompt  
+6. Le LLM répond sur la base de ce prompt contextualisé  
 
-Eine gute Einfuehrung in Embeddings:  
+Un embedding est une **représentation mathématique du sens** d’un extrait de texte.  
+Des phrases similaires se trouvent « plus proches » dans l’espace vectoriel.
+
+Une bonne introduction aux embeddings :  
 https://stackoverflow.blog/2023/11/09/an-intuitive-introduction-to-text-embeddings/
 
-### Beispiel: Anfrage „What is innoChat?“
+### Exemple : requête « What is innoChat ? »
 
-Der relevanteste Chunk ist:
+Le chunk le plus pertinent est :
 
-
-```
-Was ist INNOCHAT?
-```
-Der relevanteste Teil, der wahrscheinlich aus unserer Vektordatenbank abgerufen wird, ist:
 
 ```
-innoChat ist ein leistungsstarkes No-Code-/Low-Code-Framework, mit dem Sie Multi-Agent-Chatbots mit Funktionsaufruf-Fähigkeiten
-unter Verwendung Ihrer eigenen Daten erstellen können. Es ist benutzerfreundlich und vielseitig gestaltet und bietet Anpassungsoptionen und
-die Integration mit gängigen Plattformen.
+Qu’est-ce qu’INNOCHAT ?
 ```
 
-Mit diesem Kontext kann das LLM eine korrekte Antwort erzeugen.
+La partie la plus pertinente, probablement extraite de notre base de données vectorielle, est :
 
-AWS bietet eine gute visuelle Uebersicht des RAG-Prozesses:
+```
+innoChat est un puissant framework No-Code / Low-Code qui vous permet de créer des chatbots multi-agents dotés de capacités d’appel de fonctions, en utilisant vos propres données. Il est conçu pour être convivial et polyvalent, avec de nombreuses options de personnalisation et une intégration avec les plateformes courantes.
+```
+
+
+Avec ce contexte, le LLM peut générer une réponse correcte.
+
+AWS propose une bonne vue d’ensemble visuelle du processus RAG :
 
 <Frame caption="https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-foundation-models-customize-rag.html">
   <img src="/images/help-1.png" />
 </Frame>
 
-## Welche Typen von Anfragen funktionieren gut?
+## Quels types de questions fonctionnent bien ?
 
-| Anfrage-Typ                | Beschreibung                                                         | Beispiel                                              |
-|--------------------------- |----------------------------------------------------------------------|------------------------------------------------------|
-| Information Retrieval      | Zielt auf konkrete Infos aus Dokumenten                              | “What is Paladin Max, Inc.'s PTO policy?”            |
-| Topic-centric Summaries    | Zusammenfassung eines thematischen Bereichs                          | “Summarize the latest developments in generative AI” |
+| Type de requête            | Description                                                        | Exemple                                                      |
+|----------------------------|--------------------------------------------------------------------|--------------------------------------------------------------|
+| Recherche d’information    | Recherche d’informations concrètes dans les documents              | « Quelle est la politique de congés payés de Paladin Max, Inc. ? » |
+| Résumés thématiques        | Résumé d’un domaine thématique                                     | « Résumez les derniers développements en IA générative »     |
 
-## Welche Typen von Anfragen funktionieren schlecht?
+## Quels types de questions fonctionnent mal ?
 
-| Anfrage-Typ                       | Beschreibung                                                                 | Beispiel                                                                     |
-|---------------------------------- |------------------------------------------------------------------------------|----------------------------------------------------------------------------- |
-| Dokumentvergleich                 | Vergleich ohne klare Kriterien                                               | “Find inconsistencies across all arguments in my documents.”                |
-| Zaehlen oder Mathematik           | Quantitative Analyse anhand der Trainingsdaten                               | “How many times is John mentioned across the contracts?”                    |
-| Meta-Level Instructions           | Verweis auf Dokumentstruktur / Seitenzahlen                                  | “Summarize section 3 (pages 33–37) of this report.”                         |
-| Library-wide Metadata Queries     | Fragen, die mehrere Dokumente statistisch betreffen                           | “How many documents mention topic X and list them in a table.”              |
-| Longform Text Generation          | Sehr lange Texte auf Grundlage bereitgestellter Dokumente                     | “Write a 5000 word literature review.”                                      |
+| Type de requête                      | Description                                                                | Exemple                                                                 |
+|--------------------------------------|----------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| Comparaison de documents             | Comparaison sans critères clairs                                           | « Trouve les incohérences dans tous les arguments de mes documents. »   |
+| Comptage ou calculs mathématiques    | Analyse quantitative basée sur les données d’entraînement                  | « Combien de fois John est-il mentionné dans tous les contrats ? »      |
+| Instructions de niveau méta         | Référence à la structure / numérotation des pages                          | « Résumez la section 3 (pages 33–37) de ce rapport. »                   |
+| Requêtes statistiques sur l’ensemble | Questions statistiques sur plusieurs documents                             | « Combien de documents mentionnent le sujet X et liste-les dans un tableau. » |
+| Génération de texte long             | Textes très longs basés sur les documents fournis                          | « Rédige une revue de littérature de 5000 mots. »                       |
 
-Wenn Ihr Anwendungsfall diese komplexeren Aufgaben verlangt, koennen Sie:
+Si votre cas d’usage nécessite ces tâches plus complexes, vous pouvez utiliser :
 
-- Multi-Agent-Architektur  
-- Function Calling  
+- une architecture multi-agents  
+- le function calling  
 
-verwenden – dies erfordert jedoch fortgeschrittene Konfiguration.
+— cela nécessite toutefois une configuration avancée.
 
 ---
 
-Moeglicherweise koennen Sie die Leistung Ihres Chatbots verbessern, indem Sie Ihre Trainingsdaten optimieren.  
-Lesen Sie hierzu:
+Il est possible d’améliorer les performances de votre chatbot en optimisant vos données d’entraînement.  
+Consultez à ce sujet :
 
-👉 **[Best practices for preparing training data](/best-practices)**
+👉 **[Bonnes pratiques pour la préparation des données d’entraînement](/best-practices)**
 
 

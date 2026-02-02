@@ -1,35 +1,36 @@
+
 ---
-title: RAG mit einem externen Datenanbieter
-description: Erfahren Sie, wie Sie mit Function Calling externe, dynamische Datenquellen in Ihre INNOCHAT-Agenten integrieren.
+title: RAG con un fornitore di dati esterno
+description: Scopri come integrare fonti di dati esterne e dinamiche nei tuoi agenti INNOCHAT utilizzando il Function Calling.
 ---
 
-Das Hochladen statischer Quellen als Trainingsdaten fuer Ihre AI-Agenten ist nuetzlich – aber was ist, wenn Ihre Datenbank riesig, stark strukturiert, extern gehostet oder in Echtzeit aktualisiert wird?  
-Es gibt keine praktikable Moeglichkeit, eine gesamte Datenbank in INNOCHATs statische Wissensbibliothek zu laden **und** gleichzeitig eine Live-Verbindung aufrechtzuerhalten…
+Caricare fonti statiche come dati di addestramento per i tuoi agenti IA è utile – ma cosa fare quando il tuo database è enorme, fortemente strutturato, ospitato esternamente o aggiornato in tempo reale?  
+Non esiste un modo pratico per caricare **l’intero** database nella libreria di conoscenza statica di INNOCHAT **mantenendo allo stesso tempo una connessione live**…
 
-Genau hier kommt **Function Calling** ins Spiel.  
-Ueber Function Calling koennen Sie Ihrem AI-Agenten in INNOCHAT waehrend einer laufenden Konversation **Daten On-Demand** zur Verfuegung stellen.
+È proprio qui che entra in gioco il **Function Calling**.  
+Tramite il Function Calling puoi fornire al tuo agente IA in INNOCHAT **dati on-demand** durante una conversazione in corso.
 
-In diesem Beispiel zeigen wir, wie wir RAG-Anreicherung mit Abstracts aus wissenschaftlichen Publikationen von einem externen Aggregator realisieren: der **Semantic Scholar API**.
+In questo esempio mostriamo come realizzare un arricchimento RAG con abstract di pubblicazioni scientifiche provenienti da un aggregatore esterno: l’**API di Semantic Scholar**.
 
-## Einrichten und Testen der Funktion
+## Configurazione e test della funzione
 
-Zunaechst benoetigen Sie einen **API-Schluessel** Ihres externen Datenanbieters, sofern dieser eine gesicherte API anbietet.  
-In unserem Fall haben wir einen Schluessel direkt von [Semantic Scholar](https://www.semanticscholar.org/) angefragt.
+Innanzitutto hai bisogno di una **chiave API** del tuo fornitore di dati esterno, se offre un’API protetta.  
+Nel nostro caso abbiamo richiesto una chiave direttamente a [Semantic Scholar](https://www.semanticscholar.org/).
 
-Da wir unsere LLM-Antworten mit Informationen aus der Forschung anreichern wollen, muessen wir den passenden API-Endpoint fuer die Suche finden.  
-Semantic Scholar stellt dazu eine gute [Dokumentation](https://api.semanticscholar.org/api-docs/graph#tag/Paper-Data/operation/get_graph_paper_relevance_search) bereit.
+Poiché vogliamo arricchire le risposte del LLM con informazioni dalla ricerca scientifica, dobbiamo individuare l’endpoint API corretto per la ricerca.  
+Semantic Scholar fornisce una buona [documentazione](https://api.semanticscholar.org/api-docs/graph#tag/Paper-Data/operation/get_graph_paper_relevance_search).
 
 <Frame>
   <img src="/images/fc-external-database-api-1.png" />
 </Frame>
 
-### Was liefert dieser Endpoint zurueck?
+### Cosa restituisce questo endpoint?
 
-Um die Rueckgabe zu inspizieren, haben wir ein kleines Skript geschrieben, das eine Anfrage mit fest kodierten Parametern ausfuehrt.  
-Der Source Code ist unten aufgefuehrt.  
-Sie benoetigen Ihren eigenen API-Schluessel, wenn Sie es selbst testen moechten.
+Per ispezionare la risposta abbiamo scritto un piccolo script che esegue una richiesta con parametri fissi.  
+Il codice sorgente è riportato qui sotto.  
+Avrai bisogno della tua chiave API se vuoi provarlo tu stesso.
 
-Im Beispiel suchen wir nach relevanten Arbeiten zu **„Multifidelity Optimization“** und **„Gaussian Processes“**:
+Nell’esempio cerchiamo lavori rilevanti su **“Multifidelity Optimization”** e **“Gaussian Processes”**:
 
 ```python
 import requests
@@ -38,7 +39,7 @@ import os
 
 # Set up the headers with the API key
 headers = {
-    'X-API-KEY': "YOUR OWN API KEY"
+    'X-API-KEY': "LA TUA CHIAVE API"
 }
 
 # Specify the fields you want to fetch for each recommended paper
@@ -51,7 +52,6 @@ limit = 20
 response = requests.get(
     'https://api.semanticscholar.org/graph/v1/paper/search',
     headers=headers,
-    # json=payload,
     params={'fields': fields, 'limit': limit, 'query':'multifidelity optimization, gaussian processes' }
 )
 
@@ -60,10 +60,9 @@ if response.status_code == 200:
     print(json.dumps(response.json(), indent=2))
 else:
     print(f"Error: {response.status_code}")
-    # It's better to print response.text for non-200 responses, as they may not be in JSON format
     print(response.text)
 ```
-Die Ausgabe sieht in etwa so aus:
+L’output assomiglia approssimativamente a questo:
 ```json
 {
   "total": 12096,
@@ -97,141 +96,135 @@ Die Ausgabe sieht in etwa so aus:
   ]
 }
 ```
-Die Funktion von Semantic Scholar liefert die Top-N-Ergebnisse nach Relevanz, basierend auf unseren Suchparametern.
-Wie Sie sehen, kann die Antwort recht umfangreich sein; hier ist sie aus Platzgruenden gekuerzt.
+La funzione di Semantic Scholar restituisce i primi N risultati per rilevanza in base ai nostri parametri di ricerca.
+Come vedi, la risposta può essere piuttosto voluminosa; qui è stata abbreviata per motivi di spazio.
+Idealmente il tuo endpoint restituisce una risposta JSON ben strutturata, come sopra.
+La nostra analisi di questo endpoint (con i campi richiesti) mostra:
+Ogni risultato occupa in media 400–500 token.
+A seconda del limite di token riservato per gli output delle funzioni, potrai inserire nel contesto del LLM solo un numero limitato di risultati.
+Tienilo presente quando decidi quali informazioni dare priorità al LLM.
+Ora sappiamo cosa riceve il LLM come contesto aggiuntivo tramite il Function Call e possiamo collegarlo al nostro agente innoChat.
+<Note>È SEMPRE consigliabile scrivere il tuo script e testare preventivamente la risposta dell’API. Devi sapere esattamente quali informazioni verranno trasmesse al tuo agente IA.</Note>
 
-Idealerweise erhalten Sie vom Endpoint eine klar strukturierte JSON-Antwort, so wie oben.
+## Creare e preparare l’agente IA
 
-Unsere Analyse dieses Endpoints (mit den von uns abgefragten Feldern) ergab:
-Jedes Ergebnis umfasst im Schnitt 400–500 Tokens.
-Abhaengig vom reservierten Tokenlimit fuer Funktionsausgaben koennen Sie also nur eine begrenzte Anzahl an Treffern in den LLM-Kontext einfuegen.
-Behalten Sie das im Hinterkopf, wenn Sie entscheiden, welche Informationen priorisiert an das LLM uebergeben werden sollen.
-
-Nun wissen wir, was das LLM als Zusatzkontext aus dem Function Call erhaelt und koennen es mit unserem innoChat-Agenten verbinden.
-
-<Note> Es ist IMMER empfehlenswert, Ihr eigenes Skript zu schreiben und die API-Antwort vorab zu testen. Sie sollten genau wissen, welche Informationen Ihrem AI-Agenten zur Verfuegung gestellt werden. </Note>
-
-## KI-Agent erstellen und vorbereiten
-
-In Ihrem Chatbot in innoChat muessen Sie zunaechst einen passenden AI-Agenten erstellen, der diese Function-Calling-Faehigkeit erhalten soll.
-In unserem Beispiel heisst der Agent „The Professor“. Dazu definieren wir eine Agentenbeschreibung und einen Base Prompt.
+Nel tuo chatbot innoChat devi prima creare un agente IA adatto che riceverà questa capacità di Function Calling.
+Nel nostro esempio l’agente si chiama “The Professor”. Definiamo una descrizione dell’agente e un prompt di base.
 
 <Frame> <img src="/images/fc-external-database-api-2.png" /> </Frame>
 
-Wir verwenden im Beispiel das Modell GPT-4-0125-8k.
-Unser einfacher Prompt ist im Screenshot unten zu sehen:
+Utilizziamo qui il modello GPT-4-0125-8k.
+Il prompt semplice è visibile nella schermata qui sotto:
 
 <Frame> <img src="/images/fc-external-database-api-3.png" /> </Frame>
 
-Anschliessend speichern wir den Agenten und wechseln in den Tab Knowledge, um das statische RAG aus der eigenen Wissensbibliothek zu deaktivieren.
-Das ist nur notwendig, wenn Sie keine statischen Trainingsquellen verwenden wollen.
-In unserem Beispiel haben wir ohnehin keine Trainingsdaten hochgeladen, aber wir deaktivieren es der Klarheit halber.
+Successivamente salviamo l’agente e passiamo alla scheda Knowledge per disattivare il RAG statico proveniente dalla libreria di conoscenza interna.
+Questo è necessario solo se non vuoi utilizzare fonti di addestramento statiche.
+Nel nostro esempio non abbiamo comunque caricato dati di addestramento, ma lo disattiviamo per maggiore chiarezza.
 
 <Frame> <img src="/images/fc-external-database-api-4.png" /> </Frame>
 
-Speichern Sie den Agenten.
+Salva l’agente.
 
-## Funktion einrichten
+## Configurare la funzione
 
-Innerhalb des Agenten wechseln Sie in den Tab Functions.
-Setzen Sie Response Context Limit auf den maximal erlaubten Wert und klicken Sie auf Add function.
-
+All’interno dell’agente vai nella scheda Functions.
+Imposta Response Context Limit al valore massimo consentito e clicca su Add function.
 <Frame> <img src="/images/fc-external-database-api-5.png" /> </Frame>
 
-Hier erklären Sie dem LLM:
+Qui spieghi al LLM:
 
-was die Funktion macht
+cosa fa la funzione
 
-wie sie aufgerufen wird
+come deve essere chiamata
 
-welche Parameter sie erwartet
+quali parametri si aspetta
 
-Das LLM entscheidet dann selbststaendig, wann es die Funktion benoetigt und mit welchen Parametern sie aufgerufen wird.
+Il LLM deciderà autonomamente quando ha bisogno della funzione e con quali parametri chiamarla.
 
 <Frame> <img src="/images/fc-external-database-api-6.png" /> </Frame>
 
-Name und Beschreibung der Funktion sind essenziell, damit die AI den Einsatzzweck versteht.
-Achten Sie auf eine klare und ausführliche Beschreibung.
-Sie darf maximal 1024 Zeichen inkl. Leerzeichen haben.
+Il nome e la descrizione della funzione sono essenziali affinché l’IA comprenda lo scopo.
+Scrivi una descrizione chiara e dettagliata.
+Non deve superare i 1024 caratteri (spazi inclusi).
+Nel nostro caso:
 
-In unserem Fall:
 ```typescript
 Function name: paper_relevance_search
 
 Function description: 
-This function searches Semantic Scholar, a scholarly literature database. The input parameters will be defined based on extracted information from conversation context. It will return search results containing academic paper metadata (with abstracts) in a JSON format.
-The returned fields are defined as follows:
-- title: paper title
-- abstract: paper abstract
-- paperId: paper uuid
-- authors: paper authors
-- year: paper publication year
-- url: paper link
-- referenceCount: number of references included in the paper
-- citationCount: number of citations of this paper
+Questa funzione ricerca in Semantic Scholar, un database di letteratura scientifica. I parametri di input saranno definiti in base alle informazioni estratte dal contesto della conversazione. Restituisce risultati di ricerca contenenti metadati degli articoli (con abstract) in formato JSON.
+I campi restituiti sono i seguenti:
+- title: titolo dell’articolo
+- abstract: abstract dell’articolo
+- paperId: uuid dell’articolo
+- authors: autori dell’articolo
+- year: anno di pubblicazione
+- url: link all’articolo
+- referenceCount: numero di riferimenti inclusi nell’articolo
+- citationCount: numero di citazioni di questo articolo
 
 
 ```
-## API-Endpoint definieren
-
-Der von uns genutzte Semantic-Scholar-Endpoint lautet:
+## Definire l’endpoint API
+L’endpoint di Semantic Scholar che utilizziamo è:
 ```bash
 https://api.semanticscholar.org/graph/v1/paper/search
 
 ```
-Als HTTP-Methode verwenden wir GET.
-Die Dokumentation Ihres Endpoints gibt an, ob GET, POST etc. verwendet werden soll.
+Utilizziamo il metodo HTTP GET.
+La documentazione del tuo endpoint indica se devi usare GET, POST, ecc.
 
-## Fixed Parameters
+## Parametri fissi (Fixed Parameters)
 
-Fixed (Static) Parameters bleiben für alle API-Aufrufe gleich.
-Sie repräsentieren globale Einstellungen, z. B. Format, aktivierte Felder oder Features.
+I parametri fissi rimangono uguali per tutte le chiamate API.
+Rappresentano impostazioni globali (formato, campi attivi, funzionalità…).
 
-Manche APIs verlangen, dass solche Parameter direkt an die URL angehängt werden.
-Unser Semantic-Scholar-Beispiel braucht keine Fixed Parameters.
-Ein komplexerer Endpoint wie:
+Alcune API richiedono che questi parametri siano aggiunti direttamente all’URL.
+Nel nostro esempio Semantic Scholar non servono parametri fissi.
+Un endpoint più complesso come:
 
 https://app.outscraper.com/api-docs#tag/Businesses-and-POI/paths/~1maps~1search-v3/get
 
-kann hingegen so aussehen:
+potrebbe apparire così:
 ```pgsql
 https://api.app.outscraper.com/maps/search-v3?async=false&fields=name,full_address,phone,site
 
 ```
-## Headers und Authentifizierung
+## Headers e autenticazione
 
-Öffentliche, aber sichere APIs erfordern fast immer Authentifizierung.
-Semantic Scholar ist hier keine Ausnahme.
+Le API pubbliche ma sicure richiedono quasi sempre autenticazione.
+Semantic Scholar non fa eccezione.
 
-Im Header übergeben wir unseren API-Schlüssel.
-Der Name des Header-Feldes hängt vom Anbieter ab.
-In unserem Beispiel heisst er x-api-key:
+Trasmettiamo la nostra chiave API negli headers.
+Il nome del campo header dipende dal fornitore.
+Nel nostro esempio si chiama x-api-key:
 
 <Frame> <img src="/images/fc-external-database-api-7.png" /> </Frame>
 
-## Variable Parameters
+## Parametri variabili
 
-Nun zu den variablen (dynamischen) Parametern.
+Passiamo ora ai parametri variabili (dinamici).
 
-Diese Parameter hängen von der aktuellen Nutzeranfrage ab und werden zur Laufzeit bestimmt.
-Das LLM extrahiert aus dem Dialog selbst, welche Werte es setzen muss, und entscheidet, ob und wie der Function Call ausgeführt wird.
+Questi parametri dipendono dalla richiesta corrente dell’utente e vengono determinati in fase di esecuzione.
+Il LLM estrae dal dialogo stesso i valori da impostare e decide se e come effettuare la chiamata alla funzione.
 
-Für unsere Funktion definieren wir:
+Per la nostra funzione definiamo:
 ```json
 {
   "type": "object",
   "properties": {
     "query": {
       "type": "string",
-      "description": "The keywords, author names or exact paper IDs to search for"
+      "description": "Le parole chiave, nomi di autori o ID esatti degli articoli da cercare"
     },
     "fields": {
       "type": "string",
-      "description": "The information to be returned, default as 'title,abstract,paperId,authors,year,url,referenceCount,citationCount'"
+      "description": "Le informazioni da restituire, di default: 'title,abstract,paperId,authors,year,url,referenceCount,citationCount'"
     },
     "limit": {
       "type": "string",
-      "description": "The number of papers users want to get, default as 2. Use the default for all cases."
+      "description": "Il numero di articoli desiderati, di default 2. Usa il valore predefinito in tutti i casi."
     }
   },
   "required": [
@@ -241,36 +234,31 @@ Für unsere Funktion definieren wir:
 
 ```
 
-Wichtige Punkte:
+Punti importanti:
 
-Ganz oben steht "type": "object" – das gesamte Parameterset ist ein JSON-Objekt.
-
-Unter properties definieren Sie jeden einzelnen Parameter mit Typ und Beschreibung.
-
-type kann z. B. string, integer, boolean, array usw. sein.
-
-Die description erklaert dem LLM genau, was der Parameter bedeutet (und evtl. Standardwerte).
-
-Je klarer Sie hier sind, desto geringer ist die Chance, dass das LLM falsche Werte waehlt.
-
-Beispiel fuer ein komplexeres Schema mit Array:
+In cima c’è "type": "object" – l’intero set di parametri è un oggetto JSON.
+Sotto properties definisci ogni parametro con tipo e descrizione.
+type può essere string, integer, boolean, array, ecc.
+La description spiega precisamente al LLM cosa rappresenta il parametro (e possibilmente i valori di default).
+Più sei chiaro qui, meno è probabile che il LLM scelga valori errati.
+Esempio di schema più complesso con array:
 ```json
 {
   "type": "object",
   "properties": {
     "tags": {
       "type": "array",
-      "description": "labels that should be assigned to the user’s request",
+      "description": "etichette da assegnare alla richiesta dell’utente",
       "items": {
         "type": "object",
         "properties": {
           "name": {
             "type": "string",
-            "description": "The name of the label"
+            "description": "Il nome dell’etichetta"
           },
           "color": {
             "type": "string",
-            "description": "The color of the label"
+            "description": "Il colore dell’etichetta"
           }
         },
         "required": ["name", "color"]
@@ -282,29 +270,29 @@ Beispiel fuer ein komplexeres Schema mit Array:
 
 ```
 
-Die Funktion darf erst aufgerufen werden, wenn alle in required aufgeführten Parameter verfügbar sind.
-Fehlt etwas, kann der Call nicht ausgeführt werden.
+La funzione verrà chiamata solo quando tutti i parametri elencati in required sono disponibili.
+Se ne manca anche solo uno, la chiamata non può essere eseguita.
 
-Eine gute Referenz zum JSON-Schema:
+Una buona riferimento allo standard JSON Schema:
 https://json-schema.org/understanding-json-schema/reference/type
 
-Testen des Chatbots
+## Testare il chatbot
 
-Wenn alles konfiguriert ist:
+Una volta configurato tutto:
 
-Funktion speichern
+Salva la funzione
 
-Agent speichern
+Salva l’agente
 
-Zum Tab Preview wechseln
+Passa alla scheda Preview
 
 <Frame> <img src="/images/fc-external-database-api-8.png" /> </Frame>
 
-Sie können rechts oben den Debug Mode aktivieren.
-Damit sehen Sie, ob und wie die Funktion aufgerufen wurde und welche Daten zurückkamen:
+Puoi attivare la Debug Mode in alto a destra.
+Questo ti permette di vedere se e come è stata chiamata la funzione e quali dati sono tornati:
 
 <Frame> <img src="/images/fc-external-database-api-9.png" /> </Frame>
 
-Und damit haben Sie Ihren KI-Agenten erfolgreich mit On-Demand-Daten von einem externen Anbieter ausgestattet.
+Ed ecco fatto: il tuo agente IA è ora connesso con successo a dati on-demand provenienti da un fornitore esterno.
 
-In Zukunft werden wir zudem eine Anleitung bereitstellen, wie Sie eine eigene Datenbank-Suchfunktion implementieren und hosten können, die anschliessend mit innoChat integriert wird.
+In futuro forniremo anche una guida su come implementare e ospitare una tua funzione di ricerca database personalizzata e integrarla successivamente con innoChat.

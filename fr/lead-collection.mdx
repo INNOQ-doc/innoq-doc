@@ -1,50 +1,50 @@
 ---
-title: Lead-Erfassung
-description: Erfahren Sie, wie INNOCHAT Benutzerdaten entweder durch Formulare oder durch natuerssliche Konversation erfasst.
+title: Capture de leads
+description: Découvrez comment INNOCHAT collecte les données des utilisateurs soit via des formulaires, soit via une conversation naturelle.
 ---
 
-Es gibt zwei Moeglichkeiten, Daten von Benutzern zu sammeln, wenn sie mit Ihrem AI-Chat interagieren:
+Il existe deux façons de collecter des données auprès des utilisateurs lorsqu’ils interagissent avec votre chat IA :
 
-1. Ueber ein Formular  
-2. Konversationell im Dialog
+1. Via un formulaire  
+2. De manière conversationnelle dans le dialogue
 
-Beide Ansaetze haben Vor- und Nachteile. Formulare sind einfacher einzurichten und funktionieren programmatisch, aber die konversationelle Datenerfassung ist natuerlicher und fuesselnder, auch wenn sie komplexer ist.  
-Alle gesammelten Daten koennen ueber einen Webhook an ein CRM gesendet werden, sobald der Benutzer sie uebermittelt.
+Les deux approches ont des avantages et des inconvénients. Les formulaires sont plus simples à mettre en place et fonctionnent de manière programmatique, mais la collecte conversationnelle est plus naturelle et engageante, même si elle est plus complexe.  
+Toutes les données collectées peuvent être envoyées à un CRM via un webhook dès que l’utilisateur les a soumises.
 
-## Datenerfassung ueber ein Formular
+## Collecte de données via un formulaire
 
-Um Ihrem AI-Chat ein Formular hinzuzufuegen, gehen Sie zum Tab **Customizations** im linken Navigationsmenue und scrollen Sie nach unten zum Abschnitt **Form**:
+Pour ajouter un formulaire à votre chat IA, rendez-vous dans l’onglet **Customizations** dans le menu de navigation à gauche, puis descendez jusqu’à la section **Form** :
 
 <Frame>
   <img src="/images/lead-collection-13.png" />
 </Frame>
 
-Sie koennen eines der Standardfelder auswaehlen, das im Formular enthalten sein soll. Alternativ koennen Sie auch eigene benutzerdefinierte Felder erstellen.
+Vous pouvez sélectionner l’un des champs standards à inclure dans le formulaire. Vous pouvez également créer vos propres champs personnalisés.
 
 <Frame>
   <img src="/images/lead-collection-14.png" />
 </Frame>
 
-Bei benutzerdefinierten Feldern koennen Sie den Feldtyp festlegen (Text, Dropdown, Checkbox).  
-Sie koennen bestimmte Felder verpflichtend machen. Wenn mindestens ein Feld verpflichtend ist, erhalten Sie zudem die Moeglichkeit, das gesamte Formular verpflichtend zu machen, bevor der Benutzer weiter chatten darf.  
-Wenn das Formular verpflichtend ist, verschwindet die **x**-Schaltflaeche oben rechts, sodass Benutzer das Formular nicht schliessen koennen, bevor es ausgefuellt wurde.
+Pour les champs personnalisés, vous pouvez définir le type de champ (Texte, Liste déroulante, Case à cocher).  
+Vous pouvez rendre certains champs obligatoires. Si au moins un champ est obligatoire, vous avez également la possibilité de rendre l’ensemble du formulaire obligatoire avant que l’utilisateur puisse poursuivre la discussion.  
+Lorsque le formulaire est obligatoire, le bouton **x** en haut à droite disparaît, empêchant l’utilisateur de fermer le formulaire avant de l’avoir rempli.
 
 <Frame>
   <img src="/images/lead-collection-15.png" />
 </Frame>
 
-## Datenerfassung im Dialog
+## Collecte de données dans le dialogue
 
-Wenn Sie einen natuerlichen Gespraechsfluss beibehalten und Daten direkt durch Konversation sammeln moechten, muessen Sie den Prompt Ihres AI-Agenten konfigurieren und Variablen einrichten, um die Daten zu speichern.
+Si vous souhaitez conserver un flux de conversation naturel et collecter les données directement par la discussion, vous devez configurer le prompt de votre agent IA et mettre en place des variables pour stocker les données.
 
-### Prompt bearbeiten
+### Modifier le prompt
 
-Das Verhalten Ihres AI-Chats wird durch den Prompt Ihres AI-Agenten gesteuert.  
-Um diesen zu bearbeiten, gehen Sie in der linken Navigation zum Tab **AI Agents** und klicken Sie auf den entsprechenden Agenten.
+Le comportement de votre chat IA est contrôlé par le prompt de votre agent IA.  
+Pour le modifier, allez dans l’onglet **AI Agents** dans la navigation à gauche et cliquez sur l’agent concerné.
 
 <Note>
-  Wenn Sie Ihren AI-Chat anhand einer Vorlage erstellt haben, verwenden Sie moeglicherweise einen Standard-Prompt, den wir fuer Sie generiert haben.  
-  Wenn Sie zum ersten Mal einen AI-Agent-Prompt konfigurieren, empfehlen wir Ihnen unseren Leitfaden zur Prompt-Engineering-Best-Practices.
+  Si vous avez créé votre chat IA à partir d’un template, vous utilisez probablement un prompt standard que nous avons généré pour vous.  
+  Si c’est la première fois que vous configurez un prompt d’agent IA, nous vous recommandons de consulter notre guide des meilleures pratiques en prompt engineering.
 </Note>
 
 <Frame>
@@ -55,81 +55,80 @@ Um diesen zu bearbeiten, gehen Sie in der linken Navigation zum Tab **AI Agents*
   <img src="/images/lead-collection-17.png" />
 </Frame>
 
-Konfigurieren Sie Ihren Prompt so, dass detaillierte Anweisungen enthalten sind, wann, was und wie Daten vom Benutzer abgefragt werden sollen.  
-Hier ein Beispielausschnitt:
-### Anweisungen
-- Wenn Sie zum ersten Mal mit dem Benutzer in Kontakt treten, fragen Sie ihn höflich nach seinem Vornamen.
-- Sobald der Benutzer seinen Vornamen angegeben hat, fahren Sie mit den folgenden Schritten fort, um seine Kontaktdaten zu erfassen.
-- Fragen Sie den Benutzer nach seiner Handynummer, nachdem Sie seinen Vornamen erfasst haben.
-- Nachdem Sie die Handynummer erfasst haben, fragen Sie nach seiner E-Mail-Adresse.
-- Wenn der Benutzer bestimmte Informationen nicht preisgeben möchte, drängen Sie ihn nicht dazu. Respektieren Sie seine Entscheidung.
+Configurez votre prompt pour inclure des instructions détaillées sur quand, quoi et comment demander les données à l’utilisateur.  
+Voici un extrait d’exemple :
+### Instructions
+- Lors de votre première interaction avec l’utilisateur, demandez-lui poliment son prénom.
+- Une fois que l’utilisateur a indiqué son prénom, passez aux étapes suivantes pour collecter ses coordonnées.
+- Demandez à l’utilisateur son numéro de téléphone portable après avoir obtenu son prénom.
+- Après avoir obtenu le numéro de téléphone, demandez son adresse e-mail.
+- Si l’utilisateur ne souhaite pas communiquer certaines informations, ne le pressez pas. Respectez sa décision.
 
+Ces instructions indiquent à l’agent IA quand poser les questions, mais il faut aussi un mécanisme pour stocker les données.  
+La section suivante explique comment configurer les variables.
 
-Dies weist den AI-Agenten jedoch nur an, Daten abzufragen. Wir benoetigen ausserdem einen Mechanismus, um die Daten zu speichern.  
-Im naechsten Abschnitt erklaeren wir Ihnen, wie Variablen eingerichtet werden.
+### Configuration des variables
 
-### Einrichten von Variablen
-
-Gehen Sie zum Tab **Customizations** in der rechten Seitenleiste und scrollen Sie nach unten zu **User Data Collection**.  
-Klicken Sie darauf, um den Bereich zu erweitern.
+Rendez-vous dans l’onglet **Customizations** dans la barre latérale droite et descendez jusqu’à **User Data Collection**.  
+Cliquez pour développer cette section.
 
 <Frame>
   <img src="/images/lead-collection-18.png" />
 </Frame>
 
-Hier können Sie Variablen erstellen, in denen während der Konversation gesammelte Daten gespeichert werden.  
-Sie können mehrere Variablen anlegen, jede für ein bestimmtes Datenelement.  
-Geben Sie bei der Einrichtung einer Variablen unbedingt einen Variablennamen, eine Beschreibung und Beispielwerte an.  
-Je präziser und detailreicher, desto besser.
+Ici, vous pouvez créer des variables qui stockeront les données collectées pendant la conversation.  
+Vous pouvez créer plusieurs variables, chacune correspondant à un élément de donnée spécifique.  
+Lors de la création d’une variable, veillez à indiquer un nom de variable, une description et des exemples de valeurs.  
+Plus vous êtes précis et détaillé, mieux c’est.
 
 <Frame>
   <img src="/images/lead-collection-19.png" />
 </Frame>
 
-_Desto mehr Beispiele Sie angeben, desto besser versteht der AI-Agent das gewuenschte Format._
+_Plus vous fournissez d’exemples, mieux l’agent IA comprend le format attendu._
 
-Stellen Sie sicher, dass Sie ausreichend Variablen definieren, um alle Daten zu speichern, die Sie vom Benutzer abfragen.  
-Im Beispiel oben wären dies Name, Telefonnummer und E-Mail-Adresse.
+Assurez-vous de définir suffisamment de variables pour stocker toutes les données que vous demandez à l’utilisateur.  
+Dans l’exemple ci-dessus, cela correspondrait à : prénom, numéro de téléphone et adresse e-mail.
 
-Nachdem alles eingerichtet wurde, koennen Sie den AI-Chat im Vorschau-Modus testen.  
-Wenn alles korrekt funktioniert, sehen Sie die gesammelten Daten in Ihrem Posteingang, sobald ein Benutzer bedeutungsvoll mit Ihrem AI-Chat interagiert.
+Une fois tout configuré, vous pouvez tester votre chat IA en mode aperçu.  
+Si tout fonctionne correctement, vous verrez les données collectées apparaître dans votre boîte de réception dès qu’un utilisateur interagit de manière significative avec votre chat IA.
 
 <Note>
-  Variablenwerte koennen sich aendern, wenn der Benutzer eine Korrektur oder Aktualisierung nennt.  
-  Der AI-Agent erkennt in der Regel gut, welcher Wert korrekt ist.
+  Les valeurs des variables peuvent changer si l’utilisateur corrige ou met à jour une information.  
+  L’agent IA détecte généralement bien quelle est la valeur correcte.
 </Note>
 
 <Frame>
   <img src="/images/lead-collection-20.png" />
 </Frame>
 
-## Daten an Ihr CRM senden
+## Envoyer les données vers votre CRM
 
-Unabhaengig davon, ob Sie Daten per Formular oder konversationell sammeln, moechten Sie diese moeglicherweise an ein CRM-System weiterleiten.  
-INNOCHAT unterstuetzt Webhooks mit intelligenten Triggern, die Sie automatisch ueber neue Leads informieren.
+Que vous collectiez les données via un formulaire ou de manière conversationnelle, vous souhaiterez probablement les transmettre à un système CRM.  
+INNOCHAT prend en charge les webhooks avec des déclencheurs intelligents qui vous informent automatiquement de l’arrivée de nouveaux leads.
 
-Gehen Sie im linken Navigationsmenue zum Tab **Customizations** und scrollen Sie dann zum Abschnitt **Webhook**.  
-Klicken Sie darauf, um ihn zu erweitern.
+Rendez-vous dans l’onglet **Customizations** dans le menu de navigation à gauche, puis descendez jusqu’à la section **Webhook**.  
+Cliquez pour développer cette section.
 
 <Frame>
   <img src="/images/lead-collection-21.png" />
 </Frame>
 
-Wenn Sie ein Formular verwenden, koennen Sie das Event **Form Submission** auswaehlen und den API-Endpunkt angeben, an den die Daten gesendet werden sollen (POST-Request).
+Si vous utilisez un formulaire, vous pouvez sélectionner l’événement **Form Submission** et indiquer l’endpoint API qui recevra les données (requête POST).
 
-Wenn Sie Variablen zur Datenspeicherung verwenden, waehlen Sie das Event **Data Collection** und geben an, welche Variablen uebertragen werden sollen.  
-**Wichtig:** Der Webhook wird nur ausgeloest, wenn alle ausgewaehlten Variablen gefuellt sind (darf nicht leer sein).
+Si vous utilisez des variables pour stocker les données, sélectionnez l’événement **Data Collection** et indiquez quelles variables doivent être transmises.  
+**Important :** Le webhook ne se déclenche que lorsque toutes les variables sélectionnées sont remplies (elles ne doivent pas être vides).
 
-Wenn bestimmte Variablen optional sein sollen, koennen Sie ihnen waehrend der Einrichtung einen Standardwert geben.  
-So ist die Variable immer befuellt und niemals leer.
+Si certaines variables doivent être optionnelles, vous pouvez leur attribuer une valeur par défaut lors de la configuration.  
+Ainsi la variable sera toujours remplie et jamais vide.
 
-## Daten per E-Mail senden
+## Envoyer les données par e-mail
 
-Um Daten per E-Mail zu senden, gehen Sie im linken Navigationsmenue erneut zum Tab **Customizations** und scrollen Sie zum Abschnitt **Email Notifications**.  
-Klicken Sie darauf, um den Bereich zu erweitern.
+Pour recevoir les données par e-mail, retournez dans l’onglet **Customizations** dans le menu de navigation à gauche et descendez jusqu’à la section **Email Notifications**.  
+Cliquez pour développer cette section.
 
 <Frame>
   <img src="/images/lead-collection-22.png" />
 </Frame>
 
-Geben Sie einfach Ihre E-Mail-Adresse ein und aktivieren Sie die geeigneten Trigger, um neue Lead-Benachrichtigungen zu erhalten.
+Il vous suffit d’indiquer votre adresse e-mail et d’activer les déclencheurs appropriés pour recevoir des notifications de nouveaux leads.

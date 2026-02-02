@@ -1,164 +1,164 @@
 ---
-title: Bring Your Own Key (BYOK) und Preisgestaltung
-description: Erfahren Sie, wie die INNOCHAT-Abrechnung funktioniert und wie Sie Ihren eigenen AI-API-Schluessel nutzen, um Kosten effizient zu verwalten.
+title: Bring Your Own Key (BYOK) e listino prezzi
+description: Scopri come funziona la fatturazione di INNOCHAT e come utilizzare la tua chiave API IA personale per gestire i costi in modo efficiente.
 ---
 
-INNOCHAT funktioniert nach dem Prinzip **"pay as you go"**.  
-Anstatt dass Message Credits (MCs) in bestehenden Abonnements enthalten sind, kaufen Sie sie separat ueber Add-ons – oder Sie verbinden Ihre **eigene AI-API**, um unbegrenzte Nutzung zu ermöglichen.
+INNOCHAT funziona secondo il principio **"pay as you go"**.  
+Invece di includere Message Credits (MCs) negli abbonamenti esistenti, li acquisti separatamente tramite add-on – oppure colleghi la **tua API IA** per un utilizzo illimitato.
 
-Wenn Sie Ihren **eigenen API-Schluessel** verwenden, werden – nachdem alle MCs in Ihrem INNOCHAT-Konto aufgebraucht sind – alle weiteren KI-Kosten direkt über Ihren API-Schlüssel abgerechnet.
+Quando utilizzi la **tua chiave API**, una volta esauriti tutti i MC nel tuo account INNOCHAT, tutti i costi IA successivi vengono addebitati direttamente sulla tua chiave API.
 
-## BYOK einrichten
+## Configurare BYOK
 
-Um Ihren eigenen API-Schluessel einzurichten, müssen Sie sich zuerst beim jeweiligen AI-Anbieter registrieren.  
-INNOCHAT unterstützt derzeit LLMs von **OpenAI**, **Anthropic** und **Google**.  
-Zukünftig planen wir, weitere Modelle zu integrieren – einschliesslich Open-Source- und Fine-Tuned-Modelle.
+Per configurare la tua chiave API personale, devi prima registrarti presso il fornitore IA corrispondente.  
+INNOCHAT supporta attualmente i modelli LLM di **OpenAI**, **Anthropic** e **Google**.  
+In futuro prevediamo di integrare altri modelli – inclusi modelli open-source e fine-tunati.
 
-### Anbieter-spezifische Anweisungen
+### Istruzioni specifiche per fornitore
 
-* **OpenAI (GPT-Modelle)** – https://platform.openai.com/account/api-keys  
-* **Anthropic (Claude-Modelle)** – https://console.anthropic.com/settings/keys  
-* **Google (Gemini-Modelle)** – https://ai.google.dev/gemini-api/docs/api-key  
+* **OpenAI (modelli GPT)** – https://platform.openai.com/account/api-keys  
+* **Anthropic (modelli Claude)** – https://console.anthropic.com/settings/keys  
+* **Google (modelli Gemini)** – https://ai.google.dev/gemini-api/docs/api-key  
 
-Nachdem Sie Ihren API-Schluessel erhalten haben, speichern Sie ihn an einem **privaten und sicheren Ort**.  
-INNOCHAT empfiehlt dringend:
+Dopo aver ricevuto la tua chiave API, conservala in un **luogo privato e sicuro**.  
+INNOCHAT raccomanda vivamente:
 
-- Verwenden Sie **für jede Anwendung einen separaten API-Schluessel**  
-- Teilen Sie Ihren API-Schluessel **nie** mit anderen Personen  
+- Utilizzare **una chiave API diversa per ogni applicazione**  
+- **Non condividere mai** la tua chiave API con altre persone  
 
-Loggen Sie sich nun bei INNOCHAT ein und gehen Sie oben rechts im Interface auf das **Profil-Symbol**.
+Accedi ora a INNOCHAT e clicca sull’**icona del profilo** in alto a destra nell’interfaccia.
 
 <Frame>
   <img src="/images/byok-pricing-guide-1.png" />
 </Frame>
 
-Klicken Sie dann auf **Account**.  
-Im Bereich **AI API Key** waehlen Sie Ihren Provider aus und fügen den API-Schlüssel ein. Danach auf **Add** klicken.  
+Clicca poi su **Account**.  
+Nella sezione **AI API Key** seleziona il tuo provider e inserisci la chiave API. Quindi clicca su **Add**.
 
-Bitte beachten:  
-Dies ist **nicht** der Bereich **INNOCHAT API Keys**, der fuer die Generierung von INNOCHAT-eigenen API-Schlüsseln dient.
+Attenzione:  
+Questa **non** è la sezione **INNOCHAT API Keys**, che serve per generare chiavi API proprie di INNOCHAT.
 
 <Frame>
   <img src="/images/byok-pricing-guide-3.png" />
 </Frame>
 
-Nun ist alles eingerichtet.
+La configurazione è completata.
 
 <Note>
-  Wenn Sie zum ersten Mal einen API-Schlüssel bei einem Anbieter erstellen, kann dieser eingeschränkt sein.  
-  Beispiel (Stand 1. November 2024):  
-  Neue OpenAI-Schluessel können **keine GPT-4o Modelle** verwenden, bis ein Mindestguthaben von 5 USD eingezahlt und die Abrechnung verifiziert wurde.  
-  Jeder Anbieter hat eigene Richtlinien für Konto-Verifizierung und Limits.
+  Quando crei per la prima volta una chiave API presso un fornitore, potrebbe essere soggetta a limitazioni.  
+  Esempio (al 1° novembre 2024):  
+  Le nuove chiavi OpenAI **non possono** utilizzare i modelli GPT-4o finché non viene depositato un saldo minimo di 5 USD e la fatturazione non è stata verificata.  
+  Ogni fornitore ha le proprie regole di verifica account e limiti.
 </Note>
 
-## Budgetierung für AI-Nutzung
+## Pianificazione del budget per l’utilizzo IA
 
-Die Verwendung Ihres eigenen API-Schlüssels ist in der Regel **kosteneffizienter** als der Kauf von MC-Add-ons.  
+Utilizzare la tua chiave API è generalmente **più conveniente** rispetto all’acquisto di add-on Message Credits.
 
-Zur Einschätzung der Kosten stellen wir folgende Referenz bereit:
+Per stimare i costi, forniamo i seguenti riferimenti:
 
 <Note>
-  LLM-Anbieter ändern ihre Preise regelmässig.  
-  Die aktuellsten Preise finden Sie hier:
+  I fornitori di LLM aggiornano regolarmente i prezzi.  
+  I prezzi più aggiornati sono disponibili qui:
 
   - OpenAI (GPT): https://openai.com/pricing  
   - Anthropic (Claude): https://www.anthropic.com/pricing#anthropic-api  
   - Google (Gemini): https://ai.google.dev/pricing#1_5flash  
 </Note>
 
-Eine einfache Faustregel:
+Regola approssimativa semplice:
 
-**Ein Message Credit kostet ca. 0.0032 USD**
+**Un Message Credit costa circa 0,0032 USD**
 
-Beispiel: GPT-4-1106-4k verbraucht **20 MCs pro Anfrage**.  
-Kosten: 0.0032 × 20 = **0.064 USD**
+Esempio: GPT-4-1106-4k consuma **20 MC per richiesta**.  
+Costo: 0,0032 × 20 = **0,064 USD**
 
-Dies ist nur ein grober Richtwert.  
-Die realen Kosten koennen um **± 20 %** variieren, da LLM-Kosten auf Token basieren – und Input-/Output-Token unterschiedlich viel kosten.
+Si tratta solo di un valore indicativo.  
+I costi reali possono variare di **± 20 %**, poiché i costi dei LLM sono basati sui token – e i token di input e output hanno prezzi diversi.
 
-Eine Erklaerung zu Tokens finden Sie hier:  
+Una spiegazione sui token è disponibile qui:  
 https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them
 
-Ein LLM-Query besteht aus vielen Elementen. Grob unterteilt:
+Una query LLM è composta da molti elementi. In sintesi:
 
 **Input:**
 
-- System Prompt & Metadata  
-- Benutzerdefinierter Base Prompt  
-- Variablen & Definitionen  
-- Conversation-Label-Definitionen  
-- Function-Metadaten & Beschreibungen  
-- Function-Parameter  
-- Function-Response  
-- Statischer RAG-Kontext  
-- Conversation Memory  
+- System Prompt & metadati  
+- Prompt base personalizzato  
+- Variabili & definizioni  
+- Definizioni dei label di conversazione  
+- Metadati & descrizioni delle funzioni  
+- Parametri delle funzioni  
+- Risposta delle funzioni  
+- Contesto RAG statico  
+- Memoria della conversazione  
 
 **Output:**
 
-- Textantwort  
-- Response-Metadaten  
+- Risposta testuale  
+- Metadati della risposta  
 
-### OpenAI-Preisaufschlüsselung
+### Dettaglio prezzi OpenAI
 
-INNOCHAT unterstuetzt verschiedene OpenAI-LLMs sowie unterschiedliche Token-Limits pro Modellvariante.  
-Die folgende Tabelle basiert auf unserer **Standardaufteilung** von reservierten Input-/Output-Tokens.  
-Dies repraesentiert eine Obergrenze, da nicht bei jeder Anfrage die voll reservierten Tokens genutzt werden.
+INNOCHAT supporta diversi LLM OpenAI e diverse varianti con limiti di token differenti.  
+La tabella seguente si basa sulla nostra **ripartizione standard** dei token riservati in input/output.  
+Rappresenta un limite massimo, poiché non tutti i token riservati vengono utilizzati in ogni richiesta.
 
-| Modell          | Input-Reserve | Output-Reserve | Kosten/Input-Token | Kosten/Output-Token | Gesamt/Query |
-|-----------------|---------------|----------------|---------------------|----------------------|---------------|
-| GPT-3.5         | 2800          | 1200           | 0.0000005           | 0.0000015            | 0.0032        |
-| GPT-3.5-16k     | 13600         | 2400           | 0.0000005           | 0.0000015            | 0.0104        |
-| GPT-4o-mini-1k  | 800           | 200            | 0.00000015          | 0.0000006            | 0.00024       |
-| GPT-4o-mini-2k  | 1600          | 400            | 0.00000015          | 0.0000006            | 0.00048       |
-| GPT-4o-mini-4k  | 2800          | 1200           | 0.00000015          | 0.0000006            | 0.00114       |
-| GPT-4o-mini-8k  | 5600          | 2400           | 0.00000015          | 0.0000006            | 0.00228       |
-| GPT-4o-mini-16k | 12800         | 3200           | 0.00000015          | 0.0000006            | 0.00384       |
-| GPT-4o-mini-32k | 28000         | 4000           | 0.00000015          | 0.0000006            | 0.0066        |
-| GPT-4o-mini-64k | 60000         | 4000           | 0.00000015          | 0.0000006            | 0.0114        |
-| GPT-4o-1k       | 800           | 200            | 0.0000025           | 0.00001              | 0.004         |
-| GPT-4o-2k       | 1600          | 400            | 0.0000025           | 0.00001              | 0.008         |
-| GPT-4o-4k       | 2800          | 1200           | 0.0000025           | 0.00001              | 0.019         |
-| GPT-4o-8k       | 5600          | 2400           | 0.0000025           | 0.00001              | 0.038         |
-| GPT-4o-16k      | 12800         | 3200           | 0.0000025           | 0.00001              | 0.064         |
-| GPT-4o-32k      | 28000         | 4000           | 0.0000025           | 0.00001              | 0.11          |
-| GPT-4o-64k      | 60000         | 4000           | 0.0000025           | 0.00001              | 0.19          |
-| GPT-4-1106-1k   | 800           | 200            | 0.00001             | 0.00003              | 0.014         |
-| GPT-4-1106-2k   | 1600          | 400            | 0.00001             | 0.00003              | 0.028         |
-| GPT-4-1106-4k   | 2800          | 1200           | 0.00001             | 0.00003              | 0.064         |
-| GPT-4-0125-8k   | 5600          | 2400           | 0.00001             | 0.00003              | 0.128         |
-| GPT-4-1106-16k  | 12800         | 3200           | 0.00001             | 0.00003              | 0.224         |
-| GPT-4-1106-32k  | 28000         | 4000           | 0.00001             | 0.00003              | 0.4           |
-| GPT-4-1106-64k  | 60000         | 4000           | 0.00001             | 0.00003              | 0.72          |
+| Modello           | Riserva Input | Riserva Output | Costo/Input-Token | Costo/Output-Token | Costo totale/Richiesta |
+|-------------------|---------------|----------------|-------------------|--------------------|------------------------|
+| GPT-3.5           | 2800          | 1200           | 0.0000005         | 0.0000015          | 0.0032                |
+| GPT-3.5-16k       | 13600         | 2400           | 0.0000005         | 0.0000015          | 0.0104                |
+| GPT-4o-mini-1k    | 800           | 200            | 0.00000015        | 0.0000006          | 0.00024               |
+| GPT-4o-mini-2k    | 1600          | 400            | 0.00000015        | 0.0000006          | 0.00048               |
+| GPT-4o-mini-4k    | 2800          | 1200           | 0.00000015        | 0.0000006          | 0.00114               |
+| GPT-4o-mini-8k    | 5600          | 2400           | 0.00000015        | 0.0000006          | 0.00228               |
+| GPT-4o-mini-16k   | 12800         | 3200           | 0.00000015        | 0.0000006          | 0.00384               |
+| GPT-4o-mini-32k   | 28000         | 4000           | 0.00000015        | 0.0000006          | 0.0066                |
+| GPT-4o-mini-64k   | 60000         | 4000           | 0.00000015        | 0.0000006          | 0.0114                |
+| GPT-4o-1k         | 800           | 200            | 0.0000025         | 0.00001            | 0.004                 |
+| GPT-4o-2k         | 1600          | 400            | 0.0000025         | 0.00001            | 0.008                 |
+| GPT-4o-4k         | 2800          | 1200           | 0.0000025         | 0.00001            | 0.019                 |
+| GPT-4o-8k         | 5600          | 2400           | 0.0000025         | 0.00001            | 0.038                 |
+| GPT-4o-16k        | 12800         | 3200           | 0.0000025         | 0.00001            | 0.064                 |
+| GPT-4o-32k        | 28000         | 4000           | 0.0000025         | 0.00001            | 0.11                  |
+| GPT-4o-64k        | 60000         | 4000           | 0.0000025         | 0.00001            | 0.19                  |
+| GPT-4-1106-1k     | 800           | 200            | 0.00001           | 0.00003            | 0.014                 |
+| GPT-4-1106-2k     | 1600          | 400            | 0.00001           | 0.00003            | 0.028                 |
+| GPT-4-1106-4k     | 2800          | 1200           | 0.00001           | 0.00003            | 0.064                 |
+| GPT-4-0125-8k     | 5600          | 2400           | 0.00001           | 0.00003            | 0.128                 |
+| GPT-4-1106-16k    | 12800         | 3200           | 0.00001           | 0.00003            | 0.224                 |
+| GPT-4-1106-32k    | 28000         | 4000           | 0.00001           | 0.00003            | 0.4                   |
+| GPT-4-1106-64k    | 60000         | 4000           | 0.00001           | 0.00003            | 0.72                  |
 
-## BYOK fuer White-Label-Partner
+## BYOK per i partner White-Label
 
-Zusätzlich zu MC-Kosten muessen White-Label-Partner auch die Kosten tragen, die durch das **Ausfuehren des AI-Multi-Agenten-Frameworks** entstehen.  
-Diese Kosten fallen an, **selbst wenn Ihre Endnutzer ihre eigenen API-Schluessel verwenden**.
+Oltre ai costi dei MC, i partner White-Label devono sostenere anche i costi generati dall’**esecuzione del framework multi-agente IA**.  
+Questi costi si applicano **anche se i tuoi utenti finali utilizzano la propria chiave API**.
 
-Es gibt **drei Workflows**, die Ihre API belasten:
+Esistono **tre workflow** che gravano sulla tua API:
 
-1. **AI Agent Intent Generation**  
-   - Wenn zwei oder mehr AI-Agenten verbunden sind  
-   - Wird berechnet, wenn ein neuer user-facing Agent live geht oder ein bestehender bearbeitet wird  
+1. **Generazione degli intents per gli agenti IA**  
+   - Quando sono collegati due o più agenti IA  
+   - Addebitato quando un nuovo agente visibile all’utente viene messo online o uno esistente viene modificato  
 
-2. **Query Intent Classification**  
-   - Wenn zwei oder mehr user-facing Agenten aktiv sind  
-   - Preis pro Anfrage  
+2. **Classificazione dell’intento della query**  
+   - Quando sono attivi due o più agenti visibili all’utente  
+   - Prezzo per richiesta  
 
-3. **Variable Extraction**  
-   - Wenn ein Agent eine oder mehrere Variablen nutzt  
-   - Preis pro Anfrage  
+3. **Estrazione delle variabili**  
+   - Quando un agente utilizza una o più variabili  
+   - Prezzo per richiesta  
 
-Die ungefaehren Kosten:
+Costi approssimativi:
 
-| Workflow                                         | Input | Output | Cost/Input | Cost/Output | Cost/Run |
-|--------------------------------------------------|--------|---------|------------|--------------|-----------|
-| Intent Generation (gpt-4-1106-preview)           | 600    | 450     | 0.00001    | 0.00003      | 0.0011    |
-| Query Intent Classification (gpt-3.5-turbo-1106) | 1000   | 50      | 0.000001   | 0.000002     | 0.0195    |
-| Variable Extraction (gpt-3.5-turbo-1106)         | 1000   | 100     | 0.000001   | 0.000002     | 0.0012    |
+| Workflow                                          | Input | Output | Costo/Input | Costo/Output | Costo/Esecuzione |
+|---------------------------------------------------|-------|--------|-------------|--------------|------------------|
+| Intent Generation (gpt-4-1106-preview)            | 600   | 450    | 0.00001     | 0.00003      | 0.0011           |
+| Query Intent Classification (gpt-3.5-turbo-1106)  | 1000  | 50     | 0.000001    | 0.000002     | 0.0195           |
+| Variable Extraction (gpt-3.5-turbo-1106)          | 1000  | 100    | 0.000001    | 0.000002     | 0.0012           |
 
-Diese Kosten werden **immer** direkt gegen Ihren API-Schluessel abgerechnet und koennen **nicht** an Ihre Kunden weitergegeben werden.
+Questi costi vengono **sempre** addebitati direttamente sulla tua chiave API e **non possono** essere trasferiti ai tuoi clienti.
 
-Es ist moeglich, dass zukuenftig weitere AI-Funktionen Ihren API-Schluessel benoetigen.  
-Wir aktualisieren die Dokumentation entsprechend.  
-Im Allgemeinen sind diese Zusatzkosten jedoch **gering im Vergleich zu den Kosten, die durch Message Credits entstehen**.
+È possibile che in futuro altre funzionalità IA richiedano la tua chiave API.  
+Aggiorneremo la documentazione di conseguenza.  
+In generale, questi costi aggiuntivi rimangono **molto inferiori** rispetto a quelli generati dai Message Credits.

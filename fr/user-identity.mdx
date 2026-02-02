@@ -1,78 +1,78 @@
 ---
-title: 'Überprüfung der Benutzeridentität'
-description: Eine Anleitung zur Einrichtung und Implementierung der User Identity Verification in Ihrem innoChat-Chatbot, einschliesslich Token-Validierung, API-Endpoint-Konfiguration, Datenspeicherung und Integrationsmethoden.
+title: "Vérification de l’identité des utilisateurs"
+description: Guide pour configurer et implémenter la vérification de l’identité des utilisateurs dans votre chatbot innoChat, incluant la validation des tokens, la configuration des endpoints API, le stockage des données et les méthodes d’intégration.
 ---
 
-Diese Anleitung führt Sie durch die Implementierung eines robusten Authentifizierungssystems innerhalb Ihres Chatbots.
+Ce guide vous accompagne dans l’implémentation d’un système d’authentification robuste au sein de votre chatbot.
 
-## Schritt 1: User Identity aktivieren
+## Étape 1 : Activer l’identité utilisateur
 
-Um den Prozess der User Identity Verification zu starten, muessen Sie diese Funktion zuerst in den Einstellungen Ihres Chatbots aktivieren.  
-Dies kann im Bereich **"User Identity Verification"** in den Chatbot-Einstellungen vorgenommen werden.
+Pour démarrer le processus de vérification de l’identité des utilisateurs, vous devez d’abord activer cette fonctionnalité dans les paramètres de votre chatbot.  
+Cela peut être fait dans la section **"User Identity Verification"** des paramètres du chatbot.
 
-Sobald die User Identity Verification aktiviert ist, ist Ihr Chatbot in der Lage, automatisch nach User-Tokens zu prüfen.  
-Das bedeutet, dass bei jedem Versuch eines Nutzers, mit dem Chatbot zu interagieren, dessen Identitaetstoken auf seine Gueltigkeit hin ueberprueft wird.
+Une fois la vérification de l’identité activée, votre chatbot est capable de vérifier automatiquement les tokens des utilisateurs.  
+Cela signifie qu’à chaque tentative d’interaction avec le chatbot, le token d’identité de l’utilisateur est vérifié.
 
 <Frame>
   <img src="/images/user-identity-1.png" />
 </Frame>
 
-## Schritt 2: API Endpoint
+## Étape 2 : Endpoint API
 
-### Einrichten des API Endpoints
+### Configuration de l’endpoint API
 
-Es ist notwendig, einen API Endpoint einzurichten, der die Verifikation der User-Tokens uebernimmt.  
-Dieser Endpoint muss so konfiguriert sein, dass er **POST-Requests** akzeptiert.
+Il est nécessaire de configurer un endpoint API chargé de vérifier les tokens des utilisateurs.  
+Cet endpoint doit être configuré pour accepter les requêtes **POST**.
 
-1. **API Endpoint angeben:**  
-   Geben Sie in den Einstellungen Ihres Chatbots die URL des API Endpoints an. Dies ist die Serveradresse, an die die Anfragen zur Token-Verifikation gesendet werden.
+1. **Définir l’endpoint API :**  
+   Indiquez l’URL de l’endpoint API dans les paramètres de votre chatbot. Il s’agit de l’adresse du serveur vers laquelle les requêtes de vérification sont envoyées.
 
-2. **Fuer POST-Requests konfigurieren:**  
-   Stellen Sie sicher, dass Ihr API Endpoint fuer die Verarbeitung von POST-Requests konfiguriert ist.  
-   Dies ist entscheidend, da INNOCHAT Tokendaten per POST-Request zur Verifikation sendet.
+2. **Configurer pour les requêtes POST :**  
+   Assurez-vous que votre endpoint API est configuré pour traiter les requêtes POST.  
+   Ceci est essentiel, car INNOCHAT envoie les données des tokens via des requêtes POST.
 
 <Frame>
   <img src="/images/user-identity-2.png" />
 </Frame>
 
-### Ablauf des Verifikationsprozesses
+### Déroulement du processus de vérification
 
-Folgendes passiert, wenn ein Chat gestartet wird:
+Voici ce qui se passe lorsqu’un chat est démarré :
 
-1. **Token-Uebermittlung:**  
-   Jedes Mal, wenn ein Chat gerendert wird, sendet INNOCHAT automatisch eine Verifikationsanfrage an den angegebenen API Endpoint.  
-   Diese Anfrage enthaelt das Token des Nutzers.
+1. **Transmission du token :**  
+   Chaque fois qu’un chat est affiché, INNOCHAT envoie automatiquement une requête de vérification à l’endpoint API spécifié.  
+   Cette requête contient le token de l’utilisateur.
 
-2. **Verarbeitung der Anfrage:**  
-   Ihr API Endpoint sollte diese Anfrage verarbeiten und die Gueltigkeit des Tokens ueberpruefen.
+2. **Traitement de la requête :**  
+   Votre endpoint API doit traiter cette requête et vérifier la validité du token.
 
-3. **Ergebnisbehandlung:**
+3. **Gestion du résultat :**
 
-   - **Erfolgreiche Verifikation:**  
-     Wird das Token erfolgreich verifiziert, kann der authentifizierte Nutzer mit dem Chat fortfahren.
-   - **Fehlgeschlagene Verifikation:**  
-     Wenn die API einen Fehler zurückgibt (was auf eine fehlgeschlagene Verifikation hindeutet), gilt die Authentifizierung als nicht erfolgreich.  
-     In diesem Fall wird der Nutzer auf einen Fehlerbildschirm weitergeleitet.
+   - **Vérification réussie :**  
+     Si le token est validé avec succès, l’utilisateur authentifié peut poursuivre la conversation.
+   - **Échec de la vérification :**  
+     Si l’API renvoie une erreur (indiquant un échec), l’authentification est considérée comme non valide.  
+     Dans ce cas, l’utilisateur est redirigé vers un écran d’erreur.
 
-## Schritt 3: Speichern der Nutzerdaten
+## Étape 3 : Stockage des données utilisateur
 
-Um die User Identity Verification zu erweitern und Aufzeichnungen über Nutzerinteraktionen zu fuehren,  
-haben Sie die Möglichkeit, die Daten erfolgreicher Verifikationsantworten zu speichern.
+Pour étendre la vérification de l’identité et conserver des traces des interactions,  
+vous pouvez enregistrer les données issues des réponses de vérification réussies.
 
 <Frame>
   <img src="/images/user-identity-3.png" />
 </Frame>
 
-Jedes Mal, wenn ein Nutzer erfolgreich authentifiziert wird, wird die Antwort des Verifikationsprozesses (typischerweise mit Nutzeridentifikationsdaten) gespeichert.
+Chaque fois qu’un utilisateur est authentifié avec succès, la réponse du processus de vérification (généralement avec des données d’identification) est enregistrée.
 
-Diese Daten werden nicht isoliert gespeichert, sondern mit den jeweiligen Chat-Konversationen verknüpft.
+Ces données ne sont pas stockées isolément, mais associées aux conversations correspondantes.
 
 <Warning>
-  **Nur gültige JSON-Daten werden akzeptiert** – Bitte stellen Sie sicher, dass alle zur Speicherung vorgesehenen Daten im gültigen JSON-Format vorliegen.  
-  Nicht-JSON- oder ungültige JSON-Daten werden automatisch ignoriert und nicht im Konversationsverlauf gespeichert.
+  **Seules les données JSON valides sont acceptées** — Assurez-vous que toutes les données destinées à être enregistrées sont au format JSON valide.  
+  Les données non valides ou non JSON sont automatiquement ignorées et ne sont pas enregistrées dans l’historique des conversations.
 </Warning>
 
-Beispiel fuer gültiges JSON:
+Exemple de JSON valide :
 
 ```json
 {
@@ -87,13 +87,14 @@ Beispiel fuer gültiges JSON:
     "age": 30
   }
 }
+
 ```
 
-## Schritt 4: Einfügen Ihres Tokens in den INNOCHAT Chatbot
-### Chat-Widget
+## Étape 4 : Intégrer votre token dans le chatbot INNOCHAT
+### Widget de chat
 
-Im Skript Ihrer Webseite, auf der der Chatbot eingebunden ist, finden Sie das Objekt GPTTConfig.
-Dort müssen Sie die Eigenschaft token mit Ihrem benutzerdefinierten Token belegen. Hier ein Beispielskript:
+Dans le script de votre site web où le chatbot est intégré, vous trouverez l’objet GPTTConfig.
+Vous devez y définir la propriété token avec votre token personnalisé. Exemple :
 
 ```html
 <script>
@@ -105,19 +106,18 @@ Dort müssen Sie die Eigenschaft token mit Ihrem benutzerdefinierten Token beleg
 <script src="https://app.innochat.ch/widget-asset.min.js" defer></script>
 
 ```
-Sie können das GPTTConfig-Objekt auch direkt per JavaScript-Aufruf mit Ihrem Token aktualisieren.
-Diese Methode ist besonders nützlich, wenn Sie das Token dynamisch basierend auf Nutzerinteraktionen oder anderen Ereignissen in Ihrer Anwendung setzen müssen. Zum Beispiel:
+Vous pouvez également mettre à jour l’objet GPTTConfig directement via JavaScript.
+Cette méthode est utile si vous devez définir dynamiquement le token selon les interactions utilisateur. Exemple :
 ```javascript
   window.GPTTConfig.token = "Custom token";
 
 ```
-Sobald eine Änderung an der token-Eigenschaft erkannt wird, versucht unser System, den Nutzer anhand des neuen Token-Werts zu authentifizieren.
-So wird sichergestellt, dass die Identität des Nutzers jedes Mal überprüft wird, wenn er mit dem Chatbot interagiert.
+Dès qu’une modification de la propriété token est détectée, le système tente d’authentifier l’utilisateur avec la nouvelle valeur.
 
 #### Iframe
 
-Sie können das User-Token direkt innerhalb eines iframes übergeben, indem Sie es in der URL als Parameter einfügen.
-Haengen Sie dazu den Parameter token an die URL im src-Attribut an und ersetzen Sie custom_token durch den tatsächlichen Token-Wert. Beispiel:
+Vous pouvez transmettre le token directement via un iframe en l’ajoutant comme paramètre dans l’URL.
+Ajoutez le paramètre token à l’attribut src et remplacez custom_token par la valeur réelle :
 
 ```html
 <iframe
@@ -127,9 +127,9 @@ Haengen Sie dazu den Parameter token an die URL im src-Attribut an und ersetzen 
   frameborder="0"
 ></iframe>
 ```
-Wenn das Token geändert werden muss, aktualisieren Sie einfach das src-Attribut des iframes mit dem neuen Token-Wert.
+Si le token doit être modifié, mettez simplement à jour l’attribut src.
 
-Nach der Aktualisierung des Tokens in der URL wird das iframe neu geladen, sodass das neue Token für die Authentifizierung verwendet wird.
+Après la mise à jour, l’iframe est rechargé et le nouveau token est utilisé pour l’authentification.
 
-Herzlichen Glückwunsch! Sie haben die Einrichtung der User Identity Verification fuer Ihren INNOCHAT Chatbot erfolgreich abgeschlossen.
-Durch das Befolgen dieser Schritte haben Sie eine robuste und sichere Methode zur Nutzer-Authentifizierung implementiert und sorgen so für eine geschützte und verlässliche User Experience.
+Félicitations ! Vous avez configuré avec succès la vérification de l’identité utilisateur pour votre chatbot INNOCHAT.
+En suivant ces étapes, vous avez mis en place une méthode robuste et sécurisée d’authentification, garantissant une expérience utilisateur fiable et protégée.

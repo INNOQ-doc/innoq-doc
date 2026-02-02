@@ -1,122 +1,121 @@
 ---
-title: KI-Supervisor-Overrides
-description: Erfahren Sie, wie Sie das Routing des AI Supervisors ueberschreiben koennen, um eine deterministische Agentenauswahl zu erzwingen.
+title: Surcharges du superviseur IA
+description: Découvrez comment remplacer le routage du superviseur IA afin d’imposer une sélection déterministe des agents.
 ---
 
-Wenn Ihr Chatbot ein Multi-Agenten-Setup verwendet, bestimmt der **KI Supervisor** automatisch, welcher user-facing Agent am besten geeignet ist, die juengste Nutzeranfrage zu bearbeiten.  
-Es kann jedoch Situationen geben, in denen Sie mehr **deterministische Kontrolle** darueber haben moechten, welcher Agent die Aufgabe uebernimmt.
+Lorsque votre chatbot utilise une configuration multi-agents, le **superviseur IA** détermine automatiquement quel agent orienté utilisateur est le mieux adapté pour traiter la dernière requête.  
+Cependant, il peut exister des situations dans lesquelles vous souhaitez disposer d’un contrôle plus **déterministe** sur l’agent qui prend en charge la tâche.
 
-In diesem Artikel zeigen wir Ihnen, wie Sie **AI Supervisor Overrides** verwenden koennen, um Logikregeln zu definieren, die – sobald sie erfuellt sind – direkt zu einem bestimmten Agenten wechseln.
+Dans cet article, nous vous montrons comment utiliser les **AI Supervisor Overrides** pour définir des règles logiques qui, une fois remplies, basculent directement vers un agent spécifique.
 
-Im Tab **AI Agents** finden Sie einen Button, der die **AI Supervisor Settings** ausklappt:
+Dans l’onglet **AI Agents**, vous trouverez un bouton qui déploie les **AI Supervisor Settings** :
 
 <Frame>
   <img src="/images/supervisor-overrides-1.png" />
 </Frame>
 
-Nachdem Sie die Einstellungen geoefnet haben, koennen Sie im Tab **Rules** logische Bedingungen definieren, die jedes Mal ausgewertet werden, wenn der Nutzer eine Anfrage stellt.  
-Wenn eine solche Bedingung erfuellt ist, wird das Urteil des AI Supervisors umgangen, und der definierte Agent uebernimmt sofort die Verarbeitung.
+Après avoir ouvert les paramètres, vous pouvez définir dans l’onglet **Rules** des conditions logiques évaluées à chaque requête utilisateur.  
+Lorsqu’une condition est remplie, la décision du superviseur IA est contournée et l’agent défini prend immédiatement en charge le traitement.
 
-Um eine neue Regel hinzuzufuegen, klicken Sie auf **Create new rule**.  
-Um Regeln zu bearbeiten, oeffnen Sie im Drei-Punkte-Menue oben rechts die Option **Edit**.
+Pour ajouter une nouvelle règle, cliquez sur **Create new rule**.  
+Pour modifier des règles, ouvrez l’option **Edit** dans le menu à trois points en haut à droite.
 
 <Note>
-  Bitte beachten Sie, dass Sie im Dropdown unter Umstaenden nach unten scrollen muessen, um weitere Optionen zu sehen, waehrend Sie Ihre Regel erstellen.
+  Veuillez noter que vous devrez peut-être faire défiler le menu déroulant vers le bas pour voir d’autres options lors de la création de votre règle.
 </Note>
 
-Wenn Ihre Regeln fertig sind, stellen Sie sicher, dass Sie sie **Connect** – nur dann werden sie aktiv.  
-Regeln werden in einer Auswertungsreihenfolge geprueft. Sobald eine Regel **TRUE** ergibt, werden alle folgenden Regeln uebersprungen und diese Regel sofort ausgefuehrt.
+Une fois vos règles terminées, assurez-vous de les **Connect** — ce n’est qu’à ce moment-là qu’elles deviennent actives.  
+Les règles sont évaluées dans un ordre défini. Dès qu’une règle renvoie **TRUE**, toutes les règles suivantes sont ignorées et celle-ci est immédiatement exécutée.
 
 <Frame>
   <img src="/images/supervisor-overrides-2.png" />
 </Frame>
 
-Ein gutes Beispiel fuer den Einsatz von AI Supervisor Overrides ist das **verzoegerte Lead Collection Setup**.  
-Nehmen wir den Anwendungsfall an, in dem Ihr Chatbot allgemeine FAQ-Anfragen beantworten soll – aber erst nach 2–3 Fragen damit beginnen soll, Nutzerdaten zu sammeln.  
-Wenn der Nutzer sich weigert, die Daten anzugeben, soll der Chatbot ihn dennoch anonym weiter bedienen.
+Un bon exemple d’utilisation des AI Supervisor Overrides est la **collecte différée de leads**.  
+Imaginons un cas où votre chatbot doit répondre aux FAQ générales, mais ne commencer à collecter les données utilisateur qu’après 2 ou 3 questions.  
+Si l’utilisateur refuse de fournir ses données, le chatbot doit néanmoins continuer à l’assister de manière anonyme.
 
-Zuerst benoetigen Sie ein regulaeres Lead Collection Setup, wie im Artikel [Lead Collection](/lead-collection) beschrieben.  
-Wenn Sie dies erledigt haben, fahren Sie hier fort.
+Vous avez d’abord besoin d’une configuration standard de collecte de leads, comme décrit dans l’article [Lead Collection](/lead-collection).  
+Une fois cela fait, poursuivez ici.
 
-An diesem Punkt sollten Sie zwei user-facing Agenten eingerichtet haben:
+À ce stade, vous devriez avoir configuré deux agents orientés utilisateur :
 
 <Frame>
   <img src="/images/supervisor-overrides-3.png" />
 </Frame>
 
-Oeffnen Sie nun die AI Supervisor Settings und klicken Sie auf **Create new rule**.  
-Oeffnen Sie im Drei-Punkte-Menue rechts oben **Edit**, um die Regel zu konfigurieren.  
-Fuer unseren Anwendungsfall setzen wir folgende Bedingung:
+Ouvrez maintenant les paramètres du superviseur IA et cliquez sur **Create new rule**.  
+Dans le menu à trois points en haut à droite, ouvrez **Edit** pour configurer la règle.  
+Pour notre cas d’usage, nous définissons la condition suivante :
 
 <Frame>
   <img src="/images/supervisor-overrides-5.png" />
 </Frame>
 
-Dies bedeutet:  
-Sobald die **Gesamtzahl der Nutzeranfragen** exakt **3** betraegt, setzt der AI Supervisor den aktiven Agenten auf **Lead Collection**.  
-Klicken Sie auf **Save**.
+Cela signifie :  
+Dès que le **nombre total de requêtes utilisateur** atteint exactement **3**, le superviseur IA définit l’agent actif sur **Lead Collection**.  
+Cliquez sur **Save**.
 
-Als naechstes erstellen Sie eine zweite Regel.  
-Diese Regel lautet:
+Ensuite, créez une deuxième règle.  
+Cette règle est la suivante :
 
-1. Wenn der aktuelle Agent **Lead Collection** ist,  
-2. UND wenn die Anzahl der Anfragen, die dieser Agent in Folge bearbeitet hat, **weniger als 4** ist,  
-3. UND wenn eine der folgenden Nutzerinformationen **nicht angegeben** wurde: Name, E-Mail oder Telefonnummer,  
-4. DANN bleibe beim Lead Collection Agent.
+1. Si l’agent actuel est **Lead Collection**,  
+2. ET si le nombre de requêtes traitées consécutivement par cet agent est **inférieur à 4**,  
+3. ET si l’une des informations utilisateur suivantes **n’a pas été fournie** : nom, e-mail ou numéro de téléphone,  
+4. ALORS rester sur l’agent Lead Collection.
 
-Das bedeutet:  
-Der Lead Collection Agent bleibt aktiv, bis entweder:
+Cela signifie :  
+L’agent Lead Collection reste actif jusqu’à ce que :
 
-- mindestens 4 Interaktionen stattgefunden haben, **oder**
-- alle angeforderten Informationen gesammelt wurden.
+- au moins 4 interactions aient eu lieu, **ou**
+- toutes les informations demandées aient été collectées.
 
-Waehlen Sie im Edit-Modus **Add Rule**, um neue Bedingungen hinzuzufuegen.  
-Nach Schritt 2 sieht Ihre Regel so aus:
+En mode édition, sélectionnez **Add Rule** pour ajouter de nouvelles conditions.  
+Après l’étape 2, votre règle ressemble à ceci :
 
 <Frame>
   <img src="/images/supervisor-overrides-6.png" />
 </Frame>
 
-Schritt 3 benoetigt eine **Gruppenbedingung**, deren Logik lautet:
+L’étape 3 nécessite une **condition de groupe**, dont la logique est la suivante :
 
-- Wenn Variable **user_name** nicht angegeben ist  
-- ODER Variable **user_email** nicht angegeben ist  
-- ODER Variable **user_phone** nicht angegeben ist  
-- DANN ergibt die Gruppe TRUE
+- Si la variable **user_name** n’est pas renseignée  
+- OU si la variable **user_email** n’est pas renseignée  
+- OU si la variable **user_phone** n’est pas renseignée  
+- ALORS le groupe renvoie TRUE
 
-Wir richten daher folgende Gruppe ein:
+Nous configurons donc le groupe suivant :
 
 <Frame>
   <img src="/images/supervisor-overrides-7.png" />
 </Frame>
 
-In dieser Gruppe klicken Sie dann auf **Add Rule** und definieren die jeweiligen Bedingungen:
+Dans ce groupe, cliquez ensuite sur **Add Rule** et définissez les conditions correspondantes :
 
 <Frame>
   <img src="/images/supervisor-overrides-8.png" />
 </Frame>
 
-Zum Schluss stellen Sie sicher, dass – wie in Schritt 4 beschrieben – der Agent **Lead Collection** zugewiesen wird, wenn die Regel ausgefuehrt wird:
+Enfin, assurez-vous que, comme décrit à l’étape 4, l’agent **Lead Collection** est attribué lorsque la règle est exécutée :
 
 <Frame>
   <img src="/images/supervisor-overrides-9.png" />
 </Frame>
 
-Verbinden Sie Ihre Regeln ueber das Drei-Punkte-Menue mit der Option **Connect**.  
-Wenn dies erfolgreich war, erscheint bei jeder Regel ein gruener **Active**-Status:
+Connectez vos règles via le menu à trois points avec l’option **Connect**.  
+Si l’opération a réussi, chaque règle affichera un statut vert **Active** :
 
 <Frame>
   <img src="/images/supervisor-overrides-10.png" />
 </Frame>
 
-Nun koennen Sie im Tab **Preview** den Chatbot unter diesen neuen Overrides testen.  
-Sie sollten feststellen, dass das Verhalten wie erwartet funktioniert.  
-Im Debug-Modus erscheint ein **override**-Tag neben **Active Agent**, wenn eine Override-Regel aktiv ist.
+Vous pouvez maintenant tester le chatbot avec ces nouveaux overrides dans l’onglet **Preview**.  
+Vous devriez constater que le comportement fonctionne comme prévu.  
+En mode débogage, une balise **override** apparaît à côté de **Active Agent** lorsqu’une règle d’override est active.
 
 <Frame>
   <img src="/images/supervisor-overrides-11.png" />
 </Frame>
 
-Sie koennen mit AI Supervisor Overrides sehr komplexe Workflows erstellen.  
-Da diese Funktion jedoch direkt steuert, wie der AI Supervisor arbeitet, empfehlen wir dringend, Ihre Konfiguration gruendlich zu testen, bevor Sie sie live einsetzen.
-
+Vous pouvez créer des workflows très complexes avec les AI Supervisor Overrides.  
+Cependant, comme cette fonctionnalité contrôle directement le fonctionnement du superviseur IA, nous vous recommandons vivement de tester soigneusement votre configuration avant de la mettre en production.

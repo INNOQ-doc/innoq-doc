@@ -1,114 +1,113 @@
 ---
-title: Feinabstimmung von Agenten-Intents
-description: Erfahren Sie, wie Sie die Intents Ihrer KI-Agenten feinabstimmen, um ein präziseres Routing in Multi-Agenten-Chatbots zu erreichen.
+title: Ajustement fin des intents des agents
+description: Découvrez comment affiner les intents de vos agents IA pour obtenir un routage plus précis dans les chatbots multi-agents.
 ---
 
-Wenn Ihr Chatbot mehrere KI-Agenten besitzt, weist der KI-Supervisor automatisch den geeignetsten Agenten zu, der die Eingaben des Nutzers bearbeiten soll.  
-Dazu bestimmt er zuerst die **Intentionslage des Nutzers** und sucht dann den passenden Agenten anhand von **Agentennamen** und **Agentenbeschreibungen**.
+Lorsque votre chatbot possède plusieurs agents IA, le superviseur IA assigne automatiquement l’agent le plus approprié pour traiter les entrées de l’utilisateur.  
+Pour ce faire, il détermine d’abord **l’intention de l’utilisateur**, puis recherche l’agent correspondant en se basant sur le **nom de l’agent** et la **description de l’agent**.
 
-In unserem Artikel [Multi-Agent Chatbot](multi-agents-chatbot) haben wir einige Best Practices für das Schreiben von Agentenbeschreibungen vorgestellt und Beispiele gegeben.  
-Trotzdem gibt es immer Szenarien, in denen die Agentenbeschreibungen nicht alle Fälle ausreichend abdecken.
+Dans notre article [Multi-Agent Chatbot](multi-agents-chatbot), nous avons présenté quelques bonnes pratiques pour rédiger les descriptions d’agents ainsi que des exemples.  
+Cependant, il existe toujours des scénarios dans lesquels les descriptions d’agents ne couvrent pas suffisamment tous les cas.
 
-Wenn AI-Agenten erstellt oder bearbeitet werden, generiert INNOCHAT automatisch mehrere **Intents** sowie Beispielanfragen, die dem AI Supervisor als Referenz dienen.  
-Diese Intents können über die **KI Supervisor Settings** eingesehen, angepasst oder gelöscht werden.  
-Der KI-Supervisor nutzt diese Intents direkt, um die jeweilige Spezialisierung eines Agenten einzuordnen.
+Lors de la création ou de la modification d’agents IA, INNOCHAT génère automatiquement plusieurs **intents** ainsi que des exemples de requêtes qui servent de référence au superviseur IA.  
+Ces intents peuvent être consultés, modifiés ou supprimés via les **paramètres du superviseur IA**.  
+Le superviseur IA utilise directement ces intents pour classer la spécialisation de chaque agent.
 
-Um Agenten-Intents fein abzustimmen, gehen Sie zum Tab **KI Agents** in der linken Navigation und klicken Sie dann auf **KI Supervisor Settings**:
+Pour affiner les intents des agents, rendez-vous dans l’onglet **AI Agents** dans la navigation à gauche, puis cliquez sur **AI Supervisor Settings** :
 
 <Frame>
   <img src="/images/fine-tuning-agent-intents-5.png" />
 </Frame>
 
-Nun wechseln Sie zum Tab **Intents**:
+Passez ensuite à l’onglet **Intents** :
 
 <Frame>
   <img src="/images/fine-tuning-agent-intents-6.png" />
 </Frame>
 
-Hier sehen Sie die Intents, die der KI Supervisor basierend auf seiner Interpretation der Agentenfunktion automatisch erstellt hat.  
-Wenn ein Nutzer eine Anfrage stellt und mehrere KI-Agenten aktiv sind, extrahiert der KI Supervisor den Intent und sucht den **besten passenden Agenten**.
+Vous y verrez les intents que le superviseur IA a créés automatiquement en fonction de son interprétation de la fonction de chaque agent.  
+Lorsqu’un utilisateur pose une question et que plusieurs agents IA sont actifs, le superviseur IA extrait l’intent et recherche **l’agent le plus pertinent**.
 
-Um neue Intents hinzuzufügen, wählen Sie den Agenten aus, den Sie feinabstimmen möchten, und klicken Sie auf **Add intent**.
+Pour ajouter de nouveaux intents, sélectionnez l’agent que vous souhaitez affiner, puis cliquez sur **Add intent**.
 
 <Frame>
   <img src="/images/fine-tuning-agent-intents-7.png" />
 </Frame>
 
-Geben Sie dann den neuen Intent ein und fügen Sie einige Beispielanfragen hinzu, die zeigen, wie ein Nutzer diesen Intent äussern könnte.
+Saisissez ensuite le nouvel intent et ajoutez quelques exemples de requêtes montrant comment un utilisateur pourrait exprimer cet intent.
 
 <Frame>
   <img src="/images/fine-tuning-agent-intents-8.png" />
 </Frame>
 
-Klicken Sie auf **Create**.  
-Der neue Intent erscheint nun unter **Fixed Intents**.  
-Möchten Sie die komplette Liste sehen, müssen Sie eventuell nach unten scrollen.
+Cliquez sur **Create**.  
+Le nouvel intent apparaît alors dans la section **Fixed Intents**.  
+Pour voir la liste complète, il vous faudra peut-être faire défiler vers le bas.
 
-Sie koennen auch **AI-Generated Intents** bearbeiten.  
-Öffnen Sie dazu das Drei-Punkte-Menü neben dem Intent und wählen Sie **Edit**.  
-Nach dem Speichern wird der Intent in den Abschnitt **Fixed Intents** verschoben.
+Vous pouvez également modifier les **AI-Generated Intents**.  
+Pour cela, ouvrez le menu à trois points à côté de l’intent et choisissez **Edit**.  
+Après enregistrement, l’intent est déplacé dans la section **Fixed Intents**.
 
 <Frame>
   <img src="/images/fine-tuning-agent-intents-9.png" />
 </Frame>
 
 <Note>
-  Hinweis: AI-Generated Intents werden jedes Mal überschrieben, wenn Sie den Agentennamen, die Beschreibung oder den Prompt bearbeiten.  
-  Fixed Intents hingegen bleiben dauerhaft bestehen, solange Sie sie nicht manuell löschen.
+  Remarque : les intents générés par IA sont écrasés à chaque fois que vous modifiez le nom de l’agent, sa description ou son prompt.  
+  Les Fixed Intents, en revanche, restent permanents tant que vous ne les supprimez pas manuellement.
 </Note>
 
-## Wann sollte ich Agenten-Intents feinabstimmen?
+## Quand dois-je affiner les intents des agents ?
 
-Für die meisten Anwendungsfälle mit allgemeiner Q&A-Funktion ist eine manuelle Feinabstimmung nicht notwendig.  
-Interne Tests zeigen, dass AI-generierte Intents in der Regel ausreichend gutes Routing ermöglichen.
+Dans la plupart des cas d’usage avec une fonction Q&R générale, un ajustement manuel n’est pas nécessaire.  
+Les tests internes montrent que les intents générés par IA permettent généralement un routage suffisamment performant.
 
-Die Möglichkeit, Intent-Klassifikation granular zu steuern, ist vor allem hilfreich:
+La possibilité de contrôler de manière granulaire la classification des intents est particulièrement utile :
 
-- wenn viele KI-Agenten beteiligt sind  
-- wenn der Chatbot eine sehr hohe Präzision benoetigt  
-- wenn bestimmte Benutzerintentionen klar abgegrenzt werden müssen  
+- lorsque de nombreux agents IA sont impliqués  
+- lorsque le chatbot nécessite une très grande précision  
+- lorsque certaines intentions utilisateur doivent être clairement distinguées  
 
-Beim Design eines Multi-Agenten-Systems empfehlen wir die **MECE-Methode**:  
+Lors de la conception d’un système multi-agents, nous recommandons la méthode **MECE** :  
 **M**utually **E**xclusive, **C**ollectively **E**xhaustive.  
-Das bedeutet: **keine Lücken, keine Überschneidungen**.
+Cela signifie : **pas de chevauchements, pas de lacunes**.
 
-Ideal ist eine Struktur wie:
+Une structure idéale ressemble à ceci :
 
-> **User-facing Agent A handles:**
-> - intent class 1  
-> - intent class 2  
-> - intent class 3  
-> - usw.
+> **L’agent A (visible par l’utilisateur) gère :**
+> - classe d’intent 1  
+> - classe d’intent 2  
+> - classe d’intent 3  
+> - etc.
 
-> **User-facing Agent B handles:**
-> - intent class 10  
-> - intent class 11  
-> - intent class 12  
-> - usw.
+> **L’agent B (visible par l’utilisateur) gère :**
+> - classe d’intent 10  
+> - classe d’intent 11  
+> - classe d’intent 12  
+> - etc.
 
-Die Überschneidung zwischen Agenten sollte **minimal** sein.  
-Zusammen sollten alle Agenten **sämtliche möglichen Benutzerintentionen** abdecken.
+Le chevauchement entre les agents doit être **minimal**.  
+Ensemble, tous les agents doivent **couvrir l’ensemble des intentions utilisateur possibles**.
 
-Da jedoch keine Liste alle denkbaren Intents abdecken kann und natürssliche Sprache viele Variationen erlaubt,  
-gibt es keine deterministische Möglichkeit, 100 % Konsistenz zu erzielen.  
-Mit gutem Setup kommt man aber sehr nahe heran.
+Cependant, comme aucune liste ne peut couvrir tous les intents imaginables et que le langage naturel permet de nombreuses variations,  
+il n’existe pas de moyen déterministe d’atteindre 100 % de cohérence.  
+Avec une bonne configuration, on s’en approche toutefois très fortement.
 
-Wärend Ihr Chatbot im Einsatz ist, sollten Sie eingehende Konversationen beobachten und Fälle identifizieren,  
-in denen ein **falscher Agent** zugewiesen wurde.  
-In diesen Situationen empfehlen wir die Nutzung des **Debug-Modus**.  
-Wenn mehrere User-facing Agents vorhanden sind, werden im Debug-Modus **Intent** und **Active Agent** bei jeder Anfrage angezeigt.
+Pendant que votre chatbot est en production, observez les conversations entrantes et identifiez les cas  
+où un **mauvais agent** a été assigné.  
+Dans ces situations, nous recommandons d’utiliser le **mode debug**.  
+Lorsque plusieurs agents visibles par l’utilisateur sont présents, le mode debug affiche l’**Intent** et l’**Active Agent** pour chaque requête.
 
 <Frame>
   <img src="/images/fine-tuning-agent-intents-10.png" />
 </Frame>
 
-Wenn ein falscher Agent zugewiesen wurde, können Sie eine schnelle und effektive Korrektur vornehmen, indem Sie:
+Lorsqu’un mauvais agent a été assigné, vous pouvez effectuer une correction rapide et efficace en :
 
-- den Intent und  
-- die entsprechende Nutzeranfrage  
+- associant l’intent et  
+- la requête utilisateur correspondante  
 
-dem **richtigen Agenten** in *AI Supervisor Settings → Intents* zuordnen.
+à **l’agent correct** dans *AI Supervisor Settings → Intents*.
 
-Dadurch wird sichergestellt, dass bei zukünftigen ähnlichen Anfragen der korrekte Agent gewählt wird.  
-Je mehr Beispiele Sie für diesen Intent angeben, desto zuverlässiger kann der KI Supervisor ähnliche Fälle klassifizieren.
-
+Cela garantit que pour les requêtes similaires futures, l’agent approprié sera choisi.  
+Plus vous fournissez d’exemples pour cet intent, plus le superviseur IA pourra classer de manière fiable les cas similaires.

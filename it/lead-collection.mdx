@@ -1,50 +1,50 @@
 ---
-title: Lead-Erfassung
-description: Erfahren Sie, wie INNOCHAT Benutzerdaten entweder durch Formulare oder durch natuerssliche Konversation erfasst.
+title: Acquisizione Lead
+description: Scopri come INNOCHAT raccoglie i dati degli utenti tramite moduli o attraverso una conversazione naturale.
 ---
 
-Es gibt zwei Moeglichkeiten, Daten von Benutzern zu sammeln, wenn sie mit Ihrem AI-Chat interagieren:
+Esistono due modalità per raccogliere dati dagli utenti quando interagiscono con il tuo chat AI:
 
-1. Ueber ein Formular  
-2. Konversationell im Dialog
+1. Tramite un modulo  
+2. Conversazionalmente nel dialogo
 
-Beide Ansaetze haben Vor- und Nachteile. Formulare sind einfacher einzurichten und funktionieren programmatisch, aber die konversationelle Datenerfassung ist natuerlicher und fuesselnder, auch wenn sie komplexer ist.  
-Alle gesammelten Daten koennen ueber einen Webhook an ein CRM gesendet werden, sobald der Benutzer sie uebermittelt.
+Entrambi gli approcci presentano vantaggi e svantaggi. I moduli sono più semplici da configurare e funzionano in modo programmatico, ma l’acquisizione conversazionale è più naturale e coinvolgente, anche se più complessa.  
+Tutti i dati raccolti possono essere inviati a un CRM tramite webhook non appena l’utente li ha forniti.
 
-## Datenerfassung ueber ein Formular
+## Raccolta dati tramite modulo
 
-Um Ihrem AI-Chat ein Formular hinzuzufuegen, gehen Sie zum Tab **Customizations** im linken Navigationsmenue und scrollen Sie nach unten zum Abschnitt **Form**:
+Per aggiungere un modulo al tuo chat AI, vai alla scheda **Customizations** nel menu di navigazione a sinistra e scorri verso il basso fino alla sezione **Form**:
 
 <Frame>
   <img src="/images/lead-collection-13.png" />
 </Frame>
 
-Sie koennen eines der Standardfelder auswaehlen, das im Formular enthalten sein soll. Alternativ koennen Sie auch eigene benutzerdefinierte Felder erstellen.
+Puoi selezionare uno dei campi standard da includere nel modulo. In alternativa, puoi creare campi personalizzati.
 
 <Frame>
   <img src="/images/lead-collection-14.png" />
 </Frame>
 
-Bei benutzerdefinierten Feldern koennen Sie den Feldtyp festlegen (Text, Dropdown, Checkbox).  
-Sie koennen bestimmte Felder verpflichtend machen. Wenn mindestens ein Feld verpflichtend ist, erhalten Sie zudem die Moeglichkeit, das gesamte Formular verpflichtend zu machen, bevor der Benutzer weiter chatten darf.  
-Wenn das Formular verpflichtend ist, verschwindet die **x**-Schaltflaeche oben rechts, sodass Benutzer das Formular nicht schliessen koennen, bevor es ausgefuellt wurde.
+Per i campi personalizzati puoi definire il tipo di campo (Testo, Dropdown, Checkbox).  
+Puoi rendere obbligatori determinati campi. Se almeno un campo è obbligatorio, avrai anche la possibilità di rendere l’intero modulo obbligatorio prima che l’utente possa proseguire la chat.  
+Quando il modulo è obbligatorio, il pulsante **x** in alto a destra scompare, impedendo all’utente di chiudere il modulo prima di averlo compilato.
 
 <Frame>
   <img src="/images/lead-collection-15.png" />
 </Frame>
 
-## Datenerfassung im Dialog
+## Raccolta dati nel dialogo
 
-Wenn Sie einen natuerlichen Gespraechsfluss beibehalten und Daten direkt durch Konversation sammeln moechten, muessen Sie den Prompt Ihres AI-Agenten konfigurieren und Variablen einrichten, um die Daten zu speichern.
+Se desideri mantenere un flusso conversazionale naturale e raccogliere i dati direttamente attraverso la conversazione, devi configurare il prompt del tuo agente AI e impostare delle variabili per memorizzare i dati.
 
-### Prompt bearbeiten
+### Modifica del prompt
 
-Das Verhalten Ihres AI-Chats wird durch den Prompt Ihres AI-Agenten gesteuert.  
-Um diesen zu bearbeiten, gehen Sie in der linken Navigation zum Tab **AI Agents** und klicken Sie auf den entsprechenden Agenten.
+Il comportamento del tuo chat AI è controllato dal prompt del tuo agente AI.  
+Per modificarlo, vai nella scheda **AI Agents** nella navigazione a sinistra e clicca sull’agente corrispondente.
 
 <Note>
-  Wenn Sie Ihren AI-Chat anhand einer Vorlage erstellt haben, verwenden Sie moeglicherweise einen Standard-Prompt, den wir fuer Sie generiert haben.  
-  Wenn Sie zum ersten Mal einen AI-Agent-Prompt konfigurieren, empfehlen wir Ihnen unseren Leitfaden zur Prompt-Engineering-Best-Practices.
+  Se hai creato il tuo chat AI a partire da un template, probabilmente stai utilizzando un prompt standard che abbiamo generato per te.  
+  Se è la prima volta che configuri un prompt per un agente AI, ti consigliamo di consultare la nostra guida alle migliori pratiche di prompt engineering.
 </Note>
 
 <Frame>
@@ -55,81 +55,80 @@ Um diesen zu bearbeiten, gehen Sie in der linken Navigation zum Tab **AI Agents*
   <img src="/images/lead-collection-17.png" />
 </Frame>
 
-Konfigurieren Sie Ihren Prompt so, dass detaillierte Anweisungen enthalten sind, wann, was und wie Daten vom Benutzer abgefragt werden sollen.  
-Hier ein Beispielausschnitt:
-### Anweisungen
-- Wenn Sie zum ersten Mal mit dem Benutzer in Kontakt treten, fragen Sie ihn höflich nach seinem Vornamen.
-- Sobald der Benutzer seinen Vornamen angegeben hat, fahren Sie mit den folgenden Schritten fort, um seine Kontaktdaten zu erfassen.
-- Fragen Sie den Benutzer nach seiner Handynummer, nachdem Sie seinen Vornamen erfasst haben.
-- Nachdem Sie die Handynummer erfasst haben, fragen Sie nach seiner E-Mail-Adresse.
-- Wenn der Benutzer bestimmte Informationen nicht preisgeben möchte, drängen Sie ihn nicht dazu. Respektieren Sie seine Entscheidung.
+Configura il tuo prompt includendo istruzioni dettagliate su quando, cosa e come chiedere i dati all’utente.  
+Ecco un estratto di esempio:
+### Istruzioni
+- Al primo contatto con l’utente, chiedigli gentilmente il suo nome.
+- Una volta che l’utente ha fornito il nome, procedi con i passaggi successivi per raccogliere i suoi dati di contatto.
+- Chiedi all’utente il suo numero di cellulare dopo aver ottenuto il nome.
+- Dopo aver ottenuto il numero di cellulare, chiedi il suo indirizzo email.
+- Se l’utente non desidera fornire determinate informazioni, non insistere. Rispetta la sua decisione.
 
+Queste istruzioni dicono all’agente AI quando fare le domande, ma serve anche un meccanismo per salvare i dati.  
+La sezione successiva spiega come configurare le variabili.
 
-Dies weist den AI-Agenten jedoch nur an, Daten abzufragen. Wir benoetigen ausserdem einen Mechanismus, um die Daten zu speichern.  
-Im naechsten Abschnitt erklaeren wir Ihnen, wie Variablen eingerichtet werden.
+### Configurazione delle variabili
 
-### Einrichten von Variablen
-
-Gehen Sie zum Tab **Customizations** in der rechten Seitenleiste und scrollen Sie nach unten zu **User Data Collection**.  
-Klicken Sie darauf, um den Bereich zu erweitern.
+Vai alla scheda **Customizations** nella barra laterale destra e scorri verso il basso fino a **User Data Collection**.  
+Clicca per espandere la sezione.
 
 <Frame>
   <img src="/images/lead-collection-18.png" />
 </Frame>
 
-Hier können Sie Variablen erstellen, in denen während der Konversation gesammelte Daten gespeichert werden.  
-Sie können mehrere Variablen anlegen, jede für ein bestimmtes Datenelement.  
-Geben Sie bei der Einrichtung einer Variablen unbedingt einen Variablennamen, eine Beschreibung und Beispielwerte an.  
-Je präziser und detailreicher, desto besser.
+Qui puoi creare variabili che memorizzeranno i dati raccolti durante la conversazione.  
+Puoi creare più variabili, ognuna per un dato specifico.  
+Quando configuri una variabile, assicurati di inserire un nome variabile, una descrizione e valori di esempio.  
+Più sei preciso e dettagliato, meglio è.
 
 <Frame>
   <img src="/images/lead-collection-19.png" />
 </Frame>
 
-_Desto mehr Beispiele Sie angeben, desto besser versteht der AI-Agent das gewuenschte Format._
+_Più esempi fornisci, meglio l’agente AI comprende il formato desiderato._
 
-Stellen Sie sicher, dass Sie ausreichend Variablen definieren, um alle Daten zu speichern, die Sie vom Benutzer abfragen.  
-Im Beispiel oben wären dies Name, Telefonnummer und E-Mail-Adresse.
+Assicurati di definire abbastanza variabili per salvare tutti i dati che chiedi all’utente.  
+Nell’esempio sopra sarebbero: nome, numero di telefono e indirizzo email.
 
-Nachdem alles eingerichtet wurde, koennen Sie den AI-Chat im Vorschau-Modus testen.  
-Wenn alles korrekt funktioniert, sehen Sie die gesammelten Daten in Ihrem Posteingang, sobald ein Benutzer bedeutungsvoll mit Ihrem AI-Chat interagiert.
+Dopo aver configurato tutto, puoi testare il tuo chat AI in modalità anteprima.  
+Se tutto funziona correttamente, vedrai i dati raccolti apparire nella tua casella di posta non appena un utente interagisce in modo significativo con il tuo chat AI.
 
 <Note>
-  Variablenwerte koennen sich aendern, wenn der Benutzer eine Korrektur oder Aktualisierung nennt.  
-  Der AI-Agent erkennt in der Regel gut, welcher Wert korrekt ist.
+  I valori delle variabili possono cambiare se l’utente corregge o aggiorna un’informazione.  
+  L’agente AI di solito riconosce bene qual è il valore corretto.
 </Note>
 
 <Frame>
   <img src="/images/lead-collection-20.png" />
 </Frame>
 
-## Daten an Ihr CRM senden
+## Invio dati al tuo CRM
 
-Unabhaengig davon, ob Sie Daten per Formular oder konversationell sammeln, moechten Sie diese moeglicherweise an ein CRM-System weiterleiten.  
-INNOCHAT unterstuetzt Webhooks mit intelligenten Triggern, die Sie automatisch ueber neue Leads informieren.
+Sia che tu raccolga i dati tramite modulo sia che lo faccia conversazionalmente, probabilmente vorrai inviarli a un sistema CRM.  
+INNOCHAT supporta webhook con trigger intelligenti che ti avvisano automaticamente dell’arrivo di nuovi lead.
 
-Gehen Sie im linken Navigationsmenue zum Tab **Customizations** und scrollen Sie dann zum Abschnitt **Webhook**.  
-Klicken Sie darauf, um ihn zu erweitern.
+Vai alla scheda **Customizations** nel menu di navigazione a sinistra, quindi scorri fino alla sezione **Webhook**.  
+Clicca per espandere la sezione.
 
 <Frame>
   <img src="/images/lead-collection-21.png" />
 </Frame>
 
-Wenn Sie ein Formular verwenden, koennen Sie das Event **Form Submission** auswaehlen und den API-Endpunkt angeben, an den die Daten gesendet werden sollen (POST-Request).
+Se utilizzi un modulo, puoi selezionare l’evento **Form Submission** e indicare l’endpoint API a cui inviare i dati (richiesta POST).
 
-Wenn Sie Variablen zur Datenspeicherung verwenden, waehlen Sie das Event **Data Collection** und geben an, welche Variablen uebertragen werden sollen.  
-**Wichtig:** Der Webhook wird nur ausgeloest, wenn alle ausgewaehlten Variablen gefuellt sind (darf nicht leer sein).
+Se utilizzi variabili per memorizzare i dati, seleziona l’evento **Data Collection** e indica quali variabili devono essere trasmesse.  
+**Importante:** Il webhook si attiva solo quando tutte le variabili selezionate sono compilate (non devono essere vuote).
 
-Wenn bestimmte Variablen optional sein sollen, koennen Sie ihnen waehrend der Einrichtung einen Standardwert geben.  
-So ist die Variable immer befuellt und niemals leer.
+Se alcune variabili devono essere opzionali, puoi assegnare loro un valore predefinito durante la configurazione.  
+In questo modo la variabile sarà sempre valorizzata e mai vuota.
 
-## Daten per E-Mail senden
+## Invio dati via email
 
-Um Daten per E-Mail zu senden, gehen Sie im linken Navigationsmenue erneut zum Tab **Customizations** und scrollen Sie zum Abschnitt **Email Notifications**.  
-Klicken Sie darauf, um den Bereich zu erweitern.
+Per ricevere i dati via email, torna alla scheda **Customizations** nel menu di navigazione a sinistra e scorri fino alla sezione **Email Notifications**.  
+Clicca per espandere la sezione.
 
 <Frame>
   <img src="/images/lead-collection-22.png" />
 </Frame>
 
-Geben Sie einfach Ihre E-Mail-Adresse ein und aktivieren Sie die geeigneten Trigger, um neue Lead-Benachrichtigungen zu erhalten.
+Basta inserire il tuo indirizzo email e attivare i trigger appropriati per ricevere notifiche sui nuovi lead.

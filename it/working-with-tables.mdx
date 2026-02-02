@@ -1,35 +1,35 @@
 ---
-title: Arbeiten mit Tabellen und CSV
-description: Erfahren Sie, wie Sie CSV-Dateien und tabellarische strukturierte Daten in INNOCHAT hochladen und verwenden koennen.
+title: Lavorare con tabelle e CSV
+description: Scopri come caricare e utilizzare file CSV e dati strutturati tabellari in INNOCHAT.
 ---
 
-INNOCHAT ermoeglicht Ihnen das Hochladen von Trainingsdaten in Form **einfacher** CSV- oder Excel-Tabellen.  
-„Einfache Tabellen“ beziehen sich auf tabellarische Daten ohne zusammengefasste Zellen, mit einer **einzigen Primaerschluessel-Spalte** mit eindeutigen Elementen, eindeutigen und aussagekraeftigen Spalten- oder Zeilentiteln und einer klaren **Spalten- oder Zeilen-Spalten-Struktur**.
+INNOCHAT ti consente di caricare dati di training sotto forma di file CSV o tabelle Excel **semplici**.  
+Le “tabelle semplici” si riferiscono a dati tabellari senza celle unite, con **un’unica colonna di chiave primaria** con elementi univoci, intestazioni di colonne o righe univoche e descrittive e una chiara struttura **a colonne** oppure **righe/colonne**.
 
-Beispiel für eine reine Spaltentabelle:
+Esempio di tabella solo a colonne:
 
 <Frame>
   <img src="/images/working-with-tables-1.png" />
 </Frame>
 
-_Alle Daten pro Zeile beziehen sich auf den Produktschluessel in der ersten Spalte._
+_Tutti i dati per riga si riferiscono alla chiave prodotto nella prima colonna._
 
-Beispiel für eine Zeilen/Spalten-Tabelle:
+Esempio di tabella righe/colonne:
 
 <Frame>
   <img src="/images/working-with-tables-2.png" />
 </Frame>
 
-_Jede Kombination aus Zeile und Spalte verweist auf einen spezifischen Zellwert._
+_Ogni combinazione di riga e colonna rimanda a un valore di cella specifico._
 
-Es gibt keine maximale Anzahl an Spalten, jedoch gibt es ein Limit für die **Gesamtanzahl der Tokens pro Zeile**.  
-Wenn diese überschritten wird, laeuft das Training in einen Fehler.
+Non esiste un numero massimo di colonne, tuttavia c’è un limite al **numero totale di token per riga**.  
+Se viene superato, il training va in errore.
 
-Stand **Maerz 2024** betraegt das Maximum **ca. 8000 Tokens pro Zeile** (inklusive des JSON-Codes, der zum Darstellen der Tabellenstruktur erforderlich ist).  
-Das bedeutet, dass der tatsaechliche Anteil für Werte geringer ausfaellt und von der Laenge von Spalten- und Zeilennamen abhaengt.
+Al **marzo 2024**, il massimo è **circa 8000 token per riga** (incluso il codice JSON necessario per rappresentare la struttura della tabella).  
+Ciò significa che la quota effettivamente disponibile per i valori è inferiore e dipende dalla lunghezza dei nomi di righe e colonne.
 
-Wenn Ihre Daten dem oben beschriebenen Format entsprechen, koennen Sie Ihre Tabelle als Trainingsquelle hochladen.  
-Dazu gehen Sie zu:
+Se i tuoi dati rispettano il formato descritto sopra, puoi caricare la tabella come fonte di training.  
+Per farlo, vai su:
 
 **Sources → Add Sources → Tables**
 
@@ -37,44 +37,44 @@ Dazu gehen Sie zu:
   <img src="/images/working-with-tables-3.png" />
 </Frame>
 
-Bei Zeilen/Spalten-Tabellen muessen Sie nach dem Hochladen Folgendes tun:
+Per le tabelle righe/colonne, dopo il caricamento devi fare quanto segue:
 
-- Waehlen Sie die Tabelle aus  
-- Oeffnen Sie das Drei-Punkte-Menue rechts  
-- Klicken Sie auf **Edit Table Data**  
+- Seleziona la tabella  
+- Apri il menu a tre punti sulla destra  
+- Fai clic su **Edit Table Data**  
 
 <Frame>
   <img src="/images/working-with-tables-4.png" />
 </Frame>
 
-Im Tabellen-Editor waehlen Sie nun **Row-Column Header** und klicken auf **Save Changes**.  
-Dies stellt sicher, dass die Daten korrekt für LLM-Verarbeitung vorverarbeitet werden.
+Nell’editor delle tabelle, seleziona **Row-Column Header** e fai clic su **Save Changes**.  
+Questo assicura che i dati vengano pre-elaborati correttamente per l’elaborazione da parte del LLM.
 
 <Frame>
   <img src="/images/working-with-tables-5.png" />
 </Frame>
 
-Danach koennen Sie die Tabellen als Referenzdaten beim Zuweisen der Wissensbasis für Ihre Agenten verwenden.
+Successivamente, puoi utilizzare le tabelle come dati di riferimento quando assegni la knowledge base ai tuoi agenti.
 
-Bitte beachten:  
-**GPT-4-Modelle übertreffen GPT-3.5-Modelle deutlich** hinsichtlich Praezision und Konsistenz beim Arbeiten mit Tabellen.
+Nota bene:  
+**I modelli GPT-4 superano nettamente i modelli GPT-3.5** in termini di precisione e coerenza quando si lavora con le tabelle.
 
 <Frame>
   <img src="/images/working-with-tables-6.png" />
 </Frame>
 
-_Beispiel für LLM-Retrieval basierend auf den oben gezeigten Beispieltabellen._
+_Esempio di retrieval LLM basato sulle tabelle di esempio mostrate sopra._
 
-## Mein Agent oder Chatbot versteht meine Tabelle nicht korrekt!
+## Il mio agente o chatbot non comprende correttamente la mia tabella!
 
-LLMs wie GPT-4 sind hervorragend im Umgang mit **unstrukturiertem Text**.  
-Mit multimodaler Faehigkeit (z. B. GPT-Vision) koennen sie sogar Bilder interpretieren.  
-Tabellen sind jedoch etwas voellig anderes.
+I LLM come GPT-4 sono eccellenti nel gestire **testo non strutturato**.  
+Con capacità multimodali (ad es. GPT-Vision) possono persino interpretare immagini.  
+Le tabelle, però, sono tutt’altra cosa.
 
-Es gibt **keine universelle Syntax** zur Darstellung strukturierter Informationen.  
-Da LLMs probabilistisch arbeiten, sind sie nicht natürlich gut darin, tabellarische Daten direkt zu interpretieren.
+Non esiste **una sintassi universale** per rappresentare informazioni strutturate.  
+Poiché i LLM funzionano in modo probabilistico, non sono naturalmente bravi a interpretare direttamente dati tabellari.
 
-Ein Artikel der **Microsoft Research** analysiert die Leistungsfaehigkeit von GPT-4 bei strukturierten Daten:
+Un articolo di **Microsoft Research** analizza le prestazioni di GPT-4 con dati strutturati:
 
 https://www.microsoft.com/en-us/research/blog/improving-llm-understanding-of-structured-data-and-exploring-advanced-prompting-methods/
 
@@ -82,32 +82,22 @@ https://www.microsoft.com/en-us/research/blog/improving-llm-understanding-of-str
   <img src="/images/working-with-tables-7.png" />
 </Frame>
 
-_Vergleich der Leistung zwischen GPT-3.5 und GPT-4 bei Tabellenoperationen und strukturierten Daten._  
-_Quelle: Microsoft Research_
+_Confronto delle prestazioni tra GPT-3.5 e GPT-4 nelle operazioni su tabelle e dati strutturati._  
+_Fonte: Microsoft Research_
 
-INNOCHAT verwendet derzeit eine **JSON-basierte Struktur**, um Tabellen abzubilden.  
-Das ist nicht perfekt, unterstuetzt aber eine begrenzte Anzahl von Anwendungsfaellen, in denen Tabellen als Trainingsquelle verwendet werden.
+INNOCHAT utilizza attualmente una **struttura basata su JSON** per rappresentare le tabelle.  
+Non è perfetta, ma supporta un numero limitato di casi d’uso in cui le tabelle vengono utilizzate come fonte di training.
 
-Wir wissen, dass viele Anwendungsfaelle **groessere, komplexere und dynamische Datensaetze** beinhalten.  
-Die statische Tabellenfunktion ist dafuer nicht optimal geeignet.
+Sappiamo che molti casi d’uso includono **dataset più grandi, più complessi e più dinamici**.  
+La funzione di tabelle statiche non è ideale per questo.
 
-Dafür empfehlen wir statt dessen **Function Calling**.
+Per questo motivo, consigliamo invece il **Function Calling**.
 
-Der **robusteste und professionellste Ansatz** für Retrieval-Augmented Generation (RAG) mit strukturierten Daten ist:
+L’approccio **più robusto e professionale** per la Retrieval-Augmented Generation (RAG) con dati strutturati è:
 
-### → Function Calling mit SQL-basierten Custom Functions
+### → Function Calling con Custom Functions basate su SQL
 
-Das heisst:
+Questo significa:
 
-1. Sie entwerfen eigene Funktionen  
-2. Die Funktionen beinhalten **template-basierte SQL-Abfragen**  
-3. Daten werden dynamisch abgerufen  
-4. Der Chatbot erhaelt die Ergebnisse als RAG-Kontext in Echtzeit  
-
-Dies erfordert jedoch:
-
-- etwas Programmiererfahrung  
-- Hosting Ihrer eigenen Serverfunktionen  
-
-Wir arbeiten derzeit an detaillierten Beispielen für dieses Setup, und wir danken Ihnen für Ihre Geduld, waehrend wir die Dokumentation erweitern.
-
+1. Progetti le tue funzioni  
+2. Le funzioni includon

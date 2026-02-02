@@ -1,35 +1,35 @@
 ---
-title: Arbeiten mit Tabellen und CSV
-description: Erfahren Sie, wie Sie CSV-Dateien und tabellarische strukturierte Daten in INNOCHAT hochladen und verwenden koennen.
+title: Travailler avec des tableaux et des fichiers CSV
+description: Découvrez comment importer et utiliser des fichiers CSV et des données structurées tabulaires dans INNOCHAT.
 ---
 
-INNOCHAT ermoeglicht Ihnen das Hochladen von Trainingsdaten in Form **einfacher** CSV- oder Excel-Tabellen.  
-„Einfache Tabellen“ beziehen sich auf tabellarische Daten ohne zusammengefasste Zellen, mit einer **einzigen Primaerschluessel-Spalte** mit eindeutigen Elementen, eindeutigen und aussagekraeftigen Spalten- oder Zeilentiteln und einer klaren **Spalten- oder Zeilen-Spalten-Struktur**.
+INNOCHAT vous permet d’importer des données d’entraînement sous forme de fichiers CSV ou de tableaux Excel **simples**.  
+Les « tableaux simples » désignent des données tabulaires sans cellules fusionnées, avec une **seule colonne de clé primaire** contenant des éléments uniques, des en-têtes de colonnes ou de lignes uniques et explicites, ainsi qu’une structure claire **colonne** ou **ligne/colonne**.
 
-Beispiel für eine reine Spaltentabelle:
+Exemple de tableau purement en colonnes :
 
 <Frame>
   <img src="/images/working-with-tables-1.png" />
 </Frame>
 
-_Alle Daten pro Zeile beziehen sich auf den Produktschluessel in der ersten Spalte._
+_Toutes les données par ligne se réfèrent à la clé produit dans la première colonne._
 
-Beispiel für eine Zeilen/Spalten-Tabelle:
+Exemple de tableau lignes/colonnes :
 
 <Frame>
   <img src="/images/working-with-tables-2.png" />
 </Frame>
 
-_Jede Kombination aus Zeile und Spalte verweist auf einen spezifischen Zellwert._
+_Chaque combinaison de ligne et de colonne renvoie à une valeur de cellule spécifique._
 
-Es gibt keine maximale Anzahl an Spalten, jedoch gibt es ein Limit für die **Gesamtanzahl der Tokens pro Zeile**.  
-Wenn diese überschritten wird, laeuft das Training in einen Fehler.
+Il n’y a pas de nombre maximal de colonnes, mais il existe une limite pour le **nombre total de tokens par ligne**.  
+Si cette limite est dépassée, l’entraînement se termine par une erreur.
 
-Stand **Maerz 2024** betraegt das Maximum **ca. 8000 Tokens pro Zeile** (inklusive des JSON-Codes, der zum Darstellen der Tabellenstruktur erforderlich ist).  
-Das bedeutet, dass der tatsaechliche Anteil für Werte geringer ausfaellt und von der Laenge von Spalten- und Zeilennamen abhaengt.
+À la date de **mars 2024**, le maximum est de **~8000 tokens par ligne** (y compris le code JSON nécessaire pour représenter la structure du tableau).  
+Cela signifie que la part réellement disponible pour les valeurs est plus faible et dépend de la longueur des noms de colonnes et de lignes.
 
-Wenn Ihre Daten dem oben beschriebenen Format entsprechen, koennen Sie Ihre Tabelle als Trainingsquelle hochladen.  
-Dazu gehen Sie zu:
+Si vos données respectent le format décrit ci-dessus, vous pouvez importer votre tableau comme source d’entraînement.  
+Pour cela, allez dans :
 
 **Sources → Add Sources → Tables**
 
@@ -37,44 +37,44 @@ Dazu gehen Sie zu:
   <img src="/images/working-with-tables-3.png" />
 </Frame>
 
-Bei Zeilen/Spalten-Tabellen muessen Sie nach dem Hochladen Folgendes tun:
+Pour les tableaux lignes/colonnes, après l’import, vous devez faire ce qui suit :
 
-- Waehlen Sie die Tabelle aus  
-- Oeffnen Sie das Drei-Punkte-Menue rechts  
-- Klicken Sie auf **Edit Table Data**  
+- Sélectionnez le tableau  
+- Ouvrez le menu à trois points à droite  
+- Cliquez sur **Edit Table Data**  
 
 <Frame>
   <img src="/images/working-with-tables-4.png" />
 </Frame>
 
-Im Tabellen-Editor waehlen Sie nun **Row-Column Header** und klicken auf **Save Changes**.  
-Dies stellt sicher, dass die Daten korrekt für LLM-Verarbeitung vorverarbeitet werden.
+Dans l’éditeur de tableaux, sélectionnez maintenant **Row-Column Header** puis cliquez sur **Save Changes**.  
+Cela garantit que les données sont correctement prétraitées pour le traitement par le LLM.
 
 <Frame>
   <img src="/images/working-with-tables-5.png" />
 </Frame>
 
-Danach koennen Sie die Tabellen als Referenzdaten beim Zuweisen der Wissensbasis für Ihre Agenten verwenden.
+Ensuite, vous pouvez utiliser les tableaux comme données de référence lors de l’attribution de la base de connaissances à vos agents.
 
-Bitte beachten:  
-**GPT-4-Modelle übertreffen GPT-3.5-Modelle deutlich** hinsichtlich Praezision und Konsistenz beim Arbeiten mit Tabellen.
+Veuillez noter :  
+**Les modèles GPT-4 surpassent largement les modèles GPT-3.5** en termes de précision et de cohérence lorsqu’il s’agit de travailler avec des tableaux.
 
 <Frame>
   <img src="/images/working-with-tables-6.png" />
 </Frame>
 
-_Beispiel für LLM-Retrieval basierend auf den oben gezeigten Beispieltabellen._
+_Exemple de retrieval LLM basé sur les tableaux d’exemple présentés ci-dessus._
 
-## Mein Agent oder Chatbot versteht meine Tabelle nicht korrekt!
+## Mon agent ou chatbot ne comprend pas correctement mon tableau !
 
-LLMs wie GPT-4 sind hervorragend im Umgang mit **unstrukturiertem Text**.  
-Mit multimodaler Faehigkeit (z. B. GPT-Vision) koennen sie sogar Bilder interpretieren.  
-Tabellen sind jedoch etwas voellig anderes.
+Les LLM tels que GPT-4 excellent dans le traitement du **texte non structuré**.  
+Avec des capacités multimodales (par ex. GPT-Vision), ils peuvent même interpréter des images.  
+Les tableaux, en revanche, sont tout autre chose.
 
-Es gibt **keine universelle Syntax** zur Darstellung strukturierter Informationen.  
-Da LLMs probabilistisch arbeiten, sind sie nicht natürlich gut darin, tabellarische Daten direkt zu interpretieren.
+Il n’existe **aucune syntaxe universelle** pour représenter des informations structurées.  
+Comme les LLM fonctionnent de manière probabiliste, ils ne sont pas naturellement doués pour interpréter directement des données tabulaires.
 
-Ein Artikel der **Microsoft Research** analysiert die Leistungsfaehigkeit von GPT-4 bei strukturierten Daten:
+Un article de **Microsoft Research** analyse les performances de GPT-4 sur des données structurées :
 
 https://www.microsoft.com/en-us/research/blog/improving-llm-understanding-of-structured-data-and-exploring-advanced-prompting-methods/
 
@@ -82,32 +82,31 @@ https://www.microsoft.com/en-us/research/blog/improving-llm-understanding-of-str
   <img src="/images/working-with-tables-7.png" />
 </Frame>
 
-_Vergleich der Leistung zwischen GPT-3.5 und GPT-4 bei Tabellenoperationen und strukturierten Daten._  
-_Quelle: Microsoft Research_
+_Comparaison des performances entre GPT-3.5 et GPT-4 pour les opérations sur tableaux et les données structurées._  
+_Source : Microsoft Research_
 
-INNOCHAT verwendet derzeit eine **JSON-basierte Struktur**, um Tabellen abzubilden.  
-Das ist nicht perfekt, unterstuetzt aber eine begrenzte Anzahl von Anwendungsfaellen, in denen Tabellen als Trainingsquelle verwendet werden.
+INNOCHAT utilise actuellement une **structure basée sur JSON** pour représenter les tableaux.  
+Ce n’est pas parfait, mais cela prend en charge un nombre limité de cas d’usage où les tableaux sont utilisés comme source d’entraînement.
 
-Wir wissen, dass viele Anwendungsfaelle **groessere, komplexere und dynamische Datensaetze** beinhalten.  
-Die statische Tabellenfunktion ist dafuer nicht optimal geeignet.
+Nous savons que de nombreux cas d’usage impliquent des **jeux de données plus grands, plus complexes et plus dynamiques**.  
+La fonctionnalité de tableaux statiques n’est pas optimale pour cela.
 
-Dafür empfehlen wir statt dessen **Function Calling**.
+C’est pourquoi nous recommandons plutôt le **Function Calling**.
 
-Der **robusteste und professionellste Ansatz** für Retrieval-Augmented Generation (RAG) mit strukturierten Daten ist:
+L’approche **la plus robuste et la plus professionnelle** pour la Retrieval-Augmented Generation (RAG) avec des données structurées est :
 
-### → Function Calling mit SQL-basierten Custom Functions
+### → Function Calling avec des Custom Functions basées sur SQL
 
-Das heisst:
+Cela signifie :
 
-1. Sie entwerfen eigene Funktionen  
-2. Die Funktionen beinhalten **template-basierte SQL-Abfragen**  
-3. Daten werden dynamisch abgerufen  
-4. Der Chatbot erhaelt die Ergebnisse als RAG-Kontext in Echtzeit  
+1. Vous concevez vos propres fonctions  
+2. Les fonctions contiennent des **requêtes SQL basées sur des templates**  
+3. Les données sont récupérées de manière dynamique  
+4. Le chatbot reçoit les résultats en tant que contexte RAG en temps réel  
 
-Dies erfordert jedoch:
+Cela nécessite toutefois :
 
-- etwas Programmiererfahrung  
-- Hosting Ihrer eigenen Serverfunktionen  
+- un minimum d’expérience en programmation  
+- l’hébergement de vos propres fonctions côté serveur  
 
-Wir arbeiten derzeit an detaillierten Beispielen für dieses Setup, und wir danken Ihnen für Ihre Geduld, waehrend wir die Dokumentation erweitern.
-
+Nous travaillons actuellement sur des exemples détaillés pour cette configuration et vous remercions pour votre patience pendant que nous étendons la documentation.
