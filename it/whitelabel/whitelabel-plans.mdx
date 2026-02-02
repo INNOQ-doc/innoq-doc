@@ -1,87 +1,87 @@
 ---
-title: "Pläne erstellen und Preisüberlegungen"
-description: Learn how to set up the INNOCHAT white label dashboard, configure your app, connect your domain, set up email senders, add API keys, and activate Stripe for subscription plans. This guide walks partners through the entire initial setup process step by step.
+title: "Creazione di piani e considerazioni sui prezzi"
+description: "Scopri come impostare piani di abbonamento e add-on nel dashboard Whitelabel INNOCHAT, oltre alle considerazioni importanti per la gestione dei prezzi e dei limiti tramite Stripe. Questa guida illustra le migliori pratiche per i partner."
 ---
 
-Im Tab **„Subscriptions“** deines Whitelabel-Dashboards kannst du nach dem Erstellen oder Verknüpfen deines Stripe-Kontos über die Buttons **„Create new plan“** und **„Create new addons“** kostenpflichtige Pläne und Add-ons erstellen.
+Nella scheda **« Subscriptions »** del tuo dashboard Whitelabel, dopo aver creato o collegato il tuo account Stripe, puoi creare piani a pagamento e add-on utilizzando i pulsanti **« Create new plan »** e **« Create new addons »**.
 
-Wenn du einen kostenpflichtigen Plan oder ein Add-on nach der Erstellung bearbeiten möchtest, bitten wir dich, dies direkt in Stripe zu tun. Dies liegt daran, dass viele Komplikationen auftreten können – insbesondere dann, wenn bereits Nutzer den betreffenden Plan oder das Add-on abonniert haben.
+Se desideri modificare un piano a pagamento o un add-on dopo la creazione, ti consigliamo di farlo direttamente in Stripe. Questo perché possono sorgere numerose complicazioni – specialmente se alcuni utenti hanno già sottoscritto quel piano o add-on.
 
 <Frame>
   ![](/images/whitelabel-dash-8.png)
 </Frame>
 
-In deinem Stripe-Konto kannst du deine **Products** nach Bedarf bearbeiten.  
-Wie im obigen Beispiel ersichtlich, kannst du folgende Felder ändern:
+Nel tuo account Stripe puoi modificare i tuoi **Products** secondo necessità.  
+Come visibile nell’esempio sopra, puoi modificare i seguenti campi:
 
-- Name  
-- Beschreibung  
-- Metadaten  
-- Feature-Liste (nicht im Screenshot angezeigt)  
+- Nome  
+- Descrizione  
+- Metadati  
+- Lista delle funzionalità (non visibile nello screenshot)  
 
-**Wichtig:**  
-- **Die „Unit label“-Angabe darf nicht verändert werden.**  
-- Du kannst den Integer- oder Boolean-Wert jeder Metadatenzeile ändern, um die Limits deines Plans anzupassen.  
-- **Ändere niemals die Namen der Metadatenzeilen** (z. B. `agents_count`), da die App diese Schlüssel zur Kommunikation mit Stripe benötigt. Eine Änderung würde die App funktionsunfähig machen.  
+**Importante:**  
+- **Non modificare mai il campo « Unit label ».**  
+- Puoi modificare il valore intero o booleano di ogni riga di metadati per adattare i limiti del piano.  
+- **Non cambiare mai i nomi delle righe di metadati** (ad esempio `agents_count`), poiché l’app richiede esattamente queste chiavi per comunicare con Stripe. Qualsiasi modifica renderebbe l’app non funzionante.  
 
-Wenn du Unterstützung bei der Bearbeitung deiner Stripe-Produkte und Preise benötigst, kontaktiere uns bitte.
+Se hai bisogno di supporto per modificare i tuoi prodotti e prezzi Stripe, contattaci.
 
-Beim Bearbeiten von **Prices** stelle sicher, dass **jeder Preis einen Lookup-Key** besitzt.  
-Diese Schlüssel **müssen mit „plan“ oder „addon“ enden**.  
-Beispiele:
+Quando modifichi i **Prices**, assicurati che **ogni prezzo abbia un Lookup-Key**.  
+Queste chiavi **devono terminare con « plan » o « addon »**.  
+Esempi:
 
 - `monthly_pro_plan`  
 - `token_limit_addon`  
 
-Preise, die über das Dashboard erstellt wurden, enthalten diese Keys automatisch.  
-Für Preise, die du selbst in Stripe anlegst, musst du die Lookup-Keys manuell ergänzen.
+I prezzi creati tramite il dashboard includono automaticamente queste chiavi.  
+Per i prezzi che crei direttamente in Stripe, devi aggiungere manualmente i Lookup-Keys.
 
 ---
 
-## Subscription-Metadaten
+## Metadati degli abbonamenti
 
-Es ist möglich, die Limits eines Abonnements in Stripe auch **nach dessen Erstellung** zu ändern.  
-Beachte dabei:
+È possibile modificare i limiti di un abbonamento in Stripe **anche dopo la sua creazione**.  
+Tieni presente che:
 
-- Änderungen wirken sich auf **alle bestehenden Abonnenten** aus.  
-- Erhöhungen von **Message Credits** werden erst beim nächsten **monatlichen Refresh** wirksam.  
-- Verringerungen entziehen Nutzern **keine bereits vergebenen** Credits.  
+- Le modifiche influenzano **tutti gli abbonati esistenti**.  
+- Gli aumenti di **Message Credits** diventano effettivi solo al prossimo **refresh mensile**.  
+- Le riduzioni **non rimuovono** i crediti già assegnati agli utenti.  
 
-Nachfolgend findest du die verfügbaren Metadatenfelder, die du bearbeiten kannst:
+Di seguito i campi di metadati disponibili che puoi modificare:
 
-| Feldname                   | Wertetyp            | Beschreibung                                                                                                                                                                                        |
+| Nome campo                 | Tipo valore         | Descrizione                                                                                                                                                                                        |
 | -------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| agents_count               | integer (z. B. 5)    | Anzahl der erlaubten Agenten pro Chatbot                                                                                                                                                           |
-| agent_variables_count      | int                 | Anzahl der Variablen, die ein Agent erfassen kann (gesamt über den gesamten Chatbot)                                                                                                               |
-| agent_tags_count           | int                 | Anzahl der Tags, die ein Agent vergeben kann (ebenfalls chatbot-weit summiert)                                                                                                                     |
-| functions_count            | int                 | Anzahl der erlaubten Funktionen pro Agent                                                                                                                                                          |
-| message_credits_replenish  | int                 | Anzahl der Message Credits, die jeden Monat erneuert werden                                                                                                                                        |
-| message_credits_bonus      | int                 | Anzahl der Message Credits, die ein Nutzer bei der Registrierung erhält (nicht rückwirkend)                                                                                                        |
-| storage_bytes              | int                 | Maximale Anzahl an Bytes für Datasource-Speicher                                                                                                                                                   |
-| storage_bytes_unlimited    | boolean (z. B. True) | Ob der Speicher unbegrenzt ist                                                                                                                                                                     |
-| context_token              | int                 | Anzahl der Kontext-Tokens für Datasources in einem Chatbot                                                                                                                                         |
-| max_model_size             | int                 | Maximal verfügbare Kontextgröße der Modelle                                                                                                                                                        |
-| chatbots_count             | int                 | Maximale Anzahl von Chatbots pro Konto                                                                                                                                                             |
-| collaborators_count        | int                 | Maximale Anzahl von Kollaboratoren pro Chatbot                                                                                                                                                     |
-| overrides_enabled          | bool                | Ob der Nutzer Supervisor-Overrides verwenden darf                                                                                                                                                  |
-| dashboard                  | bool                | Ob der Nutzer das Dashboard sehen kann                                                                                                                                                             |
-| visitor_tracking           | bool                | Ob der Nutzer erweiterte Besucherstatistiken sehen kann (`dashboard` muss True sein)                                                                                                               |
-| gpt_4_enabled              | bool                | Ob der Nutzer erweiterte KI-Modelle verwenden kann (nicht nur GPT-4, sondern z. B. auch 4o usw.)                                                                                                   |
-| api_enabled                | bool                | Ob der Nutzer die API verwenden darf                                                                                                                                                               |
-| webhooks                   | bool                | Ob der Nutzer Webhooks verwenden darf                                                                                                                                                              |
-| library_access             | bool                | Ob der Nutzer Zugriff auf die „Chatbot Library“ hat                                                                                                                                                |
-| chatbot_retrain            | bool                | Ob Datasources automatisch neu trainiert werden dürfen                                                                                                                                             |
-| watermark_removal          | bool                | Ob der Nutzer das Wasserzeichen seines Bots entfernen darf                                                                                                                                         |
-| chatbot_profile_picture    | bool                | Ob der Nutzer ein Profilbild für seinen Bot setzen darf                                                                                                                                            |
-| custom_domain              | bool                | Ob der Nutzer seinen Bot über eine eigene Domain bereitstellen darf                                                                                                                                |
-| custom_watermark           | bool                | Ob der Nutzer ein individuelles Wasserzeichen hinzufügen darf (`watermark_removal` muss True sein)                                                                                                |
-| user_identity_verification | bool                | Ob der Nutzer die Funktion zur Identitätsverifikation verwenden darf                                                                                                                               |
-| byok_enabled               | bool                | Ob der Nutzer eigene AI-API-Schlüssel statt Message Credits verwenden darf                                                                                                                         |
-| human_escalation_enabled   | bool                | Ob der Nutzer menschliche Eskalation in seinen Bot integrieren kann                                                                                                                                |
-| image_upload_enabled       | bool                | Ob der Nutzer Bilder als Datasources hochladen darf                                                                                                                                                 |
-| allow_chatbot_transfer     | bool                | Ob der Nutzer Chatbots an andere Nutzer übertragen darf                                                                                                                                            |
-| chunk_view_enabled         | bool                | Ob der Nutzer extrahierte Chunks von Datasources direkt einsehen und bearbeiten darf                                                                                                               |
-| source_tracking_enabled    | bool                | Ob der Nutzer Quellen direkt in seinen Chatbot-Antworten zitieren und teilen kann                                                                                                                  |
-| zapier_integration         | bool                | Ob der Nutzer deine Zapier- oder Make.com-Integration verwenden darf (Integrationen müssen zuvor veröffentlicht sein)                                                                              |
-| meta_integration           | bool                | Ob der Nutzer den Bot mit Facebook Messenger, Instagram oder WhatsApp verbinden darf (Meta App muss gemäß Anleitung eingerichtet sein)                                                             |
-| sms_enabled                | bool                | Ob der Nutzer seinen Bot mit SMS-Nachrichten verbinden darf (Ytel-SMS-Dienst muss gemäß Anleitung eingerichtet sein)                                                                               |
+| agents_count               | integer (es. 5)     | Numero di agenti consentiti per chatbot                                                                                                                                                           |
+| agent_variables_count      | int                 | Numero di variabili che un agente può catturare (totale sull’intero chatbot)                                                                                                                      |
+| agent_tags_count           | int                 | Numero di tag che un agente può assegnare (anch’esso sommato sull’intero chatbot)                                                                                                                 |
+| functions_count            | int                 | Numero di funzioni consentite per agente                                                                                                                                                          |
+| message_credits_replenish  | int                 | Numero di Message Credits rinnovati ogni mese                                                                                                                                                     |
+| message_credits_bonus      | int                 | Numero di Message Credits assegnati all’iscrizione (non retroattivo)                                                                                                                              |
+| storage_bytes              | int                 | Numero massimo di byte per lo storage delle datasources                                                                                                                                           |
+| storage_bytes_unlimited    | boolean (es. True)  | Indica se lo storage è illimitato                                                                                                                                                                 |
+| context_token              | int                 | Numero di token di contesto per le datasources in un chatbot                                                                                                                                      |
+| max_model_size             | int                 | Dimensione massima di contesto disponibile per i modelli                                                                                                                                          |
+| chatbots_count             | int                 | Numero massimo di chatbots per account                                                                                                                                                            |
+| collaborators_count        | int                 | Numero massimo di collaboratori per chatbot                                                                                                                                                       |
+| overrides_enabled          | bool                | Se l’utente può utilizzare gli override supervisore                                                                                                                                               |
+| dashboard                  | bool                | Se l’utente può visualizzare il dashboard                                                                                                                                                         |
+| visitor_tracking           | bool                | Se l’utente può vedere statistiche avanzate sui visitatori (`dashboard` deve essere True)                                                                                                         |
+| gpt_4_enabled              | bool                | Se l’utente può utilizzare modelli IA avanzati (non solo GPT-4, ma anche 4o ecc.)                                                                                                                 |
+| api_enabled                | bool                | Se l’utente può utilizzare l’API                                                                                                                                                                  |
+| webhooks                   | bool                | Se l’utente può utilizzare i webhooks                                                                                                                                                             |
+| library_access             | bool                | Se l’utente ha accesso alla « Chatbot Library »                                                                                                                                                   |
+| chatbot_retrain            | bool                | Se le datasources possono essere automaticamente ritrained                                                                                                                                        |
+| watermark_removal          | bool                | Se l’utente può rimuovere il watermark dal suo bot                                                                                                                                                |
+| chatbot_profile_picture    | bool                | Se l’utente può impostare un’immagine di profilo per il suo bot                                                                                                                                   |
+| custom_domain              | bool                | Se l’utente può pubblicare il bot su un dominio personalizzato                                                                                                                                    |
+| custom_watermark           | bool                | Se l’utente può aggiungere un watermark personalizzato (`watermark_removal` deve essere True)                                                                                                     |
+| user_identity_verification | bool                | Se l’utente può utilizzare la funzione di verifica dell’identità                                                                                                                                  |
+| byok_enabled               | bool                | Se l’utente può utilizzare le proprie chiavi API IA invece dei Message Credits                                                                                                                    |
+| human_escalation_enabled   | bool                | Se l’utente può integrare un’escalation umana nel suo bot                                                                                                                                         |
+| image_upload_enabled       | bool                | Se l’utente può caricare immagini come datasources                                                                                                                                                |
+| allow_chatbot_transfer     | bool                | Se l’utente può trasferire chatbots ad altri utenti                                                                                                                                               |
+| chunk_view_enabled         | bool                | Se l’utente può visualizzare e modificare direttamente i chunk estratti dalle datasources                                                                                                         |
+| source_tracking_enabled    | bool                | Se l’utente può citare e condividere direttamente le fonti nelle risposte del chatbot                                                                                                            |
+| zapier_integration         | bool                | Se l’utente può utilizzare la tua integrazione Zapier o Make.com (le integrazioni devono essere state precedentemente pubblicate)                                                                   |
+| meta_integration           | bool                | Se l’utente può collegare il bot a Facebook Messenger, Instagram o WhatsApp (l’app Meta deve essere configurata secondo le istruzioni)                                                             |
+| sms_enabled                | bool                | Se l’utente può collegare il bot a messaggi SMS (il servizio Ytel-SMS deve essere configurato secondo le istruzioni)                                                                               |

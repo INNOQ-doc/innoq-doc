@@ -1,135 +1,135 @@
 ---
-title: Einführung und Ersteinrichtung
-description: "Erfahre, wie du das INNOCHAT Whitelabel-Dashboard einrichtest, deine App konfigurierst, deine Domain verbindest, E-Mail-Absender einrichtest, API-Schlüssel hinzufügst und Stripe für Abo-Pläne aktivierst. Dieser Leitfaden führt Partner Schritt für Schritt durch die vollständige Ersteinrichtung."
+title: "Introduzione e prima configurazione"
+description: "Scopri come configurare il dashboard Whitelabel di INNOCHAT, impostare la tua app, collegare il tuo dominio, configurare il mittente e-mail, aggiungere chiavi API e attivare Stripe per i piani di abbonamento. Questa guida accompagna i partner passo dopo passo nella configurazione iniziale completa."
 ---
 
-Das [Whitelabel-Dashboard](https://partners.innochat.ch) ist die Oberfläche, über die INNOCHAT-Partner ihre eigenen Bereitstellungen der App anpassen können. Über das Dashboard können Partner den Namen, das Branding und die Farben der App anpassen. Außerdem können sie ihre Benutzer verwalten, ihre LLM-API-Schlüssel hinterlegen und vieles mehr.
+Il [dashboard Whitelabel](https://partners.innochat.ch) è l’interfaccia tramite la quale i partner INNOCHAT possono personalizzare il proprio deployment dell’app. Dal dashboard è possibile modificare nome, branding e colori dell’applicazione. Inoltre i partner possono gestire gli utenti, inserire le proprie chiavi API LLM e molto altro.
 
-Bevor du mit dem Dashboard arbeiten kannst, musst du dich mit deiner E-Mail-Adresse an das INNOCHAT-Team wenden. Wir stellen dir ein temporäres Passwort zur Verfügung, mit dem du dich im Dashboard anmelden kannst. Nach der Anmeldung solltest du dein Passwort über das Menü oben rechts ändern:
+Prima di poter utilizzare il dashboard, devi contattare il team INNOCHAT con il tuo indirizzo e-mail. Ti forniremo una password temporanea con cui potrai accedere al dashboard. Dopo il primo accesso, dovresti cambiare la password tramite il menu in alto a destra:
 
 <Frame>
   <img src="/images/whitelabel-dash-1.png" />
 </Frame>
 
-Im Dashboard musst du folgende Schritte durchführen, um loszulegen:
+Nel dashboard devi completare i seguenti passaggi per iniziare:
 
-1. Informationen zu deiner App hinzufügen.
-2. Deine Domain einrichten.
-3. Informationen zum E-Mail-Absender einrichten.
-4. Deine LLM-API-Schlüssel hinzufügen.
-5. Deinen Stripe-Account einrichten.
-6. Einen Free-Tier-Plan für deine Nutzer erstellen.
+1. Aggiungere le informazioni della tua app.
+2. Configurare il tuo dominio.
+3. Configurare le informazioni del mittente e-mail.
+4. Aggiungere le tue chiavi API LLM.
+5. Configurare il tuo account Stripe.
+6. Creare un piano Free-Tier per i tuoi utenti.
 
-Diese Schritte werden in den folgenden Abschnitten erläutert.
+Questi passaggi sono spiegati nelle sezioni seguenti.
 
-## Informationen zu deiner App aktualisieren
+## Aggiornare le informazioni della tua app
 
-Unter dem Tab **„Site Configurations“** im linken Menü kannst du die benutzerseitigen Informationen deiner App ändern, darunter:
+Nella scheda **« Site Configurations »** nel menu a sinistra puoi modificare le informazioni visibili agli utenti della tua applicazione, tra cui:
 
-- Der Name deiner App  
-- Eine Beschreibung deiner App  
-- Die E-Mail-Adresse für Kundenkommunikation  
-- Die URL deiner Website (vorzugsweise getrennt von der Adresse deiner App. Beispiel: Die INNOCHAT-Webseite ist [https://innochat.ch](https://innochat.ch), während die App unter [https://app.innochat.ch](https://app.innochat.ch) gehostet wird). Bitte **unbedingt** das `https://` einschließen.  
-- Dein Logo (am besten `.png` oder `.jpg`, **keine `.svg`-Dateien** hochladen) sowie das Favicon  
-- Die Farben deiner App  
+- Il nome della tua app  
+- Una descrizione della tua app  
+- L’indirizzo e-mail per la comunicazione con i clienti  
+- L’URL del tuo sito web (preferibilmente separato dall’indirizzo dell’app. Esempio: il sito INNOCHAT è [https://innochat.ch](https://innochat.ch), mentre l’app è ospitata su [https://app.innochat.ch](https://app.innochat.ch)). **Includi obbligatoriamente** il `https://`.  
+- Il tuo logo (preferibilmente `.png` o `.jpg`, **non caricare file .svg**) e il favicon  
+- I colori della tua applicazione  
 
 <Frame>
   <img src="/images/whitelabel-dash-2.png" />
 </Frame>
 
-Du kannst diese Informationen jederzeit aktualisieren. Die Änderungen werden nach einer Weile bei deinen Nutzern sichtbar, jedoch nicht sofort. Da wir Browser-Caching verwenden, müssen Nutzer die App in einem neuen Tab oder Fenster öffnen, damit Änderungen sichtbar werden.
+Puoi aggiornare queste informazioni in qualsiasi momento. Le modifiche diventeranno visibili agli utenti dopo un po’ di tempo, ma non immediatamente. Poiché utilizziamo la cache del browser, gli utenti devono aprire l’app in una nuova scheda o finestra affinché i cambiamenti siano visibili.
 
-## Die Domain deiner App einrichten
+## Configurare il dominio della tua app
 
-Für diesen Schritt musst du bei deinem Domain-Provider einen DNS-A-Record hinzufügen, der auf die im Tab **„Domain“** bereitgestellte IP-Adresse zeigt. Du kannst entweder die Root-Domain oder eine Subdomain verwenden.  
-Beispiel: Soll deine App unter `app.chatbot-trainer.com` erreichbar sein, sieht der hinzuzufügende Record so aus:
+Per questo passaggio devi aggiungere un record DNS di tipo A presso il tuo provider di dominio, puntando all’indirizzo IP indicato nella scheda **« Domain »**. Puoi utilizzare sia il dominio radice che una sotto-dominio.  
+Esempio: se la tua app deve essere raggiungibile su `app.chatbot-trainer.com`, il record da aggiungere sarà simile a questo:
 
 <Frame>
   <img src="/images/whitelabel-dash-3.png" />
 </Frame>
 
-- Verwendest du die Root-Domain, sollte das Feld „Name“ den Wert `@` enthalten.  
-- Für eine Subdomain trägst du deren Namen ein, z. B. `app`.  
+- Se usi il dominio radice, il campo «Name» deve contenere il valore `@`.  
+- Per una sotto-dominio, inserisci il suo nome, ad es. `app`.  
 
-Bei GoDaddy könnte die entsprechende Seite so aussehen:
+Su GoDaddy la pagina corrispondente potrebbe apparire così:
 
 <Frame>
   <img src="/images/whitelabel-dash-4.png" />
 </Frame>
 
-Fülle die Felder wie angegeben aus und klicke auf **„Save“**.  
-Wenn du einen anderen Anbieter nutzt, folge bitte dessen Anleitung zum Hinzufügen von DNS-Records.
+Compila i campi come indicato e clicca su **« Save »**.  
+Se utilizzi un altro provider, segui le relative istruzioni per aggiungere record DNS.
 
-Es kann einige Minuten dauern, bis sich die DNS-Änderung verbreitet hat. Warte daher etwas, bevor du die Domain im Partner-Dashboard hinzufügst. Du **musst** den DNS-Eintrag zuerst anlegen, bevor du ihn im Dashboard verwenden kannst.
+La propagazione delle modifiche DNS può richiedere alcuni minuti. Aspetta quindi un po’ prima di inserire il dominio nel dashboard partner. **Devi** creare prima il record DNS **prima** di poterlo utilizzare nel dashboard.
 
-**Wichtig:** Es darf **nur einen einzigen** A-Record für deine Domain geben. Falls mehrere Records auf unterschiedliche IP-Adressen zeigen, funktioniert die Einrichtung nicht.  
-Mit einem Tool wie [Nslookup.io](https://www.nslookup.io/website-to-ip-lookup/) kannst du prüfen, ob mehrere Einträge existieren. Entferne ggf. überflüssige Einträge.
+**Importante:** Deve esserci **un solo** record A per il tuo dominio. Se esistono più record che puntano a indirizzi IP diversi, la configurazione non funzionerà.  
+Puoi verificare la presenza di più record con uno strumento come [Nslookup.io](https://www.nslookup.io/website-to-ip-lookup/). Rimuovi eventuali record superflui.
 
-Die im Beispiel gezeigte IP-Adresse dient nur zu Testzwecken. In deinem Dashboard findest du die korrekte IP für den Produktivbetrieb deiner App.
+L’indirizzo IP mostrato nell’esempio è solo a scopo di test. Nel tuo dashboard troverai l’indirizzo IP corretto da utilizzare in produzione.
 
-## Absenderinformationen für E-Mails einrichten
+## Configurare le informazioni del mittente e-mail
 
 <Frame>
   <img src="/images/whitelabel-dash-5.png" />
 </Frame>
 
-Die E-Mail-Adresse, die du im Tab **„Email Templates“** einträgst, kann sich von der unter „Site Configurations“ unterscheiden. Diese Adresse und der dazugehörige Name werden für automatisierte Systemmails verwendet, z. B.:
+L’indirizzo e-mail che inserisci nella scheda **« Email Templates »** può essere diverso da quello indicato in « Site Configurations ». Questo indirizzo e il nome associato vengono utilizzati per le e-mail di sistema automatiche, ad esempio:
 
-- Versand von Verifizierungscodes  
-- Bestätigung von Käufen  
-- Etc.  
+- Invio di codici di verifica  
+- Conferma degli acquisti  
+- Ecc.  
 
-Bitte verwende eine E-Mail-Adresse von deiner eigenen Domain (z. B. `hello@chatbot-trainer.com`).  
-**Keine Gmail-, Yahoo- oder anderen externen Provider.**  
-Der automatische E-Mail-Dienst muss die Domain verifizieren können, um im Namen dieser Domain senden zu dürfen.
+Usa un indirizzo e-mail appartenente al **tuo dominio** (es. `hello@chatbot-trainer.com`).  
+**Non usare Gmail, Yahoo o altri provider esterni.**  
+Il servizio di posta automatica deve poter verificare il dominio per inviare messaggi a suo nome.
 
-**Sobald du weißt, welche E-Mail-Adresse du verwenden willst, kontaktiere uns bitte direkt. Wir unterstützen dich bei der Domain-Verifizierung.**
+**Non appena sai quale indirizzo e-mail vuoi utilizzare, contattaci direttamente. Ti supporteremo nella verifica del dominio.**
 
 <Warning>
-  Deine App funktioniert nicht, wenn die automatisierten E-Mails nicht eingerichtet sind. Bitte kontaktiere uns, sobald du bereit bist.
+  La tua applicazione non funzionerà correttamente se le e-mail automatiche non sono configurate. Contattaci non appena sei pronto.
 </Warning>
 
-Für diese Domain/E-Mail ist kein Posteingang erforderlich – sie wird nur für ausgehende Systemnachrichten verwendet.
+Non è necessario alcun accesso alla casella di posta per questo indirizzo/dominio – viene utilizzato solo per l’invio di messaggi di sistema in uscita.
 
-## Deine LLM-API-Schlüssel hinzufügen
+## Aggiungere le tue chiavi API LLM
 
-Um deine Whitelabel-App zu betreiben, benötigst du deinen eigenen [OpenAI API-Key](https://platform.openai.com/account/api-keys).  
-Füge ihn einfach im Tab **„API Key“** ein, klicke auf **„Add“**, und schon ist alles bereit.
+Per far funzionare la tua app Whitelabel hai bisogno della tua [chiave API OpenAI](https://platform.openai.com/account/api-keys).  
+Basta incollarla nella scheda **« API Key »**, cliccare su **« Add »** e il gioco è fatto.
 
-- Du kannst diesen Schlüssel jederzeit ändern.  
-- Du kannst ihn **nicht löschen**, nur ersetzen.  
-  Hintergrund: Ohne Schlüssel funktionieren die KI-Funktionen für deine Nutzer nicht.  
-- Stelle sicher, dass der Schlüssel funktional ist, bevor du ihn einträgst.  
+- Puoi modificare questa chiave in qualsiasi momento.  
+- **Non puoi eliminarla**, solo sostituirla.  
+  Motivo: senza chiave le funzionalità IA non funzionano per i tuoi utenti.  
+- Assicurati che la chiave sia funzionante prima di inserirla.  
 
-Optional kannst du API-Keys für **Anthropic Claude** und/oder **Google Gemini** hinzufügen.  
-Deine App läuft auch ohne diese, aber Nutzer können dann zusätzliche Modelle verwenden.
+Facoltativamente puoi aggiungere chiavi API per **Anthropic Claude** e/o **Google Gemini**.  
+L’app funziona anche senza queste chiavi, ma gli utenti non potranno utilizzare i modelli aggiuntivi.
 
-## Stripe und den Free-Tier-Plan einrichten
+## Configurare Stripe e il piano Free-Tier
 
 <Frame>
   <img src="/images/whitelabel-dash-6.png" />
 </Frame>
 
-Um Abos/Pläne in deiner App nutzen zu können, musst du einen Stripe-Account erstellen oder verknüpfen.  
-Klicke im Tab **„Subscriptions“** auf **„Create Account“**.  
-Anschließend erscheint ein weiterer Button, über den du zu Stripe weitergeleitet wirst.  
-Dort führst du das Onboarding durch und gibst u. a. folgende Daten an:
+Per poter offrire abbonamenti/piani nella tua app, devi creare o collegare un account Stripe.  
+Clicca su **« Create Account »** nella scheda **« Subscriptions »**.  
+Apparirà quindi un altro pulsante che ti reindirizzerà su Stripe.  
+Lì completa l’onboarding fornendo tra l’altro:
 
-- Persönliche Daten  
-- Unternehmensdaten  
-- Bankinformationen  
+- I tuoi dati personali  
+- I dati aziendali  
+- Le informazioni bancarie  
 
 <Frame>
   <img src="/images/whitelabel-dash-7.png" />
 </Frame>
 
-Nach erfolgreicher Stripe-Einrichtung kannst du:
+Dopo aver configurato correttamente Stripe potrai:
 
-- Entscheiden, ob du einen kostenlosen Free-Tier-Plan und/oder Testzeitraum anbieten möchtest  
-- Die Vorteile/Limitierungen des Free-Tier-Plans anpassen  
-- Bezahlte Pläne erstellen  
-- Bezahlte Add-ons erstellen  
+- Decidere se offrire un piano Free-Tier gratuito e/o un periodo di prova  
+- Personalizzare vantaggi e limiti del piano Free-Tier  
+- Creare piani a pagamento  
+- Creare add-on a pagamento  
 
-Änderst du die Limits deines Free-Plans, werden diese automatisch auf alle bestehenden Free-Tier-Nutzer übertragen.
+Quando modifichi i limiti del piano Free, questi vengono automaticamente applicati a tutti gli utenti Free-Tier esistenti.
 
-Weitere Details zur Erstellung bezahlter Pläne findest du unter **[Creating plans](whitelabel-plans)**.
+Maggiori dettagli sulla creazione di piani a pagamento sono disponibili nella sezione **[Creazione di piani](whitelabel-plans)**.
