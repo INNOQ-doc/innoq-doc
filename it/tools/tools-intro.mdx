@@ -1,35 +1,35 @@
 ---
-title: Einführung
-description: Diese Einführung erklärt, wie du INNOCHAT-Toolfunktionen mit Function Calling nutzt, eigene API-Schlüssel erstellst und häufig verwendete Tools wie den Weekday-Service integrierst. Erfahre, wie du APIs einbindest, Authentifizierungen korrekt setzt und deine Chatbot-Funktionen effizient erweiterst. 
+title: Introduzione
+description: Questa introduzione spiega come utilizzare le funzionalità degli strumenti INNOCHAT con Function Calling, creare le proprie chiavi API e integrare tool di uso comune come il servizio Weekday. Scopri come collegare API, configurare correttamente le autenticazioni ed estendere in modo efficiente le funzionalità del tuo chatbot.
 ---
 
-Wenn du [Function Calling](/rag-from-external-data-provider) verwendest, benötigst du in der Regel öffentlich verfügbare APIs – oder du erstellst deine eigenen. Wir hosten jedoch auch eine Reihe häufig genutzter Tool-Funktionen auf unserer eigenen Seite, tools.innochat.ch. Es werden täglich mehr hinzugefügt, also bleib dran!
+Quando utilizzi [Function Calling](/rag-from-external-data-provider), di solito hai bisogno di API disponibili pubblicamente – oppure devi crearne di tue. Tuttavia, ospitiamo anche diverse funzioni di tool di uso frequente sul nostro sito: tools.innochat.ch. Ne vengono aggiunte di nuove ogni giorno, quindi tieni d’occhio gli aggiornamenti!
 
-Wenn du eine Funktion vorschlagen möchtest, die wir hinzufügen sollen, lass es uns bitte wissen! Du kannst uns per E-Mail unter [hello@innochat.ch](mailto:hello@innochat.ch) erreichen.
+Se desideri suggerire una funzione da aggiungere, faccelo sapere! Puoi contattarci via email all’indirizzo [hello@innochat.ch](mailto:hello@innochat.ch).
 
-Um diese Tool-Funktionen zu verwenden, musst du zuerst deinen eigenen INNOCHAT-API-Schlüssel erstellen. Weitere Details findest du unter [Einen INNOCHAT-API-Key erhalten](/api-reference/api-key-setup).
+Per utilizzare queste funzioni di tool, devi prima creare la tua chiave API INNOCHAT personale. Maggiori dettagli sono disponibili qui: [Ottenere una chiave API INNOCHAT](/api-reference/api-key-setup).
 
-Unsere aktuellen Tool-Funktionen sind:
+Le nostre attuali funzioni di tool sono:
 
 <CardGroup cols={2}>
   <Card title="weekday" icon="calendar" href="/tools/weekday">
-    Hole den Wochentag für ein bestimmtes Datum
+    Ottieni il giorno della settimana per una data specifica
   </Card>
   <Card title="Coming soon" icon="question">
-    Im Aufbau!
+    In arrivo!
   </Card>
 </CardGroup>
 
-## Verwendung
+## Utilizzo
 
-Auf jeder individuellen Seite einer Tool-Funktion findest du die Beschreibung und die Parameter des Tools. Diese können direkt verwendet werden, wenn du in deinem Agenten eine Funktion erstellst. Die Einstellungen im untenstehenden Bild stammen beispielsweise direkt von der Seite [Weekday](/tools/weekday).
+Su ogni pagina dedicata a una singola funzione di tool troverai la descrizione e i parametri dello strumento. Questi possono essere utilizzati direttamente quando crei una funzione nel tuo agente. Le impostazioni mostrate nell’immagine qui sotto provengono ad esempio direttamente dalla pagina [Weekday](/tools/weekday).
 
 <Frame>
   <img src="/images/tools-intro-1.png" />
   <img src="/images/tools-intro-2.png" />
 </Frame>
 
-Für den Abschnitt „Headers“ im Formular musst du den zuvor erstellten INNOCHAT-API-Schlüssel eingeben, etwa so:
+Nella sezione «Headers» del modulo devi inserire la chiave API INNOCHAT che hai creato in precedenza, in questo modo:
 
 ```json
 {
@@ -37,6 +37,6 @@ Für den Abschnitt „Headers“ im Formular musst du den zuvor erstellten INNOC
 }
 ```
 
-<Warning> Du musst *Your-INNOCHAT-API-key-here* durch deinen eigenen API-Schlüssel ersetzen. Andernfalls funktioniert die Tool-Funktion nicht. </Warning>
+<Warning> Devi sostituire Your-INNOCHAT-API-key-here con la tua effettiva chiave API. Altrimenti la funzione dello strumento non funzionerà. </Warning>
 
-Und dann klick einfach auf „Save“, und alles sollte bereit sein!
+E poi clicca semplicemente su «Save» e tutto dovrebbe essere pronto!

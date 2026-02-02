@@ -1,35 +1,35 @@
 ---
-title: Einführung
-description: Diese Einführung erklärt, wie du INNOCHAT-Toolfunktionen mit Function Calling nutzt, eigene API-Schlüssel erstellst und häufig verwendete Tools wie den Weekday-Service integrierst. Erfahre, wie du APIs einbindest, Authentifizierungen korrekt setzt und deine Chatbot-Funktionen effizient erweiterst. 
+title: Introduction
+description: Cette introduction explique comment utiliser les fonctionnalités d'outils INNOCHAT avec Function Calling, créer vos propres clés API et intégrer des outils couramment utilisés comme le service Weekday. Découvrez comment intégrer des APIs, configurer correctement les authentifications et étendre efficacement les fonctionnalités de votre chatbot.
 ---
 
-Wenn du [Function Calling](/rag-from-external-data-provider) verwendest, benötigst du in der Regel öffentlich verfügbare APIs – oder du erstellst deine eigenen. Wir hosten jedoch auch eine Reihe häufig genutzter Tool-Funktionen auf unserer eigenen Seite, tools.innochat.ch. Es werden täglich mehr hinzugefügt, also bleib dran!
+Lorsque vous utilisez [Function Calling](/rag-from-external-data-provider), vous avez généralement besoin d’APIs disponibles publiquement – ou vous devez en créer vous-même. Cependant, nous hébergeons également un certain nombre de fonctions d’outils fréquemment utilisées sur notre propre site : tools.innochat.ch. De nouvelles fonctions sont ajoutées quotidiennement, alors restez à l’écoute !
 
-Wenn du eine Funktion vorschlagen möchtest, die wir hinzufügen sollen, lass es uns bitte wissen! Du kannst uns per E-Mail unter [hello@innochat.ch](mailto:hello@innochat.ch) erreichen.
+Si vous souhaitez suggérer une fonction que nous devrions ajouter, n’hésitez pas à nous le faire savoir ! Vous pouvez nous contacter par e-mail à [hello@innochat.ch](mailto:hello@innochat.ch).
 
-Um diese Tool-Funktionen zu verwenden, musst du zuerst deinen eigenen INNOCHAT-API-Schlüssel erstellen. Weitere Details findest du unter [Einen INNOCHAT-API-Key erhalten](/api-reference/api-key-setup).
+Pour utiliser ces fonctions d’outils, vous devez d’abord créer votre propre clé API INNOCHAT. Plus de détails sont disponibles ici : [Obtenir une clé API INNOCHAT](/api-reference/api-key-setup).
 
-Unsere aktuellen Tool-Funktionen sind:
+Nos fonctions d’outils actuelles sont :
 
 <CardGroup cols={2}>
   <Card title="weekday" icon="calendar" href="/tools/weekday">
-    Hole den Wochentag für ein bestimmtes Datum
+    Obtenir le jour de la semaine pour une date donnée
   </Card>
   <Card title="Coming soon" icon="question">
-    Im Aufbau!
+    En cours de développement !
   </Card>
 </CardGroup>
 
-## Verwendung
+## Utilisation
 
-Auf jeder individuellen Seite einer Tool-Funktion findest du die Beschreibung und die Parameter des Tools. Diese können direkt verwendet werden, wenn du in deinem Agenten eine Funktion erstellst. Die Einstellungen im untenstehenden Bild stammen beispielsweise direkt von der Seite [Weekday](/tools/weekday).
+Sur chaque page individuelle d’une fonction d’outil, vous trouverez la description et les paramètres de l’outil. Ces éléments peuvent être utilisés directement lorsque vous créez une fonction dans votre agent. Les paramètres montrés dans l’image ci-dessous proviennent par exemple directement de la page [Weekday](/tools/weekday).
 
 <Frame>
   <img src="/images/tools-intro-1.png" />
   <img src="/images/tools-intro-2.png" />
 </Frame>
 
-Für den Abschnitt „Headers“ im Formular musst du den zuvor erstellten INNOCHAT-API-Schlüssel eingeben, etwa so:
+Pour la section « Headers » du formulaire, vous devez saisir la clé API INNOCHAT que vous avez créée précédemment, comme ceci :
 
 ```json
 {
@@ -37,6 +37,6 @@ Für den Abschnitt „Headers“ im Formular musst du den zuvor erstellten INNOC
 }
 ```
 
-<Warning> Du musst *Your-INNOCHAT-API-key-here* durch deinen eigenen API-Schlüssel ersetzen. Andernfalls funktioniert die Tool-Funktion nicht. </Warning>
+<Warning> Vous devez remplacer Your-INNOCHAT-API-key-here par votre propre clé API. Sinon, la fonction d’outil ne fonctionnera pas. </Warning>
 
-Und dann klick einfach auf „Save“, und alles sollte bereit sein!
+Et ensuite, il suffit de cliquer sur « Save » et tout devrait être prêt !

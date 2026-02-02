@@ -1,10 +1,10 @@
 ---
-title: "Wochentag"
+title: "Giorno della settimana"
 api: "GET https://tools.innochat.ch/weekday"
-description: "Diese Funktion ermittelt den Wochentag zu einem angegebenen Datum. Zum Beispiel liefert das Datum '2024-10-07' das JSON-Ergebnis: `{'weekday': 'Monday'}`. Ideal für Anwendungen, die Datumslogik, Kalenderfunktionen oder automatisierte Datumsauswertung benötigen."
+description: "Questa funzione determina il giorno della settimana corrispondente a una data specificata. Ad esempio, la data '2024-10-07' restituisce il risultato JSON: `{'weekday': 'Monday'}`. Ideale per applicazioni che richiedono logica sulle date, funzioni di calendario o valutazione automatica delle date."
 ---
 
-### Tool-Parameter
+### Parametri dello strumento
 
 ```json
 {
@@ -12,7 +12,7 @@ description: "Diese Funktion ermittelt den Wochentag zu einem angegebenen Datum.
   "properties": {
     "date": {
       "type": "string",
-      "description": "Das Datum im ISO-8601-Format. Zum Beispiel 2022-06-15 (15. Juni 2022)."
+      "description": "La data in formato ISO-8601. Ad esempio 2022-06-15 (15 giugno 2022)."
     }
   },
   "required": ["date"]
@@ -20,10 +20,10 @@ description: "Diese Funktion ermittelt den Wochentag zu einem angegebenen Datum.
 ```
 Include default metadata: False
 
-### Pfad
+### Parametro di path
 <ParamField path="date" type="string" required />
   
-### Antwort
+### Risposta
 <ResponseField name="weekday" type="string" /> <RequestExample>
 
 ```bash Curl
