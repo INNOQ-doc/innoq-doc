@@ -1,54 +1,44 @@
 ---
-title: Publishing a Zapier app
+title: Publication d’une application Zapier
 ---
 
-## Whitelabel documentation
+## Documentation en marque blanche
 
-Before starting the Zapier app registration process, you will need to provision your own API documentation, similar to our guide here. We host our guide on [Mintlify](https://mintlify.com/), and you can visit their [Quickstart guide](https://mintlify.com/docs/quickstart) to see how to do the same.
+Avant de commencer le processus d’enregistrement de l’application Zapier, vous devrez fournir votre propre documentation API, similaire à notre guide ici. Nous hébergeons notre guide sur [Mintlify](https://mintlify.com/), et vous pouvez consulter leur [guide de démarrage rapide](https://mintlify.com/docs/quickstart) pour voir comment faire de même.
 
-The files for our documentation are stored in our [public Github repository](https://github.com/ks-collab/innoChat-docs). Feel free to refer to them when you create your own!
+Les fichiers de notre documentation sont stockés dans notre [dépôt public Github](https://github.com/ks-collab/innoChat-docs). N’hésitez pas à vous y référer lorsque vous créez la vôtre !
 
-## Initial setup
+## Configuration initiale
 
-Zapier has its own guide for setting up integrations, which can be viewed [here](https://docs.zapier.com/platform/quickstart/build-integration). You can try referring to their official guide if something does not work. Otherwise, you can contact us.
+Zapier dispose de son propre guide pour la configuration des intégrations, consultable [ici](https://docs.zapier.com/platform/quickstart/build-integration). Vous pouvez vous référer à leur guide officiel si quelque chose ne fonctionne pas. Sinon, vous pouvez nous contacter.
 
-In your Stripe account, please set the `zapier_integration` boolean to True to enable it for your desired plans. You can also visit the Partners Dashboard's free-plan settings to enable Zapier for free-tier users, if needed.
+Dans votre compte Stripe, veuillez définir le booléen `zapier_integration` sur True pour l’activer pour les offres souhaitées. Vous pouvez également visiter les paramètres du forfait gratuit du tableau de bord des partenaires pour activer Zapier pour les utilisateurs gratuits, si nécessaire.
 
-To get started, you will need a [Zapier developer account](https://developer.zapier.com/). Once you have logged in, you can [create a new integration](https://developer.zapier.com/app/new). Please fill in all required details on that form. Once you have done so, please proceed to the following steps.
+Pour commencer, vous aurez besoin d’un [compte développeur Zapier](https://developer.zapier.com/). Une fois connecté, vous pouvez [créer une nouvelle intégration](https://developer.zapier.com/app/new). Veuillez remplir tous les champs requis dans ce formulaire. Une fois terminé, passez aux étapes suivantes.
 
-## Authentication
+## Authentification
 
-You will want to set up API key authentication for your integration. Once selected, you need to add the following two authetication fields in "Configure your fields". If an option is not mentioned here, you do not need to change its default value as you create these fields.
+Vous devrez configurer une authentification par clé API pour votre intégration. Une fois sélectionnée, vous devez ajouter les deux champs d’authentification suivants dans « Configure your fields ». Si une option n’est pas mentionnée ici, vous n’avez pas besoin de modifier sa valeur par défaut.
 
 1.
 
-   * Field type: Field
-
-   * Label: Description
-
-   * Key: description
-
-   * Type: String
-
-   * Required: No
-
-   * Help text: A description to help identify your `<App Name>` integration in Zapier.
+   * Type de champ : Field
+   * Libellé : Description
+   * Clé : description
+   * Type : String
+   * Requis : Non
+   * Texte d’aide : Une description pour aider à identifier votre intégration `<App Name>` dans Zapier.
 
 2.
 
-   * Field type: Field
+   * Type de champ : Field
+   * Libellé : API Key
+   * Clé : api_key
+   * Type : String
+   * Requis : Oui
+   * Texte d’aide : Votre clé API, générée depuis `<App Name>`.
 
-   * Label: API Key
-
-   * Key: api\_key
-
-   * Type: String
-
-   * Required: Yes
-
-   * Help text: Your API key, generated from within `<App Name>`.
-
-In the next step, "Configure a Test Request & Connection Label", you should switch to code mode and use the following code as the test:
+À l’étape suivante, « Configure a Test Request & Connection Label », passez en mode code et utilisez le code suivant comme test :
 
 ```js
 const options = {
@@ -64,43 +54,44 @@ return z.request(options).then((response) => {
 
   return "success";
 });
+
 ```
 
-For the connection label, you can use `{{bundle.authData.description}}`.
+Pour le libellé de connexion, vous pouvez utiliser `{{bundle.authData.description}}`.
 
 <Warning>
-  Make sure to replace `your-domain.com` with the URL of your whitelabelled app.
+  Assurez-vous de remplacer `your-domain.com` par l’URL de votre application en marque blanche.
 </Warning>
 
-When you get to the "Test your Authentication" step, you will want to create an API key within your whitelabelled app, and connect it to your Zapier integration after clicking "Add new account" in the dropdown menu. You can use the "Test Authentication" button to verify that your whitelabelled app has been connected to Zapier.
+Lorsque vous arrivez à l’étape « Test your Authentication », créez une clé API dans votre application en marque blanche, puis connectez-la à votre intégration Zapier après avoir cliqué sur « Add new account » dans le menu déroulant. Vous pouvez utiliser le bouton « Test Authentication » pour vérifier la connexion.
 
-## Triggers
+## Déclencheurs
 
-We only have one trigger here, the chatbot form submission trigger. When you add a new trigger in this section, please use the following settings:
+Nous n’avons qu’un seul déclencheur ici : la soumission du formulaire du chatbot. Lors de l’ajout d’un nouveau déclencheur, utilisez les paramètres suivants :
 
-* Key: form\_submission
+* Clé : form_submission
 
-* Name: Form Submission
+* Nom : Form Submission
 
-* Noun: Form
+* Nom commun : Form
 
-* Description: Triggers when a new user submits a form within their chat.
+* Description : Se déclenche lorsqu’un utilisateur soumet un formulaire dans un chat.
 
-* Visibility in Editor: Shown
+* Visibilité dans l’éditeur : Shown
 
-In the next tab after you save, you can add input fields for your Zapier user. We want to add chatbot UUID as a field, since this will allow the user to set up Zaps that connect to specific bots. Add the following field:
+Dans l’onglet suivant, ajoutez des champs d’entrée pour l’utilisateur Zapier. Ajoutez le champ chatbot UUID :
 
-* Key: chatbot\_uuid
+* Clé : chatbot_uuid
 
-* Label: Chatbot UUID
+* Libellé : Chatbot UUID
 
-* Help text: `Chatbot UUID for tracking form submission. You can find your chatbot UUID [here](https://your-domain.com/site/chatbot/dashboard).`
+* Texte d’aide : `Chatbot UUID pour le suivi des soumissions de formulaires. Vous pouvez trouver votre UUID ici : https://your-domain.com/site/chatbot/dashboard.`
 
 * Type: String
 
-* Options: Required must be selected
+* Options: Required doit être sélectionné
 
-Finally, in the "API Configuration" tab, you should set the trigger type to "REST Hook". Then, you can use the following code for the "Subscribe" section:
+Dans l’onglet « API Configuration », définissez le type de déclencheur sur « REST Hook », puis utilisez le code suivant pour « Subscribe » :
 
 ```js
 const options = {
@@ -124,7 +115,7 @@ return z.request(options).then((response) => {
 });
 ```
 
-In the "Unsubscribe" section, use the following:
+Dans « Unsubscribe » :
 
 ```js
 const options = {
@@ -148,7 +139,7 @@ return z.request(options).then((response) => {
 });
 ```
 
-And in the "Perform List" section, use:
+Et dans « Perform List » :
 
 ```js
 const options = {
@@ -169,11 +160,11 @@ return z.request(options).then((response) => {
 });
 ```
 
-You should not turn on pagination, and you can put the following into the "Perform" field: `return [bundle.cleanedRequest];`.
+Ne pas activer la pagination. Dans « Perform », insérez: `return [bundle.cleanedRequest];`.
 
-At this point, you can test your trigger by making a Zap.
+À ce stade, vous pouvez tester votre déclencheur en créant un Zap.
 
-For the sample data in the final section, you can use the minimum amount available. For example, if most users will collect only the email and phone number, and not anything else, you just need to add the email and phone number:
+Pour les données d'exemple dans la dernière section, vous pouvez utiliser le montant minimum disponible. Par exemple, si la plupart des utilisateurs ne collectent que l'adresse e-mail et le numéro de téléphone, et rien d'autre, il vous suffit d'ajouter l'adresse e-mail et le numéro de téléphone :
 
 ```json
 {
@@ -182,61 +173,62 @@ For the sample data in the final section, you can use the minimum amount availab
 }
 ```
 
-Then, in "Output fields", you can add the keys "Name" and "Phone", both of which are strings. You can leave the labels blank. At this point, the trigger setup is complete.
+Ensuite, dans « Champs de sortie », vous pouvez ajouter les clés « Nom » et « Téléphone », qui sont toutes deux des chaînes de caractères. Vous pouvez laisser les étiquettes vides. À ce stade, la configuration du déclencheur est terminée.
 
 ## Actions
 
-We provide a single action, which enables a user to send a message to a chatbot via a Zap. When you create the action, you will want to use the following settings:
+Nous proposons une seule action permettant d’envoyer un message à un chatbot via un Zap.
+Paramètres :
 
 * Type: Create
 
-* Key: send\_message
+* Clé : send_message
 
-* Name: Send Message
+* Nom : Send Message
 
-* Noun: Message
+* Nom commun : Message
 
-* Description: Send a message to a chatbot and receive an answer.
+* Description : Envoyer un message à un chatbot et recevoir une réponse.
 
-* Visibility: Shown
+* Visibilité : Shown
 
-Next, in the "Input Designer" tab, you should add three fields: the chatbot UUID, the session UUID, and the query (i.e. the message sent to the AI). They should be set as follows.
+Ajoutez ensuite les champs Chatbot UUID, Query et Session UUID.
 
 ### Chatbot UUID
 
-* Key: chatbot\_uuid
+* Clé : chatbot_uuid
 
-* Label: Chatbot UUID
+* Libellé : Chatbot UUID
 
-* Help Text: `Send a message to specific chatbot and receive a response. You can find your chatbot UUID [here](https://your-domain.com/site/chatbot/dashboard).`
+* Texte d’aide: `Envoyer un message à un chatbot spécifique. UUID disponible ici : https://your-domain.com/site/chatbot/dashboard.`
 
 * Type: String
 
-* Options: Required must be selected
+* Options: Required
 
 ### Query
 
-* Key: query
+* Clé : query
 
-* Label: Query
+* Libellé : Query
 
-* Help Text: Enter your question and any additional details you'd like to provide to the chatbot.
+* Texte d’aide : Saisissez votre question.
 
 * Type: Text
 
-* Options: Required must be selected
+* Options: Required
 
 ### Session UUID
 
-* Key: session\_uuid
+* Clé: session\_uuid
 
-* Label: Session UUID
+* Libellé : Session UUID
 
-* Help Text: Use a session UUID to store all incoming messages within a single session. Create a new session or reuse an existing one. This ensures continuity and context in your conversations.
+* Texte d’aide : Utilisez un UUID de session pour conserver le contexte.
 
 * Type: String
 
-Finally, please go to the "API Configuration" tab for this action and use the following code for the API endpoint:
+Enfin, rendez-vous dans l'onglet « Configuration API » pour cette action et utilisez le code suivant pour le point de terminaison API :
 
 ```js
 const options = {
@@ -261,9 +253,9 @@ return z.request(options).then((response) => {
 });
 ```
 
-You can test your API connection in the next section to see if it worked. Use a chatbot UUID from your whitelabelled app.
+Vous pouvez tester votre connexion API dans la section suivante pour vérifier si elle fonctionne. Utilisez un UUID de chatbot provenant de votre application en marque blanche.
 
-Finally, since we expect the AI to return only a bit of text from this API, please insert the following as sample output data:
+Enfin, comme nous nous attendons à ce que l'IA ne renvoie qu'un petit bout de texte à partir de cette API, insérez ce qui suit comme exemple de données de sortie :
 
 ```json
 {
@@ -271,12 +263,12 @@ Finally, since we expect the AI to return only a bit of text from this API, plea
 }
 ```
 
-There is only one output field, `response`, of type `string`.
+Il n'y a qu'un seul champ de sortie, « response », de type « string ».
 
-## Publishing
+## Publication
 
-You do not need to configure any other integration settings after this, and can move on to publishing. You will need to create Zaps to test your trigger and action, so please do so within Zapier. In addition, on the right-side bar of the integration, there should be a list of action items Zapier requires you to complete before your app can be considered for publication. Please work through this list.
+Vous n'avez pas besoin de configurer d'autres paramètres d'intégration après cela et pouvez passer à la publication. Vous devrez créer des Zaps pour tester votre déclencheur et votre action, veuillez donc le faire dans Zapier. De plus, dans la barre latérale droite de l'intégration, vous trouverez une liste des actions que Zapier vous demande d'effectuer avant que votre application puisse être prise en compte pour publication. Veuillez suivre cette liste.
 
-During the publishing process, you will be asked to create an account on your whitelabelled app for Zapier personnel to use. If you need the verification code to activate this account, please let us know, and we will provide it.
+Au cours du processus de publication, vous serez invité à créer un compte sur votre application en marque blanche à l'usage du personnel de Zapier. Si vous avez besoin du code de vérification pour activer ce compte, veuillez nous en informer et nous vous le fournirons.
 
-Once you have been approved, your Zapier integration should have a public link. For example, innoChat's link is: [https://zapier.com/apps/innoChat/integrations](https://zapier.com/apps/innoChat/integrations). You can paste this link into the Partners Dashboard once it's ready.
+Une fois votre demande approuvée, votre intégration Zapier devrait disposer d'un lien public. Par exemple, le lien d'innoChat est : [https://zapier.com/apps/innoChat/integrations](https://zapier.com/apps/innoChat/integrations). Vous pouvez coller ce lien dans le tableau de bord des partenaires une fois qu'il est prêt.
